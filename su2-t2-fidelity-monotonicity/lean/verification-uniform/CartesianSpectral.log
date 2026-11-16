@@ -1,0 +1,2 @@
+'SU2T2.Cartesian.fidelity_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Cartesian.fidelity_mono_of_action' depends on axioms: [propext, Classical.choice, Quot.sound]

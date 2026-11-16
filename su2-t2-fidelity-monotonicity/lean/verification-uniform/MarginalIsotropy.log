@@ -1,0 +1,18 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/MarginalIsotropy.lean:84:8: warning: This simp argument is unused:
+  star_inv
+
+Hint: Omit it from the simp argument list.
+  simp only [Matrix.conjTranspose_apply, embedding, k, hbc, ↓reduceIte,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵s̵t̵a̵r̵_̵i̵n̵v̵,̵ ̵Complex.star_def,
+  ̲  ̲ ̲ ̲ ̲ ̲map_inv₀, Complex.conj_ofReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/MarginalIsotropy.lean:106:6: warning: This simp argument is unused:
+  Matrix.submatrix_mul_equiv
+
+Hint: Omit it from the simp argument list.
+  simp only [groupedEmbedding, Matrix.conjTranspose_submatrix,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵s̵u̵b̵m̵a̵t̵r̵i̵x̵_̵m̵u̵l̵_̵e̵q̵u̵i̵v̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Dicke.marginal_maximally_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]

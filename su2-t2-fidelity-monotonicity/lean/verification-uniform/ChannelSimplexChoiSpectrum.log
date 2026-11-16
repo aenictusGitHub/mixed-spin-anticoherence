@@ -1,0 +1,27 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/ChannelSimplexChoiSpectrum.lean:39:54: warning: This simp argument is unused:
+  smul_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵x̵A̵x̵i̵s̵,̵y̵A̵x̵i̵s̵,̵s̵m̵u̵l̵_̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵m̵u̵l̵_̵s̵m̵u̵l̵_̵c̵o̵m̵m̵,̵s̵m̵u̵l̵_̵s̵m̵u̵l̵,̵a̵d̵d̵_̵m̵u̵l̵,̵m̵u̵l̵_̵a̵d̵d̵,̵
+  ̵ ̵ ̵ ̵ ̵s̵u̵b̵_̵m̵u̵l̵,̵m̵u̵l̵_̵s̵u̵b̵]̵[̲x̲A̲x̲i̲s̲,̲ ̲y̲A̲x̲i̲s̲,̲ ̲s̲m̲u̲l̲_̲m̲u̲l̲_̲a̲s̲s̲o̲c̲,̲ ̲m̲u̲l̲_̲s̲m̲u̲l̲_̲c̲o̲m̲m̲,̲ ̲a̲d̲d̲_̲m̲u̲l̲,̲ ̲m̲u̲l̲_̲a̲d̲d̲,̲ ̲s̲u̲b̲_̲m̲u̲l̲,̲ ̲m̲u̲l̲_̲s̲u̲b̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/ChannelSimplexChoiSpectrum.lean:57:37: warning: This simp argument is unused:
+  add_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [rankCasimir, ̲LinearMap.add_apply, ̲Module.End.mul_apply, ̲pow_two,
+  ̵  ̵ ̵ ̵LieAlgebra.ad_apply,
+  ̲ ̲ ̲ ̲ ̲Ring.lie_def,a̵d̵d̵_̵ ̲mul,̵m̵u̵l̵_add, ̲sub_mul, ̲mul_sub, ̲mul_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/ChannelSimplexChoiSpectrum.lean:57:45: warning: This simp argument is unused:
+  mul_add
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵a̵n̵k̵C̵a̵s̵i̵m̵i̵r̵,̵L̵i̵n̵e̵a̵r̵M̵a̵p̵.̵a̵d̵d̵_̵a̵p̵p̵l̵y̵,̵M̵o̵d̵u̵l̵e̵.̵E̵n̵d̵.̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵p̵o̵w̵_̵t̵w̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵L̵i̵e̵A̵l̵g̵e̵b̵r̵a̵.̵a̵d̵_̵a̵p̵p̵l̵y̵,̵R̵i̵n̵g̵.̵l̵i̵e̵_̵d̵e̵f̵,̵a̵d̵d̵_̵m̵u̵l̵,̵m̵u̵l̵_̵a̵d̵d̵,̵s̵u̵b̵_̵m̵u̵l̵,̵m̵u̵l̵_̵s̵u̵b̵,̵m̵u̵l̵_̵a̵s̵s̵o̵c̵]̵[̲r̲a̲n̲k̲C̲a̲s̲i̲m̲i̲r̲,̲ ̲L̲i̲n̲e̲a̲r̲M̲a̲p̲.̲a̲d̲d̲_̲a̲p̲p̲l̲y̲,̲ ̲M̲o̲d̲u̲l̲e̲.̲E̲n̲d̲.̲m̲u̲l̲_̲a̲p̲p̲l̲y̲,̲ ̲p̲o̲w̲_̲t̲w̲o̲,̲ ̲L̲i̲e̲A̲l̲g̲e̲b̲r̲a̲.̲a̲d̲_̲a̲p̲p̲l̲y̲,̲
+  ̲ ̲ ̲ ̲ ̲R̲i̲n̲g̲.̲l̲i̲e̲_̲d̲e̲f̲,̲ ̲a̲d̲d̲_̲m̲u̲l̲,̲ ̲s̲u̲b̲_̲m̲u̲l̲,̲ ̲m̲u̲l̲_̲s̲u̲b̲,̲ ̲m̲u̲l̲_̲a̲s̲s̲o̲c̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Spin.choiCasimir_eigenvalues' depends on axioms: [propext, Classical.choice, Quot.sound]

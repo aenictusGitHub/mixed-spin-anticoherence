@@ -1,0 +1,10 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalTwoTrace.lean:20:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalTwoTrace.lean:55:52: warning: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  simp [partialTraceLast, ̲Matrix.conjTranspose_apply,̵m̵a̵p̵_̵s̵u̵m̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

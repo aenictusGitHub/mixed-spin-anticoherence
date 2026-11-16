@@ -1,0 +1,58 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:30:30: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:31:30: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:48:49: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, Matrix.smul_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.single_apply, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:49:49: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, Matrix.smul_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:86:70: warning: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, Matrix.mul_sum, Matrix.sum_mul, Matrix.sum_apply,̵ ̵m̵a̵p̵_̵s̵u̵m̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:90:20: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵ ̵Matrix.smul_mul, Complex.mul_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:90:37: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, Matrix.mul_smul, M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵,̵ ̵Complex.mul_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/SpectralJensen.lean:129:0: warning: automatically included section variable(s) unused in theorem `LowOrder.concave_sum_mono_of_transport`:
+  [DecidableEq ι]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq ι] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'LowOrder.positive_unital_spectral_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.spectral_concave_mono_positive_unital' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.determinant_mono_positive_unital' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,6 +1,10 @@
 name = "su2_t2_fidelity"
-version = "2.1.0"
-defaultTargets = ["Certificate"]
+version = "3.0.0"
+defaultTargets = ["UniformFidelityCertificate"]
+weakLeanArgs = ["-j1", "-s131072"]
+
+[leanOptions]
+Elab.async = false
 
 [[require]]
 name = "mathlib"
@@ -8,5 +12,64 @@ git = "https://github.com/leanprover-community/mathlib4.git"
 rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
 
 [[lean_lib]]
-name = "Certificate"
-roots = ["Audit", "BasisOrder", "BroadDeterminant", "CartesianSpectral", "Certificate", "ChoiScalarBounds", "CoherentBounds", "DensitySpan", "Determinant", "DickeEmbedding", "DickeGenerators", "DickeSU2", "FullTheorem", "ManuscriptNotation", "Multipliers", "PhysicalAffine", "PhysicalCertificate", "PhysicalCovariance", "PhysicalEmbedding", "PhysicalMarginal", "PhysicalNBody", "PhysicalTransfer", "PhysicalTwoCovariance", "PhysicalTwoTrace", "Qutrit", "SU2Choi", "SU2Differential", "Spectral", "SpinAction", "SpinCovariance", "SpinGenerators", "SpinHighestWeight", "SpinOneAction", "TraceDual"]
+name = "UniformFidelityCertificate"
+roots = ["UniformFidelity", "UniformAudit"]
+globs = [
+  "Audit",
+  "BasisOrder",
+  "BroadDeterminant",
+  "CartesianSpectral",
+  "Certificate",
+  "ChannelSimplexBasis",
+  "ChannelSimplexCasimir",
+  "ChannelSimplexChoiSpectrum",
+  "ChannelSimplexMarginal",
+  "ChannelSimplexPairing",
+  "ChannelSimplexRanks",
+  "ChannelSimplexRealMultipliers",
+  "ChannelSimplexT2Marginal",
+  "ChannelSimplexT2Uniform",
+  "ChannelSimplexTransfer",
+  "ChoiScalarBounds",
+  "CoherentBounds",
+  "DensitySpan",
+  "Determinant",
+  "DickeEmbedding",
+  "DickeGenerators",
+  "DickeSU2",
+  "EntropyFromDeterminant",
+  "FullTheorem",
+  "GeneralMarginal",
+  "GeneralMonotonicity",
+  "LogDetSqrt",
+  "LowOrderMeasures",
+  "ManuscriptNotation",
+  "MarginalIsotropy",
+  "MatrixSpectralConsequences",
+  "Multipliers",
+  "PhysicalAffine",
+  "PhysicalCertificate",
+  "PhysicalCovariance",
+  "PhysicalEmbedding",
+  "PhysicalMarginal",
+  "PhysicalNBody",
+  "PhysicalTransfer",
+  "PhysicalTwoCovariance",
+  "PhysicalTwoTrace",
+  "PhysicalUniformBridge",
+  "Qutrit",
+  "SU2Choi",
+  "SU2Differential",
+  "ShiftedDeterminant",
+  "Spectral",
+  "SpectralJensen",
+  "SpinAction",
+  "SpinCovariance",
+  "SpinGenerators",
+  "SpinHighestWeight",
+  "SpinOneAction",
+  "TraceDual",
+  "UniformAudit",
+  "UniformFidelity",
+  "UniformT1",
+]

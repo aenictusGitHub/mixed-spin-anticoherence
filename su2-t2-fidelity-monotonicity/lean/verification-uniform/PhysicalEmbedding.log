@@ -1,0 +1,99 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:44:25: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [dicke3, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type,
+        Fin.sum_univ_succ, Complex.e̵x̵t̵_̵i̵f̵f̵,̵ ̵C̵o̵mp̵l̵e̵x̵.̵m̵ul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:45:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:45:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:53:48: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [cartesianTriplet, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type,
+  ̲  ̲ ̲ ̲ ̲ ̲Fin.sum_univ_succ, C̵o̵m̵p̵l̵e̵x̵.̵e̵x̵t̵_̵i̵f̵f̵,̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:55:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:55:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:68:67: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [cartesianTriplet, dicke3, marginalKraus0, marginalKraus1,
+  ̵  ̵ ̵ ̵ ̵ ̵Matrix.mul_apply,
+  ̲  ̲ ̲ ̲ ̲ ̲Matrix.conjTranspose_apply, Matrix.submatrix_apply,
+  ̵  ̵ ̵ ̵ ̵ ̵Matrix.smul_apply, Fintype.sum_prod_type,
+  ̲  ̲ ̲ ̲ ̲ ̲Fin.sum_univ_succ, Complex.e̵x̵t̵_̵i̵f̵f̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵o̵mp̵l̵e̵x̵.̵m̵ul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:70:40: warning: This simp argument is unused:
+  hs2
+
+Hint: Omit it from the simp argument list.
+  simp [hs3,̵ ̵h̵s̵2̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:70:61: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:70:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:70:61: warning: 'norm_num [hs3, hs2]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:81:24: warning: This simp argument is unused:
+  hs2
+
+Hint: Omit it from the simp argument list.
+  simp [hs2̵,̵ ̵h̵s̵3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:81:29: warning: This simp argument is unused:
+  hs3
+
+Hint: Omit it from the simp argument list.
+  simp [hs2,̵ ̵h̵s̵3̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:81:34: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:81:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:81:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:94:2: warning: 'norm_num only [Fin.reduceEq, if_false]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:175:58: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:175:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/PhysicalEmbedding.lean:175:58: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

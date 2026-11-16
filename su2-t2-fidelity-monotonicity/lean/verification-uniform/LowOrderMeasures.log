@@ -1,0 +1,15 @@
+'SU2T2.matrix_vonNeumann_mono_of_shifted_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.vonNeumann_total_t2_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+SU2T2.vonNeumann_total_t2_mono (N : ℕ) (hN : 3 ≤ N) (Φ : SU2T2.Spin.Mat N →ₗ[ℂ] SU2T2.Spin.Mat N)
+  (hCP : SU2T2.Choi.CompletelyPositive Φ) (hTP : ∀ (A : SU2T2.Spin.Mat N), Matrix.trace (Φ A) = Matrix.trace A)
+  (hSU2 : SU2T2.Dicke.CovariantStates N Φ) (ρ : SU2T2.Spin.Mat N) (hρ : Matrix.PosSemidef ρ)
+  (htr : Matrix.trace ρ = 1) : SU2T2.vonNeumannTotal2 N hN ρ ≤ SU2T2.vonNeumannTotal2 N hN (Φ ρ)
+'SU2T2.total_monotonicity_t2' depends on axioms: [propext, Classical.choice, Quot.sound]
+SU2T2.total_monotonicity_t2 (N : ℕ) (hN : 3 ≤ N) (Φ : SU2T2.Spin.Mat N →ₗ[ℂ] SU2T2.Spin.Mat N)
+  (hCP : SU2T2.Choi.CompletelyPositive Φ) (hTP : ∀ (A : SU2T2.Spin.Mat N), Matrix.trace (Φ A) = Matrix.trace A)
+  (hSU2 : SU2T2.Dicke.CovariantStates N Φ) (ρ : SU2T2.Spin.Mat N) (hρ : Matrix.PosSemidef ρ)
+  (htr : Matrix.trace ρ = 1) :
+  SU2T2.fidelityTotalOfMarginal 2 (SU2T2.marginal2 N hN ρ) ≤
+      SU2T2.fidelityTotalOfMarginal 2 (SU2T2.marginal2 N hN (Φ ρ)) ∧
+    SU2T2.vonNeumannTotalOfMarginal 2 (SU2T2.marginal2 N hN ρ) ≤
+      SU2T2.vonNeumannTotalOfMarginal 2 (SU2T2.marginal2 N hN (Φ ρ))

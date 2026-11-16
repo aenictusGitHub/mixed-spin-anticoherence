@@ -1,0 +1,6 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/EntropyFromDeterminant.lean:47:42: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2T2.EntropyFromDeterminant.entropy_mono_of_shifted_product' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

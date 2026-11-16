@@ -1,0 +1,24 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/DickeEmbedding.lean:23:4: warning: unused variable `n`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/DickeEmbedding.lean:120:24: warning: This simp argument is unused:
+  Finset.sum_add_distrib
+
+Hint: Omit it from the simp argument list.
+  simp [totalRaising, qubitRaising, Matrix.mulVec, dotProduct, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵a̵d̵d̵_̵d̵i̵s̵t̵r̵i̵b̵]̵M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/DickeEmbedding.lean:139:39: warning: This simp argument is unused:
+  Fin.val_one
+
+Hint: Omit it from the simp argument list.
+  simp only [unweighted, weight, F̵i̵n̵.̵v̵a̵l̵_̵o̵n̵e̵,̵ ̵Fin.val_zero, zero_add, Pi.smul_apply, smul_eq_mul] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/tmp/uniform-fidelity-release/su2-t2-fidelity-monotonicity/lean/DickeEmbedding.lean:141:19: warning: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  simp only [i̵t̵e̵_̵t̵r̵u̵e̵,̵ ̵Nat.add_comm 1, Nat.add_right_cancel_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

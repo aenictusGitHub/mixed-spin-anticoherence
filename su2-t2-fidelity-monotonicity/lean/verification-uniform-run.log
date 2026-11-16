@@ -1,0 +1,115 @@
+CHECK BroadDeterminant
+CHECK Determinant
+PASS Determinant (16.732s)
+CHECK DickeEmbedding
+PASS BroadDeterminant (16.734s)
+CHECK ChoiScalarBounds
+PASS ChoiScalarBounds (2.983s)
+CHECK EntropyFromDeterminant
+PASS DickeEmbedding (3.168s)
+CHECK LogDetSqrt
+PASS EntropyFromDeterminant (3.709s)
+CHECK Multipliers
+PASS LogDetSqrt (4.462s)
+CHECK PhysicalMarginal
+PASS Multipliers (5.756s)
+CHECK Qutrit
+PASS PhysicalMarginal (12.019s)
+CHECK PhysicalEmbedding
+PASS Qutrit (8.879s)
+CHECK Certificate
+PASS Certificate (10.925s)
+CHECK SU2Choi
+PASS PhysicalEmbedding (23.102s)
+CHECK PhysicalNBody
+PASS SU2Choi (11.179s)
+CHECK SU2Differential
+PASS PhysicalNBody (2.57s)
+CHECK GeneralMarginal
+PASS SU2Differential (2.956s)
+CHECK PhysicalCovariance
+PASS GeneralMarginal (3.753s)
+CHECK MarginalIsotropy
+PASS PhysicalCovariance (3.371s)
+CHECK Spectral
+PASS MarginalIsotropy (4.149s)
+CHECK SpinHighestWeight
+PASS Spectral (6.174s)
+CHECK CartesianSpectral
+PASS SpinHighestWeight (3.058s)
+CHECK SpinGenerators
+PASS SpinGenerators (4.877s)
+CHECK BasisOrder
+PASS BasisOrder (2.266s)
+CHECK DickeGenerators
+PASS CartesianSpectral (8.54s)
+CHECK CoherentBounds
+PASS DickeGenerators (6.284s)
+CHECK DickeSU2
+PASS CoherentBounds (7.779s)
+CHECK TraceDual
+PASS TraceDual (2.794s)
+CHECK SpinCovariance
+PASS DickeSU2 (7.016s)
+CHECK DensitySpan
+PASS DensitySpan (2.983s)
+CHECK SpinAction
+PASS SpinCovariance (8.302s)
+CHECK ChannelSimplexRanks
+PASS SpinAction (3.863s)
+CHECK PhysicalCertificate
+PASS PhysicalCertificate (3.377s)
+CHECK ManuscriptNotation
+PASS ChannelSimplexRanks (3.925s)
+CHECK ChannelSimplexCasimir
+PASS ManuscriptNotation (2.387s)
+CHECK PhysicalTransfer
+PASS ChannelSimplexCasimir (4.104s)
+CHECK ChannelSimplexBasis
+PASS PhysicalTransfer (3.687s)
+CHECK PhysicalTwoCovariance
+PASS ChannelSimplexBasis (5.627s)
+CHECK ChannelSimplexChoiSpectrum
+PASS PhysicalTwoCovariance (7.428s)
+CHECK ChannelSimplexRealMultipliers
+PASS ChannelSimplexChoiSpectrum (4.288s)
+CHECK PhysicalTwoTrace
+PASS ChannelSimplexRealMultipliers (3.374s)
+CHECK ChannelSimplexPairing
+PASS PhysicalTwoTrace (4.998s)
+CHECK SpinOneAction
+PASS ChannelSimplexPairing (3.419s)
+CHECK ChannelSimplexMarginal
+PASS ChannelSimplexMarginal (3.113s)
+CHECK ChannelSimplexTransfer
+PASS ChannelSimplexTransfer (3.156s)
+PASS SpinOneAction (31.211s)
+CHECK PhysicalAffine
+PASS PhysicalAffine (2.389s)
+CHECK ChannelSimplexT2Marginal
+CHECK FullTheorem
+PASS ChannelSimplexT2Marginal (3.314s)
+PASS FullTheorem (3.379s)
+CHECK Audit
+CHECK GeneralMonotonicity
+PASS GeneralMonotonicity (7.91s)
+CHECK LowOrderMeasures
+PASS Audit (8.12s)
+PASS LowOrderMeasures (5.97s)
+CHECK MatrixSpectralConsequences
+PASS MatrixSpectralConsequences (6.377s)
+CHECK ShiftedDeterminant
+CHECK SpectralJensen
+PASS ShiftedDeterminant (4.13s)
+CHECK PhysicalUniformBridge
+PASS SpectralJensen (5.415s)
+PASS PhysicalUniformBridge (3.522s)
+CHECK ChannelSimplexT2Uniform
+CHECK UniformT1
+PASS ChannelSimplexT2Uniform (3.772s)
+PASS UniformT1 (12.13s)
+CHECK UniformFidelity
+PASS UniformFidelity (2.198s)
+CHECK UniformAudit
+PASS UniformAudit (11.353s)
+PASS fresh project source build and final physical theorem audit

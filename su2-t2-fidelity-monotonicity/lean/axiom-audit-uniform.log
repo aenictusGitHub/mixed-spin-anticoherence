@@ -1,0 +1,41 @@
+theorem LowOrder.physical_fidelity_t1 : ∀ (k : ℕ) (Φ : SU2T2.Spin.Mat (k + 1) →ₗ[ℂ] SU2T2.Spin.Mat (k + 1)),
+  SU2T2.Choi.CompletelyPositive Φ →
+    (∀ (A : SU2T2.Spin.Mat (k + 1)), Matrix.trace (Φ A) = Matrix.trace A) →
+      SU2T2.Dicke.CovariantStates (k + 1) Φ →
+        ∀ (ρ : SU2T2.Spin.Mat (k + 1)),
+          Matrix.PosSemidef ρ → Matrix.trace ρ = 1 → SU2T2.totalFidelity 1 k ρ ≤ SU2T2.totalFidelity 1 k (Φ ρ) :=
+fun k Φ hCP hTP hSU2 ρ hρ htr => (LowOrder.physical_totals_t1_uniform k Φ hCP hTP hSU2 ρ hρ htr).left
+theorem LowOrder.physical_fidelity_t2 : ∀ (k : ℕ) (Φ : SU2T2.Spin.Mat (k + 2) →ₗ[ℂ] SU2T2.Spin.Mat (k + 2)),
+  SU2T2.Choi.CompletelyPositive Φ →
+    (∀ (A : SU2T2.Spin.Mat (k + 2)), Matrix.trace (Φ A) = Matrix.trace A) →
+      SU2T2.Dicke.CovariantStates (k + 2) Φ →
+        ∀ (ρ : SU2T2.Spin.Mat (k + 2)),
+          Matrix.PosSemidef ρ → Matrix.trace ρ = 1 → SU2T2.totalFidelity 2 k ρ ≤ SU2T2.totalFidelity 2 k (Φ ρ) :=
+fun k Φ hCP hTP hSU2 ρ hρ htr => (LowOrder.physical_totals_t2_uniform k Φ hCP hTP hSU2 ρ hρ htr).left
+def SU2T2.totalFidelity : (t k : ℕ) → SU2T2.Spin.Mat (k + t) → ℝ :=
+fun t k ρ => SU2T2.fidelityTotalOfMarginal t (SU2T2.Dicke.marginal t k ρ)
+def SU2T2.fidelityTotalOfMarginal : (t : ℕ) → Matrix (Fin (t + 1)) (Fin (t + 1)) ℂ → ℝ :=
+fun t A => ((CFC.sqrt A).trace.re ^ 2 - 1) / ↑t
+def SU2T2.Dicke.marginal : (t k : ℕ) →
+  Matrix (Fin (k + t + 1)) (Fin (k + t + 1)) ℂ → Matrix (Fin (t + 1)) (Fin (t + 1)) ℂ :=
+fun t k ρ => (SU2T2.Dicke.embedding t).conjTranspose * SU2T2.Dicke.qubitMarginal t k ρ * SU2T2.Dicke.embedding t
+def SU2T2.Dicke.CovariantStates : (n : ℕ) → (SU2T2.Spin.Mat n →ₗ[ℂ] SU2T2.Spin.Mat n) → Prop :=
+fun n φ =>
+  ∀ (U : ↥SU2T2.Dicke.SU2) (ρ : SU2T2.Spin.Mat n),
+    Matrix.PosSemidef ρ →
+      Matrix.trace ρ = 1 →
+        φ (SU2T2.Dicke.action n U * ρ * Matrix.conjTranspose (SU2T2.Dicke.action n U)) =
+          SU2T2.Dicke.action n U * φ ρ * Matrix.conjTranspose (SU2T2.Dicke.action n U)
+def SU2T2.Choi.CompletelyPositive : {n : ℕ} → (SU2T2.Choi.Mat n →ₗ[ℂ] SU2T2.Choi.Mat n) → Prop :=
+fun {n} φ =>
+  ∀ (k : ℕ) (X : Matrix (Fin n × Fin k) (Fin n × Fin k) ℂ), X.PosSemidef → (SU2T2.Choi.amplification φ k X).PosSemidef
+'LowOrder.physical_fidelity_t1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_fidelity_t2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_qubit_affine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_determinant_t1_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_determinant_t2_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_totals_of_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.shifted_determinant_of_density_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.matrix_totals_mono_of_shifted_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_totals_t1_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_totals_t2_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]

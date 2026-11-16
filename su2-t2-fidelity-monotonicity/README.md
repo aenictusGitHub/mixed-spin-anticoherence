@@ -1,110 +1,76 @@
-# Order-two fidelity monotonicity under SU(2)-covariant channels: full proof and Lean certificate
+# Monotonicity of total anticoherence under SU(2)-covariant channels
 
-This repository proves the fidelity part of Conjecture 1 in
-*Total, quantum, and classical measures of anticoherence for mixed spin states*
-(`resub_v0.tex`, 13 November 2026), for every proper order-two reduction,
-that is, every **N ≥ 3**.
+Uniform proofs for the fidelity and von Neumann total anticoherence measures at **t = 1, 2, 3, 4**, with Lean certificates for **t = 1 and t = 2 only**.
 
-The companion manuscript is by Jérôme Denis, Tara Lacaille, John Martin, and
-Eduardo Serrano-Ensástiga (2026):
-[arXiv:2605.29436](https://arxiv.org/abs/2605.29436).
-Its BibTeX reference is included in [citation.bib](citation.bib).
-
-For every density operator on the spin-`N/2` sector and every completely positive,
-trace-preserving SU(2)-covariant channel on that same sector, the result is
+For every density matrix on the spin-`N/2` sector, every completely positive, trace-preserving SU(2)-covariant channel on that sector, and `1 ≤ t ≤ min(4,N)`,
 
 ```math
-\mathcal A^{T,F}_2(\Phi(\rho))\ge\mathcal A^{T,F}_2(\rho),\qquad
-\mathcal A^{T,F}_2(\rho)=\frac{(\mathrm{Tr}\sqrt{\rho_2})^2-1}{2}.
+\mathcal A_t^{T,F}(\Phi(\rho))\ge\mathcal A_t^{T,F}(\rho),
+\qquad
+\mathcal A_t^{T,\mathrm{vN}}(\Phi(\rho))\ge\mathcal A_t^{T,\mathrm{vN}}(\rho).
 ```
 
-The statement includes mixed inputs, singular reductions, every finite `N ≥ 3`,
-and all covariant channels. It does not settle the trace-distance candidate or
-fidelity at orders `t ≥ 3`.
+Here `ρ_t` is the actual symmetric `t`-qubit reduction. The theorem includes arbitrary mixed inputs and zero eigenvalues. In the manuscript's proper-order domain, `t < N`; the proof also covers `t = N`. Theorem 1 states both inequalities together. Both follow separately from the common shifted-determinant comparison and its spectral integral argument. No trace-distance claim or claim for `t ≥ 5` is made.
 
 ## Read the proof
 
-- [Self-contained proof (PDF)](proof.pdf)
-- [Editable LaTeX source](proof.tex)
-- [Lean certificate and exact verification scope](lean/README.md)
-- [BibTeX citation](citation.bib)
-- [Companion manuscript changes](manuscript.patch)
+- [Uniform written proof (PDF, with embedded exact data)](proof.pdf)
+- [Complete LaTeX source](proof.tex)
+- [Exact rational data and Python checking programs](exact-data.zip)
+- [Lean certificates and reproduction instructions](lean/README.md)
+- [Citation](citation.bib)
 
-The proof derives the relevant channel multipliers from covariance and the Choi
-variance, obtains the physical marginal constraint
-`0 ≤ A ≤ 3I/2`, and proves determinant increase and purity decrease. An elementary
-three-eigenvalue lemma then gives the exact fidelity normalization above.
+Every order follows the same structure:
 
-Compared with the supplied eight-page proof, this version treats arbitrary
-channel mixtures directly, uses polynomial identities for the cofactor and
-determinant steps, handles singular states without a limiting argument, and
-replaces the square-root integral by an elementary algebraic comparison.
+1. Prove `det ρ'_t ≥ det ρ_t` for every full input state.
+2. Apply it to isotropic mixtures to obtain `det(sI + ρ'_t) ≥ det(sI + ρ_t)` for every `s ≥ 0`.
+3. Apply the common spectral integral argument to obtain both fidelity and von Neumann monotonicity.
 
-## What Lean certifies
+At `t = 1` the determinant difference is `(1-f₁²)|r|²/4`. At `t = 2` the proof uses physical marginal constraints and polynomial inequalities. At `t = 3,4` the written proofs use exact finite certificates, including available-extension convex hulls, rational interval bounds, and the exceptional order-four weighted sum-of-squares identity. The PDF supplies the intermediate mathematical arguments and exact checking rules; the large rational tables are embedded as `exact-data.zip` and are also available separately here.
 
-**Version 2.1.0 proves the full quantum-channel theorem in Lean.** The principal
-theorem is `SU2T2.conjecture1_fidelity_t2` in [FullTheorem.lean](lean/FullTheorem.lean).
-Its hypotheses are precisely `N ≥ 3`, complete positivity, trace preservation,
-SU(2) covariance on density matrices, and a positive trace-one input.
+## Certification scope
 
-The certificate derives the SU(2) generator reduction, Choi positivity and
-variance, physical marginal constraints, the two-multiplier action on the actual
-partial trace, and the spectral identities for the actual positive matrix square
-root. None of these is an additional assumption of the final theorem.
+| Order | Written proof and exact data | Lean certificate in this release |
+|---|---|---|
+| 1 | Yes; elementary determinant identity | `LowOrder.physical_fidelity_t1` |
+| 2 | Yes; physical-marginal determinant proof | `LowOrder.physical_fidelity_t2` |
+| 3 | Yes; exact computer-assisted proof | **Not provided** |
+| 4 | Yes; exact computer-assisted proof | **Not provided** |
 
-The shorter argument uses only the first two tensor ranks and a Choi variance
-bound. It does not require a Clebsch–Gordan decomposition. The original scalar
-certificate is retained as a subsidiary result; version 1.0.0 remains available.
+The two public Lean theorems in [UniformFidelity.lean](lean/UniformFidelity.lean) have exactly the physical channel and density-matrix hypotheses. They use `N = k+t`, the actual normalized Dicke marginal, and the manuscript's squared-fidelity convention. Both are obtained through the same proved determinant → shifted determinant → spectral bridge. Their final statements assume no determinant inequality, multiplier decomposition, or spectral comparison. The common bridge also proves the von Neumann inequalities at `t = 1,2`.
 
-Lean **4.24.0** and mathlib commit
-`f897ebcf72cd16f89ab4577d0c826cd14afaafc7` are pinned. The clean build is recorded in
-[verification.log](lean/verification.log), and the theorem and bridge assumptions
-are printed in [axiom-audit.log](lean/axiom-audit.log). Only the standard axioms
-`propext`, `Classical.choice`, and `Quot.sound` occur. There are no unfinished
-proofs, additional axioms, or `sorryAx` dependencies.
+No order-three or order-four Lean certificate modules are included or imported. The exact Python checks for those orders are not Lean certifications.
 
-## Reproduce
+## Reproduce the Lean certificates
 
-With Lean's `elan` manager installed:
+The package pins Lean **4.24.0**, Mathlib commit `f897ebcf72cd16f89ab4577d0c826cd14afaafc7`, and its transitive dependencies. With `elan` installed:
 
 ```sh
 cd lean
 lake update
 lake exe cache get
-lake build
-lake env lean Audit.lean
+python3 verify_uniform.py --jobs 2
 ```
 
-The final command prints the standard foundational dependencies
-`propext`, `Classical.choice`, and `Quot.sound`; there is no `sorryAx`.
-See [lean/README.md](lean/README.md) for the full theorem-to-proof mapping.
+This freshly compiles every project Lean source and audits the two public physical theorems and their common bridges. The pinned Mathlib dependency cache supplies external library objects; the script does not rebuild Mathlib. The [verification report](lean/verification-uniform/result.json), [axiom audit](lean/axiom-audit-uniform.log), and [source hashes](lean/source-sha256-uniform.txt) record the checked release. The final axioms are only `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx`, custom proof axioms, or `native_decide`.
 
-To rebuild the PDF with a LaTeX installation containing the packages used by
-`proof.tex`:
+`lake build` and `lake env lean UniformAudit.lean` provide the usual incremental check. The explicit verifier above provides the fresh project-source check.
+
+## Rebuild and check the written proof
+
+Keep `proof.tex` and `exact-data.zip` in the same directory, then run:
 
 ```sh
 pdflatex -interaction=nonstopmode -halt-on-error proof.tex
 pdflatex -interaction=nonstopmode -halt-on-error proof.tex
 ```
 
-## Provenance and manuscript citation
+To check the exact data, extract the ZIP into a separate directory, install its `requirements.txt`, and run `python3 verify_all.py` there. Do not use `python -O`: the exact checking programs use assertions. These checks use rational/integer arithmetic, not floating-point sampling.
 
-The basis supplied for this work was `su2_t2_full_direct_proof.pdf`, SHA-256
-`8cb23bd374a7bcb7e4f405fb632c02cdc0a6e298dba6a7caf8787e846f68325c`.
-The target manuscript was `Overleaf131126/First reply/resub_v0.tex`, whose
-pre-edit SHA-256 was
-`57edc7f8601f872009415b92ce6298833ebb64528d8461abd04fa95055a1fe81`.
-The full manuscript and original supplied PDF are not redistributed here.
+## Manuscript and previous versions
 
-The manuscript retains the wording and numbering of Conjecture 1 and identifies
-its fidelity `t = 2` case as proved. Its remaining-open statements are narrowed
-accordingly. The bibliography describes the Lean component as a certificate of
-the full theorem.
+This accompanies Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga, [*Total, quantum, and classical measures of anticoherence for mixed spin states*](https://arxiv.org/abs/2605.29436).
 
-This repository is **public**. Cite the published
-[v2.1.0 release](https://github.com/aenictusGitHub/su2-t2-fidelity-monotonicity/releases/tag/v2.1.0)
-using [citation.bib](citation.bib). Authorship metadata is left for the manuscript
-authors to settle.
+The directory name is retained so existing links continue to work. This uniform proof replaces the previous order-two-only PDF on the main branch. Earlier tagged releases, the original scalar and qutrit Lean results, and their historical audit records remain available for provenance and compatibility; they are not the new uniform certificate's verification record. The old `manuscript.patch` records the earlier order-two manuscript change and is not an update for this release.
 
-Version 2.1.0 additionally certifies the spin-action group law and unitarity.
-See [basis conversion](BASIS_ORDER.md) and [the revised audit](audit/v2.1.0-audit.txt).
+The [basis conversion guide](BASIS_ORDER.md) remains applicable. Cite this repository at the commit used, rather than treating the historical v2.1.0 tag as the new uniform release.

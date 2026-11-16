@@ -1,102 +1,54 @@
-# Lean certificate of the full fidelity theorem at t = 2
+# Uniform Lean certificates: fidelity monotonicity at t = 1 and t = 2
 
-Version 2.1.0 proves the full fidelity case of manuscript Conjecture 1 at proper
-order `t = 2`, for every natural `N ≥ 3`. The principal theorem is
-[`SU2T2.conjecture1_fidelity_t2`](FullTheorem.lean).
+The public theorems are `LowOrder.physical_fidelity_t1` and `LowOrder.physical_fidelity_t2` in [UniformFidelity.lean](UniformFidelity.lean). **No t = 3 or t = 4 Lean certifications are provided.**
 
-```lean
-theorem conjecture1_fidelity_t2 (N : ℕ) (hN : 3 ≤ N)
-    (Φ : Spin.Mat N →ₗ[ℂ] Spin.Mat N)
-    (hCP : Choi.CompletelyPositive Φ)
-    (hTP : ∀ A, (Φ A).trace = A.trace)
-    (hSU2 : Dicke.CovariantStates N Φ)
-    (ρ : Spin.Mat N) (hρ : ρ.PosSemidef) (htr : ρ.trace = 1) :
-    fidelityTotal2 N hN ρ ≤ fidelityTotal2 N hN (Φ ρ)
-```
+Both statements quantify over every natural `k`, with `N = k+t`, and assume only:
 
-These are exactly the physical hypotheses. The theorem has no assumed channel
-multipliers, Choi decomposition, marginal bounds, moment identities, eigenvalue
-identifications, or scalar fidelity reduction.
+- complete positivity of the full complex-linear map;
+- trace preservation;
+- covariance on density matrices under the genuine spin representation of SU(2);
+- positivity and trace one of the full input matrix.
 
-## Definitions and correspondence with the manuscript
+They conclude monotonicity of `SU2T2.totalFidelity t k`, defined as `((Re Tr (CFC.sqrt ρ_t))² - 1)/t`. The square-root trace is real on positive matrices. `ρ_t` is the normalized Dicke embedding followed by the actual qubit partial trace and symmetric compression. The proper-order cases have `k ≥ 1`; the theorems also cover `k = 0`.
 
-- `Spin.Mat N` is the algebra of complex `(N+1) × (N+1)` matrices in the normalized
-  Dicke basis, with magnetic quantum number `m = k - N/2`.
-- `Choi.CompletelyPositive` means positivity under every finite ancillary matrix
-  amplification. It is not an assumed Kraus or Choi decomposition.
-- `Dicke.CovariantStates` quantifies over actual
-  `Matrix.specialUnitaryGroup (Fin 2) ℂ` elements and every density matrix. The
-  spin action is `Dᴴ * tensorPower U N * D`, where `D` is the proved isometric
-  normalized Dicke embedding. `DensitySpan` proves extension to all operators.
-- `marginal2 N hN ρ` is the actual two-qubit partial trace of the symmetric
-  embedding, compressed to the orthonormal Cartesian triplet basis. The dimension
-  transport in its definition merely writes `N = (N-3)+3`.
-- `fidelityTotal2` is `((Re Tr (CFC.sqrt ρ₂))² - 1)/2`. For positive matrices the
-  square-root trace is real, as proved through its eigenvalues. This is exactly
-  the manuscript's `𝒜₂^{T,F}`, using squared Uhlmann–Jozsa fidelity.
+## The uniform proof structure
 
-## What is proved
+| Written argument | Lean declaration or source |
+|---|---|
+| Actual symmetric marginal, positivity and trace | `GeneralMarginal.lean` |
+| t = 1 inherited contracting dipole | `LowOrder.physical_qubit_affine` in `UniformT1.lean` |
+| t = 1 determinant comparison | `LowOrder.physical_determinant_t1_uniform` |
+| t = 2 determinant comparison in the same coordinates | `LowOrder.physical_determinant_t2_uniform` in `ChannelSimplexT2Uniform.lean` |
+| Physical reference state and isotropic mixing | `LowOrder.physical_totals_of_determinant` in `PhysicalUniformBridge.lean` |
+| All nonnegative determinant shifts | `LowOrder.shifted_determinant_of_density_determinant` in `ShiftedDeterminant.lean` |
+| Common square-root trace and entropy consequences | `LowOrder.matrix_totals_mono_of_shifted_det` in `MatrixSpectralConsequences.lean` |
+| The two public fidelity conclusions | `UniformFidelity.lean` |
 
-| Files | Checked mathematical content |
-| --- | --- |
-| `DickeEmbedding`, `DickeGenerators`, `DickeSU2`, `DensitySpan` | Normalized symmetric embedding, concrete spin generators, genuine SU(2) rotations, differentiation of covariance, and extension from states to operators. |
-| `SpinHighestWeight`, `SpinGenerators`, `SpinCovariance`, `TraceDual` | Elementary highest-weight uniqueness, spin commutators and Casimir, unitality, real first/second-rank multipliers, and the same action for the actual trace adjoint. |
-| `SU2Choi` | Complete positivity implies Choi positivity; exact trace pairing; the two Casimir polynomial identities; Choi variance implies the curved multiplier bound. |
-| `PhysicalMarginal`, `PhysicalEmbedding`, `PhysicalNBody` | The actual symmetric partial trace is positive and trace preserving; its Cartesian matrix obeys `0 ≤ A ≤ 3I/2`, `Tr A = 2`, for every `N ≥ 3`. |
-| `PhysicalCovariance`, `PhysicalTransfer`, `PhysicalTwoCovariance`, `PhysicalTwoTrace`, `SpinOneAction`, `PhysicalAffine` | Covariance of the physical marginal, highest-weight transfer, complete spin-one basis identification, and the actual affine marginal law. |
-| `CoherentBounds`, `ChoiScalarBounds` | The coherent-state marginal and its output positivity give the linear multiplier bounds; Choi variance supplies `g ≥ -2/3`. |
-| `BroadDeterminant`, `Qutrit`, `Certificate` | Determinant increase, purity contraction, and the elementary square-root eigenvalue comparison, including singular states. |
-| `Spectral`, `CartesianSpectral` | Real orthogonal diagonalization, determinant and purity formulas, spectral identification of `CFC.sqrt`, and the actual matrix fidelity inequality. |
-| `PhysicalCertificate`, `ManuscriptNotation`, `FullTheorem` | Composition of all proved bridges into the exact manuscript theorem. |
-| `Audit` | Public statement, physical definitions, and axiom dependencies of the theorem and its main bridges. |
+For t = 1, positivity and unitality on `jI ± J_z` establish `|f₁| ≤ 1`. The actual qubit marginal map is proved to be `A ↦ f₁A + (1-f₁)Tr(A)I/2`. The determinant identity is `(1-f₁²)(1/4-det A) = (1-f₁²)|r|²/4`. This is the same determinant input as in the PDF. For t = 2, the retained physical determinant theorem is transported from Cartesian triplet coordinates to the normalized Dicke coordinates. Both then use the identical isotropic-shift and spectral bridge. The earlier qutrit square-root comparison is retained as a legacy result; the new public theorems use the shared integral route.
 
-`Determinant`, `Multipliers`, and the original theorem in `Certificate` retain the
-version 1 scalar certificate. `SU2Differential` additionally proves the generic
-exponential covariance differentiation lemma. The full theorem uses the direct
-SU(2) rotation curves in `DickeSU2`.
+The shared bridge also yields the von Neumann inequalities, in `LowOrder.physical_totals_t1_uniform` and `LowOrder.physical_totals_t2_uniform`.
 
-The full proof needs only the first two tensor ranks. A direct Choi variance
-argument replaces a Clebsch–Gordan decomposition and channel-vertex enumeration.
-The slightly broader lower bound `g ≥ -2/3` is sufficient for the determinant
-argument. The corresponding written proof is `../proof.pdf`.
+## Fresh verification
 
-## Reproduce the check
-
-The project pins Lean **4.24.0**, mathlib commit
-`f897ebcf72cd16f89ab4577d0c826cd14afaafc7`, and the transitive dependencies in
-`lake-manifest.json`. With Lean's `elan` manager installed, run here:
+Lean 4.24.0 and Mathlib commit `f897ebcf72cd16f89ab4577d0c826cd14afaafc7` are pinned.
 
 ```sh
 lake update
 lake exe cache get
-lake build
-lake env lean Audit.lean
+python3 verify_uniform.py --jobs 2
 ```
 
-The cache retrieves compiled mathlib dependencies. `lake build` checks all 34
-project modules from their source; it does not substitute a downloaded proof of
-this theorem. The recorded `verification.log` was produced after removing the
-project's local build artifacts. `axiom-audit.log` records a separate execution
-of the audit.
+The script deletes only this project's generated Lean object directory, freshly compiles every project source in dependency order, and checks [UniformAudit.lean](UniformAudit.lean). `--jobs` accepts 1 through 4. It uses Mathlib's pinned compiled cache for external dependencies and does not claim to replay or rebuild those imported library objects.
 
-The complete theorem and every audited physical bridge depend only on:
+Successful verification produces:
 
-```text
-propext, Classical.choice, Quot.sound
-```
+- [verification-uniform/result.json](verification-uniform/result.json), with the checked modules and elapsed times;
+- [axiom-audit-uniform.log](axiom-audit-uniform.log), with exact statements, physical definitions and theorem axioms;
+- [source-sha256-uniform.txt](source-sha256-uniform.txt), identifying every checked source and configuration file;
+- per-module logs under `verification-uniform/`.
 
-There are no `sorry`, `admit`, custom `axiom`, or `native_decide` declarations in
-the project sources, and no `sorryAx` dependency. `source-sha256.txt` records the
-exact source and configuration files checked in this release.
+All audited results depend only on `propext`, `Classical.choice`, and `Quot.sound`. No project source uses `sorry`, `admit`, custom `axiom`, or `native_decide`. A success report is written only after all source checks and the final axiom audit pass.
 
-## Spin representation and basis conversion
+For incremental verification, use `lake build` followed by `lake env lean UniformAudit.lean`. To confirm the supplied source hashes on macOS, run `shasum -a 256 -c source-sha256-uniform.txt`.
 
-`SpinAction.lean` proves `action_intertwines`, `action_one`, `action_mul`,
-`action_unitary`, and packages the result as `unitaryAction`, a group
-homomorphism into the unitary group. Its polynomial argument establishes
-symmetric-subspace invariance for every fundamental matrix, before restricting
-to SU(2); it assumes no group-level intertwining identity.
-
-`BasisOrder.lean` supplies checked involutive vector and matrix reversals.
-See [the coordinate conversion guide](../BASIS_ORDER.md) for arrays, channels,
-and the relation between the manuscript's descending-m examples and Lean.
+The original v2.1.0 modules and historical audit files remain for compatibility. Their older logs and manifest are not the verification record for this uniform release. No path dependency on the unpublished higher-order development is needed.

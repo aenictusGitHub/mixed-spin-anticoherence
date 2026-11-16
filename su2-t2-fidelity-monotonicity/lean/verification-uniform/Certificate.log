@@ -1,0 +1,4 @@
+'SU2T2.determinant_monotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.qutrit_fidelity_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.fidelity_monotone_from_scalar_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.channel_fidelity_monotone_from_scalar_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-16",
+  "pdf_sha256": "6c29797d109edda71d082a9d08cad828b01c589a3d25b96cd7b93c76d1db9a2e",
+  "pdf_pages": 52,
+  "archive_sha256": "79bc6ad1a25aeebf2215beb20c285fc3920521b505ef1bebb48fd1c0ba239801",
+  "written_scope": "Fidelity and normalized von Neumann total anticoherence monotonicity at t=1,2,3,4, stated together in Theorem 1 and proved by the common shifted-determinant argument",
+  "lean_scope": "t=1 and t=2 only; see lean/verification-uniform/result.json",
+  "exact_archive_checks": {
+    "python": "3.11.5 (v3.11.5:cce6ba91b3, Aug 24 2023, 10:50:31) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "dependencies": {
+      "sympy": "1.12",
+      "numpy": "2.4.6",
+      "python-flint": "0.9.0"
+    },
+    "checks": [
+      {
+        "script": "determinant_t3/verify_all.py",
+        "returncode": 0,
+        "seconds": 5.572076541022398,
+        "stdout": "PASS bounds/verify_burg_bounds.py\nPASS floors/verify_positive_floors.py\nPASS structural/verify_clifford_reduction.py\nPASS bounds/verify_central_region.py\nPASS bounds/certify_k42_outer.py\nPASS search/audit_reduction.py\nAll exact proof certificates passed.\n",
+        "stderr": ""
+      },
+      {
+        "script": "determinant_t4/verify_all.py",
+        "returncode": 0,
+        "seconds": 146.4729563750443,
+        "stdout": "PASS structural/verify_burg_dimension5.py\nPASS structural/verify_spin2_operator_norms.py\nPASS structural/verify_spin2_norm_constraints.py\nPASS structural/verify_dipole_burg_bound.py\nPASS structural/verify_quadrupole_burg_bound.py\nPASS structural/verify_odd_burg_bound.py\nPASS structural/verify_nonlinear_burg_bounds.py\nPASS structural/verify_k3_endpoint.py\nPASS bounds/verify_norm_floor_certificate.py\nPASS bounds/verify_norm_floor_certificate.py (compact K3)\nPASS search/audit_norm_floor.py\nPASS structural/audit_k3_compact.py\nPASS structural/audit_finite_reduction.py\nPASS structural/verify_von_neumann_t4_corollary.py\nAll thirteen spectral-floor certificates passed. The parent suite also checks the exceptional N=5, K=2 SOS certificate.\n",
+        "stderr": ""
+      },
+      {
+        "script": "determinant_t4/exact_cube_sos/verify_exact_sos.py",
+        "returncode": 0,
+        "seconds": 88.80397154099774,
+        "stdout": "Exact K=2 channel map verified\nExact covariance verified for block 0\nExact covariance verified for block 1\nExact covariance verified for block 2\nExact covariance verified for block 3\nExact covariance verified for block 4\nExact covariance verified for block 5\nExact covariance verified for block 6\nExact covariance verified for block 7\nExact covariance verified for block 8\nExact covariance verified for block 9\nExact covariance verified for block 10\nExact covariance verified for block 11\nExact covariance verified for block 12\nExact covariance verified for block 13\nExact covariance verified for block 14\nExact covariance verified for block 15\nExact covariance verified for block 16\nExact covariance verified for block 17\nExact covariance verified for block 18\nExact covariance verified for block 19\nExact covariance verified for block 20\nExact covariance verified for block 21\nExact covariance verified for block 22\nExact covariance verified for block 23\nExact covariance verified for block 24\nExact covariance verified for block 25\nExact covariance verified for block 26\nExact covariance verified for block 27\nExact covariance verified for block 28\nExact covariance verified for block 29\nExact covariance verified for block 30\nExact covariance verified for block 31\nExact covariance verified for block 32\nExact covariance verified for block 33\nExact covariance verified for block 34\nExact invariant grid injectivity verified\nAll 35 Gram matrices certified positive\nExact identity verified at grid point 0 seconds 7.496863126754761\nExact identity verified at grid point 40 seconds 14.794623851776123\nExact identity verified at grid point 80 seconds 22.070740938186646\nExact identity verified at grid point 120 seconds 29.53628897666931\nExact identity verified at grid point 160 seconds 36.91277003288269\nExact identity verified at grid point 200 seconds 44.28345704078674\nExact identity verified at grid point 240 seconds 51.71633720397949\nExact identity verified at grid point 280 seconds 59.30376601219177\nExact identity verified at grid point 320 seconds 66.99708724021912\nExact identity verified at grid point 360 seconds 74.59743928909302\nExact identity verified at grid point 400 seconds 82.3536741733551\n{\n  \"status\": \"PASS_EXACT_WEIGHTED_SOS_PROOF\",\n  \"channel_verified\": true,\n  \"covariants\": 482,\n  \"positive_gram_blocks\": 35,\n  \"minimum_certified_gram_eigenvalue\": \"4194303/274877906944\",\n  \"uniform_bound\": \"G >= (2^-16 - 2^-38) I > 2^-17 I\",\n  \"exact_grid_points\": 432,\n  \"invariant_dimension\": 432,\n  \"nonzero_evaluation_minor_mod_prime\": 486549,\n  \"all_mixed_inputs\": true,\n  \"elapsed_seconds\": 88.21140694618225\n}\n",
+        "stderr": ""
+      },
+      {
+        "script": "determinant_t4/exact_cube_sos/verify_exact_kernels.py",
+        "returncode": 0,
+        "seconds": 37.44949704100145,
+        "stdout": "Exact pure Gram polynomials verified for block 0\nExact pure Gram polynomials verified for block 1\nExact pure Gram polynomials verified for block 2\nExact pure Gram polynomials verified for block 3\nExact pure Gram polynomials verified for block 4\nExact pure Gram polynomials verified for block 5\nExact pure Gram polynomials verified for block 6\nExact pure Gram polynomials verified for block 7\nExact pure Gram polynomials verified for block 8\nExact pure Gram polynomials verified for block 18\nExact pure Gram polynomials verified for block 19\nExact pure Gram polynomials verified for block 20\nExact pure Gram polynomials verified for block 21\nExact pure Gram polynomials verified for block 22\nExact pure Gram polynomials verified for block 23\nExact pure Gram polynomials verified for block 24\nExact pure Gram polynomials verified for block 25\n{\n  \"status\": \"PASS_EXACT_20_KERNELS_AND_TWO_RELATIONS\",\n  \"kernel_constraints\": 20,\n  \"independent_relations\": 2,\n  \"target_pairings\": [\n    \"0\",\n    \"0\"\n  ],\n  \"coefficient_block_scale\": \"1259712/52521875\",\n  \"relations\": [\n    \"a + 4 b + 4 c = 0\",\n    \"a + 2 b = 0\"\n  ],\n  \"positive_exposing_functional\": true,\n  \"second_relation_zero_on_reduced_space\": true,\n  \"elapsed_seconds\": 37.31835222244263\n}\n",
+        "stderr": ""
+      }
+    ],
+    "verification_type": "exact Python certificate verification; not Lean",
+    "status": "PASS"
+  },
+  "additional_symbolic_checks": {
+    "method": "Exact rational band identities in symbolic N,k,h; all N >= L, no sampled spins.",
+    "checks": [
+      {
+        "L": 1,
+        "symbolic_band_equalities": 3,
+        "status": "PASS"
+      },
+      {
+        "L": 2,
+        "symbolic_band_equalities": 5,
+        "status": "PASS"
+      },
+      {
+        "L": 3,
+        "symbolic_band_equalities": 7,
+        "status": "PASS"
+      },
+      {
+        "L": 4,
+        "symbolic_band_equalities": 9,
+        "status": "PASS"
+      }
+    ]
+  },
+  "additional_bridge_checks": {
+    "cubic_source_collapse": {
+      "alt": {
+        "ordered_rows": 20,
+        "ordered_rank": 20,
+        "commuting_image_rank": 0
+      },
+      "sym": {
+        "ordered_rows": 56,
+        "ordered_rank": 56,
+        "commuting_image_rank": 56
+      },
+      "mixed": {
+        "ordered_rows": 70,
+        "ordered_rank": 70,
+        "commuting_image_rank": 0
+      }
+    },
+    "moment_coordinate_rank": 36,
+    "all_moment_ladder_relations": true,
+    "even_degree_five_weight_counts": [
+      22894,
+      22462
+    ],
+    "even_invariant_dimension": 432,
+    "grid_matrices_hermitian": true,
+    "modulus_prime": true
+  }
+}
