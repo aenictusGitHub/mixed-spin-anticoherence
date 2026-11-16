@@ -5,55 +5,25 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 [*Total, quantum, and classical measures of anticoherence for mixed spin states*](https://arxiv.org/abs/2605.29436)
 (arXiv:2605.29436).
 
-This repository brings together the two companion proof collections.
+## Monotonicity under SU(2)-covariant channels
 
-| Collection | Contents | Start here |
-|---|---|---|
-| Fidelity and von Neumann monotonicity under SU(2)-covariant channels | Uniform written proofs for both measures at t = 1, 2, 3, 4; Lean certificates at t = 1 and t = 2 only | [Guide](su2-t2-fidelity-monotonicity/README.md) · [Proof PDF](su2-t2-fidelity-monotonicity/proof.pdf) · [Lean certificate](su2-t2-fidelity-monotonicity/lean/README.md) |
-| Spin-5/2 purity and convex roofs | Exact global purity optima at orders 2, 3, and 4; exact convex roofs for the rank-four state; coefficient data and verification programs | [Guide](spin52-purity-certificates/README.md) · [Purity proof PDF](spin52-purity-certificates/docs/purity-certificates.pdf) · [Convex-roof proof PDF](spin52-purity-certificates/docs/convex-roof-certificates.pdf) |
+**Written proofs cover t = 1, 2, 3, 4** for both the fidelity and von Neumann total anticoherence measures. The two inequalities follow from a common shifted-determinant argument; the proofs at `t = 3,4` use exact computer-assisted certificates.
 
-## Reproduce the certificates
+**Lean certificates cover t = 1 and t = 2 only.** No Lean certificates for `t = 3,4` are provided.
 
-Run each collection's commands from its own directory. Their source files,
-relative paths, dependency versions, verification logs, and checksum manifests
-are documented in each guide. The fidelity collection now uses the uniform
-determinant and spectral proof structure.
+- [Written proofs (PDF)](su2-t2-fidelity-monotonicity/proof.pdf)
+- [Exact data and verification scripts](su2-t2-fidelity-monotonicity/exact-data.zip)
+- [Proof guide and certification scope](su2-t2-fidelity-monotonicity/README.md)
+- [Lean certificates and reproduction instructions](su2-t2-fidelity-monotonicity/lean/README.md)
 
-For the Lean certificate, with Lean's `elan` manager installed:
+## Spin-5/2 purity and convex roofs
 
-```sh
-cd su2-t2-fidelity-monotonicity/lean
-lake update
-lake exe cache get
-python3 verify_uniform.py --jobs 2
-```
+Exact global purity optima at orders 2, 3, and 4, and exact convex roofs for the rank-four state, with coefficient data and verification programs.
 
-For the spin-5/2 certificates, with Python 3.10 or later, start from the repository root:
+- [Purity proofs (PDF)](spin52-purity-certificates/docs/purity-certificates.pdf)
+- [Convex-roof proofs (PDF)](spin52-purity-certificates/docs/convex-roof-certificates.pdf)
+- [Data and verification guide](spin52-purity-certificates/README.md)
 
-```sh
-cd spin52-purity-certificates
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python verify_all.py
-```
+## Citation
 
-On Windows, activate the environment with `.venv\Scripts\activate`.
-The [spin-5/2 guide](spin52-purity-certificates/README.md) documents the optional
-checks. Do not run the Python verifiers with `python -O`: their exact proof
-checks use assertions.
-
-## Cite and identify the version
-
-Cite the [manuscript](https://arxiv.org/abs/2605.29436) and the relevant proof
-collection at its release or commit. See [citation.bib](citation.bib) and
-[CITATION.cff](CITATION.cff).
-
-The [v2.1.0 release](https://github.com/aenictusGitHub/mixed-spin-anticoherence/releases/tag/v2.1.0) preserves the historical
-order-two fidelity proof and Lean certificate. The main branch now provides
-the uniform written proof for t = 1, 2, 3, 4 and Lean certificates for t = 1, 2. Its tag and PDF attachment are
-preserved; it predates this combined layout and does not package the spin-5/2
-collection. The spin-5/2 collection retains its original version 1.1.0 commit.
-
-Both original Git histories are preserved. See [MIGRATION.md](MIGRATION.md) for
-source commits, integrity checks, and compatibility with existing citations.
+Cite the [paper](https://arxiv.org/abs/2605.29436) and the repository commit used. See [BibTeX](citation.bib) and [CITATION.cff](CITATION.cff).
