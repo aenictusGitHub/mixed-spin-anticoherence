@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "modules_matched": 9490,
+  "public_axiom_reports": 4,
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ]
+}

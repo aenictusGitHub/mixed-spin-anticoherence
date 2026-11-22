@@ -6,7 +6,7 @@ Reviewed every page of the three proof PDFs in the combined repository:
 |---|---:|---|
 | [Spin-5/2 purity certificates](spin52-purity-certificates/docs/purity-certificates.pdf) | 6 | Corrected all five identity-operator glyphs; visually checked the rebuilt PDF. |
 | [Spin-5/2 convex-roof certificates](spin52-purity-certificates/docs/convex-roof-certificates.pdf) | 8 | No visible symbol or layout defects found; PDF unchanged. |
-| [Order-two fidelity proof](su2-t2-fidelity-monotonicity/proof.pdf) | 6 | No visible symbol or layout defects found; PDF unchanged. |
+| [Order-two fidelity proof](https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/151f48ce9a4621f0789facee7b94b157cb9efbd3/proof.pdf) | 6 | No visible symbol or layout defects found; PDF unchanged. |
 
 The purity note used `\mathbb 1`, which does not supply the intended digit glyph
 with its AMS font. It now uses `\mathds{1}` through an `\id` macro and the
@@ -20,3 +20,7 @@ The convex-roof note emits only hyperref warnings about math tokens in PDF
 bookmarks; its printed headings and equations display correctly.
 This was a display review, not a new mathematical audit. Proof statements,
 coefficient data, verification programs, and the Lean certificate are unchanged.
+
+## Uniform proof update — 22 November 2026
+
+The current [uniform proof supplement](su2-low-order-monotonicity/proof.pdf) has 53 pages. Its cover, theorem introduction and Lean scope now state that the written proofs and end-to-end Lean certification cover both measures at orders 1, 2, 3 and 4. The changed pages were rendered and visually checked. The final LaTeX build has no overfull boxes, missing characters or unresolved references. Reproduction commands preserve literal command-line hyphens. The embedded `exact-data.zip` is byte-identical to the previously audited archive.

@@ -1,0 +1,3611 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,dsfont,braket,xurl,longtable}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{eso-pic,embedfile}
+\newcommand{\A}{\mathcal A}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\id}{\mathds{1}}
+\newcommand{\D}{\mathcal D}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\E}{\mathbb E}
+\DeclareMathOperator{\Sym}{Sym}
+\setlength{\emergencystretch}{2em}
+\setcounter{tocdepth}{2}
+\title{Monotonicity of total anticoherence\\under $\mathrm{SU}(2)$-covariant channels\\[3mm]\large Fidelity $\mathcal A_t^{T,F}$ and von Neumann $\mathcal A_t^{T,\mathrm{vN}}$ anticoherence measures at orders $t\le4$\\Uniform proofs with embedded exact data}
+\author{}
+\date{22 November 2026}
+\hypersetup{pdftitle={Monotonicity of fidelity and von Neumann total anticoherence under SU(2)-covariant channels at orders t <= 4}}
+\begin{document}
+\embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
+\maketitle
+\begin{center}\small
+Both measures follow from one common shifted-determinant argument.\\
+Written proofs and Lean certification cover both measures at $t=1,2,3,4$.\\
+The certification scope is stated in Section~\ref{sec:lean}.
+\end{center}
+\vspace{12mm}
+\noindent This supplement gives detailed proofs of the paper's monotonicity
+results for $t=1,2,3,4$, using the same notation and squared-fidelity
+convention. The results hold for all density matrices, including pure states.
+
+\medskip
+\noindent The exact data and verification scripts used in the
+computer-assisted proofs for $t=3,4$ are provided in \texttt{exact-data.zip},
+embedded in this PDF and available in the repository.
+See Section~\ref{sec:data} for verification instructions.
+\clearpage
+{\small\tableofcontents}
+\clearpage
+\section{Statement in the manuscript's notation}
+Put $N=2j$, let $\mathcal H_j$ carry the irreducible spin-$j$
+representation, and identify it with $\operatorname{Sym}^N(\mathbb C^2)$.
+For $\rho\in\D(\mathcal H_j)$, write $\rho_S$ for the corresponding
+symmetric $N$-qubit state and
+\[
+ \rho_t=\Tr_{N-t}(\rho_S),\qquad
+ \rho_0=\frac{\id_{N+1}}{N+1},\qquad
+ \rho_0^{(t)}=\frac{\id_{t+1}}{t+1}.
+\]
+Every reduced trace and determinant is taken on the symmetric subspace
+$\mathcal H_{t/2}$, of dimension $d=t+1$. Let $\rho'=\Phi(\rho)$
+and $\rho'_t=\Tr_{N-t}(\rho'_S)$; the prime does not denote an
+independently defined channel on all $t$-qubit states.
+
+The manuscript uses the squared Uhlmann--Jozsa fidelity convention,
+$F(\rho_t,\rho_0^{(t)})=\frac{(\Tr\sqrt{\rho_t})^2}{t+1}$.
+The two anticoherence measures are
+\begin{align}
+ \A_t^{T,F}(\rho)&=\frac{(\Tr\sqrt{\rho_t})^2-1}{t},\label{eq:F}\\
+ \A_t^{T,\mathrm{vN}}(\rho)&=
+ -\frac{\Tr(\rho_t\log\rho_t)}{\log(t+1)}.\label{eq:VN}
+\end{align}
+Here $0\log0=0$ and logarithms are natural.
+
+\begin{theorem}\label{thm:main}
+Let $t\in\{1,2,3,4\}$ and $N\ge t$. For every completely positive,
+trace-preserving channel $\Phi$ on $\mathcal B(\mathcal H_{N/2})$
+satisfying
+\[
+ \Phi(U\rho U^\dagger)=U\Phi(\rho)U^\dagger
+\]
+for every spin-$N/2$ rotation $U$ and every density matrix $\rho$,
+one has
+\[
+ \boxed{\A_t^{T,F}(\Phi(\rho))\ge\A_t^{T,F}(\rho),\qquad
+ \A_t^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_t^{T,\mathrm{vN}}(\rho).}
+\]
+The statement includes all density matrices, including pure states.
+\end{theorem}
+
+Both inequalities in Theorem~\ref{thm:main} follow from the same
+shifted-determinant comparison, valid for every $s>0$:
+\[
+ \det(s\id_{t+1}+\rho'_t)\ge\det(s\id_{t+1}+\rho_t).
+\]
+The common spectral argument in Section~\ref{sec:spectral} yields
+the fidelity and von Neumann inequalities separately from this comparison.
+The determinant proof at each order supplies this common input through
+the isotropic-shift argument in Section~\ref{sec:shift}.
+Orders three and four use exact finite
+certificates embedded in this PDF. Lean certification covers all four
+orders (Section~\ref{sec:lean}). No claim is made for $t\ge5$
+or for trace-distance monotonicity.
+
+\paragraph{Uniform proof structure.}
+For each of the four orders, use exactly the chain
+\[
+ \det\rho'_t\ge\det\rho_t
+ \ \Longrightarrow\
+ \det(s\id_{t+1}+\rho'_t)\ge\det(s\id_{t+1}+\rho_t)
+ \ \Longrightarrow\
+ \begin{cases}
+ \Tr\sqrt{\rho'_t}\ge\Tr\sqrt{\rho_t},\\
+ S(\rho'_t)\ge S(\rho_t).
+ \end{cases}
+\]
+The shift, spectral comparison, treatment of singular states, and
+normalization are identical. Only the determinant input depends on the order:
+\begin{center}
+\begin{tabular}{@{}cccl@{}}
+\toprule
+$t$&$d=t+1$&Proper-order domain&Determinant certificate\\
+\midrule
+1&2&$N\ge2$&Bloch-vector determinant identity\\
+2&3&$N\ge3$&Physical-marginal polynomial argument\\
+3&4&$N\ge4$&Four base channels and the all-spin hull\\
+4&5&$N\ge5$&Fourteen base channels and the all-spin hull\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+The determinant conclusion required at each order is
+\begin{equation}\label{eq:det}
+ \det\rho'_t\ge\det\rho_t\qquad(N\ge t).
+\end{equation}
+The equal-order case $N=t$ is proved in Section~\ref{sec:prelim}.
+For $N>t$, each of the next four determinant chapters concludes with
+exactly the same implication to both total measures. The common shifted
+and spectral arguments are given in Sections~\ref{sec:shift} and
+\ref{sec:spectral}, including zero eigenvalues.
+
+\section{Common algebraic and spectral preliminaries}\label{sec:prelim}
+This section supplies the channel and matrix arguments used at all four
+orders. Ordinary finite-dimensional linear algebra, the spectral theorem,
+and elementary single-variable calculus are the background conventions.
+All finite certificate objects used later are defined by the exact data
+embedded in this PDF; their interpretation and checking rules are given
+in Section~\ref{sec:data}. They are part of this document, not references
+to a separate repository or a Lean computation.
+
+\subsection{Symmetric reduction and its transitivity}
+Let $|n,a\rangle$, $0\le a\le n$, be the normalized symmetric sum of all
+binary words of length $n$ having $a$ entries equal to one. Splitting a
+word after its first $t$ entries gives the isometric embedding
+\[
+ |N,a\rangle\longmapsto
+ \sum_{r+b=a}\sqrt{\frac{\binom tr\binom{N-t}b}{\binom Na}}
+ |t,r\rangle\otimes|N-t,b\rangle.
+\]
+Its coefficients have squared sum one by the binomial identity
+$\sum_r\binom tr\binom{N-t}{a-r}=\binom Na$; different $a$ have
+orthogonal images. Thus, with out-of-range entries interpreted as zero,
+\begin{equation}\label{eq:reduction-kraus}
+ R_{N,t}(X)=\sum_{b=0}^{N-t}F_bXF_b^\dagger,
+ \qquad (F_b)_{r,a}=\mathbf1_{a=r+b}
+ \sqrt{\frac{\binom tr\binom{N-t}b}{\binom Na}}.
+\end{equation}
+The binomial identity also gives $\sum_bF_b^\dagger F_b=I$.
+This proves complete positivity and trace preservation directly.
+Taking partial traces in two stages proves
+$R_{m,t}R_{N,m}=R_{N,t}$ for $t\le m\le N$.
+The embedding is the restriction of the ordinary tensor product of
+qubit rotations, so reduction intertwines rotations. An invariant
+operator on spin $t/2$ is scalar: commuting with $J_z$ makes it diagonal,
+and commuting with $J_+$ makes all diagonal entries equal.
+Consequently $R_{N,t}(I_{N+1}/(N+1))=I_{t+1}/(t+1)$.
+
+\subsection{Tensor ranks and the covariant-channel simplex}
+In the magnetic basis $|j,m\rangle$,
+\[
+ J_z|j,m\rangle=m|j,m\rangle,\qquad
+ J_+|j,m\rangle=\sqrt{(j-m)(j+m+1)}|j,m+1\rangle,
+ \quad J_-=J_+^\dagger.
+\]
+The matrix space is the orthogonal direct sum of ranks $L=0,\ldots,N$.
+One direct construction starts each rank at $J_+^L$ and applies
+$[J_-,\cdot]$ successively. Its $2L+1$ weights are $L,L-1,\ldots,-L$;
+their dimensions sum to the matrix-space dimension in the form
+$\sum_{L=0}^N(2L+1)=(N+1)^2$. The Casimir of the commutator action
+has eigenvalue $L(L+1)$ on rank $L$, proving orthogonality between ranks.
+Normalize these vectors in Hilbert--Schmidt norm to obtain the manuscript's
+$T_{LM}$, up to immaterial phase choices. Equivalently,
+\[
+ (T_{LM})_{m,n}=\sqrt{\frac{2L+1}{2j+1}}
+ \langle j,n;L,M\mid j,m\rangle.
+\]
+Each rank has a unique highest-weight line: an operator commuting with
+$J_+$ is determined by its value on the lowest-weight vector, and the
+weight equation fixes that value. A covariant linear map must preserve
+these highest-weight lines and commute with lowering, and therefore
+acts by a scalar $f_L$ on rank $L$. Hermiticity makes $f_L$ real;
+trace preservation fixes $f_0=1$. Reduction intertwines the same ranks,
+so its nonzero rank-$L$ components acquire exactly $f_L$, for $L\le t$.
+The reduction coefficients on these ranks are nonzero: applying the
+adjoint of reduction to $J_+^L$ gives a positive nonzero multiple of
+the global $J_+^L$, by expanding the collective raising operator into
+products on distinct qubits. Thus matching the multipliers matches
+the entire reduced linear map.
+
+Here is a direct proof that the admissible full channels form a simplex.
+Write $d_N=N+1$, $|\Omega\rangle=\sum_a|a,a\rangle$ and
+$C_\Phi=(\Phi\otimes\mathrm{id})(|\Omega\rangle\langle\Omega|)$.
+Complete positivity implies $C_\Phi\succeq0$, and trace preservation
+is equivalent to $\operatorname{Tr}_{\rm out}C_\Phi=I$.
+Conversely a positive $C=\sum_s|v_s\rangle\langle v_s|$ gives Kraus
+matrices by reshaping $v_s$, and hence gives a completely positive map;
+the partial-trace condition is exactly the Kraus normalization.
+Covariance says that $C_\Phi$ commutes with $U\otimes\bar U$.
+Time reversal identifies the conjugate spin with spin $j$, so this
+representation decomposes into one copy of each spin $K=0,\ldots,N$.
+For completeness, the tensor-product weight multiplicity at weight
+$K\ge0$ is $N+1-K$; subtracting its value at $K+1$ gives one
+highest-weight vector of spin $K$. Applying lowering generates that
+copy, and the dimensions sum to $d_N^2$.
+Let $P_K$ denote its orthogonal projector. Since the copies are
+inequivalent, a commuting Hermitian operator is scalar on each copy:
+commutation with weights and raising proves this within a copy and
+excludes maps between distinct highest weights. Thus
+\[
+ C_\Phi=\sum_{K=0}^N c_KP_K,\qquad c_K\ge0.
+\]
+The partial trace of $P_K$ is invariant, and its trace is $2K+1$;
+therefore it is $(2K+1)I/d_N$. Put
+$p_K=c_K(2K+1)/d_N$. Trace preservation gives $\sum_Kp_K=1$, and
+\begin{equation}\label{eq:channel-simplex}
+ \Phi=\sum_{K=0}^Np_K\Phi_K^{(N)},\qquad
+ C_{\Phi_K^{(N)}}=\frac{d_N}{2K+1}P_K.
+\end{equation}
+This derives the simplex from the physical assumptions.
+
+\subsection{An explicit computation of the four relevant multipliers}
+Put $D=N(N+2)$, $u=K(K+1)$, and define
+\[
+ B_r(u)=\prod_{i=0}^{r-1}(u-i(i+1)),\quad
+ D_r=\prod_{i=0}^{r-1}(D-i(i+2)),\quad B_0=D_0=1.
+\]
+For $0\le L\le4$ and $N\ge L$, the multipliers are
+\begin{equation}\label{eq:racah-derived}
+ f_L(N,K)=\sum_{r=0}^L(-1)^r\binom Lr\binom{L+r}r\frac{B_r(u)}{D_r}.
+\end{equation}
+All denominators are positive when $N\ge L$. We give an algebraic way to
+obtain and check this expression, avoiding an appeal to a table of
+recoupling coefficients.
+
+Set $X=-\sum_aJ_a\otimes J_a^{\mathsf T}$ and
+$Z_L=\sum_{M=-L}^LT_{LM}\otimes\overline{T_{LM}}$.
+The total-spin Casimir of $U\otimes\bar U$ is $2j(j+1)I+2X$;
+on $P_K$, $X$ therefore has eigenvalue $u/2-j(j+1)$.
+We compute $Z_L$ directly, including the finite identities that identify
+its eigenvalues with the physical channel multipliers.
+
+Use a real diagonal change of basis on spin $N/2$ so that, in ascending
+weight order $k=0,\ldots,N$, the raising and lowering matrices become
+\[
+ E|k\rangle=(N-k)|k+1\rangle,\qquad
+ F|k\rangle=k|k-1\rangle,\qquad
+ J_z|k\rangle=(k-N/2)|k\rangle.
+\]
+This change is a similarity; Hilbert--Schmidt norms below are always
+computed before the change, in the orthonormal physical basis.
+Let $W_{L,r}=(\operatorname{ad}F)^rE^L$. It has just one nonzero band:
+\[
+ W_{L,r}|k\rangle=w_{L,r}(k)|k+L-r\rangle,
+\]
+where ordinary matrix multiplication gives the complete recurrence
+\begin{align*}
+ w_{L,0}(k)&=\prod_{i=0}^{L-1}(N-k-i),\\
+ w_{L,r+1}(k)&=(k+L-r)w_{L,r}(k)-k w_{L,r}(k-1).
+\end{align*}
+Its physical norm at $r=0$ is
+\[
+ s_L=\operatorname{Tr}(J_-^LJ_+^L)
+ =(L!)^2\sum_{k=0}^{N-L}\binom{k+L}{L}\binom{N-k}{L}
+ =(L!)^2\binom{N+L+1}{2L+1}.
+\]
+For the last equality, count $(2L+1)$-element subsets of
+$\{0,\ldots,N+L\}$ according to their middle element $k+L$.
+Since $(\operatorname{ad}J_-)^*=\operatorname{ad}J_+$ in the
+Hilbert--Schmidt inner product, the spin-$L$ ladder relations give
+\[
+ \|W_{L,r}\|_{\rm HS}^2
+ =s_L\,r!\frac{(2L)!}{(2L-r)!}.
+\]
+Indeed, raising the $r$th descendant gives
+$r(2L-r+1)$ times the $(r-1)$st descendant, which proves the formula
+inductively. Dividing by these norms gives the real tensors $T_{L,L-r}$
+(up to signs that cancel in $Z_L$).
+
+Apply the same real similarity on both tensor factors. The coefficient
+of $|k+a,h+a\rangle$ in $Z_L|k,h\rangle$, for $a=L-r$, is therefore
+\[
+ z_{L,a}(k,h)=\frac{w_{L,r}(k)w_{L,r}(h)}
+ {s_L\,r!(2L)!/(2L-r)!}.
+\]
+There are no other bands. In these coordinates $X$ has three bands,
+with coefficients
+\[
+ x_0(k,h)=-(k-N/2)(h-N/2),\quad
+ x_1(k,h)=-\frac{(N-k)(N-h)}2,\quad
+ x_{-1}(k,h)=-\frac{kh}2.
+\]
+To compute every power needed below, set $x_a^{(0)}=\mathbf1_{a=0}$
+and use
+\[
+ x_a^{(p+1)}(k,h)=\sum_{b=-1}^1x_{a-b}^{(p)}(k,h)
+ x_b(k+a-b,h+a-b).
+\]
+All coefficients outside the finite basis vanish at the boundary by
+the raising and lowering formulas.
+
+Put $c=N(N+2)/4$. Substitution of the two band recurrences gives
+$d_NZ_L/(2L+1)=P_L(X)$, where $P_0=1$ and
+\begin{align*}
+ P_1(x)&=-x/c,\\
+ P_2(x)&=\frac{6x^2+3x-2c^2}{c(4c-3)},\\
+ P_3(x)&=\frac{-10x^3-20x^2+(6c^2-4c-6)x+5c^2}
+ {c(c-2)(4c-3)},\\
+ P_4(x)&=\frac{70x^4+350x^3+(-60c^2+100c+390)x^2}
+ {c(c-2)(4c-15)(4c-3)}\\
+ &\quad+\frac{(-170c^2+120c+90)x+6c^4-24c^3-81c^2}
+ {c(c-2)(4c-15)(4c-3)}.
+\end{align*}
+Here is a precise coefficient test for these four identities: for each
+$L=1,2,3,4$ and each $a=-L,\ldots,L$, expand $P_L(x)=\sum_pp_{L,p}x^p$
+and subtract
+\[
+ \sum_{p=0}^Lp_{L,p}x_a^{(p)}(k,h)
+ -\frac{N+1}{2L+1}z_{L,a}(k,h).
+\]
+Each numerator is identically zero as a polynomial in $N,k,h$ after
+clearing the displayed denominators. Thus there are respectively
+$3,5,7,9$ rational identities, specified completely by the recurrences
+above. This is a symbolic identity check for all $N\ge L$, not a test
+at selected spins. The denominators are nonzero on this domain.
+
+Finally the Choi trace pairing gives
+\[
+ \operatorname{Tr}(C_\Phi Z_L^\dagger)
+ =\sum_M\operatorname{Tr}\bigl(T_{LM}^\dagger\Phi(T_{LM})\bigr)
+ =(2L+1)f_L.
+\]
+For the vertex $C_\Phi=d_NP_K/(2K+1)$, the polynomial identity just
+proved makes the left side $(2L+1)P_L(u/2-c)$. Hence
+$f_L(N,K)=P_L(u/2-c)$. Substitution into the four displayed polynomials
+and collecting powers of $u$ gives exactly~\eqref{eq:racah-derived}.
+This derives the multiplier formulas from the Choi definition and
+finite matrix operations, without assuming a recoupling formula.
+
+\subsection{Rectangular channels and how their coefficients are defined}
+All positive auxiliary maps used below have a concrete construction.
+For spins $a,b,j$ with $|a-b|\le j\le a+b$ and integral $a+b-j$,
+construct the normalized spin-$j$ highest-weight vector in
+$\mathcal H_a\otimes\mathcal H_b$ by solving
+\[
+ (J_z\otimes I+I\otimes J_z)v=jv,\qquad
+ (J_+\otimes I+I\otimes J_+)v=0,\qquad\|v\|=1.
+\]
+Choose its first nonzero coefficient positive. The raising equation is
+a first-order recurrence in the coefficients, so determines them up
+to scale. Obtain the other columns by lowering:
+\[
+ V|j,m-1\rangle=
+ \frac{(J_-\otimes I+I\otimes J_-)V|j,m\rangle}
+ {\sqrt{(j+m)(j-m+1)}}.
+\]
+The commutation relations prove by induction that these columns are
+orthonormal and intertwine all three spin generators. Exponentiating
+proves rotation covariance. Their entries are the real
+Clebsch--Gordan coefficients used throughout this document.
+The channel $G(\rho)=\operatorname{Tr}_b(V\rho V^\dagger)$ therefore
+has Kraus entries
+\[
+ (A_\mu)_{m,n}=\langle a,m;b,\mu\mid j,n\rangle,
+ \qquad G(\rho)=\sum_{\mu=-b}^b A_\mu\rho A_\mu^\dagger.
+\]
+It is completely positive and trace preserving, and sends the invariant
+input state to $I_{2a+1}/(2a+1)$. The choice $j=N/2$, $a=t/2$,
+$b=(N-t)/2$ recovers~\eqref{eq:reduction-kraus}.
+The choice $a=j,b=K$ gives the vertex in~\eqref{eq:channel-simplex}:
+the vectorized Kraus span is its unique rank-$K$ copy and normalization
+fixes its Choi scalar. Equivalent adjoint/phase choices in the square
+Kraus convention give the same vertex.
+
+Every finite auxiliary multiplier table in this document can therefore
+be evaluated without an external convention. Compute $G(T_{L0}^{(j)})$
+by the displayed Kraus sum and divide its $T_{L0}^{(a)}$ coefficient
+by the corresponding coefficient of $R_{N,t}(T_{L0}^{(j)})$.
+Covariance makes this ratio valid for every $M$. The embedded tables
+and checkers use exactly these finite sums.
+
+\subsection{Spin reversal, positive maps, and determinant mixtures}
+In magnetic order define $V|j,m\rangle=(-1)^{j-m}|j,-m\rangle$ and
+$\Theta(X)=VX^{\mathsf T}V^\dagger$. Transpose preserves positivity
+and spectrum, so $\Theta$ does too; it is unital and trace preserving.
+The generator formulas show covariance and
+$\Theta(T_{LM})=(-1)^LT_{LM}$ on Hermitian rank components.
+For half-integral spin, $V^{\mathsf T}=-V$, whence
+$\langle\psi,V\bar\psi\rangle=0$. This proves the positivity of
+$X\mapsto[\operatorname{Tr}(X)I-X-\Theta(X)]/(d-2)$ for even $d>2$
+by first checking rank-one projectors and then summing their spectral
+decompositions. Its trace and identity image give trace preservation
+and unitality.
+
+If $\Psi$ is any positive unital trace-preserving map on $d\times d$
+matrices, let $p_i$ be the input eigenvalues, $P_i$ their rank-one
+spectral projectors, and $v_j$ an orthonormal output eigenbasis.
+Then the output eigenvalues satisfy
+\[
+ q_j=\sum_iD_{ji}p_i,\qquad
+ D_{ji}=\langle v_j,\Psi(P_i)v_j\rangle\ge0,
+ \quad \sum_iD_{ji}=\sum_jD_{ji}=1.
+\]
+For positive definite input, scalar concavity of $\log$ gives
+$\sum_j\log q_j\ge\sum_i\log p_i$. This proves determinant increase.
+For singular input it follows simply from output positivity.
+This also proves the assertion for $N=t$, since the full channel is
+unital by covariance and irreducibility.
+
+Finally log determinant is concave on positive definite matrices.
+Indeed, along $A(s)=A+sH\succ0$ its first and second derivatives are
+\[
+ \frac{d}{ds}\log\det A(s)=\operatorname{Tr}(A(s)^{-1}H),\qquad
+ \frac{d^2}{ds^2}\log\det A(s)
+ =-\operatorname{Tr}\bigl[(A(s)^{-1/2}HA(s)^{-1/2})^2\bigr]\le0.
+\]
+The first identity follows by expanding $\det(I+hA^{-1}H)$ to first
+order; differentiating $A^{-1}A=I$ gives the second.
+Thus, if positive outputs $\tau_i$ each have determinant at least that
+of a positive definite input $\sigma$, then
+\[
+ \log\det\Bigl(\sum_iw_i\tau_i\Bigr)
+ \ge\sum_iw_i\log\det\tau_i\ge\log\det\sigma
+ \quad(w_i\ge0,\ \sum_iw_i=1).
+\]
+For singular $\sigma$, positivity suffices again. This is the precise
+convex-mixture argument used both for channel vertices and for the
+available-extension hulls.
+
+\clearpage
+\section{Determinant comparison at order one}\label{sec:t1}
+Let $N\ge2$, $\sigma=\rho_1$ and $\tau=\rho'_1$. We prove
+$\det\tau\ge\det\sigma$ for every physical input, then apply the same
+shifted-determinant and spectral arguments as at orders two, three and
+four. The equal-order case $N=1$ is already covered in
+Section~\ref{sec:prelim}; the calculation below also applies to it.
+
+\subsection{The rank-one multiplier and the physical reduction}
+Permutation symmetry and
+$\mathbf J=\tfrac12\sum_{a=1}^N\boldsymbol\sigma^{(a)}$ give
+\[
+ \sigma=\frac{I_2+\mathbf r\cdot\boldsymbol\sigma}{2},\qquad
+ \mathbf r=\frac{\langle\mathbf J\rangle_\rho}{j},\qquad
+ r=|\mathbf r|\le1,
+\]
+where $j=N/2$ and $\boldsymbol\sigma$ is the vector of Pauli matrices.
+By the rank decomposition in Section~\ref{sec:prelim}, covariance
+multiplies every rank-one component by the same real number $f_1$.
+Reduction intertwines rotations, so
+\[
+ \tau=\frac{I_2+f_1\mathbf r\cdot\boldsymbol\sigma}{2}.
+\]
+To bound $f_1$, apply this formula to a coherent full input, whose
+one-qubit reduction has $r=1$. The output eigenvalues
+$(1\pm f_1)/2$ must be nonnegative. Hence $|f_1|\le1$ for the channel,
+independently of the chosen input.
+
+\subsection{Determinant monotonicity}
+The Pauli identity $(\mathbf r\cdot\boldsymbol\sigma)^2=r^2I_2$
+gives the eigenvalues $(1\pm r)/2$ of $\sigma$. Therefore
+\[
+ \det\sigma=\frac{1-r^2}{4},\qquad
+ \det\tau=\frac{1-f_1^2r^2}{4},\qquad
+ \boxed{\det\tau-\det\sigma=\frac{(1-f_1^2)r^2}{4}\ge0.}
+\]
+No invertibility assumption was used: this includes pure reductions
+($r=1$), the maximally mixed reduction ($r=0$), and arbitrary mixed
+full inputs.
+
+\paragraph{The two total measures.}
+This proves the determinant input for $t=1$. Applying it to the isotropic
+mixtures in Section~\ref{sec:shift} gives all positive shifts.
+Explicitly, $\rho_s=(\rho+2s\rho_0)/(1+2s)$ has reduced input and output
+$(\sigma+sI_2)/(1+2s)$ and $(\tau+sI_2)/(1+2s)$. Their determinant
+comparison, multiplied by $(1+2s)^2$, yields
+\[
+ \det(sI_2+\tau)\ge\det(sI_2+\sigma)\qquad(s\ge0).
+\]
+In dimension two this is also checked directly from
+$\det(sI_2+X)=s^2+s+\det X$ for $\operatorname{Tr}X=1$.
+The two integral/primitive arguments in Section~\ref{sec:spectral}
+then give $\operatorname{Tr}\sqrt\tau\ge\operatorname{Tr}\sqrt\sigma$
+and $S(\tau)\ge S(\sigma)$, including zero eigenvalues. With the
+normalizations~\eqref{eq:F} and~\eqref{eq:VN}, this proves
+\[
+ \boxed{\A_1^{T,F}(\Phi(\rho))\ge\A_1^{T,F}(\rho),\qquad
+ \A_1^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_1^{T,\mathrm{vN}}(\rho).}
+\]
+
+\clearpage
+\section{Determinant comparison at order two}\label{sec:t2}
+Let $N\ge3$, $\sigma=\rho_2$ and $\tau=\rho'_2$. We prove
+$\det\tau\ge\det\sigma$ for every physical input. The following argument
+includes the channel-multiplier bounds, the physical extension constraint,
+and both scalar estimates used in the determinant identity.
+
+\subsection{The two channel multipliers}
+Use the Hilbert--Schmidt orthonormal tensor operators $T_{LM}$ of the
+manuscript and put
+\[
+ f=f_1,\qquad g=f_2,\qquad S=N(N+2),\qquad c=j(j+1)=S/4.
+\]
+We give an elementary justification that these two real multipliers exist;
+no decomposition of the Choi representation is needed.
+Let $H=J_z$, $E=J_x+iJ_y$, $E^\dagger=J_x-iJ_y$. In the usual
+weight basis $\ket{k}$, $0\le k\le N$,
+\[
+ H\ket{k}=(k-j)\ket{k},\qquad
+ E\ket{k}=\sqrt{(k+1)(N-k)}\ket{k+1}.
+\]
+State covariance extends to all operators by complex linearity: positive
+operators are nonnegative multiples of states, and every matrix is a
+complex linear combination of positive operators. Differentiating
+rotation covariance shows that $\Phi$ commutes with
+$[J_a,\cdot]$, hence with $[H,\cdot]$, $[E,\cdot]$, and
+$[E^\dagger,\cdot]$.
+If $[H,X]=LX$ and $[E,X]=0$, then $X\ket{0}$ is a multiple of
+$\ket{L}$. Moreover $X E^k\ket{0}=E^kX\ket{0}$ determines $X$
+on the entire basis. Thus $X$ is a multiple of $E^L$ for
+$L=0,1,2$. Applying this to $X=\Phi(E^L)$ shows that $\Phi$
+is scalar on each space generated from $E^L$ by repeated commutators
+with $E^\dagger$. For $L=0$ this is the scalar space; for $L=1$
+it is the span of $J_a$; for $L=2$ it is the span of
+\[
+ Q_{ab}=\frac{J_aJ_b+J_bJ_a}{2}-\frac c3\delta_{ab}\id.
+\]
+For example,
+\[
+ [E^\dagger,E]=-2H,\quad
+ [E^\dagger,E^2]=-2(HE+EH),\quad
+ [E^\dagger,[E^\dagger,E^2]]=12H^2-4c\id;
+\]
+these identities, their adjoints, and $\sum_aQ_{aa}=0$ give all the
+listed components.
+Hermiticity preservation makes the scalars real, and trace preservation
+makes the rank-zero scalar one. Hence
+\[
+ \Phi(\id)=\id,\qquad \Phi(J_a)=fJ_a,\qquad \Phi(Q_{ab})=gQ_{ab}.
+\]
+The trace adjoint also commutes with these commutators and preserves
+Hermiticity. The same argument applies to it, and trace pairing with
+any nonzero Hermitian component shows that its rank-one and rank-two
+scalars are the same $f,g$. This also justifies the transformation of
+expectation values used below.
+
+\begin{lemma}[Multiplier bounds]\label{t2:lem:multipliers}
+Every channel in Theorem~\ref{thm:main} satisfies
+\begin{align}
+ -\frac23\le g\le1,\qquad 3|f|\le2+g,\label{t2:eq:region}\\
+ 3Sf^2-6f-S\le2(S-3)g.\label{t2:eq:curved}
+\end{align}
+Consequently $|f|\le1$ and $|g|\le1$; if $g<-1/2$, then $|f|<1/3$.
+\end{lemma}
+
+\begin{proof}
+Set $d=N+1$ and let $C_\Phi\succeq0$ be the unnormalized Choi
+matrix, with convention
+\begin{equation}\label{t2:eq:choi-trace}
+ \Tr[C_\Phi(B\otimes C^{\mathsf T})]=\Tr[B\Phi(C)].
+\end{equation}
+Complete positivity gives $C_\Phi\succeq0$ by applying
+$\Phi\otimes\mathrm{id}$ to the unnormalized maximally entangled
+projector. Trace preservation gives $\Tr C_\Phi=d$.
+Thus $\omega=C_\Phi/d$ is a density matrix.
+Define the Hermitian observable
+\[
+ X=-\sum_{a=1}^3J_a\otimes J_a^{\mathsf T}.
+\]
+Only the following two polynomial identities are required:
+\begin{equation}\label{t2:eq:quadrupole}
+ \sum_{a,b}Q_{ab}\otimes Q_{ab}^{\mathsf T}
+ =X^2+\frac X2-\frac{c^2}3\id,
+ \qquad
+ \sum_{a,b}Q_{ab}^2=\frac{c(4c-3)}6\id.
+\end{equation}
+For the first identity, put $B_{ab}=(J_aJ_b+J_bJ_a)/2$ and expand:
+\[
+ \sum_{a,b}B_{ab}\otimes B_{ab}^{\mathsf T}
+ =X^2+\frac12\sum_{a,b}J_aJ_b\otimes[J_a,J_b]^{\mathsf T}
+ =X^2+\frac X2.
+\]
+The last equality uses $\sum_{a,b}\epsilon_{abk}J_aJ_b=iJ_k$;
+subtracting the scalar trace parts gives the first identity.
+For the second, expansion of
+$\sum_b[J_b,[J_b,J_a]]=2J_a$ gives
+$\sum_bJ_bJ_aJ_b=(c-1)J_a$. Thus, for
+$B_{ab}=(J_aJ_b+J_bJ_a)/2$,
+\[
+ \sum_{a,b}B_{ab}^2
+ =\frac12\sum_{a,b}(J_aJ_bJ_aJ_b+J_aJ_bJ_bJ_a)
+ =\left(c^2-\frac c2\right)\id,
+\]
+which proves the second identity.
+The trace pairing and the two multipliers now give
+\[
+ \Tr(\omega X)=-cf,\qquad
+ \Tr(\omega X^2)=\frac{c(4c-3)}6g+\frac{cf}{2}+\frac{c^2}{3}.
+\]
+Nonnegative variance,
+$\Tr(\omega X^2)\ge[\Tr(\omega X)]^2$, is precisely
+\eqref{t2:eq:curved} after multiplication by $12/c$.
+
+The affine marginal law \eqref{t2:eq:transform}, established in the next
+section, applied to a spin-coherent input gives reduced output
+eigenvalues
+\[
+ \frac{2+g+3f}{6},\qquad \frac{2+g-3f}{6},\qquad\frac{1-g}{3}.
+\]
+Their nonnegativity gives $g\le1$ and $3|f|\le2+g$.
+Finally, if $g<-2/3$, \eqref{t2:eq:curved} and $S\ge15$ would give
+\[
+ 0>9(Sf-1)^2+S^2-12S-9
+   =9(Sf-1)^2+(S-15)(S+3)+36\ge0.
+\]
+This proves \eqref{t2:eq:region}. If $g<-1/2$,
+\eqref{t2:eq:curved} implies $Sf^2-2f-1<0$.
+Since $S\ge15$, this forces $-1/3<f<1/3$: otherwise
+$Sf^2-2f-1\ge15f^2-2f-1=(3f-1)(5f+1)\ge0$.
+\end{proof}
+
+\subsection{Physical two-qubit reductions}
+Write the symmetric two-qubit reduction in its Pauli form
+\begin{equation}\label{t2:eq:pauli}
+ \rho_2=\frac14\left[\id\otimes\id+
+ \sum_{a=1}^3r_a(\sigma_a\otimes\id+\id\otimes\sigma_a)
+ +\sum_{a,b=1}^3T_{ab}\sigma_a\otimes\sigma_b\right].
+\end{equation}
+Here $\mathbf r\in\mathbb R^3$, $T=T^{\mathsf T}\in M_3(\mathbb R)$,
+and $\Tr T=1$, since $\sum_a\sigma_a\otimes\sigma_a=2\mathsf F-\id$
+and the swap $\mathsf F$ is the identity on the symmetric subspace.
+In the orthonormal Cartesian spin-one basis
+\[
+ \ket{x}=\frac{\ket{11}-\ket{00}}{\sqrt2},\quad
+ \ket{y}=\frac{i(\ket{11}+\ket{00})}{\sqrt2},\quad
+ \ket{z}=\frac{\ket{01}+\ket{10}}{\sqrt2},
+\]
+put $A=\id_3-T$ and let $[\mathbf r]_\times\mathbf v=
+\mathbf r\times\mathbf v$. Substitution in \eqref{t2:eq:pauli} gives
+\begin{equation}\label{t2:eq:cartesian}
+ 2\rho_2=A+i[\mathbf r]_\times,\qquad
+ 8\det\rho_2=\det A-\mathbf r^{\mathsf T}A\mathbf r.
+\end{equation}
+To check the determinant identity, diagonalize $A$ by a proper real
+rotation. The matrix then has diagonal $a,b,c$ and off-diagonal entries
+$-ir_3,ir_2,-ir_1$ and their conjugates; its determinant is
+$abc-ar_1^2-br_2^2-cr_3^2$.
+
+There is a useful bound specific to reductions of symmetric $N$-qubit
+states. With $J_a=\frac12\sum_{n=1}^N\sigma_a^{(n)}$, permutation
+symmetry gives
+\[
+ \langle J_a\rangle=\frac N2r_a,\qquad
+ \left\langle\frac{J_aJ_b+J_bJ_a}{2}\right\rangle
+ =\frac N4\delta_{ab}+\frac{N(N-1)}4T_{ab}.
+\]
+The state has a symmetric three-qubit reduction with the same two-qubit
+marginal. Applying these identities to that three-qubit state and using
+nonnegative variance of its collective spin gives
+$\id+2T-3\mathbf r\mathbf r^{\mathsf T}\succeq0$.
+Hence $\id+2T\succeq0$. Testing \eqref{t2:eq:cartesian} on real
+vectors also gives $A\succeq0$. Therefore
+\begin{equation}\label{t2:eq:A-bounds}
+ 0\preceq A\preceq\frac32\id_3,\qquad\Tr A=2.
+\end{equation}
+This uses only the symmetric three-qubit extension, available for every
+$N\ge3$.
+
+Write $\rho'=\Phi(\rho)$. The partial trace intertwines rotations,
+so the rank-one and rank-two parts of the reduction acquire the same
+multipliers $f_1=f$ and $f_2=g$ as the global tensor components.
+Equivalently, the above first and second moments give directly
+\begin{equation}\label{t2:eq:transform}
+ \mathbf r'=f\mathbf r,\quad T'=gT+\frac{1-g}{3}\id_3,
+ \quad A'=\alpha\id_3+gA,\qquad\alpha=\frac{2(1-g)}3.
+\end{equation}
+
+\subsection{Determinant monotonicity}
+We prove two elementary estimates for $A$ and $A'$.
+
+\begin{lemma}\label{t2:lem:volume}
+Under \eqref{t2:eq:A-bounds} and \eqref{t2:eq:region}, $\det A'\ge\det A$.
+\end{lemma}
+\begin{proof}
+Write the eigenvalues of $A$ as $2/3+x_i$, where $\sum_i x_i=0$,
+and set $s_2=\sum_i x_i^2$, $p=x_1x_2x_3$. Expansion gives
+\begin{equation}\label{t2:eq:volume-expansion}
+ \det A'-\det A=\frac{1-g^2}{3}s_2-(1-g^3)p.
+\end{equation}
+We claim $p\le5s_2/36$. This is immediate if $p\le0$.
+If $p>0$, exactly one $x_i$ is positive, so after relabeling
+$(x_1,x_2,x_3)=(q+r,-q,-r)$ with $q,r>0$.
+The upper eigenvalue bound gives $q+r\le5/6$, whereas
+$s_2=2(q^2+qr+r^2)\ge6qr$. Hence
+$p=(q+r)qr\le5s_2/36$, as claimed.
+Since $g\le1$, \eqref{t2:eq:volume-expansion} now gives
+\[
+ \det A'-\det A\ge
+ \frac{(1-g)s_2}{36}(7+7g-5g^2)\ge0,
+\]
+because
+$7+7g-5g^2=1/9+(g+2/3)(31/3-5g)\ge1/9$ on $[-2/3,1]$.
+\end{proof}
+
+\begin{lemma}[Cofactor comparison]\label{t2:lem:cofactor}
+If $b,c$ are any two eigenvalues of $A$, and
+$b'=\alpha+gb$, $c'=\alpha+gc$, then
+\begin{equation}\label{t2:eq:cofactor}
+ b'c'\ge f^2bc.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We have $0\le b,c\le3/2$ and $b+c\le2$. Also
+$\alpha+gx\ge0$ for $0\le x\le3/2$: for $g\ge0$ this is
+immediate, and for $g<0$ it follows from
+\begin{equation}\label{t2:eq:positive}
+ \alpha+gx\ge\alpha+\frac32g=\frac{4+5g}{6}\ge\frac19.
+\end{equation}
+Write $s=b+c$, $p=bc$.
+
+If $g\ge-1/2$, then $2g+\alpha=2(1+2g)/3\ge0$.
+The identity
+\[
+ 4\bigl[b'c'-(g+\alpha)^2bc\bigr]
+ =\alpha\bigl[(2g+\alpha)(b-c)^2
+       +(2-s)\{2\alpha+(2g+\alpha)s\}\bigr]\ge0
+\]
+and $(g+\alpha)^2=(2+g)^2/9\ge f^2$ prove the claim.
+
+If $-2/3\le g<-1/2$, Lemma~\ref{t2:lem:multipliers} gives $f^2<1/9$.
+Set $h=g^2-1/9>0$. The inequality
+$(3/2-b)(3/2-c)\ge0$ gives $p\ge3s/2-9/4$.
+Furthermore
+\[
+ \alpha g+\frac32h=\frac{(5g-1)(g+1)}6<0.
+\]
+It follows that
+\begin{align*}
+ b'c'-\frac{bc}{9}
+ &=\alpha^2+\alpha gs+hp\\
+ &\ge\alpha^2-\frac94h+
+       \left(\alpha g+\frac32h\right)s\\
+ &\ge\alpha^2+2\alpha g+\frac34h
+   =\frac{13+16g-5g^2}{36}\ge\frac{1}{324}>0.
+\end{align*}
+The last bound follows from
+$13+16g-5g^2=1/9+(g+2/3)(58/3-5g)$.
+This proves \eqref{t2:eq:cofactor} in both cases.
+\end{proof}
+
+We can now show
+\begin{equation}\label{t2:eq:det-monotone}
+ \det\rho'_2\ge\det\rho_2.
+\end{equation}
+In a common eigenbasis of $A,A'$, with respective eigenvalues $a,b,c$
+and $a',b',c'$, all six eigenvalues are nonnegative. Set
+$\Delta=8\det\rho_2$, $\Delta'=8\det\rho'_2$.
+Equation~\eqref{t2:eq:cartesian} gives the polynomial identity
+\begin{align*}
+ abc(\Delta'-\Delta)
+ &=(a'b'c'-abc)\Delta\\
+ &\quad+aa'r_1^2(b'c'-f^2bc)
+       +bb'r_2^2(a'c'-f^2ac)
+       +cc'r_3^2(a'b'-f^2ab)\ge0.
+\end{align*}
+Every term is nonnegative by Lemmas~\ref{t2:lem:volume} and
+\ref{t2:lem:cofactor}, and $\Delta\ge0$ follows from $\rho_2\succeq0$.
+If $abc>0$, division proves \eqref{t2:eq:det-monotone}.
+If $A$ is singular, then
+\eqref{t2:eq:cartesian}, $A\succeq0$ and $\det\rho_2\ge0$ force
+$\det\rho_2=0$. The inequality is then immediate from
+$\rho'_2\succeq0$. This also covers all boundary states.
+
+
+\paragraph{The two total measures.}
+This proves the determinant input for $t=2$. Applying it to the isotropic
+mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
+integral/primitive arguments in Section~\ref{sec:spectral} then give,
+with no additional order-two assumption,
+\[
+ \A_2^{T,F}(\Phi(\rho))\ge\A_2^{T,F}(\rho),\qquad
+ \A_2^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_2^{T,\mathrm{vN}}(\rho).
+\]
+
+\clearpage
+\section{Determinant comparison at order three}\label{sec:t3}
+Let $N\ge4$, $\sigma=\rho_3$ and $\tau=\rho'_3$. We prove
+$\det\tau\ge\det\sigma$ by four base cases,
+$(N,K)=(4,2),(4,3),(5,4),(6,5)$, and an available-extension convex hull.
+Channel vertices, multipliers, auxiliary Kraus maps and spin reversal have
+been derived in Section~\ref{sec:prelim}. Every scalar and physical
+inequality used for the base cases is proved below. In this chapter
+$L=L_4$ is the logarithmic determinant deficit and $V=V_4$ the purity
+variance; a separate function $L(s)$ is explicitly defined as a lower
+variance envelope when it is introduced.
+
+For later use, on spin $3/2$ set
+$\mathcal B(X)=[\operatorname{Tr}(X)I_4-X-\Theta(X)]/2$.
+The orthogonality argument in Section~\ref{sec:prelim} proves its
+positivity, unitality and trace preservation; its rank multipliers are
+$(0,-1,0)$.
+
+\subsection{Scalar determinant bounds}
+For a full-rank four-dimensional state put
+\[
+ L(\omega)=-\log(256\det\omega),\qquad
+ V(\omega)=\Tr\omega^2-1/4.
+\]
+All logarithms are natural.
+
+\begin{lemma}\label{t3:lem:lower}
+Every four-dimensional state satisfies
+\[
+ L(\omega)\ge\frac{49}{8}V(\omega),
+\]
+with $L=+\infty$ for a singular state.
+\end{lemma}
+\begin{proof}
+On the eigenvalue simplex minimize $F=L-cV$ with $c=49/8$.
+It diverges at the boundary, so a minimum lies in the interior.
+Stationarity gives $p_i^{-1}+2cp_i=\mathrm{constant}$.
+This scalar function is strictly convex and has at most two roots.
+Its larger root exceeds $(2c)^{-1/2}=2/7$; if that value occurred
+twice, varying those two coordinates oppositely would give the
+negative second derivative $2(p_i^{-2}-2c)$.
+Thus any nonuniform local minimum has one large entry $a$ and
+three equal entries $(1-a)/3$, where $a>1/4$.
+
+Along this family,
+\[
+ F(a)=-\log\!\left(\frac{256a(1-a)^3}{27}\right)
+       -\frac{49}{6}(a-1/4)^2,
+\]
+and
+\[
+ F'(a)=(4a-1)\left[\frac1{a(1-a)}-\frac{49}{12}\right].
+\]
+The two nonuniform stationary points are $3/7$ and $4/7$.
+The derivative is positive on $(1/4,3/7)$, negative on
+$(3/7,4/7)$ and positive on $(4/7,1)$. The global minimum
+therefore occurs either at $a=1/4$, where $F=0$, or at $a=4/7$,
+where
+\[
+ F(4/7)=\log(2401/1024)-27/32>0.
+\]
+For an exact verification of the final strict inequality, set
+$r=(2401-1024)/(2401+1024)=1377/3425$. The positive series
+\[
+ \log\frac{1+r}{1-r}=2\sum_{k=0}^\infty\frac{r^{2k+1}}{2k+1}
+\]
+gives
+\[
+ \log(2401/1024)-\frac{27}{32}
+ >2(r+r^3/3)-\frac{27}{32}
+ =\frac{4707658629}{1285676500000}>0.
+\]
+This proves the lemma without numerical optimization.
+\end{proof}
+
+\begin{lemma}\label{t3:lem:upper}
+If $\lambda_{\min}(\omega)\ge m$, with $0<m<1/4$, then
+\[
+ L(\omega)\le C(m)V(\omega),\qquad
+ C(m)=-\frac{12}{(1-4m)^2}
+       \log\!\left(\frac{256m(1-m)^3}{27}\right).
+\]
+The constant is sharp and is attained at
+$(m,(1-m)/3,(1-m)/3,(1-m)/3)$.
+\end{lemma}
+\begin{proof}
+We first prove and use the reciprocal-trace bound
+\[
+ \Tr\eta^{-1}-16\le\frac{12}{u(1-u)}V(\eta)
+       \quad\text{when }\lambda_{\min}(\eta)\ge u.
+\]
+For completeness, its extremal argument maximizes
+$\sum_i p_i^{-1}-16-C\sum_i(p_i-1/4)^2$ on $p_i\ge u$.
+Stationarity of free coordinates gives at most two values; the
+smaller free value cannot occur twice at a maximum. On the family
+with one smaller free value $b$ and $n-1$ equal larger values $a$,
+the third derivative is $-6/b^4+6/[(n-1)^2a^4]<0$.
+The first derivative is strictly concave as a function of $b$ and
+vanishes at the equal-value endpoint. At any earlier zero it is positive
+immediately to the right (strict concavity and the later zero), so such
+a zero cannot be a local maximum. Thus a nonuniform interior maximum
+is impossible. Thus candidates have
+$k$ entries $u$ and $4-k$ equal entries $(1-ku)/(4-k)$.
+Their ratio $(\Tr\eta^{-1}-16)/V(\eta)$ is
+$4(4-k)/[u(1-ku)]$, decreasing in $k$, and is largest at $k=1$.
+
+Apply this bound to
+$\eta_s=(\omega+sI)/(1+4s)$, whose minimum eigenvalue is at least
+$u_s=(m+s)/(1+4s)$. It gives
+\[
+ \Tr(\omega+sI)^{-1}-\frac4{s+1/4}
+ \le\frac{12V(\omega)}{(1+4s)(m+s)(1-m+3s)}.
+\]
+Integrating over $s\in[0,\infty)$ yields $L(\omega)$ on the left.
+The upper reciprocal bound is attained simultaneously at every
+$s$ by the spectrum $(m,(1-m)/3,(1-m)/3,(1-m)/3)$.
+Hence the integral on the right equals that spectrum's ratio
+$L/V$, namely the advertised $C(m)$. This also proves sharpness.
+\end{proof}
+
+\paragraph{A sufficient determinant criterion.}
+Let $\sigma,\tau$ be physical four-dimensional states with
+$V(\tau)\le q^2V(\sigma)$ and $\lambda_{\min}(\tau)\ge m>0$.
+If
+\[
+ q^2C(m)\le49/8,
+\]
+then $\det\tau\ge\det\sigma$. For positive-definite $\sigma$,
+\[
+ L(\tau)\le C(m)V(\tau)\le q^2C(m)V(\sigma)
+         \le(49/8)V(\sigma)\le L(\sigma).
+\]
+A singular input has determinant zero, so its case is immediate.
+
+
+\subsection{Positive output floors for three base channels}
+For $N=4,5,6$, define $G_q^{(N)}$, $0\le q\le3$, to be the
+Clebsch--Gordan channel from spin $j=N/2$ to spin $a=3/2$ with
+environment spin $b=(N-3)/2+q$. Explicitly,
+\[
+ G_q^{(N)}(\rho)=\sum_{\mu=-b}^b A_\mu\rho A_\mu^*,\qquad
+ (A_\mu)_{m,n}=\langle a,m;b,\mu\mid j,n\rangle.
+\]
+The Clebsch--Gordan isometry proves complete positivity and trace
+preservation. Covariance gives $G_q^{(N)}(I_{N+1}/(N+1))=I_4/4$.
+Here $G_0^{(N)}=R_{N,3}$. Relative to $R_{N,3}$, the multipliers of
+$G_1,G_2$ are
+\[
+\begin{array}{c|ccc|ccc}
+ N&\multicolumn{3}{c|}{G_1}&\multicolumn{3}{c}{G_2}\\\hline
+4&2/3&0&-1&1/9&-5/7&3/7\\
+5&13/21&-1/7&-9/7&1/21&-11/14&9/14\\
+6&7/12&-1/4&-3/2&0&-5/6&5/6
+\end{array}
+\]
+These entries follow directly from the displayed finite CG sums;
+\path{verify_positive_floors.py} checks them with exact algebraic
+coefficients. Let $D(\rho)=\Tr(\rho)I_4/4$, and let
+$\mathcal B(X)=[\Tr(X)I_4-X-\Theta X]/2$ be the positive map
+described below. Exact comparison of the three multipliers gives
+\begin{align}
+ R_{4,3}\Phi^{(4)}_3
+ &=\frac{11}{70}D+\frac17\mathcal B G_0^{(4)}
+             +\frac1{10}\Theta G_1^{(4)}+\frac35G_2^{(4)},\\
+ R_{5,3}\Phi^{(5)}_4
+ &=\frac{46}{189}D+\frac{170}{567}\mathcal B G_0^{(5)}
+             +\frac{140}{567}\Theta G_1^{(5)}+\frac{119}{567}G_2^{(5)},\\
+ R_{6,3}\Phi^{(6)}_5
+ &=\frac7{30}D+\frac1{25}\Theta G_0^{(6)}
+             +\frac{11}{30}\mathcal B G_0^{(6)}+\frac9{25}\Theta G_1^{(6)}.
+\end{align}
+Every summand maps positive inputs to positive outputs, and the
+coefficients in each line sum to one. Consequently the respective
+output lower bounds are
+\[
+ \tau_{4,3}\ge\frac{11}{280}I_4,\qquad
+ \tau_{5,4}\ge\frac{23}{378}I_4,\qquad
+ \tau_{6,5}\ge\frac7{120}I_4.
+\]
+Together with the scalar log-determinant bounds, these prove the
+three determinant inequalities for arbitrary mixed inputs.
+
+
+The preceding output floors and exact multiplier
+contractions are
+\[
+\begin{array}{c|c|c}
+ (N,K)&m& q^2\\\hline
+ (4,3)&11/280&16/49\\
+ (5,4)&23/378&1/4\\
+ (6,5)&7/120&1/4
+\end{array}
+\]
+The floor certificates express a radial expansion of the induced
+map as a convex combination of physical $N\to3$ covariant channels
+and their compositions with positive local maps. Their exact positive decompositions were displayed above.
+
+\paragraph{The $(4,3)$ case.}
+For $m=11/280$,
+\[
+ \frac{16}{49}C(m)
+ =\frac{19200}{3481}
+     \log\frac{648270000}{214116199}.
+\]
+The logarithm is strictly below $111/100$. Here is a rational
+certificate. First,
+\[
+ \frac{109}{36}-\frac{648270000}{214116199}
+ =\frac{945691}{7708183164}>0.
+\]
+Set $r=73/145$, so $(1+r)/(1-r)=109/36$.
+Bounding the positive logarithmic-series tail geometrically gives
+\[
+ \log\frac{109}{36}
+ \le U:=2(r+r^3/3)+\frac{2r^5}{5(1-r^2)},
+ \qquad \frac{111}{100}-U
+ =\frac{84307637}{119628045000}>0.
+\]
+Consequently
+\[
+ \frac{16}{49}C(11/280)
+ <\frac{21312}{3481}<\frac{49}{8},\qquad
+ \frac{49}{8}-\frac{21312}{3481}=\frac{73}{27848}>0.
+\]
+The sufficient criterion proves determinant monotonicity for every
+input in this case.
+
+\paragraph{The $(5,4)$ and $(6,5)$ cases.}
+Both output floors exceed $1/20$. Since the admissible spectral
+set shrinks when the minimum-eigenvalue bound increases, the sharp
+constant $C(m)$ is nonincreasing. Moreover
+\[
+ C(1/20)=\frac{75}{4}\log\frac{16875}{6859}<18.
+\]
+An exact certificate is
+$\sum_{k=0}^3(24/25)^k/k!>16875/6859$, which implies
+$\log(16875/6859)<24/25$.
+Thus $q^2C(m)<18/4=9/2<49/8$ in both cases, proving their
+determinant inequalities for every input state.
+
+
+\subsection{Physical spin-two inputs: Clifford reduction for the K=2 vertex}
+Let $\rho$ be a spin-two density matrix and let
+\[
+ \sigma=\rho_3=\frac{I_4}{4}+B_1+Q+B_3
+\]
+be its three-body marginal, decomposed into tensor ranks one, two, and three.
+Set
+\[
+ v=\operatorname{Tr}B_1^2,\quad u=\operatorname{Tr}Q^2,\quad
+ w=\operatorname{Tr}B_3^2,\quad r=\sqrt{5v},\quad z=\sqrt u,
+ \quad s=r+3z.
+\]
+Thus $r=|\langle\mathbf J_{3/2}\rangle_\sigma|$ and
+$V=\operatorname{Tr}\sigma^2-1/4=r^2/5+z^2+w$.
+
+\paragraph{Two positive matrices supplied by the physical extension.}
+Besides $\sigma\ge0$, the spin-two to spin-$3/2$ extremal channel with
+spin-$3/2$ environment gives the positive matrix
+\[
+ Y=\frac{I_4}{4}+C\ge0,\qquad C=\frac23B_1-B_3.
+\]
+Its induced multiplier triple is $(2/3,0,-1)$; this follows directly from
+Clebsch--Gordan recoupling. This channel is applied to the original spin-two
+state, so its positivity on the physical marginal domain is automatic.
+No positivity on arbitrary spin-$3/2$ states is assumed.
+
+Spin-$3/2$ time reversal $\Theta(X)=VX^{\mathsf T}V^\dagger$ preserves
+rank-two tensors and negates ranks one and three. Therefore
+$\Theta(Y)=I_4/4-C\ge0$, giving
+\begin{equation}\label{t3:eq:C-constraint}
+ \|C\|_{\rm op}\le\frac14,\qquad
+ \frac49v+w=\operatorname{Tr}C^2\le\frac14.
+\end{equation}
+Also $[\sigma+\Theta(\sigma)]/2=I_4/4+Q\ge0$.
+The five spin-$3/2$ quadrupoles form a Clifford vector: if $\Gamma_i$ are
+normalized by $\{\Gamma_i,\Gamma_j\}=2\delta_{ij}I_4$, then
+$Q=\frac12\sum_i q_i\Gamma_i$, $u=\sum_iq_i^2$, and
+\[
+ Q^2=\frac u4I_4,\qquad\|Q\|_{\rm op}=\frac z2,\qquad0\le z\le\frac12.
+\]
+One explicit choice of the five $\Gamma_i$ is
+$\{J_y,J_z\}/\sqrt3$, $\{J_z,J_x\}/\sqrt3$,
+$\{J_x,J_y\}/\sqrt3$, $(J_x^2-J_y^2)/\sqrt3$, and
+$J_z^2-5I_4/4$.
+
+\paragraph{Additional elementary constraints from $\sigma\ge0$.}
+Rotate the mean spin onto the positive $z$ axis. Then $B_1=(r/5)J_z$,
+$0\le r\le3/2$, and $\|B_1\|_{\rm op}=3r/10$.
+With the Hilbert--Schmidt normalized diagonal tensors
+\[
+ T_{20}=\frac12\operatorname{diag}(1,-1,-1,1),\qquad
+ T_{30}=\frac1{2\sqrt5}\operatorname{diag}(1,-3,3,-1),
+\]
+the elementary diagonal operator inequalities
+\[
+ J_z-T_{20}\le I_4,\qquad
+ J_z-\frac{\sqrt5}{2}T_{30}\le\frac54I_4
+\]
+yield
+\begin{equation}\label{t3:eq:rz-constraints}
+ r\le1+z,\qquad
+ w\ge\frac{(2r-5/2)_+^2}{5}.
+\end{equation}
+Here $x_+=\max\{x,0\}$. These follow from
+$|\operatorname{Tr}(\sigma T_{20})|\le z$ and
+$|\operatorname{Tr}(\sigma T_{30})|\le\sqrt w$.
+Together, $0\le r\le3/2$ and $0\le z\le1/2$ imply $0\le s\le3$.
+
+
+\paragraph{An input-dependent lower eigenvalue bound.}
+For $N=4,K=2$, the target marginal is
+\begin{align*}
+ \tau&=\frac{I_4}{4}+\frac12B_1-\frac3{14}Q-\frac47B_3\\
+ &=\frac{I_4}{4}-\frac3{14}Q+\frac47C+\frac5{42}B_1.
+\end{align*}
+The operator norms above give the exact bound
+\begin{equation}\label{t3:eq:K42-output-floor}
+ \lambda_{\min}(\tau)
+ \ge\frac14-\frac{3z}{28}-\frac17-\frac r{28}
+ =\frac{3-s}{28}.
+\end{equation}
+For $s<3$ this is strictly positive. At $s=3$, one necessarily has
+$r=3/2$ and $z=1/2$; maximal spin expectation forces $\sigma$ to be a
+pure coherent state, so $\det\sigma=0$ and the unshifted determinant
+comparison is automatic from $\tau\ge0$.
+
+\paragraph{Reduction to one real parameter.}
+The input variance obeys $V\ge L(s)$, where
+\begin{equation}\label{t3:eq:input-variance-lower}
+ L(s)=\begin{cases}
+ s^2/14,&0\le s\le7/3,\\[2pt]
+ \displaystyle\frac14+\frac{(s-3/2)^2}{5},&7/3\le s\le11/4,\\[5pt]
+ \displaystyle\frac14+\frac{(s-3/2)^2+(2s-11/2)^2}{5},&11/4\le s\le3.
+ \end{cases}
+\end{equation}
+For the first interval, this is Cauchy--Schwarz:
+$(r+3z)^2\le14(r^2/5+z^2)$. Its unconstrained minimizer
+$r=5s/14,z=3s/14$ reaches $z=1/2$ at $s=7/3$.
+Beyond that point minimize
+\[
+ \frac{r^2}{5}+\frac{(s-r)^2}{9}
+       +\frac{(2r-5/2)_+^2}{5}
+\]
+over $r\ge s-3/2$. Its derivative is nonnegative there for $s\ge7/3$,
+so the minimum occurs at $r=s-3/2,z=1/2$. The final term becomes active
+at $s=11/4$, proving the displayed formula.
+
+The output variance is
+\[
+ V_\tau=\operatorname{Tr}\tau^2-1/4
+ =\frac{r^2}{20}+\frac9{196}z^2+\frac{16}{49}w.
+\]
+Using~\eqref{t3:eq:C-constraint} gives
+\[
+ V_\tau\le G_s(r):=\frac4{49}+\frac{37r^2}{1764}
+                        +\frac{(s-r)^2}{196}.
+\]
+This is convex in $r$. On the enlarged interval
+$\max\{0,s-3/2\}\le r\le\min\{s,3/2\}$, its larger endpoint value is
+\begin{equation}\label{t3:eq:output-variance-upper}
+ U(s)=\begin{cases}
+ \displaystyle\frac4{49}+\frac{37s^2}{1764},&0\le s\le3/2,\\[5pt]
+ \displaystyle\frac{101+4(s-3/2)^2}{784},&3/2\le s\le3.
+ \end{cases}
+\end{equation}
+In the second interval the endpoint $r=3/2$ dominates $r=s-3/2$, since
+the difference is $1/28-(s-3/2)^2/63\ge0$.
+Equivalently, with $\varepsilon=3-s$,
+\[
+ U(s)=\frac{55-6\varepsilon+2\varepsilon^2}{392}
+ \qquad(3/2\le s\le3).
+\]
+In particular, $V_\tau\le55/392$ and
+$\operatorname{Tr}\tau^2\le153/392$, with equality at a coherent input.
+The bounds~\eqref{t3:eq:K42-output-floor}, \eqref{t3:eq:input-variance-lower}, and
+\eqref{t3:eq:output-variance-upper} are rigorous consequences of the two
+positive matrices $\sigma$ and $Y$, plus the spin-$3/2$ Clifford identities.
+
+\subsubsection{The region $0\le s\le13/5$}
+Put $s=r+3z$ and $h=3z$, so $0\le r,h\le3/2$.
+The output minimum eigenvalue is at least $m(s)=(3-s)/28$.
+For $V>0$, maximizing the purity ratio over the allowed octupole
+norm $w$ gives
+\[
+ \frac{V(\tau)}{V(\sigma)}
+ \le Q(r,h):=\frac{144+37r^2+9h^2}{49(9+4r^2+4h^2)}.
+\]
+Indeed the ratio increases with $w$, whose upper bound is
+$1/4-4r^2/45$. Independently the ratio is at most $16/49$.
+The following rational bounds suffice:
+\[
+\begin{array}{c|c|c|c}
+ s\text{ interval}&V(\tau)/V(\sigma)\le b&C(m(s))<c&bc\\\hline
+ {[0,8/5]}&16/49&18&288/49\\
+ {[8/5,2]}&4/15&20&16/3\\
+ {[2,12/5]}&1/4&24&6\\
+ {[12/5,5/2]}&23/100&26&299/50\\
+ {[5/2,13/5]}&11/50&277/10&3047/500
+\end{array}
+\]
+Every entry in the last column is strictly less than $49/8$.
+It follows that
+\[
+ L(\tau)\le C(m(s))V(\tau)<\frac{49}{8}V(\sigma)\le L(\sigma)
+\]
+whenever $V(\sigma)>0$; the maximally mixed case gives equality.
+
+Here are reproducible exact certificates for the table. Along each
+ray $(r,h)\mapsto(k r,k h)$, $Q$ decreases with $k>0$. Thus to
+bound $Q$ for $r+h\ge s_0$, it suffices to consider $r+h=s_0$.
+The inequality $Q\le b$ is the quadratic inequality
+\[
+ 441b-144+(196b-37)r^2+(196b-9)(s_0-r)^2\ge0
+\]
+on $\max(0,s_0-3/2)\le r\le\min(3/2,s_0)$.
+Its minimum is obtained by clamping the rational critical point
+$(196b-9)s_0/(392b-46)$ to this interval. Substitution gives a
+strictly positive rational number in each of the last four rows.
+For the $C$ column, monotonicity allows substitution of the upper
+endpoint of the $s$ interval. Each resulting logarithm is bounded
+using the rational inequality
+\[
+ \log x\le 2\sum_{k=0}^{M-1}\frac{q^{2k+1}}{2k+1}
+          +\frac{2q^{2M+1}}{(2M+1)(1-q^2)},
+ \qquad q=\frac{x-1}{x+1},\quad M=40.
+\]
+The right side is an upper bound because the omitted positive
+series is bounded by a geometric tail. The embedded \path{determinant_t3/bounds/verify_central_region.py} checks every rational inequality
+and records the exact quadratic minima and margins in
+\path{central_region_certificates.json}.
+
+\subsubsection{The region $13/5\le s<3$}
+Put $\epsilon=3-s\in(0,2/5]$. The preceding reduction gives
+\begin{align}
+ V(\tau)&\le U(\epsilon)=\frac{55-6\epsilon+2\epsilon^2}{392},\label{t3:eq:out}\\
+ V(\sigma)&\ge v_*(\epsilon)=
+ \begin{cases}3/4-\epsilon+\epsilon^2,&0\le\epsilon\le1/4,\\
+ 1/4+(3/2-\epsilon)^2/5,&1/4\le\epsilon\le2/5.
+ \end{cases}\label{t3:eq:in}
+\end{align}
+\begin{lemma}[Exact minimum determinant deficit at fixed purity]
+For a four-dimensional state with $V(\sigma)=v\in(0,3/4)$,
+\[
+ L(\sigma):=-\log(256\det\sigma)\ge
+ \ell(v):=-\log\!\left[256a\left(\frac{1-a}{3}\right)^3\right],
+ \quad a=\frac14+\sqrt{\frac{3v}{4}}.
+\]
+The right side increases with $v$.
+\end{lemma}
+\begin{proof}
+Minimize $L$ under fixed trace and purity. A minimum is interior,
+because $L$ diverges on a singular spectrum while a full-rank
+spectrum with the prescribed purity exists. Lagrange multipliers
+give at most two eigenvalue values, say $a>b$.
+The Hessian of the Lagrangian at a coordinate equal to $a$ is
+$1/a^2-1/(ab)<0$. If $a$ occurred twice, an opposite variation
+of those two coordinates is tangent to both constraints and gives
+a negative second variation, excluding a minimum. Hence the
+minimizing spectrum has one large value $a$ and three equal values
+$(1-a)/3$. The purity constraint gives the displayed $a$.
+The derivative of $-\log[256a(1-a)^3/27]$ is
+$(4a-1)/[a(1-a)]>0$ for $a>1/4$, proving monotonicity.
+\end{proof}
+
+The sharp upper Burg bound established in Lemma~\ref{t3:lem:upper} gives
+\[
+ L(\tau)\le C(\epsilon/28)U(\epsilon),\qquad
+ C(m)=-\frac{12}{(1-4m)^2}\log\frac{256m(1-m)^3}{27}.
+\]
+It therefore suffices to prove the one-variable inequality
+\begin{equation}\label{t3:eq:goal}
+ C(\epsilon/28)U(\epsilon)<\ell(v_*(\epsilon))
+                  \quad(0<\epsilon\le2/5).
+\end{equation}
+
+\subsubsection{The endpoint region $0<\epsilon\le1/8$}
+In this regime, \eqref{t3:eq:in} implies
+$a\ge1-\epsilon/2$, because
+\[
+ \frac34v_*(\epsilon)
+ =\frac9{16}-\frac{3\epsilon}{4}+\frac{3\epsilon^2}{4}
+ \ge(3/4-\epsilon/2)^2.
+\]
+Since the determinant of the one-large-eigenvalue spectrum decreases
+with $a>1/4$,
+\[
+ L(\sigma)\ge
+ -\log\!\left[\frac{32}{27}(1-\epsilon/2)\epsilon^3\right]
+ >3\log(1/\epsilon)-\frac15.
+\]
+Here $\log(32/27)<1/5$ follows from
+$\exp(1/5)>1+1/5>32/27$.
+
+On the other hand, $U(\epsilon)\le55/392$, and
+\begin{align*}
+ C(\epsilon/28)U(\epsilon)
+ &\le\frac{12(55/392)}{(1-\epsilon/7)^2}
+ \left[\log(1/\epsilon)+\log\frac{189}{64}
+                         -3\log(1-\epsilon/28)\right]\\
+ &< A\left[\log(1/\epsilon)+\frac{11}{10}\right],
+       \qquad A=\frac{1056}{605}.
+\end{align*}
+Indeed $(1-\epsilon/7)^{-2}\le(56/55)^2$, and
+\[
+ \log\!\left[\frac{189}{64}\left(\frac{224}{223}\right)^3\right]
+ <\frac{11}{10}.
+\]
+The latter inequality is certified rationally by
+$\sum_{k=0}^6(11/10)^k/k!>
+ (189/64)(224/223)^3$.
+Finally $\log(1/\epsilon)\ge\log8>2$, since
+$\log2=2\sum_{k\ge0}(1/3)^{2k+1}/(2k+1)>2/3$.
+Consequently
+\[
+ L(\sigma)-L(\tau)
+ >2(3-A)-\frac{11A}{10}-\frac15
+ =\frac{1177}{3025}>0.
+\]
+At $\epsilon=0$, \eqref{t3:eq:in} forces $V(\sigma)=3/4$;
+the input is pure and its determinant is zero, so the desired
+determinant inequality is immediate.
+
+\subsubsection{The remaining interval $1/8\le\epsilon\le2/5$}
+Both $C(\epsilon/28)$ and $U(\epsilon)$ are positive and
+nonincreasing. The first monotonicity follows from the sharp
+variational characterization of $C(m)$: increasing the minimum
+eigenvalue floor shrinks the maximization domain.
+Also $v_*(\epsilon)$ decreases with $\epsilon$, while $\ell$ increases.
+For an interval $[a,b]$ it therefore suffices to verify
+\[
+ C(a/28)U(a)<\ell(v_*(b)).
+\]
+The script \path{certify_k42_outer.py} verifies this strict
+inequality on the 275 intervals
+\[
+ [k/1000,(k+1)/1000],\qquad k=125,126,\ldots,399,
+\]
+using rational arithmetic only. The smallest certified difference
+exceeds $0.02341839$ and occurs on $[399/1000,2/5]$.
+That decimal is descriptive; the comparisons themselves are exact.
+
+Square roots are bounded below with denominator $2^{40}$ by an
+integer square root. For $q>0$, set
+\[
+ h=2^{-40}\left\lfloor\sqrt{2^{80}q}\right\rfloor;
+ \qquad h^2\le q<(h+2^{-40})^2.
+\]
+Using $a_0=1/4+h\le1/4+\sqrt{3v_*(b)/4}$ gives a lower bound
+on the input logarithmic deficit.
+
+To bound a logarithm, first write its positive rational argument as
+$2^kR$ with $1\le R<2$. For $z=(R-1)/(R+1)\in[0,1/3)$,
+\[
+ 2\sum_{j=0}^{11}\frac{z^{2j+1}}{2j+1}
+ \le\log R\le
+ 2\sum_{j=0}^{11}\frac{z^{2j+1}}{2j+1}
+   +\frac{2z^{25}}{25(1-z^2)}.
+\]
+The same bounds with $z=1/3$ bound $\log2$. Thus both endpoints
+of every logarithmic enclosure are explicit rational numbers.
+The script saves each interval, the rational square-root bound,
+and the strictly positive rational gap in
+\path{k42_outer_certificates.json}.
+
+This completes \eqref{t3:eq:goal} and hence the $(4,2)$ determinant
+inequality throughout $13/5\le r+3z\le3$. Together with the
+independent central-regime proof, it establishes the final finite
+base case required by the all-spin order-three reduction.
+\subsection{The exact reduction to four finite-spin cases}
+The four base cases have now been proved. We finish by establishing
+the exact reduction from arbitrary spin to those cases.
+
+For $N\ge4$, let $\Phi_K^{(N)}$ be the extremal covariant channel on
+spin $N/2$, and write $R_{N,3}$ for reduction to three symmetric qubits.
+Let $v_{N,K}=(f_1,f_2,f_3)$ be the induced multiplier triple.
+
+\begin{theorem}\label{t3:thm:reduction}
+The following statements are equivalent.
+\begin{enumerate}
+\item For every $N\ge4$, every spin-$N/2$ state $\rho$, and every
+covariant channel $\Phi$ on that sector,
+\[
+ \det(R_{N,3}\Phi(\rho))\ge\det(R_{N,3}\rho).
+\]
+\item The same determinant inequality holds for all input states in
+each of the following four cases:
+\[
+ (N,K)=(4,2),\qquad(4,3),\qquad(5,4),\qquad(6,5).
+\]
+\end{enumerate}
+\end{theorem}
+
+The sufficiency uses exact rational certificates on a continuous
+parameter domain covering all $N\ge7$, plus exact finite checks for
+$N=4,5,6$.
+
+\subsubsection{The positive-map polytope on spin $3/2$}
+Here ``positive map'' means positivity, not complete positivity.
+Spin reversal is the linear map
+\[
+ \Theta(X)=e^{-i\pi J_y}X^{\mathsf T}e^{i\pi J_y}.
+\]
+It is positive, unital, trace preserving and covariant; its rank-$\ell$
+multiplier is $(-1)^\ell$. On a pure state $P_\psi$, the vectors
+$\psi$ and its time-reversed vector are orthogonal, since the spin
+is half-integral. Therefore
+\[
+ \mathcal B(X)=\tfrac12[\Tr(X)I_4-X-\Theta(X)]
+\]
+is also positive, unital, trace preserving and covariant:
+$\mathcal B(P_\psi)=(I_4-P_\psi-\Theta(P_\psi))/2\ge0$.
+Its multiplier triple is $(0,-1,0)$.
+
+Let $\Psi_1$ denote the local spin-$3/2$ rank-one covariant vertex.
+The five positive maps
+\[
+ \mathrm{id},\quad\Theta,\quad\Psi_1,\quad\Theta\Psi_1,\quad\mathcal B
+\]
+have multiplier triples
+\begin{equation}\label{t3:eq:positivevertices}
+ (1,1,1),\quad(-1,1,-1),\quad
+ (11/15,1/5,-3/5),\quad(-11/15,1/5,3/5),\quad(0,-1,0).
+\end{equation}
+Their convex hull is exactly the set of positive, unital,
+trace-preserving covariant maps on spin $3/2$. Its six facets are
+\begin{align}
+ |9f_1+f_3|&\le5(1+f_2),\label{t3:eq:coherent1}\\
+ 3|f_1-f_3|&\le5(1-f_2),\label{t3:eq:coherent2}\\
+ 2|f_3|&\le1+f_2.\label{t3:eq:ghz}
+\end{align}
+Sufficiency follows from the exact facet/vertex description and the
+positivity of the five generating maps. Necessity follows from two
+test states. A coherent input has output eigenvalues
+\[
+ \frac{5+9f_1+5f_2+f_3}{20},\quad
+ \frac{5+3f_1-5f_2-3f_3}{20},\quad
+ \frac{5-3f_1-5f_2+3f_3}{20},\quad
+ \frac{5-9f_1+5f_2-f_3}{20},
+\]
+giving \eqref{t3:eq:coherent1}--\eqref{t3:eq:coherent2}. The spin-$3/2$ GHZ
+state has output spectrum
+\[
+ \left(\frac{1+f_2+2f_3}{4},\frac{1+f_2-2f_3}{4},
+               \frac{1-f_2}{4},\frac{1-f_2}{4}\right),
+\]
+giving \eqref{t3:eq:ghz}. The additional inequality $f_2\le1$ is
+already implied by \eqref{t3:eq:coherent2}.
+
+For physical induced maps, the four coherent inequalities hold
+automatically. Thus such an induced map is positive if and only if
+$2|f_3|\le1+f_2$.
+
+\subsubsection{A thirteen-vertex hull containing every physical triple}
+Let $\mathcal H$ be the convex hull of the five triples
+\eqref{t3:eq:positivevertices}, the four triples
+\begin{align*}
+ v_{4,2}&=(1/2,-3/14,-4/7),\\
+ v_{4,3}&=(0,-4/7,5/14),\\
+ v_{5,4}&=(-1/7,-1/2,19/42),\\
+ v_{6,5}&=(-1/4,-5/12,1/2),
+\end{align*}
+and their four spin-reversed triples, obtained by reversing the signs
+of $f_1,f_3$. Its twenty facets can be written as ten pairs:
+\begin{align*}
+ |61f_1+174f_3|&\le110f_2+125,&
+ |13f_1+129f_3|&\le57f_2+85,\\
+ |9f_1+f_3|&\le5f_2+5,&
+ |5f_1-8f_3|&\le9f_2+9,\\
+ |4f_1+6f_3|&\le5f_2+5,&
+ 3|f_1-f_3|&\le5-5f_2,\\
+ |3f_1-19f_3|&\le3f_2+13,&
+ |3f_1+12f_3|&\le10f_2+10,\\
+ |f_1-3f_3|&\le3f_2+3,&
+ 17|f_3|&\le6f_2+11.
+\end{align*}
+The script \path{determinant_t3/search/audit_reduction.py} verifies the equivalence exactly:
+it enumerates all intersections of triples of facet planes, retains
+the feasible intersections and obtains precisely the thirteen
+listed vertices. The four coherent facets make the polyhedron
+bounded: a recession vector $h$ must obey
+$5h_2\ge|9h_1+h_3|$ and $-5h_2\ge3|h_1-h_3|$, hence $h=0$.
+Thus no numerical convex-hull assertion is needed for the certificate.
+
+\paragraph{All $N\ge7$.}
+Set $D=N(N+2)$, $u=K(K+1)$, $y=1/(N+2)$ and $x=f_1=1-2u/D$.
+For every physical vertex, $0<y\le1/9$ and $-1+2y\le x\le1$.
+The other multipliers are
+\[
+ f_2=\frac{3Dx^2-D-6x}{2(D-3)},\qquad
+ f_3=\frac{5D^2x^3-3D^2x-40Dx^2+8Dx+10D+48x}
+                  {2(D-8)(D-3)},\qquad D=\frac{1-2y}{y^2}.
+\]
+The four coherent facets hold automatically. For each of the other
+sixteen facets, multiply its nonnegative-side expression by
+\[
+ Q(y)=2(1-3y)(1+y)(1-4y)(1+2y)>0
+           \qquad(0\le y\le1/9)
+\]
+and substitute
+\[
+ y=Y/9,\qquad x=-1+2y+2(1-y)Z,
+             \qquad (Y,Z)\in[0,1]^2.
+\]
+The resulting polynomial is nonnegative on the whole unit square.
+This is certified by exact nonnegative Bernstein coefficients on
+the dyadic boxes saved in \path{finite_hull_certificates.json}.
+There are sixteen certificates, using between four and twenty-two
+boxes each. All coefficients and endpoints are rational.
+
+For a polynomial $P(Y,Z)=\sum a_{ij}Y^iZ^j$ of bidegree $(n,m)$,
+its Bernstein coefficient indexed by $(k,l)$ is
+\[
+ b_{kl}=\sum_{i\le k,j\le l}a_{ij}
+          \frac{\binom{k}{i}}{\binom{n}{i}}
+          \frac{\binom{l}{j}}{\binom{m}{j}}.
+\]
+Nonnegative coefficients prove nonnegativity because the Bernstein
+basis functions are nonnegative and sum to one. The script
+\path{determinant_t3/search/audit_reduction.py} carries out this computation after
+each exact affine box substitution and verifies the entire partition
+by recursive subdivision. This proves $v_{N,K}\in\mathcal H$ for
+every $N\ge7$ and every $K$, not merely for finitely many sampled spins.
+
+\paragraph{Small spins and the availability of extensions.}
+All $N=6$ vertices lie in $\mathcal H$, as checked exactly. At $N=4$,
+the only nonpositive induced vertices are the two designated base
+cases. At $N=5$, the only additional case apart from $(5,4)$ is
+$(5,3)$, and it uses only maps available at lower spins:
+\[
+ v_{5,3}=\frac1{63}(1,1,1)+\frac1{42}(-1,1,-1)
+          +\frac{199}{630}(0,-1,0)+\frac{29}{45}v_{4,2}.
+\]
+All four coefficients are nonnegative and sum to one. These finite
+statements are also checked symbolically by \path{determinant_t3/search/audit_reduction.py}.
+
+\subsubsection{Why the hull proves the finite reduction}
+Assume the four determinant inequalities in Theorem~\ref{t3:thm:reduction}.
+For a spin-$N/2$ input with $N\ge6$, let $\sigma=R_{N,3}\rho$.
+For every base spin $m\in\{4,5,6\}$, the state
+$\rho_m=R_{N,m}\rho$ is a physical spin-$m/2$ state with the same
+three-qubit marginal $\sigma$. Therefore applying a base induced map
+to $\sigma$ gives a positive output and cannot lower its determinant,
+by the assumed base inequality. A spin-reversed base output has the
+same spectrum and determinant. Each of the five positive local maps
+also cannot lower the determinant, because a positive unital
+trace-preserving map majorizes spectra.
+
+Any target triple in $\mathcal H$ is a convex combination of these
+thirteen maps. Its output on $\sigma$ is the corresponding convex
+combination of their outputs. If $\det\sigma>0$, every component
+output is positive definite and log-determinant concavity gives
+\[
+ \log\det\Bigl(\sum_iw_i\tau_i\Bigr)
+ \ge\sum_iw_i\log\det\tau_i\ge\log\det\sigma.
+\]
+If $\det\sigma=0$, the determinant inequality is immediate from
+positivity of the target output. The same argument extends from
+full-channel vertices to arbitrary convex mixtures of vertices.
+For $N=4,5$, use the small-spin reductions above, which avoid any
+unavailable higher-spin extension. This proves sufficiency.
+Necessity is immediate since the four cases are instances of the
+all-spin statement.
+
+
+
+
+\paragraph{The two total measures.}
+This proves the determinant input for $t=3$. Applying it to the isotropic
+mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
+integral/primitive arguments in Section~\ref{sec:spectral} then give,
+with no additional order-three assumption,
+\[
+ \A_3^{T,F}(\Phi(\rho))\ge\A_3^{T,F}(\rho),\qquad
+ \A_3^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_3^{T,\mathrm{vN}}(\rho).
+\]
+
+\clearpage
+\section{Determinant comparison at order four}\label{sec:t4}
+Let $N\ge5$, $\sigma=\rho_4$ and $\tau=\rho'_4$. We prove
+$\det\tau\ge\det\sigma$ by fourteen base cases and an available-extension
+convex hull. Thirteen base cases use the same physical spectral-floor
+method, with two analytic endpoint arguments. The fourteenth,
+$(N,K)=(5,2)$, uses an exact positive weighted polynomial identity.
+All ingredients of both methods are supplied below and in the embedded
+data appendix. The exact scalar partition and the positive identity are checked
+independently of the Lean certification.
+
+\subsection{The exact all-spin finite reduction}
+We first prove the fourteen-case reduction, then the thirteen spectral-floor
+cases, and finally the exceptional case by an exact weighted sum of squares.
+
+Let $R_{N,4}$ be reduction from spin $N/2$ to four symmetric qubits,
+and let $\Phi_K^{(N)}$, $K=0,\ldots,N$, denote the extremal covariant
+channels on spin $N/2$. The proper-order domain is $N\ge5$.
+
+\begin{theorem}
+The inequality
+\[
+ \det(R_{N,4}\Phi(\rho))\ge\det(R_{N,4}\rho)
+\]
+holds for every $N\ge5$, every state $\rho$ and every covariant
+channel $\Phi$ if and only if it holds for every input state in
+the following fourteen extremal cases:
+\[
+\begin{array}{c|l}
+ N&K\\\hline
+ 5&2,3,4\\
+ 6&3,4,5\\
+ 7&4,5,6\\
+ 8&4,7\\
+ 9&8\\
+ 10&9\\
+ 11&10
+\end{array}
+\]
+\end{theorem}
+
+The sufficiency is certified exactly for all spins, through
+integer convex-hull calculations, rational Bernstein certificates
+on a continuous domain, and exact finite decompositions respecting
+the available marginal extensions.
+
+\subsubsection{Multipliers and the finite hull}
+Write $v_{N,K}=(f_1,f_2,f_3,f_4)$ for the induced multiplier vector.
+For $D=N(N+2)$ and $u=K(K+1)$,
+\begin{align*}
+ f_1={}&1-2u/D,\\
+ f_2={}&1-6u/D+6u(u-2)/[D(D-3)],\\
+ f_3={}&1-12u/D+30u(u-2)/[D(D-3)]
+               -20u(u-2)(u-6)/[D(D-3)(D-8)],\\
+ f_4={}&1-20u/D+90u(u-2)/[D(D-3)]
+               -140u(u-2)(u-6)/[D(D-3)(D-8)]\\
+       &+70u(u-2)(u-6)(u-12)/[D(D-3)(D-8)(D-15)].
+\end{align*}
+These are the terminating Racah multipliers.
+Partial trace intertwines tensor ranks, so they also specify the
+induced map on the spin-two marginal.
+
+Spin reversal $\Theta(X)=e^{-i\pi J_y}X^{\mathsf T}e^{i\pi J_y}$
+is positive, unital and trace preserving. It acts on multiplier
+vectors by
+\[
+ (f_1,f_2,f_3,f_4)\mapsto(-f_1,f_2,-f_3,f_4).
+\]
+Let $\mathcal H$ be the convex hull of the local spin-two covariant
+vertices $v_{4,K}$, their spin reversals, and all $v_{N,K}$ with
+$5\le N\le11$ and their spin reversals.
+Its exact extreme set consists of 34 vectors:
+\begin{itemize}
+\item the eight local positive vectors $v_{4,K}$ and their reversals
+      for $K=0,1,2,3$;
+\item the thirteen physical vectors in the theorem's table except
+      $(8,4)$, and their thirteen reversals.
+\end{itemize}
+The local $K=4$ vector is redundant.
+The full hull has exactly 161 facets, listed as primitive integer
+coefficient vectors in \path{exact_hull.json}.
+
+\paragraph{Exact and complete facet verification.}
+Floating-point geometry is used only to propose a retained vertex
+list. Every omitted input vector is then verified as an exact
+rational convex combination of the retained list; there are 88
+such decompositions. Thus the proposed list provably generates the
+same hull. The retained points affinely span dimension four.
+
+The script next enumerates \emph{every} quadruple of the 34 retained
+points, using integer homogeneous coordinates. Cofactors give the
+exact candidate supporting hyperplane; a candidate is retained only
+when all vertices lie on one side. All $\binom{34}{4}=46376$
+quadruples are tested. Every facet of a full-dimensional four-dimensional
+polytope contains four affinely independent vertices, so this process
+produces the complete facet list. No floating-point assertion about
+facet completeness is used in the proof.
+
+\subsubsection{All large spins lie in this hull}
+First consider $N\ge12$ and $K\ge4$. Introduce
+\[
+ y=\frac1{N+2},\qquad x=f_1=1-\frac{2K(K+1)}{N(N+2)},
+ \qquad D=\frac{1-2y}{y^2}.
+\]
+The physical range obeys
+\[
+ 0<y\le1/14,\qquad
+ -1+2y\le x\le1-\frac{40y^2}{1-2y}.
+\]
+The restriction $K\ge4$ is used here. Extending the parameter range
+all the way to $x=1$ would include nonphysical intermediate values
+between the low-$K$ vertices and would invalidate some hull inequalities.
+The low-$K$ cases are handled separately below.
+
+Five facets are automatic from positivity of the output on a global
+coherent input. In integer coefficient form, their nonnegative-side
+expressions are
+\begin{align*}
+ 14+28f_1+20f_2+7f_3+f_4,&\qquad
+ 7+7f_1-5f_2-7f_3-2f_4,\\
+ 7-10f_2+3f_4,&\qquad
+ 7-7f_1-5f_2+7f_3-2f_4,\\
+ 14-28f_1+20f_2-7f_3+f_4.&
+\end{align*}
+These are positive multiples of the five output probabilities.
+
+For the other 156 facets, substitute
+\[
+ y=Y/14,\qquad
+ x=-1+2y+\frac{2(1-6y)(1+3y)}{1-2y}Z,
+                \qquad (Y,Z)\in[0,1]^2.
+\]
+This parameterizes the entire displayed range. Multiply each facet
+expression by the positive common denominator
+\[
+ Q(y)=8(1-3y)(1+y)(1-4y)(1+2y)(1-5y)(1+3y)(1-2y)^4.
+\]
+The resulting polynomial has bidegree at most $(11,4)$.
+Every one of these 156 polynomials has been proved nonnegative by
+exact Bernstein certificates on dyadic subrectangles.
+
+For a polynomial $P(Y,Z)=\sum a_{ij}Y^iZ^j$ of bidegree $(n,m)$,
+the Bernstein coefficient indexed by $(k,l)$ is
+\[
+ b_{kl}=\sum_{i\le k,j\le l}a_{ij}
+          \frac{\binom{k}{i}}{\binom{n}{i}}
+          \frac{\binom{l}{j}}{\binom{m}{j}}.
+\]
+Nonnegative coefficients prove nonnegativity on the unit square.
+The script \path{determinant_t4/structural/audit_finite_reduction.py} computes these
+coefficients with rational arithmetic and subdivides using the exact
+de Casteljau algorithm. Each complete partition and its minimum
+coefficient on every box is saved in \path{continuous_hull_N12.json}.
+All 156 certificates pass. This proves containment for every
+$N\ge12$, $K\ge4$, including spins far beyond any finite search.
+
+\paragraph{The low-$K$ vertices.}
+For $K=0$ the map is the identity. For $K=1,2,3$ and $D\ge168$,
+the induced map is a convex combination
+$\sum_{q=0}^Kp_q\Psi_q$ of local spin-two covariant channels.
+The exact coefficients are
+\[
+ K=1:\quad
+ \left(\frac{D-24}{D},\frac{24}{D}\right),
+\]
+\[
+ K=2:\quad
+ \left(
+ \frac{(D-51)(D-24)}{D(D-3)},\;
+ \frac{72(D-24)}{D(D-3)},\;
+ \frac{504}{D(D-3)}
+ \right),
+\]
+and
+\[
+ K=3:\quad\frac1{D(D-8)(D-3)}
+ \left(
+ \begin{array}{l}
+ (D-24)(D^2-131D+3504),\\
+ 72(D-24)(2D-79),\\
+ 2520(D-24),\\
+ 8064
+ \end{array}
+ \right).
+\]
+They sum to one and reproduce all four nontrivial multipliers.
+Their numerators and denominators have nonnegative coefficients
+after substituting $D=168+z$, with strictly positive denominators.
+Thus they are nonnegative for every $N\ge12$. These symbolic
+identities and positivity statements are checked in
+\path{determinant_t4/structural/audit_finite_reduction.py}.
+
+\subsubsection{Small spins require available extensions}
+For each $N=5,\ldots,11$, every induced vertex is expressed as an
+exact convex combination of local positive maps and listed base
+maps whose full spin satisfies $m\le N$.
+The decompositions and rational weights are saved in
+\path{small_case_certificates.json}.
+
+The extra case $(8,4)$ in the theorem's table is essential for this
+particular reduction. It is redundant in the final hull, where a
+decomposition can use higher-spin base vectors, but at input spin
+$N=8$ one cannot use a spin-nine extension. We therefore retain it
+as a separate finite base case. All other needed small-spin vectors
+have decompositions respecting $m\le N$.
+
+\subsubsection{From multiplier containment to determinant monotonicity}
+Assume the fourteen base-case inequalities hold for every physical
+input on their respective full spin sectors. For a full input
+$\rho_N$, put $\sigma=R_{N,4}\rho_N$.
+If a base map has full spin $m/2$ with $m\le N$, reduce $\rho_N$
+to $\rho_m$. This is a physical symmetric spin-$m/2$ state with
+the same four-qubit marginal $\sigma$. The assumed base inequality
+therefore guarantees that its induced output on $\sigma$ is positive
+and has determinant at least $\det\sigma$.
+Spin reversal preserves the output spectrum and determinant.
+
+Every local positive, unital, trace-preserving map also cannot
+decrease the determinant, because it makes the spectrum more mixed
+in the majorization order. Hence every component in the certified
+convex decompositions has the required property.
+For positive-definite $\sigma$, concavity of log determinant gives
+\[
+ \log\det\Bigl(\sum_iw_i\tau_i\Bigr)
+ \ge\sum_iw_i\log\det\tau_i
+ \ge\log\det\sigma.
+\]
+For singular $\sigma$, the desired inequality follows immediately
+from positivity of the target output. The same argument extends
+from global channel vertices to their convex mixtures.
+The exact decompositions above prove sufficiency for all $N$.
+Necessity is immediate, because every listed finite case belongs
+to the all-spin claim.
+
+If the unshifted base inequalities are proved, their shifted
+versions follow by replacing each full input with
+$[\rho+5s\rho_0]/(1+5s)$, whose four-qubit marginal is
+$(\sigma+sI_5)/(1+5s)$. Thus the finite reduction also applies
+to all positive shifts.
+
+\subsection{Scalar determinant bounds in dimension five}
+For a full-rank $d$-dimensional state define
+\[
+ L_d(\omega)=-\log(d^d\det\omega),\qquad
+ V_d(\omega)=\operatorname{Tr}\omega^2-1/d.
+\]
+Set $L_d=+\infty$ on singular states.
+
+\paragraph{An explicit dimension-five global lower bound.}
+For every five-dimensional state,
+\begin{equation}\label{t4:eq:d5-burg-lower}
+ L_5(\omega)\ge\frac{25}{3}V_5(\omega).
+\end{equation}
+To prove this minimize $F=L_5-cV_5$, $c=25/3$, over the eigenvalue simplex.
+The boundary has $F=+\infty$. Stationarity in the interior gives
+$p_i^{-1}+2cp_i=\text{constant}$, with at most two positive roots.
+If the larger root occurred twice, varying those coordinates oppositely
+would give a negative second variation, contradicting a local minimum.
+Thus a nonuniform minimum has spectrum $(a,(1-a)/4,\ldots,(1-a)/4)$,
+$a>1/5$. Along this family
+\[
+ F(a)=-\log\frac{3125a(1-a)^4}{256}
+       -\frac{125}{12}(a-1/5)^2,
+\qquad
+ F'(a)=(5a-1)\left[\frac1{a(1-a)}-\frac{25}{6}\right].
+\]
+The nonuniform stationary points are $2/5$ and $3/5$. The derivative
+is positive, negative, positive on the successive intervals, so only
+$a=1/5$ and $a=3/5$ can minimize $F$. The former gives zero, while
+\[
+ F(3/5)=\log(16/3)-5/3>0.
+\]
+An exact certificate for the strict inequality is obtained by taking the
+first five positive terms in
+$\log(16/3)=2\sum_{k\ge0}(13/19)^{2k+1}/(2k+1)$.
+
+\paragraph{A sharp minimum-eigenvalue upper bound.}
+For any dimension $d\ge2$, if $\lambda_{\min}(\omega)\ge m$ with
+$0<m<1/d$, then
+\begin{equation}\label{t4:eq:general-burg-upper}
+ L_d(\omega)\le C_d(m)V_d(\omega),\qquad
+ C_d(m)=-\frac{d(d-1)}{(1-dm)^2}
+ \log\left[\frac{d^d m(1-m)^{d-1}}{(d-1)^{d-1}}\right].
+\end{equation}
+The constant is sharp at $(m,(1-m)/(d-1),\ldots,(1-m)/(d-1))$.
+In particular,
+\[
+ C_5(m)=-\frac{20}{(1-5m)^2}
+          \log\frac{3125m(1-m)^4}{256}.
+\]
+One proof first establishes the sharp reciprocal-trace bound
+\[
+ \operatorname{Tr}\eta^{-1}-d^2
+ \le\frac{d(d-1)}{u(1-u)}V_d(\eta),
+ \qquad\lambda_{\min}(\eta)\ge u.
+\]
+On each face $p_i\ge u$, stationary free coordinates take at most two
+values. The smaller free value cannot occur twice at a maximum.
+On the remaining one-small-coordinate family the third derivative is
+$-6/b^4+6/[(n-1)^2a^4]<0$, excluding nonuniform interior maxima.
+Thus extremizers have $k$ coordinates $u$ and $d-k$ equal coordinates.
+Their inverse-excess/variance ratio is
+$d(d-k)/[u(1-ku)]$, decreasing in $k$, so $k=1$ is maximal.
+Apply this bound to $(\omega+sI)/(1+ds)$ and integrate the resolvent
+excess over $s>0$. Equality holds for the same one-small-coordinate
+spectrum at every shift, yielding~\eqref{t4:eq:general-burg-upper}.
+
+\paragraph{Sharp lower bound at fixed purity.}
+For $0\le V<(d-1)/d$, put
+\[
+ a_d(V)=\frac1d+\sqrt{\frac{d-1}{d}V},\qquad
+ \mathcal L_d(V)=-\log\left[
+ \frac{d^d a_d(V)(1-a_d(V))^{d-1}}{(d-1)^{d-1}}\right].
+\]
+Every state with variance $V$ satisfies $L_d\ge\mathcal L_d(V)$.
+To see this, maximize $\sum_i\log p_i$ at fixed trace and purity.
+A positive one-large-coordinate spectrum is feasible, so a maximizing
+spectrum is interior. At a nonuniform stationary point there are at most
+two coordinate values $a>b>0$. The Lagrangian Hessian on a coordinate
+of value $a$ has coefficient
+$-a^{-2}+(ab)^{-1}>0$. If $a$ occurred twice, the direction that raises
+one such coordinate and lowers the other is tangent to both constraints
+and has positive second variation. This contradicts a constrained maximum.
+Hence exactly one coordinate is large, giving the formula above.
+The uniform case follows by continuity; $\mathcal L_d(V)$ is increasing.
+
+\paragraph{Sufficient determinant criterion.}
+For physical five-dimensional states $\sigma,\tau$, a variance contraction
+$V_5(\tau)\le q^2V_5(\sigma)$ and output floor
+$\lambda_{\min}(\tau)\ge m>0$ prove determinant monotonicity whenever
+$q^2 C_5(m)\le25/3$. For high-purity inputs the sharper bound
+$C_5(m)V_5(\tau)\le\mathcal L_5(V_5(\sigma))$ can be used instead.
+
+
+\subsection{Sharp spin-two multipole operator norms}
+Let $X_\ell$ be Hermitian and supported in tensor rank $\ell$ of a spin-two
+operator. Then
+\[
+ \|X_\ell\|_{\rm op}^2\le c_\ell^2\|X_\ell\|_2^2,
+ \qquad
+ (c_1^2,c_2^2,c_3^2,c_4^2)
+ =\left(\frac25,\frac27,\frac12,\frac{18}{35}\right).
+\]
+Every constant is sharp.
+
+For rank one, rotate $X_1$ onto $J_z$. Since
+$\|J_z\|_{\rm op}^2=4$ and $\operatorname{Tr}J_z^2=10$, the first constant
+is $2/5$.
+
+For the even ranks, use a basis in which integer-spin time reversal is
+complex conjugation. An even-rank Hermitian operator is real symmetric,
+so a real normalized vector attains its largest absolute expectation.
+For a pure spin-two state let $n_\ell$ be the squared norm of its tensor-rank
+$\ell$ projection, and let $S=|\langle\psi|\Theta\psi\rangle|^2$.
+The exact Fierz identity
+\[
+ n_2=\frac57 n_1+\frac27 S
+\]
+follows from the invariant two-copy operator
+\[
+ \sum_m T_{2m}\otimes T_{2m}^\dagger
+ -\frac57\sum_m T_{1m}\otimes T_{1m}^\dagger-\frac{10}{7}P_{J=0}.
+\]
+Its eigenvalues on total spins $J=0,1,2,3,4$ are
+$(0,6/7,0,-4/7,0)$, so it vanishes on the symmetric tensor square containing
+$|\psi\rangle^{\otimes2}$. Here
+$S=5\langle\psi\otimes\psi|P_0|\psi\otimes\psi\rangle$.
+
+For a time-reversal-real pure vector, $n_1=n_3=0$ and $S=1$, hence
+$n_2=2/7$. Since $n_0=1/5$ and the pure-state purity is one,
+$n_4=18/35$. Therefore, for $\ell=2,4$ and any such real vector,
+\[
+ |\langle\psi|X_\ell|\psi\rangle|
+ \le\|X_\ell\|_2\,\|\mathcal P_\ell(|\psi\rangle\langle\psi|)\|_2
+ =c_\ell\|X_\ell\|_2.
+\]
+This bounds the operator norm. Choosing $X_\ell$ proportional to the
+rank-$\ell$ projection of a real pure state attains the bound, proving
+sharpness.
+
+For rank three, $X_3$ is purely imaginary antisymmetric in the same real
+basis. Its eigenvalues are $\lambda_1,-\lambda_1,\lambda_2,-\lambda_2,0$,
+so $\|X_3\|_2^2\ge2\|X_3\|_{\rm op}^2$.
+To attain equality, put $u=|2,0\rangle$ and
+$v=(|2,2\rangle+|2,-2\rangle)/\sqrt2$, both time-reversal real, and choose
+\[
+ X_3=\frac{i}{\sqrt2}(|u\rangle\langle v|-|v\rangle\langle u|).
+\]
+Its rank-one projection vanishes because $\langle u|J_i|v\rangle=0$ for
+$i=x,y,z$. It is odd under time reversal, so it is entirely rank three.
+Its Hilbert--Schmidt norm is one and its nonzero eigenvalues are
+$\pm1/\sqrt2$, establishing the sharp constant $1/2$.
+
+
+
+\subsection{Additional physical norm constraints}
+Let $\sigma=I_5/5+\sum_{l=1}^4X_l$ be a spin-two density matrix,
+with $X_l$ its Hermitian rank-$l$ multipole and $v_l=\Tr X_l^2$.
+Set
+\[
+ a_l=c_l\sqrt{v_l},\qquad
+ (c_1^2,c_2^2,c_3^2,c_4^2)=\left(\frac25,\frac27,\frac12,\frac{18}{35}\right).
+\]
+The constants $c_l$ are the sharp operator-norm constants just proved.
+We prove the following necessary conditions:
+\begin{align}
+8v_2+5v_3+v_4&\le\frac{14}{5},\label{t4:fierzupper}\\
+5v_1+4v_4-3v_2&\le\frac65,\label{t4:fierzlower}\\
+245a_2^2&\le14+15a_2+20a_4,\label{t4:quadrupole}\\
+25a_1^2&\le2+7a_2,\label{t4:variance}\\
+15a_1&\le5+2\sqrt5\,a_3.\label{t4:octupole}
+\end{align}
+Two further total-spin-projector inequalities are
+\begin{align}
+v_1+v_3&\le\frac15+v_2+v_4,\label{t4:singlet}\\
+7v_1+3v_2-8v_3-4v_4&\le\frac{14}{5}.\label{t4:spin2projector}
+\end{align}
+These conditions hold for every spin-two density matrix, with no
+symmetric-extension assumption. Consequently, if a covariant map with
+multipliers $g_l$ produces a positive trace-one matrix on the physical
+marginal domain, each condition may also be applied after the substitutions
+$v_l\mapsto g_l^2v_l$ and $a_l\mapsto |g_l|a_l$.
+
+\subsubsection{The two quadratic Fierz constraints}
+Choose Hilbert--Schmidt orthonormal spherical tensors $T_{lq}$ and write
+$Q_l=\sum_qT_{lq}\otimes T_{lq}^{\dagger}$. Thus
+$\Tr[(\sigma\otimes\sigma)Q_l]=v_l$ for $l>0$.
+Let $P_J$ denote the projector onto total spin $J$ in $2\otimes2$.
+The exact recoupling identity is
+\[
+Q_2-\frac57Q_1-\frac{10}{7}P_0
+ =\frac67P_1-\frac47P_3.
+\]
+Put $p_J=\Tr[(\sigma\otimes\sigma)P_J]\ge0$,
+$P=\Tr\sigma^2$ and $T=\Tr[\sigma\Theta(\sigma)]$.
+The singlet contraction and swap parity give
+\[
+5p_0=T,\qquad p_1+p_3=\frac{1-P}{2}.
+\]
+Therefore
+\[
+-\frac27(1-P)
+\le v_2-\frac57v_1-\frac27T
+\le\frac37(1-P).
+\]
+Substitute
+$P=1/5+v_1+v_2+v_3+v_4$ and
+$T=1/5-v_1+v_2-v_3+v_4$.
+The two resulting inequalities are exactly
+\eqref{t4:fierzupper}--\eqref{t4:fierzlower}.
+The unused projectors provide
+\[
+p_0=\frac1{25}-\frac15v_1+\frac15v_2-\frac15v_3+\frac15v_4\ge0,
+\]
+\[
+p_2=\frac15-\frac12v_1-\frac3{14}v_2+\frac47v_3+\frac27v_4\ge0,
+\]
+which are \eqref{t4:singlet}--\eqref{t4:spin2projector}.
+
+\subsubsection{The quadrupole-square constraint}
+Write $Q=X_2$ and $u=\Tr Q^2=v_2$.
+A real rank-two tensor is equivalent under rotations to a traceless real
+symmetric $3\times3$ Cartesian tensor. Diagonalizing that Cartesian tensor
+shows that every Hermitian $Q$ can be rotated to
+\[
+Q=aT_{20}+\frac{b}{\sqrt2}(T_{22}+T_{2,-2}),\qquad a,b\in\mathbb R.
+\]
+In the $J_z$ basis $(2,1,0,-1,-2)$ this is
+\[
+Q=\begin{pmatrix}
+ 2a/\sqrt{14}&0&b/\sqrt7&0&0\\
+ 0&-a/\sqrt{14}&0&\sqrt{42}b/14&0\\
+ b/\sqrt7&0&-2a/\sqrt{14}&0&b/\sqrt7\\
+ 0&\sqrt{42}b/14&0&-a/\sqrt{14}&0\\
+ 0&0&b/\sqrt7&0&2a/\sqrt{14}
+\end{pmatrix}.
+\]
+Here $u=a^2+b^2$.
+Direct multiplication and orthogonal tensor projection give
+\[
+P_0(Q^2)=\frac u5I_5,\quad P_1(Q^2)=P_3(Q^2)=0,
+\]
+\[
+\|P_2(Q^2)\|_\HS=\frac{3u}{7\sqrt{14}},\qquad
+\|P_4(Q^2)\|_\HS=\frac{12u}{7\sqrt{70}}.
+\]
+These identities are checked as polynomial identities in $a,b$ by
+\path{verify_spin2_norm_constraints.py}.
+Since $\Tr\sigma Q=u$, positivity of the variance and Cauchy--Schwarz imply
+\begin{align*}
+u^2&\le\Tr\sigma Q^2\\
+&=\frac u5+\Tr[X_2P_2(Q^2)]+\Tr[X_4P_4(Q^2)]\\
+&\le\frac u5+\frac{3u\sqrt u}{7\sqrt{14}}
+              +\frac{12u\sqrt{v_4}}{7\sqrt{70}}.
+\end{align*}
+For $u>0$, divide by $u$. For $u=0$ the desired inequality is automatic.
+Substituting $u=7a_2^2/2$ and
+$\sqrt{v_4}=\sqrt{35/18}\,a_4$ yields \eqref{t4:quadrupole}.
+In particular,
+\[
+a_4\ge\frac{(245a_2^2-15a_2-14)_+}{20}.
+\]
+
+\subsubsection{The dipole constraints}
+Rotate the mean spin along the positive $z$ axis and put
+$r=\Tr\sigma J_z=|\langle\mathbf J\rangle|$.
+Then $v_1=r^2/10$, so $r=5a_1$.
+The normalized axial tensors are
+\[
+T_{20}=\frac1{\sqrt{14}}\operatorname{diag}(2,-1,-2,-1,2),\qquad
+T_{30}=\frac1{\sqrt{10}}\operatorname{diag}(1,-2,0,2,-1).
+\]
+First, $J_z^2=2I+\sqrt{14}T_{20}$, so
+\[
+r^2\le\Tr\sigma J_z^2\le2+\sqrt{14v_2}=2+7a_2,
+\]
+which proves \eqref{t4:variance}.
+Second,
+\[
+J_z-\frac{\sqrt{10}}3T_{30}
+ =\operatorname{diag}\left(\frac53,\frac53,0,-\frac53,-\frac53\right)
+ \le\frac53I.
+\]
+It follows that
+\[
+r\le\frac53+\frac{\sqrt{10}}3\sqrt{v_3}
+ =\frac53+\frac{2\sqrt5}3a_3,
+\]
+proving \eqref{t4:octupole}.
+
+
+
+\subsection{Dipole lower bound for the determinant deficit}
+For every spin-two density matrix $\sigma$, let
+$L_5(\sigma)=-\log(5^5\det\sigma)$ and let
+$v_1=\Tr[(P_1\sigma)^2]$ denote its squared rank-one multipole norm.
+Then
+\[
+\boxed{\ L_5(\sigma)\ge\frac{25}{2}v_1\ }.
+\]
+The constant is sharp in the limit of small rank-one perturbations of
+$I_5/5$.
+
+Rotate the spin mean along $z$. Write $r=\Tr\sigma J_z\ge0$, so
+$r^2=10v_1$. Dephasing in the $J_z$ basis preserves $r$ and increases
+the determinant by Hadamard's inequality. It therefore suffices to prove
+\[
+F(p):=-\sum_{m=-2}^2\log(5p_m)-\frac54\left(\sum_{m=-2}^2mp_m\right)^2
+\ge0
+\]
+for probability vectors $p$. The assertion is immediate if any $p_m=0$.
+On the interior, $F$ tends to $+\infty$ at the boundary of the simplex,
+since $|r|\le2$. It has a global interior minimum.
+At a constrained stationary point,
+\[
+-\frac1{p_m}-\frac52rm+\lambda=0.
+\]
+Multiply by $p_m$ and sum to obtain $\lambda=5+(5/2)r^2$. Hence
+\[
+p_m=\frac{2/5}{2+r^2-rm}.
+\]
+Every displayed denominator is positive for every real $r$:
+$2+r^2-rm\ge2+r^2-2|r|=(|r|-1)^2+1$.
+Putting $x=r^2$, a direct rational simplification gives
+\[
+\sum_{m=-2}^2\frac{2/5}{2+r^2-rm}-1
+=-\frac{x^2(5x^3+15x^2+20x+12)}
+ {5(x+2)(x^2+4)(x^2+3x+4)}.
+\]
+For $r\ne0$ the right side is strictly negative, contradicting
+normalization. Thus every stationary point has $r=0$, which forces
+$p_m=1/5$. At that point $F=0$, proving the bound.
+
+The normalization identity is verified exactly in
+\path{verify_dipole_burg_bound.py}.
+
+
+
+\subsection{Quadrupole lower bound for the determinant deficit}
+\begin{theorem}
+For every spin-two density matrix $\sigma$, write
+$Q=P_2\sigma$ for its rank-two multipole and $u=\Tr Q^2$.
+Then
+\[
+\boxed{\ -\log(5^5\det\sigma)\ge12u.\ }
+\]
+\end{theorem}
+This bound holds on the entire five-dimensional state space, without a
+symmetric-extension assumption.
+
+\paragraph{The spectrum of a Hermitian quadrupole.}
+Every $Q$ is rotation-equivalent to
+$Q=aT_{20}+b(T_{22}+T_{2,-2})/\sqrt2$, with $a,b$ real and
+$u=a^2+b^2$. This follows by diagonalizing the real traceless Cartesian
+$3\times3$ tensor corresponding to a rank-two spherical tensor.
+Its five eigenvalues consist of
+\[
+\sqrt{2u/7},\quad-\sqrt{2u/7},
+\quad\frac{2a}{\sqrt{14}},
+\quad\frac{-a+\sqrt3b}{\sqrt{14}},
+\quad\frac{-a-\sqrt3b}{\sqrt{14}}.
+\]
+If $q$ is the product of the last three, then
+\[
+q=\frac{a(a^2-3b^2)}{7\sqrt{14}},\qquad
+|q|\le\frac{u^{3/2}}{7\sqrt{14}}.
+\]
+The last inequality follows from
+$|a(a^2-3b^2)|\le(a^2+b^2)^{3/2}$, or the triple-angle identity.
+Consequently,
+\[
+\det(\lambda I-tQ)
+ =\left(\lambda^2-\frac27t^2u\right)
+  \left(\lambda^3-\frac3{14}t^2u\lambda-t^3q\right).
+\]
+When $t>0$ and $\lambda>t\sqrt{2u/7}$,
+\[
+\Tr(\lambda I-tQ)^{-1}
+=\frac{2\lambda}{\lambda^2-2t^2u/7}
+ +\frac{3\lambda^2-3t^2u/14}
+ {\lambda^3-3t^2u\lambda/14-t^3q}.
+\]
+Both denominators and the second numerator are positive. For fixed
+$u,\lambda,t$, this expression increases with $q$, so its maximum occurs
+at $q=u^{3/2}/(7\sqrt{14})$. This is the axial quadrupole $b=0,a=\sqrt u$.
+Writing $z=\sqrt{u/14}$, its eigenvalues are $z(2,-1,-2,-1,2)$.
+
+\paragraph{Exclusion of nonuniform stationary points.}
+Consider
+\[
+F(\sigma)=-\log(5^5\det\sigma)-12\Tr[(P_2\sigma)^2].
+\]
+It tends to $+\infty$ at the boundary of the density-matrix set, because
+the second term is bounded there. Hence it has an interior global minimum.
+At any constrained stationary point,
+\[
+-\sigma^{-1}-24Q+\lambda I=0.
+\]
+Multiplying by $\sigma$ and taking the trace yields $\lambda=5+24u$,
+since $\Tr\sigma Q=u$. Thus
+\[
+\sigma=(\lambda I-24Q)^{-1},\qquad\lambda=5+24u.
+\]
+For every $u\ge0$,
+\[
+\lambda-24\sqrt{2u/7}
+=24\left(\sqrt u-\frac12\sqrt{2/7}\right)^2+\frac{23}{7}>0.
+\]
+The preceding axial comparison is therefore applicable. If $u>0$,
+put $z=\sqrt{u/14}>0$; then $\lambda=5+336z^2$ and
+\begin{align*}
+\Tr\sigma-1
+&\le\frac2{336z^2-48z+5}
+ +\frac2{336z^2+24z+5}
+ +\frac1{336z^2+48z+5}-1\\
+&=-\frac{48z^2\left(790272z^4+56448z^3+7392z^2-312z+7\right)}
+ {(336z^2-48z+5)(336z^2+24z+5)(336z^2+48z+5)}<0.
+\end{align*}
+Indeed all denominator factors are positive, the quartic and cubic terms
+in parentheses are nonnegative, and
+$7392z^2-312z+7>0$ for every real $z$, because
+\[
+312^2-4\cdot7392\cdot7=-109632<0.
+\]
+This contradicts $\Tr\sigma=1$. Thus $u=0$ at every stationary point,
+which forces $\sigma=I_5/5$. There $F=0$, proving the theorem.
+
+All spectrum, determinant and normalization identities are verified
+exactly by \path{verify_quadrupole_burg_bound.py}.
+
+
+
+\subsection{Odd-sector lower bound for the determinant deficit}
+Let $\Theta$ be integer-spin time reversal on the spin-two state space,
+and put $B=(\sigma-\Theta\sigma)/2=X_1+X_3$.
+Then every spin-two density matrix satisfies
+\[
+\boxed{\ -\log(5^5\det\sigma)\ge12\Tr B^2=12(v_1+v_3).\ }
+\]
+In fact this holds for every five-dimensional conjugation, independently
+of the spin interpretation.
+
+Choose a basis in which $\Theta$ is entrywise conjugation. Then $B$ is
+purely imaginary Hermitian antisymmetric, with eigenvalues in opposite
+pairs and at least one zero eigenvalue.
+Consider
+\[
+F(\sigma)=-\log(5^5\det\sigma)-12\Tr B^2.
+\]
+This tends to $+\infty$ at the boundary of the state space, so its minimum
+is attained in the interior. The derivative of $\Tr B^2$ with respect to
+$\sigma$ is $2B$, since the odd projection is self-adjoint for the
+Hilbert--Schmidt inner product. Thus at any constrained stationary point,
+\[
+\sigma^{-1}=\lambda I-24B,\qquad
+\lambda=5+24\Tr B^2\ge5.
+\]
+Time reversal gives $(\Theta\sigma)^{-1}=\lambda I+24B$.
+The identity $B=(\sigma-\Theta\sigma)/2$ therefore implies
+\[
+B=24B(\lambda^2I-576B^2)^{-1}.
+\]
+Every nonzero eigenvalue $b$ of $B$ obeys
+$\lambda^2-576b^2=24$. Thus all nonzero eigenvalues have the same magnitude,
+and there are $k=1$ or $2$ nonzero opposite pairs. Write their squared
+magnitude as $b^2$. Combining
+$\Tr B^2=2kb^2$, $\lambda=5+48kb^2$ and the preceding equation yields
+\[
+k\lambda^2-12\lambda+12(5-2k)=0.
+\]
+For $k=2$, this gives $\lambda=3\pm\sqrt3<5$, impossible.
+For $k=1$, it gives $\lambda=6$, $b^2=1/48$ and $\Tr B^2=1/24$.
+The stationary matrix has two eigenvalues $(6\pm\sqrt{12})^{-1}$ and
+three eigenvalues $1/6$. Hence
+\[
+\det\sigma=\frac1{5184},\qquad
+F(\sigma)=\log\frac{5184}{3125}-\frac12>0.
+\]
+For an exact verification of the last strict inequality, let
+$r=2059/8309$. Then
+\[
+\log\frac{5184}{3125}=2\operatorname{arctanh}r
+ >2\left(r+\frac{r^3}{3}\right)>\frac12,
+\]
+where the second inequality is rational and is checked in
+\path{verify_odd_burg_bound.py}.
+The remaining stationary possibility is $B=0$, which forces
+$\sigma=I_5/5$ and $F=0$. These cases exhaust all stationary points, so
+the global minimum is zero, as claimed.
+
+
+
+\subsection{Nonlinear lower bounds near sector boundaries}
+Let $\sigma$ be a spin-two density matrix, let
+$L_5(\sigma)=-\log(5^5\det\sigma)$, and write $v_l=\Tr[(P_l\sigma)^2]$.
+The following lower bounds hold on the entire five-dimensional state space:
+\begin{align*}
+L_5(\sigma)&\ge B_Q\left(\sqrt{7v_2/2}\right),\\
+B_Q(p)&=-3\log(1-p)-4\log(1+p)+2\log(1+p/2),\\[2mm]
+L_5(\sigma)&\ge B_D\left(\sqrt{5v_1/2}\right),\\
+B_D(p)&=\log(1-p^2/4)-4\log(1-p^2),\\[2mm]
+L_5(\sigma)&\ge-4\log\bigl(1-2(v_1+v_3)\bigr).
+\end{align*}
+The arguments $p$ lie in $[0,1]$, and $v_1+v_3\le1/2$.
+Each expression is zero at zero and is interpreted as $+\infty$ at
+its upper endpoint. The bounds can be combined by taking their maximum,
+also with the previously proved linear lower bounds.
+
+\subsubsection{A general determinant bound}
+Let $H$ be Hermitian with $\|H\|_{\mathrm{op}}\le1$, let
+$h=\Tr\sigma H$, and let $0\le x<1$. The matrix $A=I-xH$ is positive
+definite. Matrix arithmetic--geometric mean, applied to
+$A^{1/2}\sigma A^{1/2}$, gives
+\[
+\det A\det\sigma
+\le\left(\frac{\Tr A\sigma}{5}\right)^5
+=\left(\frac{1-xh}{5}\right)^5.
+\]
+Therefore
+\[
+\boxed{\quad L_5(\sigma)\ge\log\det(I-xH)-5\log(1-xh).\quad}
+\]
+No tracelessness assumption on $H$ is needed for this general statement.
+The formula also follows by optimizing the scalar multiplier in the
+standard variational formula for negative log determinant.
+
+\subsubsection{The quadrupole bound}
+Put $Q=P_2\sigma$, $u=\Tr Q^2$, and suppose $u>0$.
+Set $b=\sqrt{2u/7}$ and $H=Q/b$. The exact quadrupole spectrum established
+in the preceding quadrupole argument gives $\|H\|_{\mathrm{op}}=1$.
+It consists of $1,-1$ and three real numbers of sum zero, squared sum
+$3/2$, and product $q$ with $|q|\le1/4$. Consequently,
+\begin{align*}
+\det(I-xH)&=(1-x^2)(1-3x^2/4-qx^3)\\
+&\ge(1-x^2)(1-3x^2/4-x^3/4)\\
+&=(1-x)^2(1+x)(1+x/2)^2.
+\end{align*}
+Also
+\[
+h=\frac{\Tr\sigma Q}{b}=\frac ub=\sqrt{7u/2}=:p\in[0,1],
+\]
+because $\Tr\sigma Q=u$ and $h\le\|H\|_{\mathrm{op}}=1$.
+For $0<p<1$, choose $x=p$ in the general determinant bound. This gives
+\[
+L_5(\sigma)\ge
+2\log(1-p)+\log(1+p)+2\log(1+p/2)-5\log(1-p^2)
+=B_Q(p).
+\]
+For $u=0$, the bound is $L_5\ge0$.
+For $p=1$, retain $x<1$ and let $x\uparrow1$; the bound tends to
+$+\infty$, proving that the state is singular.
+
+\subsubsection{The dipole bound}
+Rotate the mean spin along $z$ and write $r=\Tr\sigma J_z\ge0$.
+Set $H=J_z/2$ and $p=r/2=\sqrt{5v_1/2}\in[0,1]$.
+Its eigenvalues are $1,1/2,0,-1/2,-1$, so
+\[
+\det(I-xH)=(1-x^2)(1-x^2/4).
+\]
+Taking $x=p$ gives
+\[
+L_5(\sigma)\ge\log(1-p^2/4)-4\log(1-p^2)=B_D(p).
+\]
+The endpoints follow by the same zero-value and limiting arguments.
+
+\subsubsection{The time-reversal-odd bound}
+Write $B=(\sigma-\Theta\sigma)/2=P_1\sigma+P_3\sigma$ and
+$w=\Tr B^2=v_1+v_3$. For $w>0$, put $H=B/\sqrt{w/2}$.
+The eigenvalues of $B$ are $b_1,-b_1,b_2,-b_2,0$, where
+$b_1^2+b_2^2=w/2$. Thus $\|H\|_{\mathrm{op}}\le1$ and its nonzero
+squared eigenvalue magnitudes are $a,1-a$ for some $a\in[0,1]$.
+It follows that
+\[
+\det(I-xH)=(1-ax^2)(1-(1-a)x^2)
+=1-x^2+a(1-a)x^4\ge1-x^2.
+\]
+Since $\Tr\sigma B=w$, we have
+\[
+h=\frac w{\sqrt{w/2}}=\sqrt{2w}=:p\in[0,1].
+\]
+Choosing $x=p$ gives
+\[
+L_5(\sigma)\ge-4\log(1-p^2)=-4\log(1-2w).
+\]
+Again $w=0$ is immediate, while $w=1/2$ follows by a limiting argument
+and forces singularity.
+
+All algebraic determinant identities are verified exactly in
+\path{verify_nonlinear_burg_bounds.py}.
+
+\subsubsection{Optional optimization of the scalar parameter}
+The same proof permits any $0\le x<1$. For the quadrupole, the stronger
+one-dimensional lower bound is
+\[
+L_5(\sigma)\ge\max_{0\le x<1}
+\{2\log(1-x)+\log(1+x)+2\log(1+x/2)-5\log(1-px)\}.
+\]
+For $0<p<1$, its unique maximizer is
+\[
+x_Q(p)=\frac{5p-7+\sqrt{49+130p+145p^2}}{10+6p}.
+\]
+Indeed the sign of the derivative is the negative of
+$(5+3p)x^2+(7-5p)x-10p$, whose derivative is positive on $[0,1]$
+and whose endpoint values have opposite signs. The polynomial is negative
+at $x=p$, so $p<x_Q(p)<1$.
+For the odd sector the analogous bound is
+\[
+L_5(\sigma)\ge\max_{0\le x<1}
+\{\log(1-x^2)-5\log(1-px)\}.
+\]
+Its unique maximizer is
+\[
+x_O(p)=\frac{5p}{1+\sqrt{1+15p^2}},
+\]
+since the derivative changes sign at the unique positive root of
+$3px^2+2x-5p$. Again $p<x_O(p)<1$.
+The zero endpoint is obtained by continuity. The simpler explicit bounds
+above correspond to the admissible choice $x=p$.
+
+
+\subsection{Exact box certificates for eleven order-four base channels}
+This section documents the finite certificates in
+\path{bounds/norm_floor_certificate_N*_K*.json}.
+They establish determinant monotonicity for eleven of the fourteen base
+channels in the exact all-spin finite reduction. No numerical optimization
+result is used as a proof: optimization only proposes rational identities,
+which are then checked exactly, and every final scalar comparison is rational.
+
+\paragraph{Coordinates and physical positive maps.}
+Write a physical four-body marginal as
+\[
+ \sigma=I_5/5+\sum_{l=1}^4X_l,\qquad
+ v_l=\operatorname{Tr}X_l^2,\qquad a_l=c_l\sqrt{v_l},\qquad
+ (c_1^2,c_2^2,c_3^2,c_4^2)=(2/5,2/7,1/2,18/35).
+\]
+The operator-norm estimates $\|X_l\|_{\rm op}\le a_l$ were proved above.
+The target output is $\tau=I_5/5+\sum_l f_lX_l$.
+Let $g^{(j)}$ be a finite list of multiplier vectors such that
+$\eta_j=I_5/5+\sum_lg_l^{(j)}X_l$ is a density matrix for every physical
+input marginal. These maps need only be positive on the physical marginal
+domain; no determinant monotonicity assumption about them is required.
+The list used here consists of the five irreducible covariant channels
+from spin $N/2$ to spin two, their time reversals, and their compositions
+with the three local positive maps below and their time reversals.
+For odd $N$, the global even-dimensional Breuer--Hall map also gives the
+columns $g_l^{(j)}h_l$, where
+$h=(0,-2/(N-1),0,-2/(N-1))$.
+
+For completeness, all three additional local maps arise by twirling
+\[
+ X\longmapsto\operatorname{Tr}(X)I-X-VX^TV^\dagger,
+ \qquad V=A U_{\rm TR},\quad V^T=-V,\quad \|V\|_{\rm op}\le1.
+\]
+For rank-one inputs, the vectors $\psi$ and $V\overline\psi$ are
+orthogonal and the latter has norm at most one, proving positivity.
+After twirling, normalize by $4-\nu$, where
+$\nu=\operatorname{Tr}AA^\dagger/5$. The normalized maps are unital and
+trace preserving. The three choices are
+\[
+ A_1=J_+/\sqrt6,\qquad A_2=\operatorname{diag}(1,1,0,-1,-1),
+ \qquad
+ A_3=\begin{pmatrix}
+ 0&1&0&0&0\\0&0&2\sqrt6/5&0&0\\0&0&0&2\sqrt6/5&0\\
+ 0&0&0&0&1\\0&0&0&0&0
+ \end{pmatrix}.
+\]
+Writing $\nu_1,\nu_3$ for their rank-one and rank-three squared
+Hilbert--Schmidt norms divided by five, the pairs are respectively
+\[
+ (2/3,0),\qquad(18/25,2/25),\qquad(484/625,6/625).
+\]
+Their rank-$l$ multipliers are
+\[
+ b_l=\frac{-1-(-1)^l\{\nu_1 f_l(4,1)+\nu_3 f_l(4,3)\}}
+ {4-\nu_1-\nu_3}.
+\]
+To justify the multiplier formula, consider the twirl of $X\mapsto AXA^\dagger$.
+The vectorized $A$ has rank-one and rank-three components only. Averaging
+its Choi projector over rotations removes cross terms and replaces each
+rank-$L$ diagonal block by its trace divided by $2L+1$. Comparison with
+the vertex Choi normalization in Section~2.2 gives exactly
+$\nu_1\Phi_1^{(4)}+\nu_3\Phi_3^{(4)}$. The other terms of the twirled
+positive map are $\operatorname{Tr}(X)I-X$ and the negative of that
+map composed with $\Theta$, proving the displayed $b_l$. Its value on
+$I$ and its trace multiplier are both $4-\nu_1-\nu_3>0$, which proves
+the stated normalization. The three matrices displayed above satisfy
+$V^{\mathsf T}=-V$ and $VV^\dagger\preceq I$ by direct multiplication;
+projection onto $J_z,J_+$ and their adjoints gives the listed $\nu$ pairs.
+
+The exact Racah multipliers and global channel multipliers are reconstructed
+by the verifier, independently of their values stored in each certificate.
+
+\paragraph{A certified lower bound for the output spectrum.}
+Suppose nonnegative rational coefficients satisfy
+\[
+ f_l=\sum_jw_jg_l^{(j)}+h_l^+-h_l^-,\qquad l=1,\ldots,4.
+\]
+Then
+\[
+ \tau=\sum_jw_j\eta_j+
+ \frac{1-\sum_jw_j}{5}I+
+ \sum_l(h_l^+-h_l^-)X_l
+\]
+and therefore
+\[
+ \lambda_{\min}(\tau)\ge
+ m(a):=\frac{1-\sum_jw_j}{5}-\sum_l(h_l^++h_l^-)a_l.
+\]
+This affine bound decreases in each coordinate. On a box
+$a_l\in[\underline a_l,\overline a_l]$, the single rational value
+$m(\overline a)$ is thus a valid uniform spectral floor.
+The stored floor bases contain every coefficient of this exact identity.
+
+\paragraph{Initial domain and exclusions.}
+For each known positive image, $\operatorname{Tr}\eta_jX_l'=\|X_l'\|_2^2$
+and the operator-norm estimate imply
+$(g_l^{(j)})^2v_l\le c_l^2$. Hence the initial domain is the rational box
+\[
+ 0\le a_l\le c_l^2/\max_j|g_l^{(j)}|,
+\]
+where the identity image is included. Each image also obeys
+$\sum_l(g_l^{(j)})^2v_l\le4/5$. The two further linear inequalities
+\[
+ 8v_2+5v_3+v_4\le14/5,\qquad 5v_1+4v_4-3v_2\le6/5,
+\]
+and the three inequalities
+\[
+ 245a_2^2-15a_2-14\le20a_4,\quad
+ 25a_1^2\le2+7a_2,\quad15a_1\le5+2\sqrt5a_3
+\]
+hold for every spin-two state; as proved in the physical norm constraints above.
+They can be applied to every positive image by replacing $v_l$ by
+$(g_l^{(j)})^2v_l$ and $a_l$ by $|g_l^{(j)}|a_l$.
+A box is excluded only when the exact minimum of one left-hand side on
+that box exceeds its right-hand side. The last square-root inequality
+is squared only when its left-hand side is positive.
+If the input is forced to be singular, determinant monotonicity holds
+immediately because the output is positive semidefinite.
+
+\paragraph{Scalar comparisons on the remaining boxes.}
+Put $L(\omega)=-\log(5^5\det\omega)$ and $V=\sum_lv_l$.
+For a uniform floor $m>0$,
+\[
+ L(\tau)\le C_5(m)\sum_lf_l^2v_l,\qquad
+ C_5(m)=\frac{20}{(1-5m)^2}
+ \log\frac{256}{3125m(1-m)^4}.
+\]
+The global and sector lower bounds used for the input are
+\[
+ \begin{split}
+ L(\sigma)\ge\max\bigl\{&(25/3)V,(25/2)v_1,12v_2,12(v_1+v_3),\\
+ &\mathcal L_5(V),B_D((5/2)a_1),B_Q((7/2)a_2),\\
+ &-4\log(1-2(v_1+v_3))\bigr\},
+ \end{split}
+\]
+where
+\[
+ \mathcal L_5(V)=\log\frac{256}{3125A(1-A)^4},\quad
+ A=1/5+\sqrt{4V/5},
+\]
+\[
+ B_D(p)=\log\frac{1-p^2/4}{(1-p^2)^4},\qquad
+ B_Q(p)=\log\frac{(1+p/2)^2}{(1-p)^3(1+p)^4}.
+\]
+The dimension-five scalar, dipole, quadrupole, odd-sector and nonlinear
+proofs have all been given above. The nonlinear expressions are increasing on their
+domains, so evaluation at lower box endpoints is valid.
+
+A box certificate may use a ratio bound, a direct comparison of upper
+and lower endpoint values, or a convex combination of the four linear
+input lower bounds. For the latter, rational weights $\lambda_i\ge0$,
+$\sum_i\lambda_i=1$, produce a linear lower bound with coefficients
+$d_l=\sum_i\lambda_i d_l^{(i)}$. It suffices to verify
+\[
+ \sum_l\min\{(d_l-C_5(m)f_l^2)\underline v_l,
+                  (d_l-C_5(m)f_l^2)\overline v_l\}\ge0.
+\]
+This is an exact sufficient condition on the entire box.
+Linear-fractional ratios are maximized at box vertices; when the
+denominator is the maximum of $(25/3)V$ and $(25/2)v_1$, intersections
+of their equality plane with box edges are included as well.
+
+\paragraph{Exact arithmetic and coverage.}
+Logarithms are enclosed by rational partial sums of
+$\log x=2\sum_{k\ge0}z^{2k+1}/(2k+1)$, $z=(x-1)/(x+1)$,
+after power-of-two range reduction; the omitted positive tail is bounded
+by its geometric majorant. Twelve terms suffice for the saved comparisons.
+Square roots in $\mathcal L_5$ are bounded below using an integer square
+root on the grid $2^{-40}\mathbb Z$.
+The root box is bisected along successive coordinates. The verifier
+reconstructs its full binary subdivision tree from the rational endpoints,
+checks that every internal node has both children and that leaves do not
+overlap, and then verifies every exact predicate. Thus coverage does not
+rely on an optimization status flag or a numerical volume sum.
+
+\begin{center}
+\begin{tabular}{rrr}
+$N$&$K$&Certified leaf boxes\\\hline
+5&4&353\\
+6&4&219\\
+6&5&16\\
+7&4&48\\
+7&5&36\\
+7&6&15\\
+8&4&41290\\
+8&7&16\\
+9&8&46\\
+10&9&397\\
+11&10&12567
+\end{tabular}
+\end{center}
+For each of these eleven cases the saved partition is complete and the
+independent verifier succeeds. The remaining finite cases $(5,2)$,
+$(5,3)$ and $(6,3)$ are not proved by these certificates.
+
+\subsection{Sharp output Burg bound from a floor and a purity bound}
+For $0<m<1/5$ and $s\ge0$, consider the compact eigenvalue set
+\[
+ \mathcal E(m,s)=\{p_i\ge m:\ \sum_{i=1}^5p_i=1,
+                         \ \sum_{i=1}^5p_i^2\le1/5+s\}.
+\]
+The following finite formula gives the exact maximum of
+$L(p)=-\sum_i\log(5p_i)$ on this set.
+If $s\ge(4/5)(1-5m)^2$, the maximum is attained at
+$(1-4m,m,m,m,m)$, and equals
+\[
+ U(m,s)=\log\frac1{3125m^4(1-4m)}.
+\]
+Otherwise, for each $k=0,1,2,3$, set
+\[
+ q=5-k,\quad S=1-km,\quad Q=1/5+s-km^2,\quad
+ \Delta=qQ-S^2,
+\]
+\[
+ b=\frac{S-\sqrt{(q-1)\Delta}}q,\qquad
+ a=\frac{S+\sqrt{\Delta/(q-1)}}q.
+\]
+Retain the candidate when $\Delta\ge0$ and $b\ge m$.
+Then
+\[
+ \boxed{\quad U(m,s)=
+ \max_{\text{retained }k}\log\frac1{3125m^kba^{q-1}}.\quad}
+\]
+The case $s=0$ has $U=0$. At least one candidate is retained whenever
+the vertex branch is not applicable.
+
+\paragraph{Proof.}
+The simplex vertex has maximal purity $(1-4m)^2+4m^2$ and is a
+majorization maximum on the floor-constrained simplex, proving the first
+branch. Suppose it is excluded by the purity constraint.
+At a maximizer, take the smallest face of the floor-constrained simplex
+containing that maximizer, so precisely $k$ entries equal $m$ and its
+remaining $q$ entries are strictly larger than $m$.
+If the purity constraint were inactive and $q\ge2$, a nonzero direction
+with zero coordinate sum would be feasible in both signs locally.
+The second derivative of $-\sum_i\log p_i$ in that direction is strictly
+positive, contradicting a local maximum. The alternative $q=1$ is the
+excluded simplex vertex. Thus purity is active.
+
+If all free coordinates are equal, then $\Delta=0$ and the displayed
+formula already includes the candidate. Otherwise trace and purity
+constraints have independent gradients on the face. Stationarity gives
+\[
+ -p_i^{-1}=\lambda+2\mu p_i.
+\]
+There are at most two positive free-coordinate values, say $a>b$.
+Subtracting their equations gives $2\mu=1/(ab)$. The Lagrangian Hessian
+coefficient at $b$ is
+\[
+ b^{-2}-(ab)^{-1}>0.
+\]
+If $b$ occurred at least twice, the direction increasing one such entry
+and decreasing the other would be tangent to both constraints, and have
+positive second variation. This contradicts the second-order condition
+at a constrained maximum. Hence the smaller value occurs once and the
+larger value $q-1$ times. The trace and purity equations give the stated
+$a,b$. If a candidate has $b=m$, it belongs to the boundary of the chosen
+face and is harmlessly counted twice. Every global maximum has now been
+included, and each retained candidate is feasible, proving equality.
+
+\paragraph{Rational interval evaluation.}
+The certificate verifier never needs to evaluate the displayed roots or
+logarithms in floating point. Rational lower and upper bounds on each
+root give $b_-$, $b_+$ and $a_-$. A candidate is skipped only if
+$\Delta<0$ or $b_+<m$. Otherwise, even when feasibility is uncertain,
+\[
+ p_1p_2p_3p_4p_5\ge m^k\max(m,b_-)\max(m,a_-)^{q-1}
+\]
+for that candidate. Applying an upper rational logarithm enclosure gives
+a conservative upper bound. Taking the maximum over all unexcluded
+candidates is therefore rigorous.
+
+\subsection{Two compact-domain K=3 certificates}
+The files
+\path{compact_norm_floor_certificate_N5_K3.json} and
+\path{compact_norm_floor_certificate_N6_K3.json} establish
+$L(\tau)\le L(\sigma)$ on the respective domains
+\[
+ N=5:\quad p_2=\sqrt{7v_2/2}\le31/32,
+ \qquad
+ N=6:\quad p_2\le511/512.
+\]
+The first has 488 leaf boxes and five exact output-floor identities;
+the second has 696 leaf boxes and six identities. Both complete
+partitions passed the independent exact verifier.
+Their complementary endpoint regions are handled separately by the
+analytic endpoint estimates, so these compact certificates are not
+presented as proofs on the entire initial box.
+
+On a box, the spectral floor is evaluated at its upper corner and
+$s=\sum_lf_l^2\overline v_l$. The above $U(m,s)$ is compared to lower
+bounds on the input at the box's lower corner. Besides the earlier
+bounds, an arbitrary stored rational parameter $x\in[0,1)$ gives
+\[
+ L(\sigma)\ge
+ \log\frac{(1-x)^2(1+x)(1+x/2)^2}{(1-xp_2)^5}.
+\]
+For the odd sector $w=v_1+v_3$, a stored rational $t\ge0$ satisfying
+$2wt^2<1$ and $2wt<1$ gives
+\[
+ L(\sigma)\ge\log\frac{1-2wt^2}{(1-2wt)^5}.
+\]
+These follow from the general determinant arithmetic--geometric-mean
+bound proved in the nonlinear bounds above; the second uses
+$x=t\sqrt{2w}$. At the lower endpoint $w_0$ of a box, the selected
+$x=t\sqrt{2w_0}$ is fixed when invoking monotonicity in the expectation
+parameter, so the endpoint evaluation is a valid bound throughout the
+box. No optimality claim about the stored parameters is required.
+Both parameter choices are rationally checked, and the logarithm of the
+resulting rational expression is enclosed exactly.
+
+
+\subsection{Completing both K=3 cases at the boundary}
+Let $\rho$ be a spin-$N/2$ state for $N=5$ or $6$, and put
+$\sigma=R_{N,4}\rho$, $\tau=R_{N,4}\Phi_3^{(N)}\rho$,
+$u=\Tr[(P_2\sigma)^2]$ and $p=\sqrt{7u/2}$.
+Then $0\le p\le1$.
+\begin{theorem}
+The determinant inequality $\det\tau\ge\det\sigma$ holds throughout
+\[
+N=5:\quad p\ge\frac{31}{32},\qquad
+N=6:\quad p\ge\frac{511}{512}.
+\]
+For $p<1$ these certificates give the strict inequality
+$L_5(\tau)<L_5(\sigma)$, where $L_5=-\log(5^5\det)$.
+\end{theorem}
+
+\subsubsection{Exact positive-output decompositions}
+Let $G_q$ denote the extremal covariant channel from spin $N/2$ to spin
+$2$ with environment spin $(N-4)/2+q$; $G_0=R_{N,4}$.
+Each $G_q(\rho)$ is positive with trace one.
+Writing $X_2=P_2\sigma$, exact multiplier comparison gives
+\begin{align*}
+N=5:\quad\tau&=\frac4{63}I_5+\frac4{105}G_0(\rho)
+ +\frac{29}{45}G_2(\rho)-\frac29X_2,\\
+N=6:\quad\tau&=\frac1{45}I_5+\frac1{75}G_0(\rho)
+ +\frac{19}{45}G_1(\rho)+\frac{34}{75}G_2(\rho)-\frac7{90}X_2.
+\end{align*}
+The constant terms and channel weights preserve trace in both identities.
+The sharp quadrupole norm identity is
+$\|X_2\|_{\mathrm{op}}=\sqrt{2u/7}=2p/7$.
+Consequently, with $\delta=1-p$,
+\[
+N=5:\quad\lambda_{\min}(\tau)\ge\frac4{63}\delta,
+\qquad
+N=6:\quad\lambda_{\min}(\tau)\ge\frac1{45}\delta.
+\]
+
+\subsubsection{Uniform output-purity bounds}
+The exact bounds needed below are
+\[
+N=5:\quad\Tr\tau^2\le\frac{6739}{22050},\qquad
+N=6:\quad\Tr\tau^2\le\frac13.
+\]
+Here is an explicit construction of the two-copy operator used for this
+table. Let $\Lambda=R_{N,4}\Phi_3^{(N)}$, let $\Lambda^*$ be its trace
+adjoint, and let $E_{ab}=|a\rangle\langle b|$ in the five-dimensional
+output basis. Put
+\[
+ O_N=\sum_{a,b=0}^4\Lambda^*(E_{ab})\otimes\Lambda^*(E_{ba}).
+\]
+Expanding the trace gives
+$\operatorname{Tr}[(\rho\otimes\rho)O_N]=\operatorname{Tr}\Lambda(\rho)^2$.
+Covariance makes $O_N$ invariant under simultaneous rotations, so it is
+scalar on each total-spin copy. For its projector
+\[
+ P_J=\sum_{M=-J}^J|J,M\rangle\langle J,M|,\qquad
+ |J,M\rangle=\sum_{m,n}\langle N/2,m;N/2,n\mid J,M\rangle|m,n\rangle,
+\]
+the scalar is $\operatorname{Tr}(P_JO_N)/(2J+1)$. Use the reduction
+Kraus matrices (5), the square channel Kraus construction in Section~2.4,
+and the Clebsch--Gordan recurrence there in this finite formula. Its eigenvalues
+on the symmetric tensor square of the global spin space are
+\[
+\begin{array}{c|c|c}
+N&J&\text{purity-operator eigenvalue}\\\hline
+5&1&11413/61250\\
+ &3&62291/275625\\
+ &5&6739/22050\\\hline
+6&0&-1/18\\
+ &2&19/150\\
+ &4&16/81\\
+ &6&1/3
+\end{array}
+\]
+A pure tensor $|\psi\rangle^{\otimes2}$ belongs to the symmetric tensor
+square, so its expectation is bounded by the maximum listed eigenvalue.
+Convexity of purity extends this upper bound to mixed input states.
+Equivalently, the embedded checker evaluates the same contractions
+using exact recoupling coefficients in
+\path{verify_k3_endpoint.py}.
+Thus $V_{\rm out}=\Tr\tau^2-1/5$ obeys
+\[
+N=5:\quad V_{\rm out}\le\frac{2329}{22050},\qquad
+N=6:\quad V_{\rm out}\le\frac2{15}.
+\]
+
+\subsubsection{A common input lower bound}
+The nonlinear quadrupole bound gives, for $0<\delta<1$,
+\[
+L_5(\sigma)\ge3\log(1/\delta)-4\log(2-\delta)
+ +2\log((3-\delta)/2).
+\]
+For $\delta\le1/32$, use
+$\log(2-\delta)\le\log2\le7/10$ and
+\[
+\log((3-\delta)/2)\ge\log(95/64)
+\ge2\frac{95-64}{95+64}=\frac{62}{159}.
+\]
+Writing $\ell=\log(1/\delta)$, this yields
+\[
+L_5(\sigma)\ge3\ell-\frac{1606}{795}.
+\]
+Here $\log2\ge2/3$ follows from the same elementary bound
+$\log x\ge2(x-1)/(x+1)$ for $x\ge1$.
+The upper bound $\log2<7/10$ follows from
+$\sum_{k=0}^3(7/10)^k/k!>2$.
+
+\subsubsection{The $N=5$ endpoint}
+Let $\delta\le1/32$ and $m=(4/63)\delta\le1/504$.
+The established minimum-eigenvalue Burg upper bound gives
+\[
+L_5(\tau)\le\frac{20V_{\rm out}}{(1-5m)^2}
+ \log\frac{256}{3125m(1-m)^4}.
+\]
+Since $20V_{\rm out}\le4658/2205$, $\log x\le x-1$ and
+$-\log(1-m)\le m/(1-m)$ give
+\[
+L_5(\tau)\le A_5(\ell+b_5),\qquad
+A_5=\frac{4658}{2205}\left(\frac{504}{499}\right)^2
+=\frac{2683008}{1245005}<3,
+\]
+\[
+b_5=\frac{907}{3125}+\frac4{503}.
+\]
+Indeed the constant in the logarithm is
+$256/[3125(4/63)]=4032/3125$.
+Also $\ell\ge5\log2\ge10/3$. Therefore
+\begin{align*}
+L_5(\sigma)-L_5(\tau)
+&\ge(3-A_5)\ell-A_5b_5-\frac{1606}{795}\\
+&\ge\frac{47878982324888}{311161765265625}>0.
+\end{align*}
+
+\subsubsection{A determinant bound using the output purity}
+For a five-dimensional state with $\lambda_{\min}\ge m$,
+$\Tr\tau^2\le1/3$, and $0<m\le1/400$, we claim
+\[
+\det\tau\ge\frac{m^2}{64}.
+\]
+Here is a direct derivation of the needed extremal spectrum.
+Minimize the logarithm of the product of the five eigenvalues subject to
+$p_i\ge m$, $\sum p_i=1$ and $\sum p_i^2\le1/3$.
+If the purity constraint were inactive, strict concavity along any
+trace-preserving variation of two free coordinates would exclude a
+minimum with two or more coordinates greater than $m$.
+The only remaining candidate has four coordinates equal to $m$, but its
+purity $(1-4m)^2+4m^2$ exceeds $1/3$ in the range in question.
+Thus the purity constraint is active.
+On a face with $k$ coordinates equal to $m$, an all-equal free spectrum
+would have purity $km^2+(1-km)^2/(5-k)$, which is not $1/3$ in this
+range. The trace and purity gradients on the free coordinates are therefore
+independent. At an interior constrained extremum the free coordinates
+have at most two values $a>b$:
+the multiplier equation is $1/p_i=\lambda+2\nu p_i$.
+The smaller value cannot be repeated. Indeed $2\nu=-1/(ab)$, and the
+constrained second derivative on a variation of two equal smaller
+coordinates is proportional to $-1/b^2+1/(ab)<0$.
+Consequently, the free spectrum has one $b$ and $4-k$ copies of $a$.
+The cases $k=0,1$ give a negative $b$. For $k=0$ this is immediate;
+for $k=1$,
+\[
+b=\frac{1-m-\sqrt{1+6m-15m^2}}4<0,
+\]
+because $1+6m-15m^2-(1-m)^2=8m(1-2m)>0$.
+For $k=3$, the residual squared-displacement condition is
+$-1/3+6m-15m^2\ge0$, which fails for $m\le1/400$.
+The case $k=4$ is infeasible as already observed.
+Thus the minimum product has spectrum $(m,m,b,a,a)$, where
+\[
+b=\frac{1-2m-\sqrt{8m-20m^2}}3,\qquad
+ a=\frac{1-2m+\sqrt{2m-5m^2}}3.
+\]
+In this range $a\ge(1-2m)/3>1/4$.
+Also $b\ge1/4$, since $1/4-2m>0$ and
+\[
+(1/4-2m)^2-(8m-20m^2)
+=\frac1{16}-9m+24m^2\ge\frac1{16}-\frac9{400}>0.
+\]
+This proves $\det\tau=m^2ba^2\ge m^2/64$ at the minimum, hence everywhere.
+
+\subsubsection{The $N=6$ endpoint}
+Let $\delta\le1/512$ and $m=\delta/45<1/400$.
+The preceding determinant bound and $\Tr\tau^2\le1/3$ give
+\[
+L_5(\tau)\le-\log\frac{3125m^2}{64}
+=2\ell+\log\frac{5184}{125}<2\ell+\frac{15}{4}.
+\]
+The last logarithm bound is exact: the Taylor polynomial satisfies
+\[
+\sum_{k=0}^8\frac{(15/4)^k}{k!}-\frac{5184}{125}
+=\frac{3077585521}{7340032000}>0.
+\]
+Also $\ell\ge9\log2>6$. Thus
+\[
+L_5(\sigma)-L_5(\tau)
+>\ell-\frac{15}{4}-\frac{1606}{795}
+>6-\frac{15}{4}-\frac{1606}{795}
+=\frac{731}{3180}>0.
+\]
+At $p=1$, the input nonlinear Burg bound diverges, so $\det\sigma=0$
+and the determinant comparison follows immediately from positivity of
+$\tau$. This completes both endpoint certificates.
+
+
+
+
+\subsection{The exceptional base case (N,K)=(5,2)}
+\begin{theorem}
+Let $\Phi_2$ be the extremal SU(2)-covariant channel from spin $5/2$ to itself
+with environment spin $K=2$, and let $R=R_{5,4}$ denote reduction from the
+symmetric five-qubit space to the symmetric four-qubit space. Then
+\[
+ \boxed{\det R\Phi_2(\rho)\ \geq\ \det R(\rho)\qquad(\rho\succeq0).}
+\]
+In particular, the unshifted determinant inequality holds for every mixed
+spin-$5/2$ input, with arbitrary simultaneous complex coherences.
+\end{theorem}
+
+This is a computer-assisted exact weighted sum-of-squares proof. The embedded
+rational data specify the polynomial matrices and Gram matrices. The verifier
+checks the channel, covariance, polynomial identity, and positivity using
+integer and rational arithmetic. An SDP solver is not needed to verify the
+certificate.
+
+\subsubsection{Channel and rational coordinates}
+Use the Dicke basis indexed by $a=0,\ldots,5$, and the Kraus convention
+\[
+ (K_q)_{ra}=\left\langle \tfrac52,\tfrac52-a;2,q
+       \mathrel{\big|}\tfrac52,\tfrac52-r\right\rangle,
+ \qquad q=-2,\ldots,2.
+\]
+Thus $\Phi_2(\rho)=\sum_qK_q\rho K_q^\dagger$ and
+$\sum_qK_q^\dagger K_q=I_6$. The two reduction Kraus operators satisfy
+\[
+ (F_b)_{r,r+b}=\sqrt{\frac{\binom4r}{\binom5{r+b}}},\qquad b=0,1.
+\]
+Put $D_n=\diag\bigl(\sqrt{\binom n0},\ldots,\sqrt{\binom nn}\bigr)$ and
+$\rho=D_5HD_5$. Then $\rho\succeq0$ if and only if $H\succeq0$.
+Writing $R(\rho)=D_4A(H)D_4$ and $R\Phi_2(\rho)=D_4B(H)D_4$ gives
+\[
+ A(H)_{rs}=H_{rs}+H_{r+1,s+1},\qquad
+ \Delta(H)=96\bigl(\det B(H)-\det A(H)\bigr).
+\]
+The linear map $B$ has rational coefficients. The file
+\path{coherent_sos/channel_rational.json} lists them; the verifier checks
+every coefficient against the Kraus definition above. The factor $96$ is
+$\det(D_4)^2$.
+
+For normalized inputs, if $R(\rho)=I_5/5+X_1+X_2+X_3+X_4$, the same channel is
+\[
+ R\Phi_2(\rho)=\frac{I_5}{5}+\frac{23}{35}X_1+\frac1{10}X_2
+                 -\frac{29}{70}X_3-\frac12X_4.
+\]
+The certificate concerns the homogeneous degree-five polynomial $\Delta$;
+no trace normalization or restriction on $X_1,X_3$ is used in the proof.
+
+\subsubsection{The weighted sum-of-squares identity}
+Let $S_{\rm a},S_{\rm s},S_{\rm m}$ be the real rational row bases specified in
+\path{source_bases.json}. They span the exterior cube, symmetric cube, and
+the first-two-factor-symmetric subspace orthogonal to the fully symmetric
+cube, respectively. Their dimensions are $20,56,70$.
+Define the positive weights
+\[
+ W_1(H)=H,\qquad
+ W_\lambda(H)=S_\lambda H^{\otimes3}S_\lambda^{\mathsf T}
+ \quad(\lambda={\rm a,s,m}).
+\]
+All four weights are positive semidefinite when $H\succeq0$.
+
+For output spin $J$, put
+$M_J=\diag\bigl(\binom{2J}0,\ldots,\binom{2J}{2J}\bigr)$.
+The rational polynomial matrices $Q_{\lambda,J,a}(H)$ in the final data have
+degree two for $\lambda=1$ and degree one for the cubic weights. The identity is
+\begin{equation}\label{sos:eq:sos}
+ \boxed{\displaystyle
+ \Delta(H)=\sum_{\lambda,J}\sum_{a,b}
+ G^{(\lambda,J)}_{ab}\,
+ \Tr\!\left[W_\lambda(H)
+ Q_{\lambda,J,a}(H)^\dagger M_JQ_{\lambda,J,b}(H)\right].}
+\end{equation}
+The double sums are real because the Gram matrices are real symmetric.
+There are 35 Gram blocks, with the following dimensions:
+\begin{center}
+\begin{tabular}{c|rrrrrrrrr|r}
+\toprule
+$J$ & $\frac12$&$\frac32$&$\frac52$&$\frac72$&$\frac92$&$\frac{11}2$&$\frac{13}2$&$\frac{15}2$&$\frac{17}2$& Total\\
+\midrule
+$W_1$ &17&30&36&38&35&26&16&7&2&207\\
+$W_{\rm a}$ &5&9&11&11&9&7&4&2&1&59\\
+$W_{\rm s}$ &7&12&15&14&11&7&3&1&0&70\\
+$W_{\rm m}$ &12&22&27&28&24&17&10&5&1&146\\
+\bottomrule
+\end{tabular}
+\end{center}
+Their 5523 independent entries are rational. A real Gram factorization of
+the positive Gram blocks turns \eqref{sos:eq:sos} into 482 weighted matrix squares.
+
+Each final polynomial matrix is encoded in
+\path{exact_reduced_basis_k.json}: every coefficient is the listed integer
+divided by the factor's listed denominator. The matrices $G$ are encoded in
+\path{exact_sos_certificate.json} as
+\[
+ G_k=L_kL_k^{\mathsf T}+E_k.
+\]
+The entries of $L_k$ are listed integers divided by $10^{12}$; the sparse
+corrections $E_k$ are listed exact rational numbers. Upper-triangular entries
+are indexed consecutively, block by block and row by row.
+
+\subsubsection{Why the finite identity check is conclusive}\label{sec:sos-identity}
+We spell out the polynomial identity test, including the dimension
+calculation. No invariant-space dimension is an additional hypothesis.
+All coefficients below are rational; the variables $h_{ab}$,
+$0\le a,b\le5$, are initially independent. On Hermitian matrices the
+formal involution $h_{ab}^*=h_{ba}$ is ordinary complex conjugation.
+
+\paragraph{Exact meaning of the polynomial and Gram data.}
+Block $k$ is specified by \path{exact_reduced_basis_k.json}.
+Its fields \texttt{kind}, \texttt{J2}, and \texttt{source\_dimension}
+choose $\lambda$, $2J$, and the number of columns of $Q$.
+For its $a$th polynomial matrix, divide all coefficients by
+\texttt{denominators[a]}. A stored entry $[\boldsymbol\mu,c,v]$
+in row $r$ contributes
+\[
+ (Q_{\lambda,J,a})_{r,c}\mathrel{+}=
+ \frac{v}{\texttt{denominators[a]}}
+ \prod_{h\in\boldsymbol\mu}h_{\lfloor h/6\rfloor,\,h\bmod6}.
+\]
+Unlisted entries are zero, and repeated entries add. The lists have
+length two for $W_1$ and length one for the cubic weights. Thus the
+weighted expression has degree five in every block.
+The rows of $S_\lambda$ are the integer rows in
+\path{source_bases.json}; no orthonormality of those rows is required
+for positivity. The field \texttt{rational\_whitening} records
+construction history and is not applied a second time to $Q$.
+The Gram matrices are
+$G_k=L_kL_k^{\mathsf T}+E_k$, where
+$L_k=\texttt{L\_integer}/10^{12}$ in
+\path{exact_sos_certificate.json}. Its sparse \texttt{corrections}
+are the entries of $E_k$, indexed by the upper triangles, block by
+block, each triangle in row order; a listed off-diagonal value is
+placed symmetrically. These rules specify every entry of the identity.
+
+\paragraph{Positivity without a numerical eigenvalue test.}
+For each block the exact rational checks give
+\[
+ \sum_{i,j}|(L_k^{-1})_{ij}|^2\le2^{16},\qquad
+ \max_i\sum_j|(E_k)_{ij}|\le2^{-38}.
+\]
+Indeed the first bound implies
+$\|L_k^{-1}\|_{\rm op}^2\le2^{16}$, so
+$L_kL_k^{\mathsf T}\succeq2^{-16}I$; the second bounds the operator
+norm of a real symmetric $E_k$. Hence
+$G_k\succeq(2^{-16}-2^{-38})I\succ2^{-17}I$.
+Factoring $G_k=C_k^{\mathsf T}C_k$ and putting
+$Z_s=\sum_a(C_k)_{sa}Q_a$ rewrites its contribution as
+\[
+ \sum_s\operatorname{Tr}(W_\lambda Z_s^\dagger M_JZ_s)
+ =\sum_s\|M_J^{1/2}Z_sW_\lambda^{1/2}\|_{\rm HS}^2\ge0.
+\]
+This argument uses only positivity of $H$, and covers singular $H$.
+
+\paragraph{Covariance is checked as coefficient identities.}
+Put $\widetilde Q_a=Q_aS_\lambda$, with $S_1=I_6$ for the linear
+weight. Its source columns are indexed by $c$ for that weight and by
+the ordered triples $(c_1,c_2,c_3)$ for the cubic weights. Represent
+the latter by $z^{(1)}_{c_1}z^{(2)}_{c_2}z^{(3)}_{c_3}$, where the
+three sets of six variables are independent. The stored column index
+is $36c_1+6c_2+c_3$. These are coordinates of the full tensor cube:
+permutations of the slots are not identified. Identifying the three
+sets of variables would erase the exterior and mixed-symmetry source
+spaces and would not prove their covariance.
+The two derivations on these polynomials are determined by
+\begin{align*}
+ \mathcal D_{\downarrow}h_{ab}&=(5-a)h_{a+1,b}-b h_{a,b-1},&
+ \mathcal D_{\downarrow}z_a^{(s)}&=(5-a)z_{a+1}^{(s)},\\
+ \mathcal D_{\uparrow}h_{ab}&=a h_{a-1,b}-(5-b)h_{a,b+1},&
+ \mathcal D_{\uparrow}z_a^{(s)}&=a z_{a-1}^{(s)},
+\end{align*}
+with out-of-range variables zero and the product rule on monomials.
+If $q_r$ is lifted row $r$, the checks are
+\[
+ \operatorname{weight}(q_r)=2J-2r,\qquad
+ \mathcal D_{\downarrow}q_r=(2J-r)q_{r+1},\qquad
+ \mathcal D_{\uparrow}q_r=rq_{r-1}.
+\]
+The weight of $h_{ab}$ is $2(b-a)$ and that of $z_c^{(s)}$ is $5-2c$.
+These equations are checked coefficient by coefficient for all 482
+matrices. They say exactly that each polynomial row transforms as the
+indicated spin-$J$ representation. To show explicitly that the weighted
+traces are invariant, let $U$ be a physical spin-$5/2$ rotation, set
+$B_U=D_5^{-1}UD_5$ and $H_U=B_UHB_U^\dagger$, and write $n=1$ or $3$
+for the number of source slots. Integrating the generator identities
+gives
+\[
+ \widetilde Q_a(H_U)B_U^{\otimes n}=B_J(U)\widetilde Q_a(H),
+ \qquad B_J(U)^\dagger M_JB_J(U)=M_J.
+\]
+The second equality follows directly from the ladder coefficients and
+the binomial entries of $M_J$. Rotations are products of exponentials
+of the generators, so the infinitesimal identities imply these group
+identities. By the definition of $W_\lambda$ and cyclicity of trace,
+each weighted feature is
+\[
+ \operatorname{Tr}\!\left[H^{\otimes n}
+ \widetilde Q_a(H)^\dagger M_J\widetilde Q_b(H)\right].
+\]
+Substituting $H_U$ cancels $B_U^{\otimes n}$ and its adjoint against
+their inverses in the two transformed $\widetilde Q$ factors; the
+displayed metric identity then gives its original value. This proves
+invariance on all Hermitian inputs, including mixed inputs in the
+exterior and mixed-symmetry blocks.
+The determinant side is invariant by the covariance of its two maps.
+Both sides are unchanged by $H\mapsto H^{\mathsf T}$: the channel
+coefficients are real and respect transpose, and transpose interchanges
+the two factors of each Gram feature, leaving the symmetric double sum
+unchanged. Thus their difference belongs to the same even invariant space.
+
+\paragraph{Derivation of the invariant-space dimension.}
+The complexified matrix space decomposes into one copy of spins
+$0,1,\ldots,5$, as proved in Section~\ref{sec:prelim}.
+A degree-five polynomial is in its fifth symmetric power. A variable
+of rank $\ell$ and weight $m$ contributes degree one, weight $m$,
+and parity $\ell\bmod2$. On a rotation-invariant scalar,
+transpose has the same action as spin reversal, so this parity is
+exactly transpose parity. Count monomials with degree at most five
+using the following integer recurrence. Start with $C(0,0,0)=1$
+and zero elsewhere. For each pair $(\ell,m)$, $0\le\ell\le5$,
+$-\ell\le m\le\ell$, replace $C$ by
+\[
+ C_{\rm new}(d,w,p)=\sum_{k=0}^d
+ C_{\rm old}(d-k,w-km,p-k\ell\bmod2),\qquad 0\le d\le5.
+\]
+The 36 successive steps give
+$C(5,0,0)=22894$ and $C(5,1,0)=22462$.
+Every integer-spin irreducible representation contributes one vector
+at weight zero and, unless its spin is zero, one at weight one.
+Subtracting therefore counts precisely the trivial representations:
+\[
+ \dim\mathcal I_{5,+}=22894-22462=432.
+\]
+This is a finite integer computation with the complete recurrence supplied.
+
+\paragraph{Explicit invariant contractions and injectivity.}
+There is also an explicit basis test, rather than a numerical sampling
+claim. Define spin-$\ell$ moment coordinates by
+\[
+ t_{\ell,0}(H)=\sum_{a=0}^{5-\ell}\binom{5-\ell}{a}h_{a,a+\ell},
+ \qquad t_{\ell,r+1}=
+ \frac{\mathcal D_{\downarrow}t_{\ell,r}}{2\ell-r}.
+\]
+These $36$ coordinates are the tensor-rank decomposition, so the
+change of coordinates is invertible. To couple spin-$a$ coordinates
+$A$ and spin-$b$ coordinates $B$ to spin $L$, put $k=a+b-L$ and
+\[
+ (A\mathbin{\otimes_L}B)_0=
+ \sum_{i=0}^k(-1)^i\binom ki A_iB_{k-i},\qquad
+ (A\mathbin{\otimes_L}B)_{r+1}=
+ \frac{\mathcal D_{\downarrow}(A\mathbin{\otimes_L}B)_r}{2L-r}.
+\]
+The generator relations prove that these are spin-$L$ coordinates.
+A stored tuple $(a,b,u,c,d,v,e)$ specifies the degree-five scalar
+\[
+ I(H)=\sum_{r=0}^{2u}(-1)^r\binom{2u}{r}
+ (t_a\mathbin{\otimes_u}t_b)_r
+ \bigl((t_c\mathbin{\otimes_v}t_d)\mathbin{\otimes_u}t_e\bigr)_{2u-r}.
+\]
+The triangular inequalities and even $a+b+c+d+e$ are checked for all
+432 stored tuples, so these are elements of $\mathcal I_{5,+}$.
+The same file, \path{invariant_grid_certificate.json}, gives 432
+Hermitian Gaussian-integer matrices $H_i$ through their real and
+imaginary parts. Form the square evaluation matrix $V_{ij}=I_j(H_i)$.
+With $p=1000033$ and $i$ represented by $350504$ modulo $p$, exact
+elimination gives
+\[
+ 350504^2\equiv-1\pmod p,\qquad \det V\equiv486549\not\equiv0\pmod p.
+\]
+Primality of $p$ can be checked by trial division up to $1000$; all
+rational denominators in this computation are invertible modulo $p$.
+A nonzero modular determinant implies a nonzero determinant over
+$\mathbb Q(i)$, and hence an invertible evaluation matrix over $\mathbb C$.
+The 432 contractions are therefore linearly independent, and the
+proved dimension makes them a basis of $\mathcal I_{5,+}$.
+Evaluation at the stored points is consequently injective on that space.
+
+Finally substitute every $H_i$ into the two sides of the SOS identity,
+using the stated rational encodings and ordinary determinant expansion.
+All 432 rational differences are zero. This equality, the covariance
+identities, the parity check, and injectivity prove the polynomial
+identity on every Hermitian $H$. In particular the test is not an
+assumption that finitely many sample points suffice: its injectivity
+has just been proved. The embedded verifier implements these exact
+steps and its earlier audit is included with the data. No Lean build
+is used in this written argument.
+
+The identity and the nonnegative-square argument prove
+$\Delta(H)\ge0$ for every $H\succeq0$. Since
+$\Delta(H)=\det R_{5,4}\Phi_2^{(5)}(\rho)-\det R_{5,4}(\rho)$,
+this completes the fourteenth base case. The hull argument at the
+start of this chapter now proves the determinant comparison for every
+$N\ge5$, every covariant channel, and every density matrix.
+
+\paragraph{The two total measures.}
+This proves the determinant input for $t=4$. Applying it to the isotropic
+mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
+integral/primitive arguments in Section~\ref{sec:spectral} then give,
+with no additional order-four assumption,
+\[
+ \A_4^{T,F}(\Phi(\rho))\ge\A_4^{T,F}(\rho),\qquad
+ \A_4^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_4^{T,\mathrm{vN}}(\rho).
+\]
+
+\clearpage\section{The common shifted determinant inequality}\label{sec:shift}
+\begin{lemma}\label{lem:shift}
+Equation~\eqref{eq:det}, applied to all full input states, implies
+\[
+ \det(s\id_d+\rho'_t)\ge\det(s\id_d+\rho_t)
+ \qquad\text{for all }s\ge0.
+\]
+\end{lemma}
+\begin{proof}
+Covariance and irreducibility imply $\Phi(\rho_0)=\rho_0$.
+Rotational invariance and trace normalization similarly imply
+$R_{N,t}\rho_0=\id_d/d$.
+The full state
+\[
+ \rho_s=\frac{\rho+ds\rho_0}{1+ds}
+\]
+therefore has reduced input and output
+$(\rho_t+s\id_d)/(1+ds)$ and $(\rho'_t+s\id_d)/(1+ds)$.
+Apply~\eqref{eq:det} to $\rho_s$ and cancel the positive common
+factor $(1+ds)^{-d}$.
+\end{proof}
+
+\section{The two common spectral consequences}\label{sec:spectral}
+Put $\sigma=\rho_t$, $\tau=\rho'_t$ and
+\[
+ h(s)=\log\frac{\det(s\id_d+\tau)}{\det(s\id_d+\sigma)},\quad s>0.
+\]
+Lemma~\ref{lem:shift} gives $h(s)\ge0$. If $p_i$ and $q_i$ are the
+eigenvalues of $\sigma$ and $\tau$, respectively, the exact identities are
+\begin{align}
+ S(\tau)-S(\sigma)&=\int_0^\infty h(s)\,ds,\label{eq:entropyint}\\
+ \Tr\sqrt\tau-\Tr\sqrt\sigma
+ &=\frac1{2\pi}\int_0^\infty s^{-1/2}h(s)\,ds.\label{eq:sqrtint}
+\end{align}
+Here $S(\omega)=-\Tr(\omega\log\omega)$.
+We give the elementary endpoint argument as well as the integral forms,
+so no differentiation of a determinant inequality is needed.
+
+For entropy define
+\[
+ G(s)=\sum_i(s+q_i)\log(s+q_i)-\sum_i(s+p_i)\log(s+p_i).
+\]
+For $s>0$, $G'(s)=h(s)\ge0$. The convention $0\log0=0$ makes
+$G$ continuous at zero. Equal dimensions and equal traces cancel the
+two leading terms at infinity, so $G(s)\to0$. Indeed, for fixed $p\ge0$,
+\[
+ (s+p)\log(s+p)-s\log s-p\log s
+   =(s+p)\log(1+p/s)\longrightarrow p.
+\]
+Thus $G(0)\le0$, which is precisely $S(\tau)\ge S(\sigma)$.
+Integrating $G'$ proves~\eqref{eq:entropyint}.
+
+For fidelity use the scalar primitive, defined continuously at $r=0$,
+\[
+ P_p(r)=r\log(1+p/r^2)
+       +2\sqrt p\arctan(r/\sqrt p),\quad p\ge0.
+\]
+For $p=0$ the function is identically zero. For $p>0$,
+\[
+ P'_p(r)=\log(1+p/r^2),\quad
+ P_p(0)=0,\quad
+ \lim_{r\to\infty}P_p(r)=\pi\sqrt p.
+\]
+The first term tends to zero at infinity because
+$0\le r\log(1+p/r^2)\le p/r$.
+Its continuity at zero follows from
+\[
+ r\log(1+p/r^2)=r\log(r^2+p)-2r\log r.
+\]
+Consequently $H(r)=\sum_iP_{q_i}(r)-\sum_iP_{p_i}(r)$ has
+$H'(r)=h(r^2)\ge0$ and $H(0)=0$. Taking its limit at infinity gives
+\[
+ \pi\left(\sum_i\sqrt{q_i}-\sum_i\sqrt{p_i}\right)\ge0.
+\]
+The substitution $s=r^2$ gives~\eqref{eq:sqrtint}.
+Zero eigenvalues cause at worst $O(|\log s|)$ in $h(s)$ at zero;
+both integrals converge there. At infinity the estimate
+$|\log(1+x)-x|\le x^2/2$ for $x\ge0$ follows by integrating
+$0\le1-(1+x)^{-1}\le x$. Substituting $x=p_i/s,q_i/s$ and
+using equal traces gives $h(s)=O(s^{-2})$. Thus both upper endpoints
+also converge, including when either state has zero eigenvalues.
+
+Since both square-root traces are nonnegative, squaring preserves
+their order. Dividing their squared difference by $t>0$ proves
+the fidelity inequality~\eqref{eq:F}. Dividing the entropy difference
+by $\log(t+1)>0$ proves~\eqref{eq:VN}. This completes the
+written proof of Theorem~\ref{thm:main}.
+
+
+\section{Embedded exact data: definitions and checking rules}\label{sec:data}
+\subsection{What is contained in this PDF}
+The attached archive \texttt{exact-data.zip} is an integral machine-readable
+appendix. It contains every rational table and polynomial coefficient used
+in the finite checks above, together with the exact checking programs.
+Open the PDF's attachments panel to save the archive, then extract it.
+All data paths below are relative to that extracted directory. A PDF
+viewer that does not expose attachments can still display every written
+page; another PDF reader is needed to extract the data. No external
+repository, network service, or Lean result is needed to obtain them.
+
+The archive has 113 entries: 110 original audited inputs and programs,
+a manifest, an audit record, and a reading guide. Its SHA-256 digest is
+\begin{center}\small\ttfamily
+79bc6ad1a25aeebf2215beb20c285fc39205\\
+21b505ef1bebb48fd1c0ba239801
+\end{center}
+(The two lines are concatenated to obtain the 64-digit digest.)
+\path{MANIFEST.json} gives a byte count and SHA-256 digest for every
+original file. Hashes identify the supplied data; the inequalities and
+identities, rather than the hashes, are the mathematical certificate.
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{.21\linewidth}p{.73\linewidth}@{}}
+\toprule
+Proof step&Exact data and check location\\
+\midrule
+Order-three hull&\path{determinant_t3/bounds/finite_hull.json},
+\path{finite_hull_certificates.json} in the same folder;
+\path{determinant_t3/search/audit_reduction.py}.\\[2mm]
+Order-three scalar intervals&\path{determinant_t3/bounds/central_region_certificates.json}
+and \path{k42_outer_certificates.json} in that folder; the corresponding
+\path{verify_central_region.py} and \path{certify_k42_outer.py}.\\[2mm]
+Order-three floors&\path{determinant_t3/floors/positive_floors.json}
+and \path{verify_positive_floors.py} in that folder.\\[2mm]
+Order-four hull&\path{determinant_t4/bounds/exact_hull.json},
+\path{continuous_hull_N12.json}, \path{small_case_certificates.json};
+\path{determinant_t4/structural/audit_finite_reduction.py}.\\[2mm]
+Thirteen floor cases&All thirteen
+\path{determinant_t4/bounds/*norm_floor_certificate_N*_K*.json};
+\path{verify_norm_floor_certificate.py} in that folder,
+\path{determinant_t4/search/audit_norm_floor.py}, and
+\path{determinant_t4/structural/audit_k3_compact.py}.\\[2mm]
+Exceptional case&\path{determinant_t4/coherent_sos/channel_rational.json};
+\path{determinant_t4/exact_cube_sos/} contains
+\path{source_bases.json}, \path{exact_reduced_basis_0.json} through
+\path{exact_reduced_basis_34.json}, \path{exact_sos_certificate.json},
+\path{invariant_grid_certificate.json}, and \path{verify_exact_sos.py}.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The remaining included helpers implement rational arithmetic and the
+finite constructions defined in the text. The additional exact-kernel
+check describes the construction of the SOS candidate; its success
+is not needed once the final identity and positivity have been checked.
+
+\subsection{Rational interval arithmetic, with endpoint directions}
+A rational $x>0$ has the exact logarithm enclosure obtained as follows.
+If $x<1$, use $\log x=-\log(1/x)$ and interchange the signs of the
+upper and lower endpoints. Otherwise write $x=2^kR$, $1\le R<2$,
+set $z=(R-1)/(R+1)$, and use
+\[
+ A_M(z)=2\sum_{r=0}^{M-1}\frac{z^{2r+1}}{2r+1},\qquad
+ 0\le\log R-A_M(z)\le
+ \frac{2z^{2M+1}}{(2M+1)(1-z^2)}.
+\]
+The inequality follows by integrating the geometric series for
+$2/(1-z^2)$, or by comparing each omitted denominator with $2M+1$.
+Use the same formula at $z=1/3$ for $\log2$ and add $k$ times its
+bounds. The original scalar certificates use $M=12$ after range
+reduction; the independent order-four audit uses $M=20$.
+For $q\ge0$ and a positive integer $B$, put
+\[
+ h=\frac{\operatorname{isqrt}(\lfloor B^2q\rfloor)}B.
+ \quad\text{Then}\quad h^2\le q<(h+1/B)^2.
+\]
+Here $\operatorname{isqrt}(n)$ is the largest integer with square at
+most $n$, computed by integer bisection. The original grid has
+$B=2^{40}$ and the independent audit has $B=2^{48}$.
+All lower bounds on an input deficit use the lower logarithm endpoint;
+all upper bounds on an output deficit use the upper endpoint. The
+square-root direction is chosen using the monotonicity proved in the
+corresponding scalar lemma. A strict positive rational gap is therefore
+a rigorous inequality on the whole specified box.
+
+\subsection{Coverage and the finite predicates}
+A list of successful samples would not prove a statement on a continuum.
+The certificates instead specify complete partitions. To check a
+partition of a root rectangle, accept a leaf only if its endpoints equal
+the current rectangle; otherwise require a split in a single coordinate,
+strictly between its two endpoints, with one child on each side and
+unchanged other coordinates. Apply the same rule recursively to both
+children, requiring every stored leaf to be used exactly once.
+Induction on this binary tree proves that the union is exactly the root
+rectangle and interiors do not overlap. Shared boundaries are included
+because the predicates use closed intervals. The scalar-box checkers
+reconstruct this tree from the stored rational endpoints.
+
+A scalar leaf is accepted only after one of the following checks:
+\begin{enumerate}
+\item A necessary physical inequality fails throughout the leaf. Each
+positive image used for that inequality has first been constructed by
+the explicit Kraus or positive-map formulas and its multiplier identity
+checked exactly.
+\item The input is forced to have determinant zero, in which case output
+positivity is enough.
+\item A positive spectral floor has been derived from an exact rational
+nonnegative combination of those physical images, with the remaining
+multipole terms bounded by the proved operator norms. Its output-deficit
+upper bound is no larger than a proved input-deficit lower bound over
+the whole leaf. Linear inequalities use endpoint minima; ratios are
+checked at the vertices of their linear-fractional domains, including
+new vertices cut out by the stated comparison planes.
+\end{enumerate}
+An invalid denominator, unavailable auxiliary map, nonpositive required
+floor, or unresolved comparison causes rejection; a stored success flag
+alone is never a reason for acceptance.
+
+For an all-spin hull leaf, substitute its affine box coordinates into
+the facet polynomial and expand exactly. Convert its power coefficients
+to Bernstein coefficients using the formula in the hull chapters.
+The identity
+\[
+ x^i=\sum_{k=i}^n\frac{\binom ki}{\binom ni}
+ \binom nk x^k(1-x)^{n-k}
+\]
+follows by factoring $x^i$ and expanding $(x+(1-x))^{n-i}$.
+Taking its product in the two coordinates proves that conversion
+formula. Every Bernstein basis function is nonnegative on the unit
+square; their sum is one. Nonnegative rational coefficients therefore
+prove the whole leaf, including its boundary. The complete partition
+then proves the facet on the entire continuous domain. Exact finite
+hull enumeration and the small-spin convex weights establish that
+these facets are sufficient and that every extension used is available.
+
+\subsection{Scope of the previously completed check}
+The attached \path{prior-exact-audit.json} records a successful independent
+exact-Python run completed on 16 November 2026. During this PDF edit,
+all 110 original input and program files were compared byte for byte
+through their hashes with that audited manifest; every comparison matched.
+The scalar proof printed here uses 55\,003 ordinary order-four leaves
+and 1\,184 compact endpoint-region leaves, a total of 56\,187. The exceptional proof here uses the proved 432-dimensional invariant
+grid, whose dimension and injectivity were derived above.
+
+The full checking entry point is \path{verify_all.py}; its dependencies
+are listed in \path{requirements.txt}. Reproduction requires exact
+integer/rational arithmetic, with the Clebsch--Gordan constructions
+implemented symbolically. Floating-point search, optimization, and
+numerical eigenvalue estimates are not accepted proof steps. The
+checking programs are supplied to make all the finite arithmetic
+reviewable; the mathematical reasons why their checks suffice are
+written out in this document.
+
+\subsection{Written-proof audit of 16 November 2026}
+A fresh run extracted the exact archive from the PDF, matched all 110
+original file hashes, and passed the order-three suite, the order-four
+spectral-floor suite, the exceptional weighted SOS and positivity check,
+and the kernel-constraint check. Additional exact checks confirmed the
+36 independent moment coordinates, invariant-space dimension $432$, and
+all 24 symbolic band identities for arbitrary $N$.
+
+The written covariance argument now retains three independent ordered
+source slots and explicitly proves weighted-trace invariance. This is
+essential for the exterior and mixed-symmetry blocks. The certificate
+already retained these slots, so its exact data are unchanged.
+The first-order proof is also included. These exact-arithmetic checks are independent of the Lean certificates
+described next.
+
+\clearpage\section{Lean certification scope}\label{sec:lean}
+The accompanying Lean packages certify both fidelity and von Neumann
+monotonicity at \textbf{orders $t=1,2,3,4$}, matching the scope of the
+\textbf{written proofs for both measures}. The order-one and order-two public fidelity theorems are
+\texttt{LowOrder.physical\_fidelity\_t1} and
+\texttt{LowOrder.physical\_fidelity\_t2}, in \path{lean/UniformFidelity.lean}.
+They use $N=k+t$ with $k\in\mathbb N$, and hence include the equal-order
+case as well as every proper reduction. Their only physical hypotheses
+are complete positivity, trace preservation, covariance under the actual
+$\mathrm{SU}(2)$ spin representation on density matrices, and a positive
+trace-one full input. The reduced state is the actual normalized Dicke
+partial trace, and fidelity uses~\eqref{eq:F}.
+
+\paragraph{Correspondence with the uniform proof.}
+The order-one module \path{lean/UniformT1.lean} proves the inherited
+contracting dipole and determinant increase. Its scalar identity is
+\[
+ \det\tau-\det\sigma=(1-f_1^2)(1/4-\det\sigma)
+ =\frac{(1-f_1^2)r^2}{4}.
+\]
+The bound $|f_1|\le1$ is checked from positivity and unitality on
+$jI\pm J_z$, an equivalent bound on the same rank-one multiplier.
+The order-two module \path{lean/ChannelSimplexT2Uniform.lean} supplies
+the determinant comparison in the same marginal coordinates.
+All four orders feed \texttt{physical\_totals\_of\_determinant} in
+\path{lean/PhysicalUniformBridge.lean}. That bridge constructs isotropic
+mixtures via \path{lean/ShiftedDeterminant.lean} and applies the common
+matrix spectral theorem in \path{lean/MatrixSpectralConsequences.lean}.
+Thus the public certificates follow the determinant,
+shifted-determinant, and spectral structure of this document. The shared
+bridge also proves the von Neumann inequalities at all four orders.
+
+\paragraph{Order-three certificates.}
+The public theorems
+\texttt{LowOrder.physical\_fidelity\_t3} and
+\texttt{LowOrder.physical\_vonNeumann\_t3} are in
+\path{lean-t3/UniformT3Certificate.lean}.
+The theorem \texttt{LowOrder.physical\_determinant\_t3} in
+\path{lean-t3/T3PhysicalDeterminant.lean} proves the full physical
+determinant comparison. Its proof supplies all four finite cases,
+their scalar bounds, physical moment constraints and positive output
+floors, followed by the available-extension hull and the actual
+covariant-channel simplex. These steps are proved within Lean.
+The final theorem assumes only the physical channel and state hypotheses.
+The package includes its own copies of the common shifted-determinant
+and spectral modules, and includes mixed and singular inputs.
+
+\paragraph{Order-four certificates.}
+The public theorems
+\texttt{LowOrder.physical\_fidelity\_t4} and
+\texttt{LowOrder.physical\_vonNeumann\_t4} are in
+\path{lean-t4/UniformT4Certificate.lean}.
+The theorem \texttt{LowOrder.physical\_determinant\_t4} in
+\path{lean-t4/T4PhysicalDeterminant.lean} supplies the physical determinant
+comparison for every $N\ge4$. The fourteen finite cases and the all-spin
+available-extension hull are proved within Lean. The exceptional
+$(N,K)=(5,2)$ case in \path{lean-t4/T4ExceptionalFinal.lean} uses the
+35 exact Gram certificates and the invariant-polynomial argument based on
+687 seed coefficients. Their identities, positivity arguments and finite
+irreducible-coordinate checks are also proved within Lean.
+The same shifted-determinant and spectral bridge then proves both measures
+for every $N=k+4$, $k\in\mathbb N$, including mixed and singular inputs.
+
+\clearpage
+\paragraph{Reproduction and precise scope.}
+Lean 4.24.0 and the exact Mathlib revision are pinned in the package.
+For orders one and two, from \path{lean/}, run \texttt{lake update},
+\texttt{lake exe cache get}, and
+\texttt{python3 verify\_uniform.py -{}-jobs 2}.
+The verifier freshly compiles every project Lean source and audits the
+public physical theorems and their common bridges.
+For order three, from \path{lean-t3/}, run
+\texttt{lake exe cache get} and
+\texttt{lake env python3 verify\_sources.py}.
+This rebuilds all 129 local modules from source and checks the public
+certificate with \texttt{-{}-trust=0}. The rebuild and final audit passed
+on 22 November 2026. Source hashes, per-module logs and the axiom report
+are in \path{lean-t3/verification/}.
+For order four, from \path{lean-t4/}, run
+\texttt{lake exe cache get} and
+\texttt{lake env python3 verify\_sources.py -{}-jobs 1}.
+Source verification covers all 9,490 local modules, combining successful
+source compilations with validated checkpoints. The final public-theorem
+audit passed on 22 November 2026. The checked source hashes and axiom
+reports are in \path{lean-t4/verification/}.
+The generated exact data are substantial; the verifier supports bounded
+parallelism when additional CPU and memory are available.
+Mathlib is supplied
+by its pinned compiled dependency cache. The checked source hashes,
+verification reports, final theorem statements and axiom reports accompany
+the packages. The theorem audits use only \texttt{propext},
+\texttt{Classical.choice}, and \texttt{Quot.sound}.
+
+\textbf{Both the written proofs and end-to-end Lean certification cover
+$t=1,2,3,4$ for the fidelity and von Neumann total anticoherence measures.}
+
+\end{document}

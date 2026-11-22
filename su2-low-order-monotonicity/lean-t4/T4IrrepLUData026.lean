@@ -1,0 +1,97 @@
+import T4IrrepMonData026
+import T4SOSNatRowSyntax
+set_option Elab.async false
+namespace LowOrder.T4SOS.Irrep.LU026
+open RadixRows
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+noncomputable def constraints : Nat := 7
+noncomputable def u0 : Row := natrow% "0:1"
+noncomputable def u1 : Row := natrow% "1:1"
+noncomputable def u2 : Row := natrow% "2:1;5:40"
+noncomputable def u3 : Row := natrow% "3:1;5:14"
+noncomputable def u4 : Row := natrow% "4:1;5:13"
+noncomputable def u5 : Row := natrow% "5:1;6:1"
+noncomputable def u6 : Row := natrow% "6:1"
+noncomputable def u (i : Nat) : Row := (if i < 3 then (if i < 1 then u0 else (if i < 2 then u1 else u2)) else (if i < 5 then (if i < 4 then u3 else u4) else (if i < 6 then u5 else u6)))
+noncomputable def up0 : Nat := natpack% 23 "0:1"
+noncomputable def uTotal0 : Nat := 1
+noncomputable def up1 : Nat := natpack% 23 "1:1"
+noncomputable def uTotal1 : Nat := 1
+noncomputable def up2 : Nat := natpack% 23 "2:1;5:40"
+noncomputable def uTotal2 : Nat := 41
+noncomputable def up3 : Nat := natpack% 23 "3:1;5:14"
+noncomputable def uTotal3 : Nat := 15
+noncomputable def up4 : Nat := natpack% 23 "4:1;5:13"
+noncomputable def uTotal4 : Nat := 14
+noncomputable def up5 : Nat := natpack% 23 "5:1;6:1"
+noncomputable def uTotal5 : Nat := 2
+noncomputable def up6 : Nat := natpack% 23 "6:1"
+noncomputable def uTotal6 : Nat := 1
+noncomputable def up (i : Nat) : Nat := (if i < 3 then (if i < 1 then up0 else (if i < 2 then up1 else up2)) else (if i < 5 then (if i < 4 then up3 else up4) else (if i < 6 then up5 else up6)))
+noncomputable def uTotal (i : Nat) : Nat := (if i < 3 then (if i < 1 then uTotal0 else (if i < 2 then uTotal1 else uTotal2)) else (if i < 5 then (if i < 4 then uTotal3 else uTotal4) else (if i < 6 then uTotal5 else uTotal6)))
+noncomputable def l0 : Row := natrow% "0:2"
+noncomputable def l1 : Row := natrow% "0:1;1:3"
+noncomputable def l2 : Row := natrow% "1:2;2:4"
+noncomputable def l3 : Row := natrow% "0:2;3:4"
+noncomputable def l4 : Row := natrow% "2:1;4:1"
+noncomputable def l5 : Row := natrow% "4:4;5:2"
+noncomputable def l6 : Row := natrow% "3:1;5:39;6:17"
+noncomputable def l (i : Nat) : Row := (if i < 3 then (if i < 1 then l0 else (if i < 2 then l1 else l2)) else (if i < 5 then (if i < 4 then l3 else l4) else (if i < 6 then l5 else l6)))
+noncomputable def a0 : Row := natrow% "0:2"
+noncomputable def a1 : Row := natrow% "1:3;0:1"
+noncomputable def a2 : Row := natrow% "1:2;2:4;5:1"
+noncomputable def a3 : Row := natrow% "0:2;5:3;3:4"
+noncomputable def a4 : Row := natrow% "2:1;4:1"
+noncomputable def a5 : Row := natrow% "5:1;4:4;6:2"
+noncomputable def a6 : Row := natrow% "3:1;6:3"
+noncomputable def a (i : Nat) : Row := (if i < 3 then (if i < 1 then a0 else (if i < 2 then a1 else a2)) else (if i < 5 then (if i < 4 then a3 else a4) else (if i < 6 then a5 else a6)))
+noncomputable def ap0 : Nat := natpack% 23 "0:2"
+noncomputable def aTotal0 : Nat := 2
+noncomputable def ap1 : Nat := natpack% 23 "1:3;0:1"
+noncomputable def aTotal1 : Nat := 4
+noncomputable def ap2 : Nat := natpack% 23 "1:2;2:4;5:1"
+noncomputable def aTotal2 : Nat := 7
+noncomputable def ap3 : Nat := natpack% 23 "0:2;5:3;3:4"
+noncomputable def aTotal3 : Nat := 9
+noncomputable def ap4 : Nat := natpack% 23 "2:1;4:1"
+noncomputable def aTotal4 : Nat := 2
+noncomputable def ap5 : Nat := natpack% 23 "5:1;4:4;6:2"
+noncomputable def aTotal5 : Nat := 7
+noncomputable def ap6 : Nat := natpack% 23 "3:1;6:3"
+noncomputable def aTotal6 : Nat := 4
+noncomputable def ap (i : Nat) : Nat := (if i < 3 then (if i < 1 then ap0 else (if i < 2 then ap1 else ap2)) else (if i < 5 then (if i < 4 then ap3 else ap4) else (if i < 6 then ap5 else ap6)))
+noncomputable def aTotal (i : Nat) : Nat := (if i < 3 then (if i < 1 then aTotal0 else (if i < 2 then aTotal1 else aTotal2)) else (if i < 5 then (if i < 4 then aTotal3 else aTotal4) else (if i < 6 then aTotal5 else aTotal6)))
+noncomputable def q0 : Row := natrow% ""
+noncomputable def q1 : Row := natrow% ""
+noncomputable def q2 : Row := natrow% "5:3"
+noncomputable def q3 : Row := natrow% "5:1"
+noncomputable def q4 : Row := natrow% "5:1"
+noncomputable def q5 : Row := natrow% "5:1"
+noncomputable def q6 : Row := natrow% "5:1;6:1"
+noncomputable def q (i : Nat) : Row := (if i < 3 then (if i < 1 then q0 else (if i < 2 then q1 else q2)) else (if i < 5 then (if i < 4 then q3 else q4) else (if i < 6 then q5 else q6)))
+noncomputable def qp0 : Nat := natpack% 23 ""
+noncomputable def qTotal0 : Nat := 0
+noncomputable def qp1 : Nat := natpack% 23 ""
+noncomputable def qTotal1 : Nat := 0
+noncomputable def qp2 : Nat := natpack% 23 "5:3"
+noncomputable def qTotal2 : Nat := 3
+noncomputable def qp3 : Nat := natpack% 23 "5:1"
+noncomputable def qTotal3 : Nat := 1
+noncomputable def qp4 : Nat := natpack% 23 "5:1"
+noncomputable def qTotal4 : Nat := 1
+noncomputable def qp5 : Nat := natpack% 23 "5:1"
+noncomputable def qTotal5 : Nat := 1
+noncomputable def qp6 : Nat := natpack% 23 "5:1;6:1"
+noncomputable def qTotal6 : Nat := 2
+noncomputable def qp (i : Nat) : Nat := (if i < 3 then (if i < 1 then qp0 else (if i < 2 then qp1 else qp2)) else (if i < 5 then (if i < 4 then qp3 else qp4) else (if i < 6 then qp5 else qp6)))
+noncomputable def qTotal (i : Nat) : Nat := (if i < 3 then (if i < 1 then qTotal0 else (if i < 2 then qTotal1 else qTotal2)) else (if i < 5 then (if i < 4 then qTotal3 else qTotal4) else (if i < 6 then qTotal5 else qTotal6)))
+noncomputable def target0 : List Nat := [0,0,1,7,7]
+noncomputable def target1 : List Nat := [0,0,1,6,8]
+noncomputable def target2 : List Nat := [0,0,2,5,8]
+noncomputable def target3 : List Nat := [0,0,2,6,7]
+noncomputable def target4 : List Nat := [0,0,3,4,8]
+noncomputable def target5 : List Nat := [0,0,3,5,7]
+noncomputable def target6 : List Nat := [0,0,3,6,6]
+noncomputable def target (i : Nat) : List Nat := (if i < 3 then (if i < 1 then target0 else (if i < 2 then target1 else target2)) else (if i < 5 then (if i < 4 then target3 else target4) else (if i < 6 then target5 else target6)))
+end LowOrder.T4SOS.Irrep.LU026

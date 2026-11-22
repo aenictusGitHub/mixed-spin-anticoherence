@@ -1,0 +1,146 @@
+import T4SOSBulkQRows32
+set_option Elab.async false
+namespace LowOrder.T4SOS.BulkQ32
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+theorem original_checked_0_0:BulkPackedData.Checked bits (originalRow 0 0) (original 0 0) :=by decide +kernel
+theorem original_bounded_0_0:(original 0 0).positiveTotal<2^bits ∧ (original 0 0).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_1:BulkPackedData.Checked bits (originalRow 0 1) (original 0 1) :=by decide +kernel
+theorem original_bounded_0_1:(original 0 1).positiveTotal<2^bits ∧ (original 0 1).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_2:BulkPackedData.Checked bits (originalRow 0 2) (original 0 2) :=by decide +kernel
+theorem original_bounded_0_2:(original 0 2).positiveTotal<2^bits ∧ (original 0 2).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_3:BulkPackedData.Checked bits (originalRow 0 3) (original 0 3) :=by decide +kernel
+theorem original_bounded_0_3:(original 0 3).positiveTotal<2^bits ∧ (original 0 3).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_4:BulkPackedData.Checked bits (originalRow 0 4) (original 0 4) :=by decide +kernel
+theorem original_bounded_0_4:(original 0 4).positiveTotal<2^bits ∧ (original 0 4).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_5:BulkPackedData.Checked bits (originalRow 0 5) (original 0 5) :=by decide +kernel
+theorem original_bounded_0_5:(original 0 5).positiveTotal<2^bits ∧ (original 0 5).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_6:BulkPackedData.Checked bits (originalRow 0 6) (original 0 6) :=by decide +kernel
+theorem original_bounded_0_6:(original 0 6).positiveTotal<2^bits ∧ (original 0 6).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_7:BulkPackedData.Checked bits (originalRow 0 7) (original 0 7) :=by decide +kernel
+theorem original_bounded_0_7:(original 0 7).positiveTotal<2^bits ∧ (original 0 7).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_8:BulkPackedData.Checked bits (originalRow 0 8) (original 0 8) :=by decide +kernel
+theorem original_bounded_0_8:(original 0 8).positiveTotal<2^bits ∧ (original 0 8).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_9:BulkPackedData.Checked bits (originalRow 0 9) (original 0 9) :=by decide +kernel
+theorem original_bounded_0_9:(original 0 9).positiveTotal<2^bits ∧ (original 0 9).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_10:BulkPackedData.Checked bits (originalRow 0 10) (original 0 10) :=by decide +kernel
+theorem original_bounded_0_10:(original 0 10).positiveTotal<2^bits ∧ (original 0 10).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_11:BulkPackedData.Checked bits (originalRow 0 11) (original 0 11) :=by decide +kernel
+theorem original_bounded_0_11:(original 0 11).positiveTotal<2^bits ∧ (original 0 11).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_12:BulkPackedData.Checked bits (originalRow 0 12) (original 0 12) :=by decide +kernel
+theorem original_bounded_0_12:(original 0 12).positiveTotal<2^bits ∧ (original 0 12).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_0_13:BulkPackedData.Checked bits (originalRow 0 13) (original 0 13) :=by decide +kernel
+theorem original_bounded_0_13:(original 0 13).positiveTotal<2^bits ∧ (original 0 13).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_0:BulkPackedData.Checked bits (originalRow 1 0) (original 1 0) :=by decide +kernel
+theorem original_bounded_1_0:(original 1 0).positiveTotal<2^bits ∧ (original 1 0).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_1:BulkPackedData.Checked bits (originalRow 1 1) (original 1 1) :=by decide +kernel
+theorem original_bounded_1_1:(original 1 1).positiveTotal<2^bits ∧ (original 1 1).negativeTotal<2^bits :=by decide +kernel
+end LowOrder.T4SOS.BulkQ32
+namespace LowOrder.T4SOS.BulkQ32
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+theorem original_checked_1_2:BulkPackedData.Checked bits (originalRow 1 2) (original 1 2) :=by decide +kernel
+theorem original_bounded_1_2:(original 1 2).positiveTotal<2^bits ∧ (original 1 2).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_3:BulkPackedData.Checked bits (originalRow 1 3) (original 1 3) :=by decide +kernel
+theorem original_bounded_1_3:(original 1 3).positiveTotal<2^bits ∧ (original 1 3).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_4:BulkPackedData.Checked bits (originalRow 1 4) (original 1 4) :=by decide +kernel
+theorem original_bounded_1_4:(original 1 4).positiveTotal<2^bits ∧ (original 1 4).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_5:BulkPackedData.Checked bits (originalRow 1 5) (original 1 5) :=by decide +kernel
+theorem original_bounded_1_5:(original 1 5).positiveTotal<2^bits ∧ (original 1 5).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_6:BulkPackedData.Checked bits (originalRow 1 6) (original 1 6) :=by decide +kernel
+theorem original_bounded_1_6:(original 1 6).positiveTotal<2^bits ∧ (original 1 6).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_7:BulkPackedData.Checked bits (originalRow 1 7) (original 1 7) :=by decide +kernel
+theorem original_bounded_1_7:(original 1 7).positiveTotal<2^bits ∧ (original 1 7).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_8:BulkPackedData.Checked bits (originalRow 1 8) (original 1 8) :=by decide +kernel
+theorem original_bounded_1_8:(original 1 8).positiveTotal<2^bits ∧ (original 1 8).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_9:BulkPackedData.Checked bits (originalRow 1 9) (original 1 9) :=by decide +kernel
+theorem original_bounded_1_9:(original 1 9).positiveTotal<2^bits ∧ (original 1 9).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_10:BulkPackedData.Checked bits (originalRow 1 10) (original 1 10) :=by decide +kernel
+theorem original_bounded_1_10:(original 1 10).positiveTotal<2^bits ∧ (original 1 10).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_11:BulkPackedData.Checked bits (originalRow 1 11) (original 1 11) :=by decide +kernel
+theorem original_bounded_1_11:(original 1 11).positiveTotal<2^bits ∧ (original 1 11).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_12:BulkPackedData.Checked bits (originalRow 1 12) (original 1 12) :=by decide +kernel
+theorem original_bounded_1_12:(original 1 12).positiveTotal<2^bits ∧ (original 1 12).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_1_13:BulkPackedData.Checked bits (originalRow 1 13) (original 1 13) :=by decide +kernel
+theorem original_bounded_1_13:(original 1 13).positiveTotal<2^bits ∧ (original 1 13).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_0:BulkPackedData.Checked bits (originalRow 2 0) (original 2 0) :=by decide +kernel
+theorem original_bounded_2_0:(original 2 0).positiveTotal<2^bits ∧ (original 2 0).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_1:BulkPackedData.Checked bits (originalRow 2 1) (original 2 1) :=by decide +kernel
+theorem original_bounded_2_1:(original 2 1).positiveTotal<2^bits ∧ (original 2 1).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_2:BulkPackedData.Checked bits (originalRow 2 2) (original 2 2) :=by decide +kernel
+theorem original_bounded_2_2:(original 2 2).positiveTotal<2^bits ∧ (original 2 2).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_3:BulkPackedData.Checked bits (originalRow 2 3) (original 2 3) :=by decide +kernel
+theorem original_bounded_2_3:(original 2 3).positiveTotal<2^bits ∧ (original 2 3).negativeTotal<2^bits :=by decide +kernel
+end LowOrder.T4SOS.BulkQ32
+namespace LowOrder.T4SOS.BulkQ32
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+theorem original_checked_2_4:BulkPackedData.Checked bits (originalRow 2 4) (original 2 4) :=by decide +kernel
+theorem original_bounded_2_4:(original 2 4).positiveTotal<2^bits ∧ (original 2 4).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_5:BulkPackedData.Checked bits (originalRow 2 5) (original 2 5) :=by decide +kernel
+theorem original_bounded_2_5:(original 2 5).positiveTotal<2^bits ∧ (original 2 5).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_6:BulkPackedData.Checked bits (originalRow 2 6) (original 2 6) :=by decide +kernel
+theorem original_bounded_2_6:(original 2 6).positiveTotal<2^bits ∧ (original 2 6).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_7:BulkPackedData.Checked bits (originalRow 2 7) (original 2 7) :=by decide +kernel
+theorem original_bounded_2_7:(original 2 7).positiveTotal<2^bits ∧ (original 2 7).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_8:BulkPackedData.Checked bits (originalRow 2 8) (original 2 8) :=by decide +kernel
+theorem original_bounded_2_8:(original 2 8).positiveTotal<2^bits ∧ (original 2 8).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_9:BulkPackedData.Checked bits (originalRow 2 9) (original 2 9) :=by decide +kernel
+theorem original_bounded_2_9:(original 2 9).positiveTotal<2^bits ∧ (original 2 9).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_10:BulkPackedData.Checked bits (originalRow 2 10) (original 2 10) :=by decide +kernel
+theorem original_bounded_2_10:(original 2 10).positiveTotal<2^bits ∧ (original 2 10).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_11:BulkPackedData.Checked bits (originalRow 2 11) (original 2 11) :=by decide +kernel
+theorem original_bounded_2_11:(original 2 11).positiveTotal<2^bits ∧ (original 2 11).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_12:BulkPackedData.Checked bits (originalRow 2 12) (original 2 12) :=by decide +kernel
+theorem original_bounded_2_12:(original 2 12).positiveTotal<2^bits ∧ (original 2 12).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_2_13:BulkPackedData.Checked bits (originalRow 2 13) (original 2 13) :=by decide +kernel
+theorem original_bounded_2_13:(original 2 13).positiveTotal<2^bits ∧ (original 2 13).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_0:BulkPackedData.Checked bits (originalRow 3 0) (original 3 0) :=by decide +kernel
+theorem original_bounded_3_0:(original 3 0).positiveTotal<2^bits ∧ (original 3 0).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_1:BulkPackedData.Checked bits (originalRow 3 1) (original 3 1) :=by decide +kernel
+theorem original_bounded_3_1:(original 3 1).positiveTotal<2^bits ∧ (original 3 1).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_2:BulkPackedData.Checked bits (originalRow 3 2) (original 3 2) :=by decide +kernel
+theorem original_bounded_3_2:(original 3 2).positiveTotal<2^bits ∧ (original 3 2).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_3:BulkPackedData.Checked bits (originalRow 3 3) (original 3 3) :=by decide +kernel
+theorem original_bounded_3_3:(original 3 3).positiveTotal<2^bits ∧ (original 3 3).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_4:BulkPackedData.Checked bits (originalRow 3 4) (original 3 4) :=by decide +kernel
+theorem original_bounded_3_4:(original 3 4).positiveTotal<2^bits ∧ (original 3 4).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_5:BulkPackedData.Checked bits (originalRow 3 5) (original 3 5) :=by decide +kernel
+theorem original_bounded_3_5:(original 3 5).positiveTotal<2^bits ∧ (original 3 5).negativeTotal<2^bits :=by decide +kernel
+end LowOrder.T4SOS.BulkQ32
+namespace LowOrder.T4SOS.BulkQ32
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+theorem original_checked_3_6:BulkPackedData.Checked bits (originalRow 3 6) (original 3 6) :=by decide +kernel
+theorem original_bounded_3_6:(original 3 6).positiveTotal<2^bits ∧ (original 3 6).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_7:BulkPackedData.Checked bits (originalRow 3 7) (original 3 7) :=by decide +kernel
+theorem original_bounded_3_7:(original 3 7).positiveTotal<2^bits ∧ (original 3 7).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_8:BulkPackedData.Checked bits (originalRow 3 8) (original 3 8) :=by decide +kernel
+theorem original_bounded_3_8:(original 3 8).positiveTotal<2^bits ∧ (original 3 8).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_9:BulkPackedData.Checked bits (originalRow 3 9) (original 3 9) :=by decide +kernel
+theorem original_bounded_3_9:(original 3 9).positiveTotal<2^bits ∧ (original 3 9).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_10:BulkPackedData.Checked bits (originalRow 3 10) (original 3 10) :=by decide +kernel
+theorem original_bounded_3_10:(original 3 10).positiveTotal<2^bits ∧ (original 3 10).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_11:BulkPackedData.Checked bits (originalRow 3 11) (original 3 11) :=by decide +kernel
+theorem original_bounded_3_11:(original 3 11).positiveTotal<2^bits ∧ (original 3 11).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_12:BulkPackedData.Checked bits (originalRow 3 12) (original 3 12) :=by decide +kernel
+theorem original_bounded_3_12:(original 3 12).positiveTotal<2^bits ∧ (original 3 12).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_3_13:BulkPackedData.Checked bits (originalRow 3 13) (original 3 13) :=by decide +kernel
+theorem original_bounded_3_13:(original 3 13).positiveTotal<2^bits ∧ (original 3 13).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_0:BulkPackedData.Checked bits (originalRow 4 0) (original 4 0) :=by decide +kernel
+theorem original_bounded_4_0:(original 4 0).positiveTotal<2^bits ∧ (original 4 0).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_1:BulkPackedData.Checked bits (originalRow 4 1) (original 4 1) :=by decide +kernel
+theorem original_bounded_4_1:(original 4 1).positiveTotal<2^bits ∧ (original 4 1).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_2:BulkPackedData.Checked bits (originalRow 4 2) (original 4 2) :=by decide +kernel
+theorem original_bounded_4_2:(original 4 2).positiveTotal<2^bits ∧ (original 4 2).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_3:BulkPackedData.Checked bits (originalRow 4 3) (original 4 3) :=by decide +kernel
+theorem original_bounded_4_3:(original 4 3).positiveTotal<2^bits ∧ (original 4 3).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_4:BulkPackedData.Checked bits (originalRow 4 4) (original 4 4) :=by decide +kernel
+theorem original_bounded_4_4:(original 4 4).positiveTotal<2^bits ∧ (original 4 4).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_5:BulkPackedData.Checked bits (originalRow 4 5) (original 4 5) :=by decide +kernel
+theorem original_bounded_4_5:(original 4 5).positiveTotal<2^bits ∧ (original 4 5).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_6:BulkPackedData.Checked bits (originalRow 4 6) (original 4 6) :=by decide +kernel
+theorem original_bounded_4_6:(original 4 6).positiveTotal<2^bits ∧ (original 4 6).negativeTotal<2^bits :=by decide +kernel
+theorem original_checked_4_7:BulkPackedData.Checked bits (originalRow 4 7) (original 4 7) :=by decide +kernel
+theorem original_bounded_4_7:(original 4 7).positiveTotal<2^bits ∧ (original 4 7).negativeTotal<2^bits :=by decide +kernel
+end LowOrder.T4SOS.BulkQ32

@@ -1,0 +1,198 @@
+import ChannelSimplexT4LeafCore
+set_option maxRecDepth 1000000
+set_option maxHeartbeats 0
+set_option linter.unusedVariables false
+namespace LowOrder.T4Burg.LeafLogs
+noncomputable def log23375 : CertifiedLog :=
+  { reduction := {q := (429/409), k := 3, inverse := true},
+    lower := (-642901704985465832776301/302231454903657293676544), upper := (-1285803409970739045253179/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23376 : CertifiedLog :=
+  { reduction := {q := (1806162847/1355658304), k := 0, inverse := false},
+    lower := (346861915041564719779555/1208925819614629174706176), upper := (346861915041564719779625/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23377 : CertifiedLog :=
+  { reduction := {q := (461672473/338914576), k := 0, inverse := false},
+    lower := (373688182064630614081307/1208925819614629174706176), upper := (373688182064630614081741/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23378 : CertifiedLog :=
+  { reduction := {q := (12713800765/9489608128), k := 0, inverse := false},
+    lower := (176799815429324242262353/604462909807314587353088), upper := (176799815429324242262409/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23380 : CertifiedLog :=
+  { reduction := {q := (1914234967/1355658304), k := 0, inverse := false},
+    lower := (208558368616667304963307/604462909807314587353088), upper := (208558368616667304966551/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23381 : CertifiedLog :=
+  { reduction := {q := (238392797/169513344), k := 0, inverse := false},
+    lower := (103057320930980912157897/302231454903657293676544), upper := (412229283723923648636445/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23382 : CertifiedLog :=
+  { reduction := {q := (1187527597/805188384), k := 0, inverse := false},
+    lower := (469731158938073984137693/1208925819614629174706176), upper := (14679098716814812008033/37778931862957161709568), valid := by decide +kernel }
+noncomputable def log23384 : CertifiedLog :=
+  { reduction := {q := (5327750/3594591), k := 0, inverse := false},
+    lower := (237855426412718972396253/604462909807314587353088), upper := (475710852825437944955131/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23386 : CertifiedLog :=
+  { reduction := {q := (36036/29069), k := 3, inverse := true},
+    lower := (-346702949663797775277683/151115727451828646838272), upper := (-1386811798654998480811309/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23387 : CertifiedLog :=
+  { reduction := {q := (5363279137/3632695066), k := 0, inverse := false},
+    lower := (58874801067274846153419/151115727451828646838272), upper := (117749602134549692338711/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23389 : CertifiedLog :=
+  { reduction := {q := (127442065076726847443935690752/115671204672759227202702077789), k := 2, inverse := false},
+    lower := (224135528020741535289849/151115727451828646838272), upper := (1793084224166189109384689/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23390 : CertifiedLog :=
+  { reduction := {q := (14335743361/10007565568), k := 0, inverse := false},
+    lower := (108626394632805429545417/302231454903657293676544), upper := (434505578531221718199353/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23391 : CertifiedLog :=
+  { reduction := {q := (15092248201/10007565568), k := 0, inverse := false},
+    lower := (124168735898848307464603/302231454903657293676544), upper := (496674943595393230324559/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23392 : CertifiedLog :=
+  { reduction := {q := (984636871/625472848), k := 0, inverse := false},
+    lower := (548568217073377506547997/1208925819614629174706176), upper := (548568217073377511779061/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23393 : CertifiedLog :=
+  { reduction := {q := (15162909037/10007565568), k := 0, inverse := false},
+    lower := (125580459918663680818653/302231454903657293676544), upper := (502321839674654723888737/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23395 : CertifiedLog :=
+  { reduction := {q := (3956212693/2501891392), k := 0, inverse := false},
+    lower := (553978378352977864337059/1208925819614629174706176), upper := (553978378352977870974105/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23397 : CertifiedLog :=
+  { reduction := {q := (44550079/29176576), k := 0, inverse := false},
+    lower := (255837555435417294886275/604462909807314587353088), upper := (511675110870834590735279/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23399 : CertifiedLog :=
+  { reduction := {q := (20334973/12764752), k := 0, inverse := false},
+    lower := (281470927963445497053769/604462909807314587353088), upper := (562941855926891003900787/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23401 : CertifiedLog :=
+  { reduction := {q := (36461027/23109086), k := 0, inverse := false},
+    lower := (551292010792813912336715/1208925819614629174706176), upper := (551292010792813918235661/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23403 : CertifiedLog :=
+  { reduction := {q := (28324679/18050032), k := 0, inverse := false},
+    lower := (544725069273235012881267/1208925819614629174706176), upper := (544725069273235017291805/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23405 : CertifiedLog :=
+  { reduction := {q := (430153121/273352079), k := 0, inverse := false},
+    lower := (548103525183372119742383/1208925819614629174706176), upper := (137025881295843031216745/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23407 : CertifiedLog :=
+  { reduction := {q := (47755297/30298268), k := 0, inverse := false},
+    lower := (550060575213121991374867/1208925819614629174706176), upper := (275030287606560998481171/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23409 : CertifiedLog :=
+  { reduction := {q := (12097283015/7653858212), k := 0, inverse := false},
+    lower := (34588200425038013995825/75557863725914323419136), upper := (553411206800608230407411/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23411 : CertifiedLog :=
+  { reduction := {q := (16878016457/10352870528), k := 0, inverse := false},
+    lower := (590860253995135363291831/1208925819614629174706176), upper := (590860253995135394869645/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23412 : CertifiedLog :=
+  { reduction := {q := (1096247387/647054408), k := 0, inverse := false},
+    lower := (39835448903273693720487/75557863725914323419136), upper := (318683591226189647668923/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23414 : CertifiedLog :=
+  { reduction := {q := (143/142), k := 5, inverse := true},
+    lower := (-4198301341638071543595343/1208925819614629174706176), upper := (-2099150670818714737965301/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23415 : CertifiedLog :=
+  { reduction := {q := (775589081/497104608), k := 0, inverse := false},
+    lower := (268878619471709873668589/604462909807314587353088), upper := (33609827433963734410227/75557863725914323419136), valid := by decide +kernel }
+noncomputable def log23416 : CertifiedLog :=
+  { reduction := {q := (5452677179/3479732256), k := 0, inverse := false},
+    lower := (542990676832045381813227/1208925819614629174706176), upper := (542990676832045385895197/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23417 : CertifiedLog :=
+  { reduction := {q := (3213876088517980551083924184682325205044405987565585670602752/1999392470713824340403638850267899385891782477356558785690631), k := 7, inverse := false},
+    lower := (6439542375895130760211929/1208925819614629174706176), upper := (6439542375896029670493689/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23418 : CertifiedLog :=
+  { reduction := {q := (819/661), k := 4, inverse := true},
+    lower := (-3610963459385585209617191/1208925819614629174706176), upper := (-3610963459385071555485397/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23419 : CertifiedLog :=
+  { reduction := {q := (12115281649/7672552888), k := 0, inverse := false},
+    lower := (552259318394133711100945/1208925819614629174706176), upper := (552259318394133717256129/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23420 : CertifiedLog :=
+  { reduction := {q := (2213960327/1315690376), k := 0, inverse := false},
+    lower := (314575425518797459711669/604462909807314587353088), upper := (629150851037595062789989/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23422 : CertifiedLog :=
+  { reduction := {q := (3042069319/1918138222), k := 0, inverse := false},
+    lower := (139383991335030008911745/302231454903657293676544), upper := (69691995667515005424789/151115727451828646838272), valid := by decide +kernel }
+noncomputable def log23423 : CertifiedLog :=
+  { reduction := {q := (6427752177035961102167848369364650410088811975131171341205504/5374483996914624738266131626130155945262516460555344825037631), k := 6, inverse := false},
+    lower := (2622066657610289705751185/604462909807314587353088), upper := (1311033328805337473175015/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23424 : CertifiedLog :=
+  { reduction := {q := (4445585863/2631380752), k := 0, inverse := false},
+    lower := (39622766920299869936999/75557863725914323419136), upper := (633964270724798091175761/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23426 : CertifiedLog :=
+  { reduction := {q := (1346962321/848351504), k := 0, inverse := false},
+    lower := (558901087780722125266267/1208925819614629174706176), upper := (279450543890361066745471/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23428 : CertifiedLog :=
+  { reduction := {q := (3046402265/1913464553), k := 0, inverse := false},
+    lower := (562205884710917107902577/1208925819614629174706176), upper := (562205884710917117390311/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23430 : CertifiedLog :=
+  { reduction := {q := (12256603321/7672552888), k := 0, inverse := false},
+    lower := (141569879232861091920753/302231454903657293676544), upper := (566279516931444378983817/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23431 : CertifiedLog :=
+  { reduction := {q := (200867255532373784442745261542645325315275374222849104412672/121612064868026935957415570443456670377496681994673453903383), k := 6, inverse := false},
+    lower := (2817214946774315657245811/604462909807314587353088), upper := (5634429893549401855350749/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23432 : CertifiedLog :=
+  { reduction := {q := (162117041/115026912), k := 0, inverse := false},
+    lower := (414845834267690379111341/1208925819614629174706176), upper := (51855729283461297389627/151115727451828646838272), valid := by decide +kernel }
+noncomputable def log23434 : CertifiedLog :=
+  { reduction := {q := (4008296393/2588217632), k := 0, inverse := false},
+    lower := (528780340014160213659075/1208925819614629174706176), upper := (132195085003540053950549/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23436 : CertifiedLog :=
+  { reduction := {q := (962587183/608992384), k := 0, inverse := false},
+    lower := (553469064636932364650323/1208925819614629174706176), upper := (69183633079616546392621/151115727451828646838272), valid := by decide +kernel }
+noncomputable def log23438 : CertifiedLog :=
+  { reduction := {q := (90400272380478747574272/49401246216156150995669), k := 1, inverse := false},
+    lower := (1568483098369610404186075/1208925819614629174706176), upper := (1568483098369743900332559/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23444 : CertifiedLog :=
+  { reduction := {q := (8156292164910518236411884208128/4382138508359761150537838731837), k := 1, inverse := false},
+    lower := (198626513002858144884435/151115727451828646838272), upper := (1589012104023003370824305/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23453 : CertifiedLog :=
+  { reduction := {q := (4078146082455259118205942104064/2915353090061278165735161340625), k := 2, inverse := false},
+    lower := (520426218726874407522779/302231454903657293676544), upper := (520426218726938614290077/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23455 : CertifiedLog :=
+  { reduction := {q := (29758868425009152/19511047022831341), k := 2, inverse := false},
+    lower := (1093135344573833897140337/604462909807314587353088), upper := (2186270689147924622250095/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23466 : CertifiedLog :=
+  { reduction := {q := (72072/44945), k := 3, inverse := true},
+    lower := (-771194223571105674176279/302231454903657293676544), upper := (-1542388447142018721178181/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23467 : CertifiedLog :=
+  { reduction := {q := (10575818587/7450276834), k := 0, inverse := false},
+    lower := (423509610533731654801557/1208925819614629174706176), upper := (52938701316716456851373/151115727451828646838272), valid := by decide +kernel }
+noncomputable def log23469 : CertifiedLog :=
+  { reduction := {q := (16782494166482547811547086848/11663151967128104650828551017), k := 2, inverse := false},
+    lower := (2115857403234256977616763/1208925819614629174706176), upper := (1057928701617256902353317/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23470 : CertifiedLog :=
+  { reduction := {q := (1211583931/848351504), k := 0, inverse := false},
+    lower := (215423785137247367078143/604462909807314587353088), upper := (215423785137247367085329/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23471 : CertifiedLog :=
+  { reduction := {q := (4852224127/3393406016), k := 0, inverse := false},
+    lower := (6754930464508898053519/18889465931478580854784), upper := (432315549728569475440839/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23473 : CertifiedLog :=
+  { reduction := {q := (105125507/72200128), k := 0, inverse := false},
+    lower := (113552323597576564873881/302231454903657293676544), upper := (454209294390306259547971/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23475 : CertifiedLog :=
+  { reduction := {q := (154587101/106043938), k := 0, inverse := false},
+    lower := (14239037347989507063243/37778931862957161709568), upper := (227824597567832113040225/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23477 : CertifiedLog :=
+  { reduction := {q := (4078146082455259118205942104064/2752620420848722390451457294037), k := 2, inverse := false},
+    lower := (537785669001826498034109/302231454903657293676544), upper := (2151142676007562819360869/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23478 : CertifiedLog :=
+  { reduction := {q := (5483601775/3826929106), k := 0, inverse := false},
+    lower := (217424983271081887384351/604462909807314587353088), upper := (217424983271081887393367/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23479 : CertifiedLog :=
+  { reduction := {q := (6274544261/4373633264), k := 0, inverse := false},
+    lower := (218154762678612479821667/604462909807314587353088), upper := (436309525357224959662911/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23480 : CertifiedLog :=
+  { reduction := {q := (44719882145/30615432848), k := 0, inverse := false},
+    lower := (229039440985569578527183/604462909807314587353088), upper := (458078881971139157118921/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23482 : CertifiedLog :=
+  { reduction := {q := (1599031349/1093408316), k := 0, inverse := false},
+    lower := (229755340119257799383789/604462909807314587353088), upper := (229755340119257799418629/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23484 : CertifiedLog :=
+  { reduction := {q := (1099896295/739490752), k := 0, inverse := false},
+    lower := (479954915188938602177163/1208925819614629174706176), upper := (239977457594469301189605/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23486 : CertifiedLog :=
+  { reduction := {q := (24806317/17313296), k := 0, inverse := false},
+    lower := (434758227877137860989181/1208925819614629174706176), upper := (27172389242321116312945/75557863725914323419136), valid := by decide +kernel }
+noncomputable def log23487 : CertifiedLog :=
+  { reduction := {q := (696539677/484772288), k := 0, inverse := false},
+    lower := (438169706774698336445021/1208925819614629174706176), upper := (438169706774698336466751/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23488 : CertifiedLog :=
+  { reduction := {q := (708085891/484772288), k := 0, inverse := false},
+    lower := (114511306283177691069117/302231454903657293676544), upper := (458045225132710764340907/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23490 : CertifiedLog :=
+  { reduction := {q := (177512173/121193072), k := 0, inverse := false},
+    lower := (57673963637524928876031/151115727451828646838272), upper := (57673963637524928885657/151115727451828646838272), valid := by decide +kernel }
+noncomputable def log23492 : CertifiedLog :=
+  { reduction := {q := (2750633492/1913464553), k := 0, inverse := false},
+    lower := (438738214303184559476569/1208925819614629174706176), upper := (438738214303184559499001/1208925819614629174706176), valid := by decide +kernel }
+end LowOrder.T4Burg.LeafLogs

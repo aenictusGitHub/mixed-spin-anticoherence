@@ -1,0 +1,37 @@
+import Mathlib.Data.List.Basic
+namespace LowOrder.T4SOS.Irrep.LU093
+set_option maxRecDepth 100000
+def dimension : Nat := 31
+def mon0 : List Nat := [0,4,4,6,24]
+def mon1 : List Nat := [0,4,4,8,22]
+def mon2 : List Nat := [0,4,6,6,22]
+def mon3 : List Nat := [0,4,7,7,20]
+def mon4 : List Nat := [0,4,8,8,18]
+def mon5 : List Nat := [0,4,5,5,24]
+def mon6 : List Nat := [0,6,6,6,20]
+def mon7 : List Nat := [0,6,7,7,18]
+def mon8 : List Nat := [0,6,8,8,16]
+def mon9 : List Nat := [0,5,5,5,23]
+def mon10 : List Nat := [0,4,4,7,23]
+def mon11 : List Nat := [0,4,5,8,21]
+def mon12 : List Nat := [0,4,5,6,23]
+def mon13 : List Nat := [0,4,6,8,20]
+def mon14 : List Nat := [0,4,7,8,19]
+def mon15 : List Nat := [0,5,5,6,22]
+def mon16 : List Nat := [0,5,5,7,21]
+def mon17 : List Nat := [0,5,5,8,20]
+def mon18 : List Nat := [0,5,6,6,21]
+def mon19 : List Nat := [0,5,6,7,20]
+def mon20 : List Nat := [0,5,6,8,19]
+def mon21 : List Nat := [0,5,7,7,19]
+def mon22 : List Nat := [0,5,7,8,18]
+def mon23 : List Nat := [0,5,8,8,17]
+def mon24 : List Nat := [0,6,6,7,19]
+def mon25 : List Nat := [0,6,6,8,18]
+def mon26 : List Nat := [0,4,5,7,22]
+def mon27 : List Nat := [0,4,6,7,21]
+def mon28 : List Nat := [0,6,7,8,17]
+def mon29 : List Nat := [0,7,7,8,16]
+def mon30 : List Nat := [0,7,7,7,17]
+def mon (i : Nat) : List Nat := (if i < 15 then (if i < 7 then (if i < 3 then (if i < 1 then mon0 else (if i < 2 then mon1 else mon2)) else (if i < 5 then (if i < 4 then mon3 else mon4) else (if i < 6 then mon5 else mon6))) else (if i < 11 then (if i < 9 then (if i < 8 then mon7 else mon8) else (if i < 10 then mon9 else mon10)) else (if i < 13 then (if i < 12 then mon11 else mon12) else (if i < 14 then mon13 else mon14)))) else (if i < 23 then (if i < 19 then (if i < 17 then (if i < 16 then mon15 else mon16) else (if i < 18 then mon17 else mon18)) else (if i < 21 then (if i < 20 then mon19 else mon20) else (if i < 22 then mon21 else mon22))) else (if i < 27 then (if i < 25 then (if i < 24 then mon23 else mon24) else (if i < 26 then mon25 else mon26)) else (if i < 29 then (if i < 28 then mon27 else mon28) else (if i < 30 then mon29 else mon30)))))
+end LowOrder.T4SOS.Irrep.LU093

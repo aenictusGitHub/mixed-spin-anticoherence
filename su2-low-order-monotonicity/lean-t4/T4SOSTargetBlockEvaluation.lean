@@ -1,0 +1,160 @@
+import T4SOSTargetBlockChecks13
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+namespace LowOrder.T4SOS.TargetBlocks
+open Sparse TargetDAG
+noncomputable section
+theorem arithmetic : ∀ i, Sparse.add (scale 96 (blocksB i)) (scale (-5163110400000) (blocksA i))=blocksTarget i := by
+  intro i
+  fin_cases i
+  · exact arithmetic000
+  · exact arithmetic001
+  · exact arithmetic002
+  · exact arithmetic003
+  · exact arithmetic004
+  · exact arithmetic005
+  · exact arithmetic006
+  · exact arithmetic007
+  · exact arithmetic008
+  · exact arithmetic009
+  · exact arithmetic010
+  · exact arithmetic011
+  · exact arithmetic012
+  · exact arithmetic013
+  · exact arithmetic014
+  · exact arithmetic015
+  · exact arithmetic016
+  · exact arithmetic017
+  · exact arithmetic018
+  · exact arithmetic019
+  · exact arithmetic020
+  · exact arithmetic021
+  · exact arithmetic022
+  · exact arithmetic023
+  · exact arithmetic024
+  · exact arithmetic025
+  · exact arithmetic026
+  · exact arithmetic027
+  · exact arithmetic028
+  · exact arithmetic029
+  · exact arithmetic030
+  · exact arithmetic031
+  · exact arithmetic032
+  · exact arithmetic033
+  · exact arithmetic034
+  · exact arithmetic035
+  · exact arithmetic036
+  · exact arithmetic037
+  · exact arithmetic038
+  · exact arithmetic039
+  · exact arithmetic040
+  · exact arithmetic041
+  · exact arithmetic042
+  · exact arithmetic043
+  · exact arithmetic044
+  · exact arithmetic045
+  · exact arithmetic046
+  · exact arithmetic047
+  · exact arithmetic048
+  · exact arithmetic049
+  · exact arithmetic050
+  · exact arithmetic051
+  · exact arithmetic052
+  · exact arithmetic053
+  · exact arithmetic054
+  · exact arithmetic055
+  · exact arithmetic056
+  · exact arithmetic057
+  · exact arithmetic058
+  · exact arithmetic059
+  · exact arithmetic060
+  · exact arithmetic061
+  · exact arithmetic062
+  · exact arithmetic063
+  · exact arithmetic064
+  · exact arithmetic065
+  · exact arithmetic066
+  · exact arithmetic067
+  · exact arithmetic068
+  · exact arithmetic069
+  · exact arithmetic070
+  · exact arithmetic071
+  · exact arithmetic072
+  · exact arithmetic073
+  · exact arithmetic074
+  · exact arithmetic075
+  · exact arithmetic076
+  · exact arithmetic077
+  · exact arithmetic078
+  · exact arithmetic079
+  · exact arithmetic080
+  · exact arithmetic081
+  · exact arithmetic082
+  · exact arithmetic083
+  · exact arithmetic084
+  · exact arithmetic085
+  · exact arithmetic086
+  · exact arithmetic087
+  · exact arithmetic088
+  · exact arithmetic089
+  · exact arithmetic090
+  · exact arithmetic091
+  · exact arithmetic092
+  · exact arithmetic093
+  · exact arithmetic094
+  · exact arithmetic095
+  · exact arithmetic096
+  · exact arithmetic097
+  · exact arithmetic098
+  · exact arithmetic099
+  · exact arithmetic100
+  · exact arithmetic101
+  · exact arithmetic102
+  · exact arithmetic103
+  · exact arithmetic104
+  · exact arithmetic105
+  · exact arithmetic106
+  · exact arithmetic107
+  · exact arithmetic108
+  · exact arithmetic109
+  · exact arithmetic110
+  · exact arithmetic111
+  · exact arithmetic112
+  · exact arithmetic113
+  · exact arithmetic114
+  · exact arithmetic115
+  · exact arithmetic116
+  · exact arithmetic117
+  · exact arithmetic118
+  · exact arithmetic119
+  · exact arithmetic120
+  · exact arithmetic121
+  · exact arithmetic122
+  · exact arithmetic123
+  · exact arithmetic124
+  · exact arithmetic125
+  · exact arithmetic126
+  · exact arithmetic127
+  · exact arithmetic128
+  · exact arithmetic129
+  · exact arithmetic130
+  · exact arithmetic131
+  · exact arithmetic132
+  · exact arithmetic133
+  · exact arithmetic134
+  · exact arithmetic135
+  · exact arithmetic136
+  · exact arithmetic137
+  · exact arithmetic138
+  · exact arithmetic139
+theorem syntaxB : e844=Expr.matrixDet Target.B140 := by decide +kernel
+theorem syntaxA : e1409=Expr.matrixDet Target.A := by decide +kernel
+theorem evaluation {R : Type*} [CommRing R] (x : Nat → R) : eval x Target.expanded=Target.difference.evaluate x := by
+  have h := linear_blocks_certificate p844 p1409 Target.expanded blocksB blocksA blocksTarget 96 (-5163110400000) partitionB partitionA partitionTarget arithmetic x
+  rw [← c844,← c1409,Expr.evaluate_compile,Expr.evaluate_compile,syntaxB,syntaxA] at h
+  rw [← h]
+  simp only [Target.difference,Expr.evaluate]
+  ring
+end
+end LowOrder.T4SOS.TargetBlocks
+#print axioms LowOrder.T4SOS.TargetBlocks.evaluation

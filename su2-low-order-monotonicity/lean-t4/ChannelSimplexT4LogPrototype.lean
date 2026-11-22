@@ -1,0 +1,29 @@
+import ChannelSimplexT4LeafCore
+set_option maxRecDepth 1000000
+set_option maxHeartbeats 0
+namespace LowOrder.T4Burg.LeafLogs
+noncomputable def log3970 : CertifiedLog :=
+  { reduction := {q := (446128255541807812720000000000000000000000000000000/320331476476265257281649274287920972990670891525751), k := 9, inverse := false},
+    lower := (496383036006220493857377/75557863725914323419136), upper := (1985532144025170905879237/302231454903657293676544), valid := by decide +kernel }
+noncomputable def log23273 : CertifiedLog :=
+  { reduction := {q := (5378727457635434496/3097127698818634117), k := 1, inverse := false},
+    lower := (1505262384793013622474237/1208925819614629174706176), upper := (752631192396571312124875/604462909807314587353088), valid := by decide +kernel }
+noncomputable def log23274 : CertifiedLog :=
+  { reduction := {q := (406441091281849417728/236924754027089672587), k := 1, inverse := false},
+    lower := (745208220716480277683851/604462909807314587353088), upper := (1490416441433089312123795/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23275 : CertifiedLog :=
+  { reduction := {q := (6350642051278897152/3557312013871313191), k := 2, inverse := false},
+    lower := (1188280432430652363385219/604462909807314587353088), upper := (2376560864861563437115489/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23276 : CertifiedLog :=
+  { reduction := {q := (86059639322166951936/62523736252188959375), k := 2, inverse := false},
+    lower := (257771490130347604887951/151115727451828646838272), upper := (2062171921043037666170483/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23277 : CertifiedLog :=
+  { reduction := {q := (10807949656064/9429574677137), k := 2, inverse := false},
+    lower := (230107743123417073692193/151115727451828646838272), upper := (1840861944987593416603441/1208925819614629174706176), valid := by decide +kernel }
+noncomputable def log23278 : CertifiedLog :=
+  { reduction := {q := (528/335), k := 3, inverse := true},
+    lower := (-3063910414605566958612723/1208925819614629174706176), upper := (-191494400912823857027277/75557863725914323419136), valid := by decide +kernel }
+noncomputable def log23279 : CertifiedLog :=
+  { reduction := {q := (306217/299453), k := 1, inverse := false},
+    lower := (864966723863558426815351/1208925819614629174706176), upper := (216241680965921710087075/302231454903657293676544), valid := by decide +kernel }
+end LowOrder.T4Burg.LeafLogs

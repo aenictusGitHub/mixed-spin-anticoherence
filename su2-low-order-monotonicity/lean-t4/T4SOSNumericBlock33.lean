@@ -1,0 +1,17 @@
+import T4SOSNumericCubic
+import T4SOSMomentQData33
+import Mathlib.Data.Nat.Choose.Basic
+namespace LowOrder.T4SOS.NumericBlock33
+open NumericCubic
+noncomputable section
+def rowShift (j:Fin 70):Int :=let i:=j.val;(if i<35 then (if i<17 then (if i<8 then (if i<4 then (if i<2 then (if i<1 then (1:Int) else (2:Int)) else (if i<3 then (3:Int) else (4:Int))) else (if i<6 then (if i<5 then (5:Int) else (2:Int)) else (if i<7 then (3:Int) else (3:Int)))) else (if i<12 then (if i<10 then (if i<9 then (4:Int) else (4:Int)) else (if i<11 then (5:Int) else (5:Int))) else (if i<14 then (if i<13 then (6:Int) else (6:Int)) else (if i<15 then (4:Int) else (if i<16 then (5:Int) else (5:Int)))))) else (if i<26 then (if i<21 then (if i<19 then (if i<18 then (6:Int) else (6:Int)) else (if i<20 then (7:Int) else (7:Int))) else (if i<23 then (if i<22 then (6:Int) else (7:Int)) else (if i<24 then (7:Int) else (if i<25 then (8:Int) else (8:Int))))) else (if i<30 then (if i<28 then (if i<27 then (8:Int) else (9:Int)) else (if i<29 then (9:Int) else (10:Int))) else (if i<32 then (if i<31 then (4:Int) else (5:Int)) else (if i<33 then (6:Int) else (if i<34 then (7:Int) else (5:Int))))))) else (if i<52 then (if i<43 then (if i<39 then (if i<37 then (if i<36 then (6:Int) else (6:Int)) else (if i<38 then (7:Int) else (7:Int))) else (if i<41 then (if i<40 then (8:Int) else (8:Int)) else (if i<42 then (7:Int) else (8:Int)))) else (if i<47 then (if i<45 then (if i<44 then (8:Int) else (9:Int)) else (if i<46 then (9:Int) else (9:Int))) else (if i<49 then (if i<48 then (10:Int) else (10:Int)) else (if i<50 then (11:Int) else (if i<51 then (7:Int) else (8:Int)))))) else (if i<61 then (if i<56 then (if i<54 then (if i<53 then (9:Int) else (8:Int)) else (if i<55 then (9:Int) else (9:Int))) else (if i<58 then (if i<57 then (10:Int) else (10:Int)) else (if i<59 then (10:Int) else (if i<60 then (11:Int) else (11:Int))))) else (if i<65 then (if i<63 then (if i<62 then (12:Int) else (10:Int)) else (if i<64 then (11:Int) else (11:Int))) else (if i<67 then (if i<66 then (12:Int) else (12:Int)) else (if i<68 then (13:Int) else (if i<69 then (13:Int) else (14:Int))))))))
+def metric (row:Fin 16):Int :=Nat.choose 15 row.val
+def correctionCount:Nat :=3
+def correctionPair (i:Nat):Nat×Nat :=(if i<1 then (0,0) else (if i<2 then (1,1) else (3,3)))
+def original (a b:Nat)(lookup:Exponent→Option (Exponent×WeightKernel.Row))(d:Exponent):Int :=pairSharedCoefficient WeightKernelData.mixedColumn lookup metric rowShift (fun i h=>MomentQData33.original a i.val h) (fun i h=>MomentQData33.original b i.val h) d
+def transformed (a:Nat)(lookup:Exponent→Option (Exponent×WeightKernel.Row))(d:Exponent):Int :=pairSharedCoefficient WeightKernelData.mixedColumn lookup metric rowShift (fun i h=>MomentQData33.transformed a i.val h) (fun i h=>MomentQData33.transformed a i.val h) d
+def baseline (lookup:Exponent→Option (Exponent×WeightKernel.Row))(d:Exponent):Int :=((List.range 5).map (fun a=>transformed a lookup d)).sum
+def correction (i:Nat)(lookup:Exponent→Option (Exponent×WeightKernel.Row))(d:Exponent):Int :=let p:=correctionPair i; original p.1 p.2 lookup d+(if p.1=p.2 then 0 else original p.2 p.1 lookup d)
+def values (lookup:Exponent→Option (Exponent×WeightKernel.Row))(d:Exponent):List Int :=baseline lookup d::((List.range correctionCount).map (fun i=>correction i lookup d))
+end
+end LowOrder.T4SOS.NumericBlock33

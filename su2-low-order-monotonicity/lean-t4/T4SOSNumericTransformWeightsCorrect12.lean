@@ -1,0 +1,5 @@
+import T4SOSNumericTransformWeights12
+import T4SOSTransformedListCoefficients12
+namespace LowOrder.T4SOS.NumericTransformWeights12
+lemma weights_identity : listWeights=Transformed12.listWeights := rfl
+end LowOrder.T4SOS.NumericTransformWeights12

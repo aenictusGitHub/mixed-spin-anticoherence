@@ -1,0 +1,4 @@
+'LowOrder.physical_determinant_t4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_totals_t4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_fidelity_t4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_vonNeumann_t4' depends on axioms: [propext, Classical.choice, Quot.sound]

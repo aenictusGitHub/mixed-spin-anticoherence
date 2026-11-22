@@ -1,0 +1,143 @@
+import T4SOSBulkQCheckBundle16_000
+import Mathlib.Tactic.FinCases
+set_option Elab.async false
+namespace LowOrder.T4SOS.BulkQ16
+set_option maxHeartbeats 0
+set_option maxRecDepth 1000000
+theorem original_checked (a:Fin 2)(row:Fin 16):BulkPackedData.Checked bits (originalRow a.val row.val) (original a.val row.val) :=by
+  fin_cases a <;> fin_cases row
+  · exact original_checked_0_0
+  · exact original_checked_0_1
+  · exact original_checked_0_2
+  · exact original_checked_0_3
+  · exact original_checked_0_4
+  · exact original_checked_0_5
+  · exact original_checked_0_6
+  · exact original_checked_0_7
+  · exact original_checked_0_8
+  · exact original_checked_0_9
+  · exact original_checked_0_10
+  · exact original_checked_0_11
+  · exact original_checked_0_12
+  · exact original_checked_0_13
+  · exact original_checked_0_14
+  · exact original_checked_0_15
+  · exact original_checked_1_0
+  · exact original_checked_1_1
+  · exact original_checked_1_2
+  · exact original_checked_1_3
+  · exact original_checked_1_4
+  · exact original_checked_1_5
+  · exact original_checked_1_6
+  · exact original_checked_1_7
+  · exact original_checked_1_8
+  · exact original_checked_1_9
+  · exact original_checked_1_10
+  · exact original_checked_1_11
+  · exact original_checked_1_12
+  · exact original_checked_1_13
+  · exact original_checked_1_14
+  · exact original_checked_1_15
+theorem original_bounded (a:Fin 2)(row:Fin 16):(original a.val row.val).positiveTotal<2^bits ∧ (original a.val row.val).negativeTotal<2^bits :=by
+  fin_cases a <;> fin_cases row
+  · exact original_bounded_0_0
+  · exact original_bounded_0_1
+  · exact original_bounded_0_2
+  · exact original_bounded_0_3
+  · exact original_bounded_0_4
+  · exact original_bounded_0_5
+  · exact original_bounded_0_6
+  · exact original_bounded_0_7
+  · exact original_bounded_0_8
+  · exact original_bounded_0_9
+  · exact original_bounded_0_10
+  · exact original_bounded_0_11
+  · exact original_bounded_0_12
+  · exact original_bounded_0_13
+  · exact original_bounded_0_14
+  · exact original_bounded_0_15
+  · exact original_bounded_1_0
+  · exact original_bounded_1_1
+  · exact original_bounded_1_2
+  · exact original_bounded_1_3
+  · exact original_bounded_1_4
+  · exact original_bounded_1_5
+  · exact original_bounded_1_6
+  · exact original_bounded_1_7
+  · exact original_bounded_1_8
+  · exact original_bounded_1_9
+  · exact original_bounded_1_10
+  · exact original_bounded_1_11
+  · exact original_bounded_1_12
+  · exact original_bounded_1_13
+  · exact original_bounded_1_14
+  · exact original_bounded_1_15
+theorem transformed_checked (a:Fin 2)(row:Fin 16):BulkPackedData.Checked bits (transformedRow a.val row.val) (transformed a.val row.val) :=by
+  fin_cases a <;> fin_cases row
+  · exact transformed_checked_0_0
+  · exact transformed_checked_0_1
+  · exact transformed_checked_0_2
+  · exact transformed_checked_0_3
+  · exact transformed_checked_0_4
+  · exact transformed_checked_0_5
+  · exact transformed_checked_0_6
+  · exact transformed_checked_0_7
+  · exact transformed_checked_0_8
+  · exact transformed_checked_0_9
+  · exact transformed_checked_0_10
+  · exact transformed_checked_0_11
+  · exact transformed_checked_0_12
+  · exact transformed_checked_0_13
+  · exact transformed_checked_0_14
+  · exact transformed_checked_0_15
+  · exact transformed_checked_1_0
+  · exact transformed_checked_1_1
+  · exact transformed_checked_1_2
+  · exact transformed_checked_1_3
+  · exact transformed_checked_1_4
+  · exact transformed_checked_1_5
+  · exact transformed_checked_1_6
+  · exact transformed_checked_1_7
+  · exact transformed_checked_1_8
+  · exact transformed_checked_1_9
+  · exact transformed_checked_1_10
+  · exact transformed_checked_1_11
+  · exact transformed_checked_1_12
+  · exact transformed_checked_1_13
+  · exact transformed_checked_1_14
+  · exact transformed_checked_1_15
+theorem transformed_bounded (a:Fin 2)(row:Fin 16):(transformed a.val row.val).positiveTotal<2^bits ∧ (transformed a.val row.val).negativeTotal<2^bits :=by
+  fin_cases a <;> fin_cases row
+  · exact transformed_bounded_0_0
+  · exact transformed_bounded_0_1
+  · exact transformed_bounded_0_2
+  · exact transformed_bounded_0_3
+  · exact transformed_bounded_0_4
+  · exact transformed_bounded_0_5
+  · exact transformed_bounded_0_6
+  · exact transformed_bounded_0_7
+  · exact transformed_bounded_0_8
+  · exact transformed_bounded_0_9
+  · exact transformed_bounded_0_10
+  · exact transformed_bounded_0_11
+  · exact transformed_bounded_0_12
+  · exact transformed_bounded_0_13
+  · exact transformed_bounded_0_14
+  · exact transformed_bounded_0_15
+  · exact transformed_bounded_1_0
+  · exact transformed_bounded_1_1
+  · exact transformed_bounded_1_2
+  · exact transformed_bounded_1_3
+  · exact transformed_bounded_1_4
+  · exact transformed_bounded_1_5
+  · exact transformed_bounded_1_6
+  · exact transformed_bounded_1_7
+  · exact transformed_bounded_1_8
+  · exact transformed_bounded_1_9
+  · exact transformed_bounded_1_10
+  · exact transformed_bounded_1_11
+  · exact transformed_bounded_1_12
+  · exact transformed_bounded_1_13
+  · exact transformed_bounded_1_14
+  · exact transformed_bounded_1_15
+end LowOrder.T4SOS.BulkQ16

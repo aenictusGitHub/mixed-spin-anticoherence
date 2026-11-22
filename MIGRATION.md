@@ -7,7 +7,7 @@ Its title is the title of the companion [arXiv submission](https://arxiv.org/abs
 
 | Original repository | Original main commit | Directory in the combined repository |
 |---|---|---|
-| `su2-t2-fidelity-monotonicity` | `151f48ce9a4621f0789facee7b94b157cb9efbd3` | `su2-t2-fidelity-monotonicity/` |
+| `su2-t2-fidelity-monotonicity` | `151f48ce9a4621f0789facee7b94b157cb9efbd3` | `su2-low-order-monotonicity/` |
 | `spin52-purity-certificates` | `455931c12d0475a3ad8e314ea9867437345bd75d` | `spin52-purity-certificates/` |
 
 The fidelity files were moved without modification. The spin-5/2 history was
@@ -40,3 +40,7 @@ On the combined main branch, component files now live in the directories shown
 above. Historical component documentation is retained verbatim, including its
 original repository links. Use the root [citation.bib](citation.bib) for canonical
 repository URLs and the root [README](README.md) to navigate the current layout.
+
+## Low-order proof directory — 22 November 2026
+
+The current proof directory is [`su2-low-order-monotonicity/`](su2-low-order-monotonicity/). It replaces the former `su2-t2-fidelity-monotonicity/` name and contains written proofs and end-to-end Lean certificates for both measures at orders 1, 2, 3 and 4. Commit-pinned historical citations continue to refer to their original snapshots.
