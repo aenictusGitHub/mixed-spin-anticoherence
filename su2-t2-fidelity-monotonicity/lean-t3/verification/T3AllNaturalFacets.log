@@ -1,0 +1,161 @@
+T3AllNaturalFacets.lean:6:20: warning: unused variable `N`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3AllNaturalFacets.lean:7:50: warning: unused variable `hN`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3AllNaturalFacets.lean:25:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:30:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:35:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:25:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:30:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:35:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:25:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:30:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:35:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:40:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:40:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:52:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:62:50: warning: unused variable `hN`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3AllNaturalFacets.lean:80:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:85:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:80:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:85:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:80:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:85:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:90:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:90:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:95:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:95:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:107:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:117:50: warning: unused variable `hN`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3AllNaturalFacets.lean:135:88: warning: 'positivity' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3AllNaturalFacets.lean:135:88: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3AllNaturalFacets.lean:135:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:140:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:140:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:145:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:145:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:150:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:150:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:162:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:172:50: warning: unused variable `hN`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3AllNaturalFacets.lean:190:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:190:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:195:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:195:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:200:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:200:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:205:66: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:205:84: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3AllNaturalFacets.lean:217:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2LowOrder.t3AllNaturalFacet00' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet01' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet02' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet03' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet04' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet05' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet06' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet07' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet08' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet09' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet15' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet16' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet17' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet18' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllNaturalFacet19' depends on axioms: [propext, Classical.choice, Quot.sound]

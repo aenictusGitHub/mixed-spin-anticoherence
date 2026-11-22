@@ -1,0 +1,2 @@
+'LowOrder.density_spin_moment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.density_octupole_polynomial_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

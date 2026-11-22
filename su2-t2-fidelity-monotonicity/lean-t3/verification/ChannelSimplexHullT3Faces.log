@@ -1,0 +1,1 @@
+'SU2T2.Spin.t3FaceCase19' depends on axioms: [propext, Classical.choice, Quot.sound]

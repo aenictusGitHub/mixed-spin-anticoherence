@@ -1,0 +1,25 @@
+SpinAction.lean:18:32: warning: This simp argument is unused:
+  map_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [tensorPower, Matrix.kronecker, Matrix.kroneckerMap, weight, Fin.val_zero, Fin.val_one,
+      zero_add, pow_add, pow_one, m̵a̵p̵_̵m̵u̵l̵,̵ ̵Finset.mul_sum, add_mul, Finset.sum_add_distrib]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinAction.lean:35:25: warning: This simp argument is unused:
+  Fin.val_zero
+
+Hint: Omit it from the simp argument list.
+  simp only [weight, F̵i̵n̵.̵v̵a̵l̵_̵z̵e̵r̵o̵,̵ ̵zero_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinAction.lean:39:25: warning: This simp argument is unused:
+  Fin.val_one
+
+Hint: Omit it from the simp argument list.
+  simp only [weight, F̵i̵n̵.̵v̵a̵l̵_̵o̵n̵e̵,̵ ̵hone]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Dicke.action_intertwines' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Dicke.action_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Dicke.action_unitary' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,43 @@
+DickeCoordinates.lean:48:43: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [weightedState, M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵ ̵Matrix.smul_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+DickeCoordinates.lean:48:60: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [weightedState, Matrix.mul_smul,̵ ̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+DickeCoordinates.lean:54:45: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [coordinateState, M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵ ̵Matrix.smul_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+DickeCoordinates.lean:54:62: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [coordinateState, Matrix.mul_smul,̵ ̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+DickeCoordinates.lean:69:41: warning: This simp argument is unused:
+  diagonal_mul_diagonal
+
+Hint: Omit it from the simp argument list.
+  simp [dickeScale, inverseDickeScale, d̵i̵a̵g̵o̵n̵a̵l̵_̵m̵u̵l̵_̵d̵i̵a̵g̵o̵n̵a̵l̵,̵ ̵h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+DickeCoordinates.lean:102:28: warning: This simp argument is unused:
+  star_inv
+
+Hint: Omit it from the simp argument list.
+  simp only [Pi.star_apply, s̵t̵a̵r̵_̵i̵n̵v̵,̵ ̵Complex.star_def, map_inv₀, Complex.conj_ofReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Dicke.marginal_weightedState' depends on axioms: [propext, Classical.choice, Quot.sound]

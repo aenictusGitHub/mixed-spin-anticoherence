@@ -1,0 +1,53 @@
+SpinOneAction.lean:78:10: warning: This simp argument is unused:
+  Matrix.mul_apply
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵,̵M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵t̵h̵r̵e̵e̵,̵[̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲d̲i̲a̲g̲_̲a̲p̲p̲l̲y̲,̲ ̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲ Matrix.one_apply, map_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinOneAction.lean:79:6: warning: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵,̵M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵t̵h̵r̵e̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵[̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲a̲p̲p̲l̲y̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲d̲i̲a̲g̲_̲a̲p̲p̲l̲y̲,̲ ̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲ map_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinOneAction.lean:79:24: warning: This simp argument is unused:
+  map_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp [̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵,̵M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵t̵h̵r̵e̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵m̵a̵p̵_̵o̵f̵N̵a̵t̵]̵[̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲a̲p̲p̲l̲y̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲d̲i̲a̲g̲_̲a̲p̲p̲l̲y̲,̲ ̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinOneAction.lean:115:46: warning: This simp argument is unused:
+  Matrix.mul_apply
+
+Hint: Omit it from the simp argument list.
+  simp [spinOneAction_apply, t̵i̵m̵e̵R̵e̵v̵e̵r̵s̵e̵O̵n̵e̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵n̵s̵p̵o̵s̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵,̵M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵_̵a̵p̵p̵l̵y̵,̵F̵i̵n̵.̵s̵u̵m̵_̵u̵n̵i̵v̵_̵t̵h̵r̵e̵e̵,̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵H̵e̵a̵d̵,̵M̵a̵t̵r̵i̵x̵.̵v̵e̵c̵T̵a̵i̵l̵]̵t̲i̲m̲e̲R̲e̲v̲e̲r̲s̲e̲O̲n̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲n̲s̲p̲o̲s̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲d̲i̲a̲g̲_̲a̲p̲p̲l̲y̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲F̲i̲n̲.̲s̲u̲m̲_̲u̲n̲i̲v̲_̲t̲h̲r̲e̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲v̲e̲c̲H̲e̲a̲d̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲v̲e̲c̲T̲a̲i̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinOneAction.lean:118:4: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+SpinOneAction.lean:232:6: warning: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cartesianChange, ̲Matrix.mul_apply, ̲Matrix.conjTranspose_apply, ̲Fin.sum_univ_three,
+        M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵map_ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinOneAction.lean:233:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+SpinOneAction.lean:240:41: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+SpinOneAction.lean:247:41: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

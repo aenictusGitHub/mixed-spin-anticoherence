@@ -1,0 +1,8 @@
+T3GlobalMaps.lean:45:67: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3GlobalMaps.lean:45:67: warning: 'module' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'LowOrder.threeMomentMap_good_convex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.threeMomentMap_rankScaling' depends on axioms: [propext, Classical.choice, Quot.sound]

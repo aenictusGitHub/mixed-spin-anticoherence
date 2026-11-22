@@ -1,0 +1,9 @@
+ChannelSimplexRacah.lean:70:48: warning: This simp argument is unused:
+  Polynomial.eval_sub
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵a̵n̵k̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵a̵d̵d̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵s̵u̵b̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵p̵o̵w̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵C̵,̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵e̵v̵a̵l̵_̵X̵]̵[̲r̲a̲n̲k̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲_̲a̲d̲d̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲_̲m̲u̲l̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲_̲p̲o̲w̲,̲
+  ̲ ̲ ̲ ̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲_̲C̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲e̲v̲a̲l̲_̲X̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

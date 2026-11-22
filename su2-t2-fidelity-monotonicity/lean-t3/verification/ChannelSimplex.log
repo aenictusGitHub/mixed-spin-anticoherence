@@ -1,0 +1,28 @@
+ChannelSimplex.lean:43:4: warning: This simp argument is unused:
+  Complex.natCast_re
+
+Hint: Omit it from the simp argument list.
+  simp only [̵C̵o̵m̵p̵l̵e̵x̵.̵m̵u̵l̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵i̵m̵,̵
+  ̵ ̵ ̵ ̵ ̵C̵o̵m̵p̵l̵e̵x̵.̵n̵a̵t̵C̵a̵s̵t̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵n̵a̵t̵C̵a̵s̵t̵_̵i̵m̵,̵m̵u̵l̵_̵z̵e̵r̵o̵,̵s̵u̵b̵_̵z̵e̵r̵o̵,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵a̵d̵d̵,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵]̵[̲C̲o̲m̲p̲l̲e̲x̲.̲m̲u̲l̲_̲r̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲r̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲i̲m̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲n̲a̲t̲C̲a̲s̲t̲_̲i̲m̲,̲ ̲m̲u̲l̲_̲z̲e̲r̲o̲,̲
+  ̲ ̲ ̲ ̲ ̲s̲u̲b̲_̲z̲e̲r̲o̲,̲ ̲N̲a̲t̲.̲c̲a̲s̲t̲_̲a̲d̲d̲,̲ ̲N̲a̲t̲.̲c̲a̲s̲t̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplex.lean:43:23: warning: This simp argument is unused:
+  Complex.natCast_im
+
+Hint: Omit it from the simp argument list.
+  simp only [̵C̵o̵m̵p̵l̵e̵x̵.̵m̵u̵l̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵i̵m̵,̵
+  ̵ ̵ ̵ ̵ ̵C̵o̵m̵p̵l̵e̵x̵.̵n̵a̵t̵C̵a̵s̵t̵_̵r̵e̵,̵C̵o̵m̵p̵l̵e̵x̵.̵n̵a̵t̵C̵a̵s̵t̵_̵i̵m̵,̵m̵u̵l̵_̵z̵e̵r̵o̵,̵s̵u̵b̵_̵z̵e̵r̵o̵,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵a̵d̵d̵,̵N̵a̵t̵.̵c̵a̵s̵t̵_̵o̵n̵e̵]̵[̲C̲o̲m̲p̲l̲e̲x̲.̲m̲u̲l̲_̲r̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲r̲e̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲i̲m̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲n̲a̲t̲C̲a̲s̲t̲_̲r̲e̲,̲ ̲m̲u̲l̲_̲z̲e̲r̲o̲,̲
+  ̲ ̲ ̲ ̲ ̲s̲u̲b̲_̲z̲e̲r̲o̲,̲ ̲N̲a̲t̲.̲c̲a̲s̲t̲_̲a̲d̲d̲,̲ ̲N̲a̲t̲.̲c̲a̲s̲t̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplex.lean:45:13: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ChannelSimplex.lean:55:12: warning: unused variable `hL`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+ChannelSimplex.lean:55:25: warning: unused variable `h4`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'SU2T2.Spin.cp_covariant_low_rank_simplex' depends on axioms: [propext, Classical.choice, Quot.sound]

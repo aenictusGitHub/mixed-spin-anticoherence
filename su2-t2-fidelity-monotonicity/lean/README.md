@@ -1,6 +1,6 @@
 # Uniform Lean certificates: fidelity monotonicity at t = 1 and t = 2
 
-The public theorems are `LowOrder.physical_fidelity_t1` and `LowOrder.physical_fidelity_t2` in [UniformFidelity.lean](UniformFidelity.lean). **No t = 3 or t = 4 Lean certifications are provided.**
+The public theorems are `LowOrder.physical_fidelity_t1` and `LowOrder.physical_fidelity_t2` in [UniformFidelity.lean](UniformFidelity.lean). The [order-three package](../lean-t3/README.md) also certifies both measures. Across the repository, Lean certification covers `t = 1, 2, 3`, and the [written proofs](../proof.pdf) cover `1 ≤ t ≤ 4`.
 
 Both statements quantify over every natural `k`, with `N = k+t`, and assume only:
 

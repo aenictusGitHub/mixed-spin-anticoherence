@@ -1,0 +1,27 @@
+ChannelSimplexMoments.lean:24:6: warning: This simp argument is unused:
+  RCLike.real_smul_eq_coe_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [Choi.normalizedMatrix, Matrix.trace_smul, Choi.trace_matrix φ hTP,
+        R̵C̵L̵i̵k̵e̵.̵r̵e̵a̵l̵_̵s̵m̵u̵l̵_̵e̵q̵_̵c̵o̵e̵_̵s̵m̵u̵l̵,̵←̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵n̵a̵t̵C̵a̵s̵t̵,̵←̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵m̵u̵l̵,̵h̵n̵]̵←̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲n̲a̲t̲C̲a̲s̲t̲,̲ ̲←̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲m̲u̲l̲,̲ ̲h̲n̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplexMoments.lean:24:59: warning: This simp argument is unused:
+  ← Complex.ofReal_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Choi.normalizedMatrix, Matrix.trace_smul, Choi.trace_matrix φ hTP,
+        RCLike.real_smul_eq_coe_smul, ̲← ̲Complex.ofReal_natCast,←̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵m̵u̵l̵,̵ ̲hn]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplexMoments.lean:24:79: warning: This simp argument is unused:
+  hn
+
+Hint: Omit it from the simp argument list.
+  simp only [Choi.normalizedMatrix, Matrix.trace_smul, Choi.trace_matrix φ hTP,
+        RCLike.real_smul_eq_coe_smul, ̲← ̲Complex.ofReal_natCast, ̲← ̲Complex.ofReal_mul,̵h̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Spin.cp_choi_casimir_moment_simplex' depends on axioms: [propext, Classical.choice, Quot.sound]

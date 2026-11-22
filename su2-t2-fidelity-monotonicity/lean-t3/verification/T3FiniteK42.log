@@ -1,0 +1,3 @@
+'LowOrder.coordinateDeterminant42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteDeterminant42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteOutput42_posSemidef' depends on axioms: [propext, Classical.choice, Quot.sound]

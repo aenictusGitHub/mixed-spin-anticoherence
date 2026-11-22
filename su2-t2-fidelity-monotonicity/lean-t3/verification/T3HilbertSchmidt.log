@@ -1,0 +1,5 @@
+T3HilbertSchmidt.lean:34:48: warning: unused variable `hr`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'LowOrder.trace_mul_cauchy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.octupole_moment_scalar_lower' depends on axioms: [propext, Classical.choice, Quot.sound]

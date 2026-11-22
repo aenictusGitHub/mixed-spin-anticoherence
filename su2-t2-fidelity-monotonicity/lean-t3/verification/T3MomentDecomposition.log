@@ -1,0 +1,27 @@
+T3MomentDecomposition.lean:29:71: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3MomentDecomposition.lean:29:71: warning: 'rfl' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3MomentDecomposition.lean:45:41: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3MomentDecomposition.lean:45:41: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3MomentDecomposition.lean:53:22: warning: This simp argument is unused:
+  Matrix.mul_neg
+
+Hint: Omit it from the simp argument list.
+  simp [̵w̵e̵i̵g̵h̵t̵e̵d̵S̵t̵a̵t̵e̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵n̵e̵g̵,̵M̵a̵t̵r̵i̵x̵.̵n̵e̵g̵_̵m̵u̵l̵]̵[̲w̲e̲i̲g̲h̲t̲e̲d̲S̲t̲a̲t̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲n̲e̲g̲_̲m̲u̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3MomentDecomposition.lean:53:37: warning: This simp argument is unused:
+  Matrix.neg_mul
+
+Hint: Omit it from the simp argument list.
+  simp [̵w̵e̵i̵g̵h̵t̵e̵d̵S̵t̵a̵t̵e̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵n̵e̵g̵,̵M̵a̵t̵r̵i̵x̵.̵n̵e̵g̵_̵m̵u̵l̵]̵[̲w̲e̲i̲g̲h̲t̲e̲d̲S̲t̲a̲t̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲n̲e̲g̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.dipole_octupole_trace' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,40 @@
+PhysicalTwoCovariance.lean:75:51: warning: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [Dicke.totalRaising, Matrix.add_apply,̵ ̵M̵a̵t̵r̵i̵x̵.̵k̵r̵o̵n̵e̵c̵k̵e̵r̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+PhysicalTwoCovariance.lean:78:46: warning: This simp argument is unused:
+  Matrix.one_apply
+
+Hint: Omit it from the simp argument list.
+  simp_all [Dicke.Bits, Dicke.qubitRaising, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵Prod.ext_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+PhysicalTwoCovariance.lean:78:78: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+PhysicalTwoCovariance.lean:86:50: warning: This simp argument is unused:
+  Matrix.add_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [Dicke.totalZ, Matrix.diagonal_apply, Matrix.a̵d̵d̵_̵a̵p̵p̵l̵y̵,̵ ̵M̵a̵t̵r̵i̵x̵.̵kronecker_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+PhysicalTwoCovariance.lean:86:68: warning: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [Dicke.totalZ, Matrix.diagonal_apply, Matrix.add_apply,̵ ̵M̵a̵t̵r̵i̵x̵.̵k̵r̵o̵n̵e̵c̵k̵e̵r̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+PhysicalTwoCovariance.lean:89:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+PhysicalTwoCovariance.lean:89:54: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+PhysicalTwoCovariance.lean:89:44: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`

@@ -1,0 +1,4 @@
+'LowOrder.threeMomentMap_good42' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.threeMomentMap_good43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.threeMomentMap_good54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.threeMomentMap_good65' depends on axioms: [propext, Classical.choice, Quot.sound]

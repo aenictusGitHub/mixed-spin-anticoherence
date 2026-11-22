@@ -1,0 +1,16 @@
+T3FiniteMoments.lean:29:5: warning: unused variable `hb`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3FiniteMoments.lean:29:34: warning: unused variable `hr`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3FiniteMoments.lean:44:18: warning: unused variable `he1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3FiniteMoments.lean:45:5: warning: unused variable `hh`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+T3FiniteMoments.lean:56:40: warning: unused variable `ha`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'SU2LowOrder.t3_product_outer_interval' depends on axioms: [propext, Classical.choice, Quot.sound]

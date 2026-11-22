@@ -1,0 +1,23 @@
+T3BurgUpper.lean:83:42: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3BurgUpper.lean:83:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgUpper.lean:83:42: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3BurgUpper.lean:149:80: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgUpper.lean:158:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgUpper.lean:181:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgUpper.lean:181:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2LowOrder.shifted_reciprocal_bound4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.burg_upper4' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,49 @@
+T3Racah.lean:39:6: warning: 'field_simp' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3Racah.lean:40:6: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3Racah.lean:39:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3Racah.lean:40:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3Racah.lean:38:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:51:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:52:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:53:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:65:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:66:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Racah.lean:67:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2LowOrder.t3AllSpinHalfspace00' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace01' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace02' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace03' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace04' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace05' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace06' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace07' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace08' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace09' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace10' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace11' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace12' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace13' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace14' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3AllSpinHalfspace15' depends on axioms: [propext, Classical.choice, Quot.sound]

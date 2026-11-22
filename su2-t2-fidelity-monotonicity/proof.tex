@@ -18,14 +18,15 @@
 \setcounter{tocdepth}{2}
 \title{Monotonicity of total anticoherence\\under $\mathrm{SU}(2)$-covariant channels\\[3mm]\large Fidelity $\mathcal A_t^{T,F}$ and von Neumann $\mathcal A_t^{T,\mathrm{vN}}$ anticoherence measures at orders $t\le4$\\Uniform proofs with embedded exact data}
 \author{}
-\date{16 November 2026}
+\date{22 November 2026}
 \hypersetup{pdftitle={Monotonicity of fidelity and von Neumann total anticoherence under SU(2)-covariant channels at orders t <= 4}}
 \begin{document}
 \embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
 \maketitle
 \begin{center}\small
 Both measures follow from one common shifted-determinant argument.\\
-The scope of the accompanying Lean certificates is stated in Section~\ref{sec:lean}.
+Written proofs cover $1\le t\le4$ and Lean certification covers $t=1,2,3$.\\
+The certification scope is stated in Section~\ref{sec:lean}.
 \end{center}
 \vspace{12mm}
 \noindent This supplement gives detailed proofs of the paper's monotonicity
@@ -3512,8 +3513,9 @@ The first-order proof is also included. These exact-arithmetic checks are indepe
 described next.
 
 \clearpage\section{Lean certification scope}\label{sec:lean}
-The accompanying Lean package certifies fidelity monotonicity at
-\textbf{orders $t=1$ and $t=2$ only}. Its public theorems are
+The accompanying Lean packages certify both fidelity and von Neumann
+monotonicity at \textbf{orders $t=1,2,3$}. The written proofs cover
+\textbf{all orders $1\le t\le4$}. The order-one and order-two public fidelity theorems are
 \texttt{LowOrder.physical\_fidelity\_t1} and
 \texttt{LowOrder.physical\_fidelity\_t2}, in \path{lean/UniformFidelity.lean}.
 They use $N=k+t$ with $k\in\mathbb N$, and hence include the equal-order
@@ -3534,29 +3536,51 @@ The bound $|f_1|\le1$ is checked from positivity and unitality on
 $jI\pm J_z$, an equivalent bound on the same rank-one multiplier.
 The order-two module \path{lean/ChannelSimplexT2Uniform.lean} supplies
 the determinant comparison in the same marginal coordinates.
-Both feed \texttt{physical\_totals\_of\_determinant} in
+All three orders feed \texttt{physical\_totals\_of\_determinant} in
 \path{lean/PhysicalUniformBridge.lean}. That bridge constructs isotropic
 mixtures via \path{lean/ShiftedDeterminant.lean} and applies the common
 matrix spectral theorem in \path{lean/MatrixSpectralConsequences.lean}.
-Thus both public fidelity certificates follow the determinant,
+Thus the public certificates follow the determinant,
 shifted-determinant, and spectral structure of this document. The shared
-bridge also proves the von Neumann inequalities at those two orders.
+bridge also proves the von Neumann inequalities at all three orders.
+
+\paragraph{Order-three determinant proof and public certificates.}
+The public theorems
+\texttt{LowOrder.physical\_fidelity\_t3} and
+\texttt{LowOrder.physical\_vonNeumann\_t3} are in
+\path{lean-t3/UniformT3Certificate.lean}.
+The theorem \texttt{LowOrder.physical\_determinant\_t3} in
+\path{lean-t3/T3PhysicalDeterminant.lean} proves the full physical
+determinant comparison. Its proof supplies all four finite cases,
+their scalar bounds, physical moment constraints and positive output
+floors, followed by the available-extension hull and the actual
+covariant-channel simplex. These steps are proved within Lean.
+The final theorem assumes only the physical channel and state hypotheses.
+The package includes its own copies of the common shifted-determinant
+and spectral modules, and includes mixed and singular inputs.
 
 \paragraph{Reproduction and precise scope.}
 Lean 4.24.0 and the exact Mathlib revision are pinned in the package.
-From its \path{lean/} directory, run \texttt{lake update},
+For orders one and two, from \path{lean/}, run \texttt{lake update},
 \texttt{lake exe cache get}, and
 \texttt{python3 verify\_uniform.py --jobs 2}.
 The verifier freshly compiles every project Lean source and audits the
-public physical theorems and their common bridges. Mathlib is supplied
+public physical theorems and their common bridges.
+For order three, from \path{lean-t3/}, run
+\texttt{lake exe cache get} and
+\texttt{lake env python3 verify\_sources.py}.
+This rebuilds all 129 local modules from source and checks the public
+certificate with \texttt{--trust=0}. The rebuild and final audit passed
+on 22 November 2026. Source hashes, per-module logs and the axiom report
+are in \path{lean-t3/verification/}.
+Mathlib is supplied
 by its pinned compiled dependency cache. The checked source hashes,
 per-module logs, final theorem statements and axiom reports accompany
 the package. The theorem audits use only \texttt{propext},
 \texttt{Classical.choice}, and \texttt{Quot.sound}.
 
-\textbf{No Lean certificates for $t=3$ or $t=4$ are provided in this
-release.} Their results are the written computer-assisted proofs above,
-with the embedded exact rational data and checking rules. Those
-exact-arithmetic verifiers are not represented as Lean certificates.
+\textbf{Lean certification covers $t=1,2,3$.}
+The order-four results are supplied by the written computer-assisted
+proof above, with the embedded exact rational data and checking rules.
 
 \end{document}

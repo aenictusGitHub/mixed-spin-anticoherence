@@ -1,0 +1,3 @@
+'LowOrder.varianceContraction43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.varianceContraction54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.varianceContraction65' depends on axioms: [propext, Classical.choice, Quot.sound]

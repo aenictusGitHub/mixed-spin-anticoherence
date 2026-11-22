@@ -1,0 +1,3 @@
+'LowOrder.matrixEntropy_mono_of_shifted_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.trace_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.matrix_totals_mono_of_shifted_det' depends on axioms: [propext, Classical.choice, Quot.sound]

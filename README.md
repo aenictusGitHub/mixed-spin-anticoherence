@@ -7,14 +7,15 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 
 ## Monotonicity under SU(2)-covariant channels
 
-**Written proofs cover t = 1, 2, 3, 4** for both the fidelity and von Neumann total anticoherence measures. The two inequalities follow from a common shifted-determinant argument; the proofs at `t = 3,4` use exact computer-assisted certificates.
+**Written proofs cover 1 ≤ t ≤ 4** for both the fidelity and von Neumann total anticoherence measures. The two inequalities follow from a common shifted-determinant argument; the proofs at `t = 3,4` use exact computer-assisted certificates.
 
-**Lean certificates cover t = 1 and t = 2 only.** No Lean certificates for `t = 3,4` are provided.
+**Lean certificates cover t = 1, 2, 3** for both measures, including mixed and singular inputs.
 
 - [Written proofs (PDF)](su2-t2-fidelity-monotonicity/proof.pdf)
 - [Exact data and verification scripts](su2-t2-fidelity-monotonicity/exact-data.zip)
 - [Proof guide and certification scope](su2-t2-fidelity-monotonicity/README.md)
-- [Lean certificates and reproduction instructions](su2-t2-fidelity-monotonicity/lean/README.md)
+- [Lean certificates for t = 1, 2](su2-t2-fidelity-monotonicity/lean/README.md)
+- [Lean certificates for t = 3](su2-t2-fidelity-monotonicity/lean-t3/README.md)
 
 ## Spin-5/2 purity and convex roofs
 

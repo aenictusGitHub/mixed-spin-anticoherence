@@ -1,0 +1,3 @@
+'SU2LowOrder.product_mono_of_burg_bound_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3_product_N4K3' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.t3_product_quarter_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]

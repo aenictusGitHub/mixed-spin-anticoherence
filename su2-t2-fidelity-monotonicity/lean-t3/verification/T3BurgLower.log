@@ -1,0 +1,14 @@
+T3BurgLower.lean:17:95: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgLower.lean:18:40: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgLower.lean:23:50: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgLower.lean:24:38: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2LowOrder.burgFamily_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.burg_lower4' depends on axioms: [propext, Classical.choice, Quot.sound]

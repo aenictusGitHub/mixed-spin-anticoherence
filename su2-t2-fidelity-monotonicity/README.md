@@ -18,14 +18,14 @@ The written proofs cover **both measures at t = 1, 2, 3, 4**, for all density ma
 - [LaTeX source](proof.tex)
 - [Exact data and verification scripts](exact-data.zip), also embedded in the PDF; see Section 9 for instructions.
 
-## Lean certificates (t = 1, 2 only)
+## Lean certificates (t = 1, 2, 3)
 
-The Lean package certifies fidelity monotonicity at **t = 1 and t = 2**, following the uniform proof structure of the PDF. The shared formal argument also proves the von Neumann inequalities at these two orders.
+The Lean certificates prove **both measures at t = 1, 2, 3**, under the paper's physical channel hypotheses and for all density matrices, including mixed and singular inputs. Each order follows the uniform determinant, shifted-determinant and spectral argument in the PDF.
 
-**No Lean certificates are provided for t = 3 or t = 4.** The exact-data checks accompanying their written proofs are separate from Lean certification.
+- [Orders one and two](lean/README.md) and their [verification report](lean/verification-uniform/result.json)
+- [Order three](lean-t3/README.md), [public theorems](lean-t3/UniformT3Certificate.lean), [verification report](lean-t3/verification/result.json) and [axiom audit](lean-t3/verification/axioms.log)
 
-- [Lean theorem statements and reproduction instructions](lean/README.md)
-- [Verification report](lean/verification-uniform/result.json)
+Order four is covered by the written computer-assisted proof and its exact data. Lean certification covers orders one through three.
 
 ## Citation
 

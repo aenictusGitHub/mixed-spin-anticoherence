@@ -1,0 +1,17 @@
+T3OctupoleProbe.lean:77:38: warning: This simp argument is unused:
+  map_div₀
+
+Hint: Omit it from the simp argument list.
+  simp [octupoleProbeThree, ̲Matrix.conjTranspose_sub, ̲Matrix.conjTranspose_smul,
+      Matrix.conjTranspose_pow, ̲hJ.eq, ̲hq, ̲map_d̵i̵v̵₀̵,̵m̵a̵p̵_̵ofNat]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3OctupoleProbe.lean:77:47: warning: This simp argument is unused:
+  map_ofNat
+
+Hint: Omit it from the simp argument list.
+  simp [octupoleProbeThree, ̲Matrix.conjTranspose_sub, ̲Matrix.conjTranspose_smul,
+      Matrix.conjTranspose_pow, ̲hJ.eq, ̲hq, ̲map_div₀,̵m̵a̵p̵_̵o̵f̵N̵a̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.octupoleVarianceThree_lower' depends on axioms: [propext, Classical.choice, Quot.sound]

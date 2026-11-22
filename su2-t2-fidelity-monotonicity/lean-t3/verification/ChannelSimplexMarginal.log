@@ -1,0 +1,37 @@
+ChannelSimplexMarginal.lean:24:23: warning: This simp argument is unused:
+  Matrix.kronecker_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [̵N̵a̵t̵.̵a̵d̵d̵_̵s̵u̵c̵c̵,̵s̵p̵l̵i̵t̵B̵i̵t̵s̵,̵M̵a̵t̵r̵i̵x̵.̵s̵u̵b̵m̵a̵t̵r̵i̵x̵_̵a̵p̵p̵l̵y̵,̵t̵o̵t̵a̵l̵R̵a̵i̵s̵i̵n̵g̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵a̵d̵d̵_̵a̵p̵p̵l̵y̵,̵M̵a̵t̵r̵i̵x̵.̵k̵r̵o̵n̵e̵c̵k̵e̵r̵_̵a̵p̵p̵l̵y̵,̵E̵q̵u̵i̵v̵.̵c̵o̵e̵_̵f̵n̵_̵m̵k̵,̵M̵a̵t̵r̵i̵x̵.̵k̵r̵o̵n̵e̵c̵k̵e̵r̵,̵[̲N̲a̲t̲.̲a̲d̲d̲_̲s̲u̲c̲c̲,̲ ̲s̲p̲l̲i̲t̲B̲i̲t̲s̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲s̲u̲b̲m̲a̲t̲r̲i̲x̲_̲a̲p̲p̲l̲y̲,̲ ̲t̲o̲t̲a̲l̲R̲a̲i̲s̲i̲n̲g̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲a̲d̲d̲_̲a̲p̲p̲l̲y̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲E̲q̲u̲i̲v̲.̲c̲o̲e̲_̲f̲n̲_̲m̲k̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲k̲r̲o̲n̲e̲c̲k̲e̲r̲,̲ Matrix.kroneckerMap_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplexMarginal.lean:39:8: warning: This simp argument is unused:
+  false_and
+
+Hint: Omit it from the simp argument list.
+  simp_all only [̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵P̵r̵o̵d̵.̵m̵k̵.̵i̵n̵j̵E̵q̵,̵a̵n̵d̵_̵s̵e̵l̵f̵,̵a̵n̵d̵_̵t̵r̵u̵e̵,̵a̵n̵d̵_̵f̵a̵l̵s̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵f̵a̵l̵s̵e̵_̵a̵n̵d̵,̵t̵r̵u̵e̵_̵a̵n̵d̵,̵↓̵r̵e̵d̵u̵c̵e̵I̵t̵e̵]̵[̲M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲,̲ ̲P̲r̲o̲d̲.̲m̲k̲.̲i̲n̲j̲E̲q̲,̲ ̲a̲n̲d̲_̲s̲e̲l̲f̲,̲ ̲a̲n̲d̲_̲t̲r̲u̲e̲,̲ ̲a̲n̲d̲_̲f̲a̲l̲s̲e̲,̲ ̲t̲r̲u̲e̲_̲a̲n̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲↓̲r̲e̲d̲u̲c̲e̲I̲t̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplexMarginal.lean:39:18: warning: This simp argument is unused:
+  true_and
+
+Hint: Omit it from the simp argument list.
+  simp_all only [̵M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵P̵r̵o̵d̵.̵m̵k̵.̵i̵n̵j̵E̵q̵,̵a̵n̵d̵_̵s̵e̵l̵f̵,̵a̵n̵d̵_̵t̵r̵u̵e̵,̵a̵n̵d̵_̵f̵a̵l̵s̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵f̵a̵l̵s̵e̵_̵a̵n̵d̵,̵t̵r̵u̵e̵_̵a̵n̵d̵,̵↓̵r̵e̵d̵u̵c̵e̵I̵t̵e̵]̵[̲M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲,̲ ̲P̲r̲o̲d̲.̲m̲k̲.̲i̲n̲j̲E̲q̲,̲ ̲a̲n̲d̲_̲s̲e̲l̲f̲,̲ ̲a̲n̲d̲_̲t̲r̲u̲e̲,̲ ̲a̲n̲d̲_̲f̲a̲l̲s̲e̲,̲ ̲f̲a̲l̲s̲e̲_̲a̲n̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲ ̲↓̲r̲e̲d̲u̲c̲e̲I̲t̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ChannelSimplexMarginal.lean:50:61: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+ChannelSimplexMarginal.lean:50:57: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ChannelSimplexMarginal.lean:50:71: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2T2.Dicke.marginal_rankCasimir' depends on axioms: [propext, Classical.choice, Quot.sound]

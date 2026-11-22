@@ -1,0 +1,20 @@
+T3RankIdentification.lean:28:15: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3RankIdentification.lean:42:15: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3RankIdentification.lean:51:74: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+T3RankIdentification.lean:51:74: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3RankIdentification.lean:87:4: warning: 'norm_num [Matrix.cons_val_two, Matrix.cons_val_three, Matrix.vecHead, Matrix.vecTail, Fin.ext_iff]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3RankIdentification.lean:114:4: warning: '(try simp only [finFour_mk_two, finFour_mk_three])' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'LowOrder.rankCasimir_threeSimilar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.coordinateMultiplierThree_eq_rankScaling' depends on axioms: [propext, Classical.choice, Quot.sound]

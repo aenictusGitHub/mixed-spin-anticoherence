@@ -1,0 +1,12 @@
+T3FiniteFloors.lean:32:2: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3FiniteFloors.lean:49:2: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+T3FiniteFloors.lean:66:2: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'LowOrder.finiteFloor43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteFloor54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteFloor65' depends on axioms: [propext, Classical.choice, Quot.sound]

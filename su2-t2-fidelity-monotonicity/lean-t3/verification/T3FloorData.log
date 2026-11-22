@@ -1,0 +1,285 @@
+T3FloorData.lean:35:35: warning: This simp argument is unused:
+  coordinateMarginal32
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31, c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵2̵,̵ ̵coordinateMarginal33]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:35:57: warning: This simp argument is unused:
+  coordinateMarginal33
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31, coordinateMarginal32,̵ ̵c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵3̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:15: warning: This simp argument is unused:
+  finFour_mk_two
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_tw̵o̵,̵ ̵f̵i̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵hree, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:31: warning: This simp argument is unused:
+  finFour_mk_three
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, fi̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵h̵r̵e̵e̵,̵ ̵f̵loorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:88: warning: This simp argument is unused:
+  floorFin6_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2̵3̲,
+  ̲ f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵3̵,̵  ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:101: warning: This simp argument is unused:
+  floorFin6_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲ f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵3̵,̵  ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:114: warning: This simp argument is unused:
+  floorFin6_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:127: warning: This simp argument is unused:
+  floorFin6_5
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6̵_̵5̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:140: warning: This simp argument is unused:
+  floorFin7_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:153: warning: This simp argument is unused:
+  floorFin7_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:166: warning: This simp argument is unused:
+  floorFin7_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:179: warning: This simp argument is unused:
+  floorFin7_5
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:44:192: warning: This simp argument is unused:
+  floorFin7_6
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵6̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.floorDecomposition43' depends on axioms: [propext, Classical.choice, Quot.sound]
+T3FloorData.lean:58:13: warning: This simp argument is unused:
+  coordinateMarginal31
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31̵,̵ ̵c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵2, coordinateMarginal33]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:58:57: warning: This simp argument is unused:
+  coordinateMarginal33
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31, coordinateMarginal32,̵ ̵c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵3̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:15: warning: This simp argument is unused:
+  finFour_mk_two
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_tw̵o̵,̵ ̵f̵i̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵hree, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:31: warning: This simp argument is unused:
+  finFour_mk_three
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, fi̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵h̵r̵e̵e̵,̵ ̵f̵loorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:49: warning: This simp argument is unused:
+  floorFin5_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵5̵_̵3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:62: warning: This simp argument is unused:
+  floorFin5_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵5̵_̵4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:75: warning: This simp argument is unused:
+  floorFin5_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5̵_̵4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:140: warning: This simp argument is unused:
+  floorFin7_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:153: warning: This simp argument is unused:
+  floorFin7_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:166: warning: This simp argument is unused:
+  floorFin7_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:179: warning: This simp argument is unused:
+  floorFin7_5
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:67:192: warning: This simp argument is unused:
+  floorFin7_6
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7̵_̵6̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.floorDecomposition54' depends on axioms: [propext, Classical.choice, Quot.sound]
+T3FloorData.lean:81:13: warning: This simp argument is unused:
+  coordinateMarginal31
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31̵,̵ ̵c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵2, coordinateMarginal33]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:81:35: warning: This simp argument is unused:
+  coordinateMarginal32
+
+Hint: Omit it from the simp argument list.
+  simp only [coordinateMarginal31, c̵o̵o̵r̵d̵i̵n̵a̵t̵e̵M̵a̵r̵g̵i̵n̵a̵l̵3̵2̵,̵ ̵coordinateMarginal33]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:15: warning: This simp argument is unused:
+  finFour_mk_two
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_tw̵o̵,̵ ̵f̵i̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵hree, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:31: warning: This simp argument is unused:
+  finFour_mk_three
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, fi̵n̵F̵o̵u̵r̵_̵m̵k̵_̵t̵h̵r̵e̵e̵,̵ ̵f̵loorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:49: warning: This simp argument is unused:
+  floorFin5_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵5̵_̵3, floorFin5_4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:62: warning: This simp argument is unused:
+  floorFin5_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵5̵_̵4, floorFin6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:75: warning: This simp argument is unused:
+  floorFin5_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5̵_̵4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵6_2, floorFin6_3,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:88: warning: This simp argument is unused:
+  floorFin6_2
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2̵3̲,
+  ̲ f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵3̵,̵  ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:101: warning: This simp argument is unused:
+  floorFin6_3
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲ f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵3̵,̵  ̲ ̲ ̲ ̲floorFin6_4, floorFin6_5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:114: warning: This simp argument is unused:
+  floorFin6_4
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵6̵_̵5, floorFin7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3FloorData.lean:90:127: warning: This simp argument is unused:
+  floorFin6_5
+
+Hint: Omit it from the simp argument list.
+  simp only [finFour_mk_two, finFour_mk_three, floorFin5_2, floorFin5_3, floorFin5_4, floorFin6_2,
+  ̲  ̲ ̲ ̲ ̲ ̲floorFin6_3, floorFin6_4, floorFin6̵_̵5̵,̵ ̵f̵l̵o̵o̵r̵F̵i̵n̵7_2, floorFin7_3, floorFin7_4, floorFin7_5, floorFin7_6]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.floorDecomposition65' depends on axioms: [propext, Classical.choice, Quot.sound]

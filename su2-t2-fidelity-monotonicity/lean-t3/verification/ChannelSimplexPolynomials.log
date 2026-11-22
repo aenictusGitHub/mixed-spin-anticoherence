@@ -1,0 +1,18 @@
+ChannelSimplexPolynomials.lean:75:25: warning: This simp argument is unused:
+  Complex.ofReal_sub
+
+Hint: Omit it from the simp argument list.
+  simp only [̵r̵a̵n̵k̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵,̵m̵a̵p̵_̵a̵d̵d̵,̵m̵a̵p̵_̵s̵u̵b̵,̵m̵a̵p̵_̵m̵u̵l̵,̵m̵a̵p̵_̵p̵o̵w̵,̵r̵e̵a̵l̵_̵a̵e̵v̵a̵l̵_̵C̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵P̵o̵l̵y̵n̵o̵m̵i̵a̵l̵.̵a̵e̵v̵a̵l̵_̵X̵,̵s̵m̵u̵l̵_̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵o̵n̵e̵_̵m̵u̵l̵,̵m̵a̵p̵_̵s̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵h̵1̵,̵p̵a̵r̵t̵i̵a̵l̵C̵a̵s̵i̵m̵i̵r̵_̵p̵o̵w̵e̵r̵_̵2̵,̵p̵a̵r̵t̵i̵a̵l̵C̵a̵s̵i̵m̵i̵r̵_̵p̵o̵w̵e̵r̵_̵3̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵p̵a̵r̵t̵i̵a̵l̵C̵a̵s̵i̵m̵i̵r̵_̵p̵o̵w̵e̵r̵_̵4̵,̵s̵e̵c̵o̵n̵d̵A̵c̵t̵i̵o̵n̵_̵o̵n̵e̵,̵s̵m̵u̵l̵_̵z̵e̵r̵o̵,̵s̵u̵b̵_̵z̵e̵r̵o̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵a̵d̵d̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵s̵u̵b̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵m̵u̵l̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵d̵i̵v̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵p̵o̵w̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵n̵e̵g̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵o̵f̵N̵a̵t̵,̵C̵o̵m̵p̵l̵e̵x̵.̵o̵f̵R̵e̵a̵l̵_̵o̵n̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵p̵o̵w̵_̵z̵e̵r̵o̵,̵p̵o̵w̵_̵o̵n̵e̵]̵[̲r̲a̲n̲k̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲,̲ ̲m̲a̲p̲_̲a̲d̲d̲,̲ ̲m̲a̲p̲_̲s̲u̲b̲,̲ ̲m̲a̲p̲_̲m̲u̲l̲,̲ ̲m̲a̲p̲_̲p̲o̲w̲,̲ ̲r̲e̲a̲l̲_̲a̲e̲v̲a̲l̲_̲C̲,̲ ̲P̲o̲l̲y̲n̲o̲m̲i̲a̲l̲.̲a̲e̲v̲a̲l̲_̲X̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲s̲m̲u̲l̲_̲m̲u̲l̲_̲a̲s̲s̲o̲c̲,̲ ̲o̲n̲e̲_̲m̲u̲l̲,̲ ̲m̲a̲p̲_̲s̲m̲u̲l̲,̲ ̲h̲1̲,̲ ̲p̲a̲r̲t̲i̲a̲l̲C̲a̲s̲i̲m̲i̲r̲_̲p̲o̲w̲e̲r̲_̲2̲,̲ ̲p̲a̲r̲t̲i̲a̲l̲C̲a̲s̲i̲m̲i̲r̲_̲p̲o̲w̲e̲r̲_̲3̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲p̲a̲r̲t̲i̲a̲l̲C̲a̲s̲i̲m̲i̲r̲_̲p̲o̲w̲e̲r̲_̲4̲,̲ ̲s̲e̲c̲o̲n̲d̲A̲c̲t̲i̲o̲n̲_̲o̲n̲e̲,̲ ̲s̲m̲u̲l̲_̲z̲e̲r̲o̲,̲ ̲s̲u̲b̲_̲z̲e̲r̲o̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲a̲d̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲m̲u̲l̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲d̲i̲v̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲p̲o̲w̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲n̲e̲g̲,̲
+  ̲ ̲ ̲ ̲ ̲ ̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲o̲f̲N̲a̲t̲,̲ ̲C̲o̲m̲p̲l̲e̲x̲.̲o̲f̲R̲e̲a̲l̲_̲o̲n̲e̲,̲ ̲p̲o̲w̲_̲z̲e̲r̲o̲,̲ ̲p̲o̲w̲_̲o̲n̲e̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Spin.rankPolynomial_secondCasimir' depends on axioms: [propext, Classical.choice, Quot.sound]

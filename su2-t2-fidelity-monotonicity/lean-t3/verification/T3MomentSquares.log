@@ -1,0 +1,25 @@
+T3MomentSquares.lean:30:61: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [̵m̵o̵m̵e̵n̵t̵C̵o̵m̵b̵i̵n̵a̵t̵i̵o̵n̵T̵h̵r̵e̵e̵,̵M̵a̵t̵r̵i̵x̵.̵a̵d̵d̵_̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵d̵d̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵_̵a̵d̵d̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵_̵s̵m̵u̵l̵,̵d̵i̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵q̵u̵a̵d̵r̵u̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵o̵c̵t̵u̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵h̵Q̵B̵,̵h̵Q̵O̵,̵h̵B̵Q̵,̵h̵O̵Q̵,̵h̵B̵O̵,̵h̵O̵B̵]̵[̲m̲o̲m̲e̲n̲t̲C̲o̲m̲b̲i̲n̲a̲t̲i̲o̲n̲T̲h̲r̲e̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲a̲d̲d̲_̲m̲u̲l̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲a̲d̲d̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲s̲m̲u̲l̲_̲m̲u̲l̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲_̲a̲d̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲_̲s̲m̲u̲l̲,̲ ̲d̲i̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲q̲u̲a̲d̲r̲u̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲o̲c̲t̲u̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲h̲Q̲B̲,̲ ̲h̲Q̲O̲,̲ ̲h̲B̲Q̲,̲
+  ̲ ̲ ̲ ̲ ̲h̲O̲Q̲,̲ ̲h̲B̲O̲,̲ ̲h̲O̲B̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3MomentSquares.lean:30:77: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [̵m̵o̵m̵e̵n̵t̵C̵o̵m̵b̵i̵n̵a̵t̵i̵o̵n̵T̵h̵r̵e̵e̵,̵M̵a̵t̵r̵i̵x̵.̵a̵d̵d̵_̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵a̵d̵d̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵_̵a̵d̵d̵,̵M̵a̵t̵r̵i̵x̵.̵t̵r̵a̵c̵e̵_̵s̵m̵u̵l̵,̵d̵i̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵q̵u̵a̵d̵r̵u̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵o̵c̵t̵u̵p̵o̵l̵e̵T̵h̵r̵e̵e̵_̵t̵r̵a̵c̵e̵,̵
+  ̵ ̵ ̵ ̵ ̵h̵Q̵B̵,̵h̵Q̵O̵,̵h̵B̵Q̵,̵h̵O̵Q̵,̵h̵B̵O̵,̵h̵O̵B̵]̵[̲m̲o̲m̲e̲n̲t̲C̲o̲m̲b̲i̲n̲a̲t̲i̲o̲n̲T̲h̲r̲e̲e̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲a̲d̲d̲_̲m̲u̲l̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲a̲d̲d̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲s̲m̲u̲l̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲_̲a̲d̲d̲,̲
+  ̲ ̲ ̲ ̲ ̲M̲a̲t̲r̲i̲x̲.̲t̲r̲a̲c̲e̲_̲s̲m̲u̲l̲,̲ ̲d̲i̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲q̲u̲a̲d̲r̲u̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲o̲c̲t̲u̲p̲o̲l̲e̲T̲h̲r̲e̲e̲_̲t̲r̲a̲c̲e̲,̲ ̲h̲Q̲B̲,̲ ̲h̲Q̲O̲,̲ ̲h̲B̲Q̲,̲
+  ̲ ̲ ̲ ̲ ̲h̲O̲Q̲,̲ ̲h̲B̲O̲,̲ ̲h̲O̲B̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'LowOrder.input_frobenius_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.output_frobenius_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.octupoleVarianceThree_upper' depends on axioms: [propext, Classical.choice, Quot.sound]

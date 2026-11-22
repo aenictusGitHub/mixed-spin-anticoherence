@@ -1,0 +1,10 @@
+T3BurgLogBounds.lean:29:94: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3BurgLogBounds.lean:30:22: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2LowOrder.log_lower2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.log_upper2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.burg_lower_endpoint_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2LowOrder.burg_upper_N4K3_log' depends on axioms: [propext, Classical.choice, Quot.sound]

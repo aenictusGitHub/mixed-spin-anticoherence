@@ -1,0 +1,44 @@
+T3Clifford.lean:46:123: warning: '(try simp only [fin4_mk2, fin4_mk3])' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+Try this:
+  ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+T3Clifford.lean:121:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Clifford.lean:121:37: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Clifford.lean:134:21: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [̵d̵i̵a̵g̵o̵n̵a̵l̵I̵n̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵]̵[̲d̲i̲a̲g̲o̲n̲a̲l̲I̲n̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲s̲m̲u̲l̲_̲m̲u̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+T3Clifford.lean:134:37: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [̵d̵i̵a̵g̵o̵n̵a̵l̵I̵n̵,̵M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵]̵[̲d̲i̲a̲g̲o̲n̲a̲l̲I̲n̲,̲ ̲M̲a̲t̲r̲i̲x̲.̲m̲u̲l̲_̲s̲m̲u̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Try this:
+  ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+T3Clifford.lean:182:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+T3Clifford.lean:182:39: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'LowOrder.quadrupoleThree_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.quadrupoleThree_frobenius_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.quadrupoleThree_norm_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]

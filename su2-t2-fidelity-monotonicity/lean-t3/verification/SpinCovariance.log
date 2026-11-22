@@ -1,0 +1,11 @@
+SpinCovariance.lean:428:62: warning: This simp argument is unused:
+  smul_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵a̵d̵d̵_̵m̵u̵l̵,̵m̵u̵l̵_̵a̵d̵d̵,̵s̵m̵u̵l̵_̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵m̵u̵l̵_̵s̵m̵u̵l̵_̵c̵o̵m̵m̵,̵s̵m̵u̵l̵_̵s̵m̵u̵l̵]̵[̲a̲d̲d̲_̲m̲u̲l̲,̲ ̲m̲u̲l̲_̲a̲d̲d̲,̲ ̲s̲m̲u̲l̲_̲m̲u̲l̲_̲a̲s̲s̲o̲c̲,̲ ̲m̲u̲l̲_̲s̲m̲u̲l̲_̲c̲o̲m̲m̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+SpinCovariance.lean:429:32: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'SU2T2.Spin.covariant_channel_reduction' depends on axioms: [propext, Classical.choice, Quot.sound]

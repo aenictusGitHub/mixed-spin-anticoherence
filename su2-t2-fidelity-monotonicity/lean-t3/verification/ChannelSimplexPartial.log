@@ -1,0 +1,9 @@
+ChannelSimplexPartial.lean:74:70: warning: This simp argument is unused:
+  smul_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [̵C̵h̵o̵i̵.̵c̵a̵s̵i̵m̵i̵r̵T̵e̵n̵s̵o̵r̵,̵x̵A̵x̵i̵s̵,̵y̵A̵x̵i̵s̵,̵t̵e̵n̵s̵o̵r̵_̵s̵m̵u̵l̵_̵l̵e̵f̵t̵,̵t̵e̵n̵s̵o̵r̵_̵s̵m̵u̵l̵_̵r̵i̵g̵h̵t̵,̵
+  ̵ ̵ ̵ ̵ ̵t̵e̵n̵s̵o̵r̵_̵a̵d̵d̵_̵l̵e̵f̵t̵,̵t̵e̵n̵s̵o̵r̵_̵a̵d̵d̵_̵r̵i̵g̵h̵t̵,̵t̵e̵n̵s̵o̵r̵_̵s̵u̵b̵_̵l̵e̵f̵t̵,̵t̵e̵n̵s̵o̵r̵_̵s̵u̵b̵_̵r̵i̵g̵h̵t̵,̵s̵m̵u̵l̵_̵s̵m̵u̵l̵]̵[̲C̲h̲o̲i̲.̲c̲a̲s̲i̲m̲i̲r̲T̲e̲n̲s̲o̲r̲,̲ ̲x̲A̲x̲i̲s̲,̲ ̲y̲A̲x̲i̲s̲,̲ ̲t̲e̲n̲s̲o̲r̲_̲s̲m̲u̲l̲_̲l̲e̲f̲t̲,̲ ̲t̲e̲n̲s̲o̲r̲_̲s̲m̲u̲l̲_̲r̲i̲g̲h̲t̲,̲ ̲t̲e̲n̲s̲o̲r̲_̲a̲d̲d̲_̲l̲e̲f̲t̲,̲
+  ̲ ̲ ̲ ̲ ̲t̲e̲n̲s̲o̲r̲_̲a̲d̲d̲_̲r̲i̲g̲h̲t̲,̲ ̲t̲e̲n̲s̲o̲r̲_̲s̲u̲b̲_̲l̲e̲f̲t̲,̲ ̲t̲e̲n̲s̲o̲r̲_̲s̲u̲b̲_̲r̲i̲g̲h̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

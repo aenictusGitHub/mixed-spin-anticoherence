@@ -1,0 +1,3 @@
+'LowOrder.finiteDeterminant43' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteDeterminant54' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.finiteDeterminant65' depends on axioms: [propext, Classical.choice, Quot.sound]

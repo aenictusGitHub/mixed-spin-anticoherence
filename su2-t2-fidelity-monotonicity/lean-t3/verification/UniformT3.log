@@ -1,0 +1,7 @@
+'LowOrder.physical_totals_t3' depends on axioms: [propext, Classical.choice, Quot.sound]
+LowOrder.physical_totals_t3 (k : ℕ) (Φ : SU2T2.Spin.Mat (k + 3) →ₗ[ℂ] SU2T2.Spin.Mat (k + 3))
+  (hCP : SU2T2.Choi.CompletelyPositive Φ) (hTP : ∀ (A : SU2T2.Spin.Mat (k + 3)), Matrix.trace (Φ A) = Matrix.trace A)
+  (hSU2 : SU2T2.Dicke.CovariantStates (k + 3) Φ) (ρ : SU2T2.Spin.Mat (k + 3)) (hρ : Matrix.PosSemidef ρ)
+  (htr : Matrix.trace ρ = 1) :
+  SU2T2.totalFidelity 3 k ρ ≤ SU2T2.totalFidelity 3 k (Φ ρ) ∧
+    SU2T2.totalVonNeumann 3 k ρ ≤ SU2T2.totalVonNeumann 3 k (Φ ρ)

@@ -1,0 +1,14 @@
+CoherentBounds.lean:35:8: warning: This simp argument is unused:
+  Nat.add_eq_zero_iff
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵N̵a̵t̵.̵a̵d̵d̵_̵e̵q̵_̵z̵e̵r̵o̵_̵i̵f̵f̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CoherentBounds.lean:78:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

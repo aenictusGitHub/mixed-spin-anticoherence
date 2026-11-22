@@ -1,0 +1,4 @@
+'SU2T2.Spin.tensorRankBasis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Spin.tensorRankBasis_casimir' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Spin.rankCasimir_eigenvalue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Spin.covariantStates_all_rank_multipliers' depends on axioms: [propext, Classical.choice, Quot.sound]
