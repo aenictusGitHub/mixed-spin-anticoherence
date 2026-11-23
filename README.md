@@ -7,18 +7,14 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 
 ## Monotonicity under SU(2)-covariant channels
 
-**Written proofs cover t = 1, 2, 3, 4** for both the fidelity and von Neumann total anticoherence measures. The two inequalities follow from a common shifted-determinant argument; the proofs at `t = 3,4` use exact computer-assisted certificates.
+For every density matrix on the symmetric spin-$N/2$ space, both the fidelity-based and von Neumann total anticoherence measures are nondecreasing under every completely positive, trace-preserving SU(2)-covariant channel in the following cases.
 
-**End-to-end Lean certification covers t = 1, 2, 3, 4** for both measures, including mixed and singular inputs.
+| Order | Spin range | Written proof | Lean certificates |
+|---|---|---|---|
+| $t=1,2,3,4$ | $N\ge t$ | [Uniform shifted-determinant proof](su2-low-order-monotonicity/proof.pdf) | [Certificates by order](su2-low-order-monotonicity/README.md) |
+| $t=5$ | $N>5$ | [Fidelity theorem and entropy corollary](su2-order-five-monotonicity/proof.pdf) | [Both public theorems](su2-order-five-monotonicity/lean/T5CertifiedTheorem.lean) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
 
-- [Written proofs (PDF)](su2-low-order-monotonicity/proof.pdf)
-- [Exact data and verification scripts](su2-low-order-monotonicity/exact-data.zip)
-- [Proof guide and certification scope](su2-low-order-monotonicity/README.md)
-- [Lean certificates for t = 1, 2](su2-low-order-monotonicity/lean/README.md)
-- [Lean certificates for t = 3](su2-low-order-monotonicity/lean-t3/README.md)
-- [Lean certificates for t = 4](su2-low-order-monotonicity/lean-t4/README.md)
-
-For any fixed order $1\le t<N$ and any fixed channel as above, fidelity monotonicity on every density matrix implies von Neumann monotonicity on every density matrix. [Written proof](fidelity-implies-entropy/proof.pdf) and [Lean certificate](fidelity-implies-entropy/README.md).
+**Fidelity implies von Neumann monotonicity at any order.** Fix $1\le t\le N$ and a channel as above. If its fidelity inequality holds for **every** input density matrix, then its von Neumann inequality holds for every input density matrix. [General proof (PDF)](fidelity-implies-entropy/proof.pdf) · [General Lean theorem](fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean)
 
 ## Spin-5/2 purity and convex roofs
 

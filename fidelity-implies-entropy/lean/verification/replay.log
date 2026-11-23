@@ -1,0 +1,17 @@
+FidelityEntropyPrimitive exit 0
+
+FidelityEntropySpectral exit 0
+
+FidelityImpliesEntropy exit 0
+'LowOrder.physical_vonNeumann_of_fidelity' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+FidelityEntropyAudit exit 0
+LowOrder.physical_vonNeumann_of_fidelity (t k : ℕ) (ht : 1 ≤ t)
+  (Φ : SU2T2.Spin.Mat (k + t) →ₗ[ℂ] SU2T2.Spin.Mat (k + t)) (hCP : SU2T2.Choi.CompletelyPositive Φ)
+  (hTP : ∀ (X : SU2T2.Spin.Mat (k + t)), Matrix.trace (Φ X) = Matrix.trace X)
+  (hSU2 : SU2T2.Dicke.CovariantStates (k + t) Φ)
+  (hF :
+    ∀ (η : SU2T2.Spin.Mat (k + t)),
+      Matrix.PosSemidef η → Matrix.trace η = 1 → SU2T2.totalFidelity t k η ≤ SU2T2.totalFidelity t k (Φ η))
+  (ρ : SU2T2.Spin.Mat (k + t)) (hρ : Matrix.PosSemidef ρ) (htr : Matrix.trace ρ = 1) :
+  SU2T2.totalVonNeumann t k ρ ≤ SU2T2.totalVonNeumann t k (Φ ρ)

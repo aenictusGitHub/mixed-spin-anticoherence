@@ -1,0 +1,214 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[margin=23mm]{geometry}
+\usepackage{xcolor,embedfile}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\SU}{\mathrm{SU}(2)}
+\newcommand{\F}{\mathcal F}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\cH}{\mathcal H}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt plus 1pt minus 1pt}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
+\raggedbottom
+\hypersetup{pdftitle={Fidelity monotonicity at order five},pdfsubject={Fidelity and von Neumann total anticoherence for every spin N/2 with N>5}}
+\newcommand{\attachproof}[2]{%
+  \IfFileExists{#1}{\embedfile[filespec=#1,desc={#2}]{#1}}{%
+    \IfFileExists{../../output/#1}{\embedfile[filespec=#1,desc={#2}]{../../output/#1}}{%
+      \embedfile[filespec=#1,desc={#2}]{output/#1}}}}
+\begin{document}
+\attachproof{order-five-lean.zip}{Complete order-five Lean source and version pins}
+\attachproof{sextic-checks.zip}{Independent integer verification of the 220 spectral cones}
+\begin{center}
+{\LARGE Fidelity monotonicity at order five\par}\vspace{4pt}
+{\large Total anticoherence under $\SU$-covariant channels\par}\vspace{8pt}
+23 November 2026
+\end{center}
+\textbf{Theorem 1 (fidelity).} Let $N>5$ be an integer and let $\Phi$ be a completely positive, trace-preserving $\SU$-covariant channel on the symmetric spin-$N/2$ space $\cH_{N/2}$. For every density matrix $\rho$ on this space,
+\[
+                    \boxed{\ \A_5^{T,F}(\Phi(\rho))\ge\A_5^{T,F}(\rho).\ }
+\]
+Write $R_{N,m}$ for the symmetric $m$-qubit partial trace, $\sigma=R_{N,5}\rho$ and $\tau=R_{N,5}\Phi(\rho)$. In the manuscript's squared-fidelity convention, $\A_5^{T,F}(\rho)=[(\Tr\sqrt\sigma)^2-1]/5$. It suffices to show $\F(\tau)\ge\F(\sigma)$ for $\F(X)=\Tr\sqrt X$, since both traces are nonnegative. The proof reduces all $N$ to 34 physical channel vertices and treats the resulting six-dimensional spectra, including zero eigenvalues. Corollary~1 derives the von Neumann inequality from Theorem~1.
+
+\section*{1. Which channel vertices suffice?}
+Set $j=N/2$. The Choi operator commutes with $U_j\otimes\overline U_j$. Each spin $K=0,\ldots,N$ occurs once. A positive invariant Choi operator is a nonnegative combination of the corresponding projectors. The partial trace of each projector is scalar by irreducibility. Normalizing each projector to a channel gives the vertices $\Phi_K^{(N)}$, with convex weights for every channel. The same argument applies to channels between different irreducible spins. See \href{https://arxiv.org/abs/1306.5321}{Al Nuwairan, \emph{SU(2)-irreducibly covariant and EPOSIC channels}}.
+
+The operator space at spin $j$ contains one copy of each tensor rank $L=0,\ldots,N$. Covariance therefore gives one multiplier per rank. On ranks $0\le L\le5$ the square vertex has real multipliers
+\begin{equation}
+ f_L(N,K)=\sum_{r=0}^{L}(-1)^r\binom Lr\binom{L+r}r
+ \prod_{i=0}^{r-1}\frac{K(K+1)-i(i+1)}{N(N+2)-i(i+2)}. \label{racah}
+\end{equation}
+This is the terminating Racah expression for $(-1)^{N+K+L}(N+1)\bigl\{\begin{smallmatrix} j&j&L\\j&j&K\end{smallmatrix}\bigr\}$. Recoupling the normalized Choi spin projector gives the $6j$ symbol. The rank-zero value fixes its normalization. The same expression acts on the retained ranks after partial trace, since reduction intertwines rotations. Each retained rank survives reduction. Indeed $R_{N,5}^*$ preserves coherent-state expectations, and the coefficients of this polynomial in the spinor and its conjugate determine every local operator. For factorial conventions see \href{https://dlmf.nist.gov/34.4#E2}{NIST DLMF, Eq.~34.4.2}.
+
+Write $v_{N,K}=(f_1,\ldots,f_5)$. A seed at $m\le N$ can act on $R_{N,m}\rho$ with the same five-body input $\sigma$. A convex identity between these vectors therefore gives an identity of output states for every $\rho$. Spin reversal $\Theta(X)=U X^{\mathsf T} U^\dagger$, with $U$ the unitary part of time reversal, preserves spectra and multiplies rank $L$ by $(-1)^L$. A local positive bistochastic map increases $\F$, since its output is majorized by its input and the scalar square root is concave. Indeed its adjoint takes a rank-$k$ projection to an effect of trace $k$, so the sum of the $k$ largest output eigenvalues is at most the corresponding input sum.
+
+\newpage
+\section*{2. A finite reduction valid for every $N>5$}
+Let $H$ be the convex hull of the six local vertices $v_{5,k}$, the following 34 physical vertices, and the spin reversals of all 40 vectors. The table also identifies how each physical vertex will be proved.
+\begin{center}\begin{tabular}{rll}\toprule
+Parent $m$ & Direct labels $K$ (Section 4) & Remaining labels $K$ (Section 5)\\\midrule
+6 & $2,3,4,5$ & \\
+7 & $3,4,5,6$ & \\
+8 & $3,6,7$ & $4,5$\\
+9 & & $4,5,6,7,8$\\
+10 & & $4,6,8,9$\\
+11 & & $5,9,10$\\
+12 & & $5,10,11$\\
+$13,\ldots,18$ & & $m-1$\\\bottomrule\end{tabular}\end{center}
+For $6\le N\le18$ the certificate supplies rational convex weights for every $(N,K)$, using only $m\le N$. It checks nonnegativity, unit sum and all five multipliers. This covers $\sum_{N=6}^{18}(N+1)=169$ pairs.
+
+For $N\ge19$ every generator of $H$ is available. For $0\le K\le4$, expand $(1,v_{N,K})$ in the six homogeneous local vectors $(1,v_{5,j})$. The exact weights in the certificate are rational functions of $D=N(N+2)$. Substitution in (\ref{racah}) verifies the six coordinate identities. After factoring their numerators and denominators, every weight is nonnegative for $D\ge399$.
+
+For $5\le K\le N$ set $b=21$, $Y=b/(N+2)$ and $Z=[K(K+1)-30]/[N(N+1)-30]$. Both coordinates lie in $[0,1]$. Put
+\[
+ d_i=(b-(i+2)Y)(b+iY),\qquad U=30Y^2+Z[(b-2Y)(b-Y)-30Y^2],\qquad Q=\prod_{i=0}^4d_i.
+\]
+On the unit square $Q>0$. At a physical point $d_i=Y^2[D-i(i+2)]$ and $U=Y^2 K(K+1)$. Thus the factors in (\ref{racah}) become $[U-i(i+1)Y^2]/d_i$. Write $f_L(Y,Z)$ for that rational expression. The six coordinates of $Q(1,f_1,\ldots,f_5)$ are polynomials of bidegree at most $(10,5)$.
+
+Express this polynomial vector in the tensor-product Bernstein basis. Midpoint subdivision in $Y$ or $Z$ gives 128 closed rectangles covering the square. On one rectangle, rescale the coordinates to $y,z\in[0,1]$ and let $b_{ij}=\binom{10}i y^i(1-y)^{10-i}\binom5j z^j(1-z)^{5-j}$. The homogeneous control vectors $(q_{ij},p_{ij})\in\mathbb Q\times\mathbb Q^5$ are the coefficients of these basis functions, up to a common positive scale. The certificate checks $q_{ij}>0$ and writes each $p_{ij}/q_{ij}$ as a convex combination of at most six generators of $H$. There are $11\cdot6$ controls per rectangle and 7,025 distinct normalized controls overall. Since the $b_{ij}$ are nonnegative and sum to one, the five multipliers are
+\[
+ (f_1,\ldots,f_5)
+   =\sum_{i,j}\frac{b_{ij}q_{ij}}{\sum_{a,b}b_{ab}q_{ab}}\,
+                        \frac{p_{ij}}{q_{ij}}\ \in H .
+\]
+The argument includes the edges of every rectangle, hence also $K=5$ and $K=N$.
+
+
+\newpage
+\section*{3. A spectral test for all the direct and residual cases}
+Let $0\le z_0\le\cdots\le z_5$ be the square roots of the input eigenvalues. Set
+\[
+ S=\sum z_i^2,\qquad W=\sum z_i,\qquad P=\sum z_i^4,\qquad J=\sum_{i=0}^5(2i-5)z_i^2 .
+\]
+For density matrices $S=1$. We keep $S$ in the formula to make homogeneity explicit. Write $y_i$ for the output eigenvalues, of total mass $S$. Suppose $y_i\ge k^2$, $k\ge0$, and $\sum y_i^2\le Q$. Then the single inequality
+\begin{equation}
+ (S-kW)^2(S-6k^2)\ \ge\ (Q-k^2S)(W-6k)^2 \label{sextic}
+\end{equation}
+implies $W\le\sum_i\sqrt{y_i}$. If $W\le6k$ this is immediate. Otherwise, $W^2\le6S$ gives $S>kW$. Put $l=(S-kW)/(W-6k)>0$. Equation~(\ref{sextic}) gives $l^2(S-6k^2)+k^2 S\ge Q$. For $s=\sqrt{y}\ge k$ the identity
+\[
+ 2l(k+l)^2s+y^2-(k^2+2kl+3l^2)y-k^2l^2-2kl^3
+       =(s-k)(s-l)^2(s+k+2l)
+\]
+has a nonnegative right-hand side. Summing over the six outputs, and using their mass and purity, yields
+\begin{align*}
+ 2l(k+l)^2\Big(\sum_i\sqrt{y_i}-W\Big)
+ &\ge l^2(S-6k^2)+k^2 S-Q\\[-2pt]
+ &\quad+2l(k+l)\big[S-kW-l(W-6k)\big]\ \ge 0.
+\end{align*}
+This proves the implication even when some input or output eigenvalues vanish.
+
+The table gives the five applications. In each row put
+$k=(K_0 z_0+K_1 z_1+K_2 z_2)/M$ and $Q=(aS^2+bP+cJ^2)/D$.
+\begin{center}\small
+\begin{tabular}{lrrrrrrrrr}\toprule
+Case & $M$ & $K_0$ & $K_1$ & $K_2$ & $D$ & $a$ & $b$ & $c$ & Cones\\\midrule
+Common &100&31&0&0&8&1&2&0&4\\
+$(6,2),(8,3)$&10000&3433&2203&1270&224&28&56&1&41\\
+$(7,3)$&2000&456&209&95&12000&1612&2328&33&169\\
+$(7,4)$&100&24&0&0&15&2&3&0&2\\
+Four other direct cases&100&63&0&0&1323&160&363&0&4\\\bottomrule
+\end{tabular}\end{center}
+For each row (\ref{sextic}) holds for every ordered nonnegative $z$. To verify it, write $z_i=\sum_{j=0}^i g_j$ with $g_j\ge0$ and clear the positive denominators. The result is a homogeneous integer sextic. Split the orthant into $g_i\ge g_j$ and $g_j\ge g_i$ by replacing the larger coordinate with its excess over the smaller one. Each split covers its parent, including the common boundary. In each of the 220 terminal cones every coefficient is nonnegative. The attachment \texttt{sextic-checks.zip} contains the complete split trees and a standalone integer checker. Sections~4 and~5 establish each row's physical hypotheses.
+
+\newpage
+\section*{4. The physical purity and eigenvalue bounds}
+Write $T=R_{n,5}\Phi_K^{(n)}$, $R=R_{n,5}$ and $U_j=\Phi_j^{(5)}$. For a normalized $X$, put $V(X)=\Tr(X-I/6)^2=\Tr X^2-1/6$. If $X=\sigma$ and $Y=\tau$, write $X_L$ for the Hilbert--Schmidt projection onto tensor rank $L$. Orthogonality gives
+\[
+ V(X)=\sum_{L=1}^5\|X_L\|_2^2,\qquad
+ V(Y)=\sum_{L=1}^5 f_L^2\|X_L\|_2^2 .
+\]
+The Cartesian spin operators have squared norm $35/2$ and are mutually orthogonal. Thus $\|X_1\|_2^2=2|\Tr(X\mathbf J)|^2/35\le J^2/70$. For the inequality rotate the dipole along $J_z$ and pair its increasing magnetic numbers with the increasing eigenvalues of $X$. The overlaps of the two eigenbases give a doubly stochastic matrix, so the rearrangement inequality bounds this expectation by $J/2$. In particular for $c_0\ge\max_{2\le L\le5} f_L^2$,
+\[
+ V(Y)\le c_0 V(X)+(f_1^2-c_0)_+\,J^2/70.
+\]
+Substituting (\ref{racah}) gives the purity cap in each row of Section~3. For $(6,2),(8,3)$ use $c_0=1/4$ and $f_1^2\le9/16$. For $(7,3)$ one can use $c_0=194/1000$ and $(f_1^2-c_0)_+/70\le 33/12000$. The remaining direct cases use $\max_{1\le L\le5} f_L^2$ bounded by $1/4$ for $(6,3),(6,4),(6,5)$, by $1/5$ for $(7,4)$, and by $121/441$ for $(7,5),(7,6),(8,6),(8,7)$.
+
+\textbf{Exact positive maps.} Every map used below is specified by its six rank multipliers on the physical marginal. For $n\ge5$ and $q=0,\ldots,5$, let $G_{n,q}$ denote the rectangular channel from spin $n/2$ to $5/2$ with Choi spin $(n-5)/2+q$. Relative to $G_{n,0}=R$, its rank multipliers are $(-1)^q$ times the ratio of the $6j$ symbols $\bigl\{\begin{smallmatrix}5/2&5/2&L\\n/2&n/2&(n-5)/2+q\end{smallmatrix}\bigr\}$ for $q$ and $0$. Positivity of the particular maps and differences below can be checked directly from their multipliers.
+
+Indeed, write a physical input as $D_n X D_n$ with $D_n=\mathrm{diag}\sqrt{\binom ni}$. In these coordinates the reduced array has entries $\sum_{b=0}^{n-5}\binom{n-5}b X_{i+b,j+b}$. The local adjoint Casimir has eigenvalues $L(L+1)$ and acts by
+\[
+ (CX)_{ij}=(5+5(i+j)-2ij)X_{ij}-ijX_{i-1,j-1}-(5-i)(5-j)X_{i+1,j+1}.
+\]
+Terms beyond the boundary have zero coefficient. The formula follows from $[J_z,[J_z,X]]+[J_z,X]+[J_-,[J_+,X]]$ after Dicke scaling. Interpolating the six requested multipliers at $0,2,6,12,20,30$ gives a rational polynomial in $C$ of degree at most five. Apply it to the coordinate marginal of each matrix unit. The matrix unit with indices $a,b$ contributes to output entry $i,j$ only if $a-i=b-j$. For each such shift the coefficient block has the certified form $B_{ij}=\sum_r w_r u_{ri}u_{rj}$ with $w_r\ge0$. Indeed each term is the map $X\mapsto w_r V_r X V_r^\dagger$ for a matrix $V_r$ supported on that shift. Summing over shifts and undoing the output congruence proves positivity on every positive input. The embedded source checks all six local maps, all 41 required rectangular maps, and the six channel differences used below this way.
+
+\newpage
+\section*{4.1. Lower bounds on the output eigenvalues}
+Write $a=z_0^2$, $b=z_1^2$, $c=z_2^2$. Positivity and unitality give $U_j(X)\ge aI$. The six channel differences $T-\eta U_j R$ verified in Section~4 have the following constants.
+\begin{center}\small
+\begin{tabular}{c|rrrrrr}\toprule
+$(n,K)$ & $(6,2)$ & $(6,3)$ & $(6,4)$ & $(6,5)$ & $(7,3)$ & $(8,3)$\\
+$j$ &2&3&4&5&3&2\\
+$\eta$ & $14/27$ & $7/20$ & $7/33$ & $7/72$ & $8/55$ & $20/33$\\\bottomrule
+\end{tabular}\end{center}
+Thus $(6,3),(6,4),(6,5)$ have floor $7a/72$. For $(7,4)$ the local mass in the verified convex decomposition of $T$ is $2/33$. For $(7,5),(7,6),(8,6),(8,7)$ it is at least $3969/10000$. The remaining terms are positive rectangular channels on available parents, possibly followed by spin reversal. These give the first, fourth and fifth root floors in Section~3, since $(31/100)^2\le7/72$ and $(24/100)^2\le2/33$.
+
+For $(6,2),(8,3),(7,3)$ we use more of the input spectrum. For a unit vector $v$ let $P_v=|v\rangle\langle v|$ and $W_v=U_j^*(P_v)$. This is a density matrix. Assume $\Tr W_v^2\le p_j$. For any rank-$i$ projector $E$, centering $E,W_v$ at their scalar parts and applying Cauchy--Schwarz gives
+\[
+ 1-\Tr(EW_v)\ge1-i/6-\sqrt{(i-i^2/6)(p_j-1/6)}\ge\beta_i\quad (i=1,2).
+\]
+Take $E_1,E_2$ as nested projections onto the one and two smallest eigenvalues of $X$. Since $X\ge aI+(b-a)(I-E_1)+(c-b)(I-E_2)$, it follows that
+\[
+ \lambda_{\min}(T\rho)\ge\eta\,[a+\beta_1(b-a)+\beta_2(c-b)].
+\]
+For $j=2$ use $p_2=451/1225$, $\beta_1=38858/10^5$, $\beta_2=10410/10^5$. For $j=3$ use $p_3=79/210$, $\beta_1=2/5$, $\beta_2=1/8$. With these constants, the right-hand side dominates the square of the corresponding $k$ in Section~3. Explicitly, if it is $\sum_{i=0}^2 h_i z_i^2$, the required check is $\sum_{i=0}^2 (K_i/M)^2/h_i\le1$ by weighted Cauchy--Schwarz. For $j=2$ the smaller value $\eta=14/27$ suffices for both parents.
+
+It remains to justify $p_j$. The maps $U_j$ are self-adjoint for the Hilbert--Schmidt pairing, by their real multipliers. For $j=3$, every nonconstant multiplier has modulus at most $19/42$, whence $\Tr U_3(P_v)^2\le 1/6+(19/42)^2(5/6)<79/210$. For $j=2$ the map $X\mapsto p_2\Tr(X)I-U_2^2(X)$ equals $\sum_{r=0}^5 w_r\Theta U_r(X)$, with
+\[
+ (w_0,\ldots,w_5)=
+ (1147/14700,\ 33/196,\ 65/147,\ 0,\ 2451/4900,\ 99/4900).
+\]
+Their sum is $6p_2-1$ and (\ref{racah}) checks all five traceless multipliers. The right side is positive. Pair its value on $P_v$ with $P_v$ and use self-adjointness to get $\Tr U_2(P_v)^2\le p_2$. This proves the three remaining direct comparisons.
+\newpage
+\section*{5. The remaining 23 vertices and conclusion}
+A physical rectangular map can have a large multiplier on a single rank. We use a convex combination in which only the average of the remaining multipliers needs to satisfy the variance bound. Write $v$ for the target vector, $P$ for the terms already known to increase $\F$ and $D$ for the other terms. The witnesses give positive weights with
+\[
+ v=\sum_{i\in P}w_i v_i+\sum_{i\in D}w_i v_i,\qquad \sum_iw_i=1,\qquad s=\sum_{i\in D}w_i.
+\]
+Terms in $P$ are local positive bistochastic maps or previously proved physical vertices on a \emph{strictly smaller} parent spin, possibly followed by reversal. Terms in $D$ may also be $G_{n,j}R_{N,n}$ with $n\le N$. These may be followed by the identity, spin reversal, or the local map $B$ given by
+\[
+ B(X)=[\Tr(X)I-X-\Theta(X)]/4.
+\]
+For every rank-one projector $P_v$, the vectors $v$ and its time reversal are orthogonal because the time-reversal antiunitary at spin $5/2$ squares to $-I$. Thus $I-P_v-\Theta(P_v)\ge0$. Spectral decomposition proves positivity of $B$. Its trace and its action on $I$ give trace preservation and unitality. Its multipliers on the five nonconstant ranks are $(0,-1/2,0,-1/2,0)$.
+
+Write $\ell$ for the total weight in $D$ coming from maps acting locally and bistochastically on $\sigma$. Each witness with $s>0$ satisfies, in exact arithmetic,
+\begin{equation}
+ \left|\sum_{i\in D} w_i(v_i)_L\right|\le s/2\quad (1\le L\le5),\qquad 72\ell\ge7s. \label{residual}
+\end{equation}
+For a given physical input the normalized residual output $\omega=s^{-1}\sum_{i\in D}w_i\tau_i$ is a density matrix. Its five retained traceless components are the same components of $\sigma$ multiplied by $s^{-1}\sum_{i\in D}w_i(v_i)_L$. Orthogonality and (\ref{residual}) imply $V(\omega)\le V(\sigma)/4$. Each local term has smallest eigenvalue at least $a$ and each remaining term is positive. Hence $\lambda_{\min}(\omega)\ge\ell a/s\ge7a/72$. The common row of Section~3 now proves $\F(\omega)\ge\F(\sigma)$. Concavity proves the same for the entire sum. If $s=0$, concavity alone suffices.
+
+For example, at $(8,4)$ a weight $989/3549$ multiplies the already proved $(6,3)$ vertex. The residual has mass $2560/3549$, local fraction $\ell/s=7/72$, and the five normalized multipliers
+\[
+ (1/2,\ -3013/21120,\ -6533/14080,\ -547/2112,\ 589/2816).
+\]
+The archive contains the complete rows for all 23 vertices. The checker reconstructs every target on all ranks, verifies the inequalities above, and checks the availability of each physical extension and every smaller-spin dependency. Of the 23 rows, 22 have positive residual mass. The remaining row, $(9,5)$, uses only previously proved and local maps. There are 203 positive rational weights in total.
+
+Sections 3--5 therefore give $\F(\tau)\ge\F(\sigma)$ for all 34 physical generators in Section~2. The local generators also increase $\F$, and spin reversal preserves it. The hull reduction and concavity of $\F$ therefore give the comparison for every $N>5$, every covariant channel and every density matrix. Squaring gives Theorem~1.\hfill$\square$
+
+\newpage
+\section*{Corollary 1. Von Neumann monotonicity at order five}
+Under the hypotheses of Theorem~1, every density matrix satisfies
+\[
+                \boxed{\ \A_5^{T,\mathrm{vN}}(\Phi(\rho))
+                         \ge\A_5^{T,\mathrm{vN}}(\rho).\ }
+\]
+\textit{Proof.} Set $\omega=I_{N+1}/(N+1)$. Since $\Phi$ is covariant and trace preserving on an irreducible spin space, $\Phi(\omega)=\omega$. The same covariance and trace argument for the marginal gives $R_{N,5}\omega=I_6/6$. For each $s\ge0$ apply Theorem~1 to the density matrix $\rho_s=(\rho+6s\omega)/(1+6s)$. Both marginal square-root traces acquire the same factor $(1+6s)^{-1/2}$. Thus
+\[
+ \Delta(s)=\Tr\sqrt{\tau+sI_6}-\Tr\sqrt{\sigma+sI_6}\ge0
+ \qquad(s\ge0).
+\]
+For equal-trace matrices of the same dimension, with $0\log0=0$,
+\[
+ S(\tau)-S(\sigma)=4\lim_{b\to\infty}\int_0^b\Delta(u^2)\,du .
+\]
+Indeed $\int_0^b\sqrt{u^2+x}\,du=P_x(b)-x\log x/4$, where $P_x(b)=[b\sqrt{b^2+x}+x\log(b+\sqrt{b^2+x})]/2$, and $P_0(b)=b^2/2$. As $b\to\infty$,
+$P_x(b)=b^2/2+(x/2)\log(2b)+x/4+o(1)$. Summing on the two spectra cancels the dimension and trace terms. Each finite integral is nonnegative. Dividing by $\log 6$ yields the stated inequality for $\A_5^{T,\mathrm{vN}}(\rho)=S(\sigma)/\log6$.\hfill$\square$
+
+The all-orders implication used here, including its scalar integral identity, has a
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy}{published Lean certificate}.
+
+\medskip
+\textbf{Proof files.} The attachment \texttt{order-five-lean.zip} contains the Lean sources for Theorem~1 and Corollary~1, including the exact convex, spectral and positive-map data. The entry point is \texttt{T5CertifiedTheorem.lean}. The separate \texttt{sextic-checks.zip} replays the scalar part with \texttt{python3 verify\_sextic.py}.
+\end{document}

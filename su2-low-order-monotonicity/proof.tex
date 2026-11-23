@@ -18,7 +18,7 @@
 \setcounter{tocdepth}{2}
 \title{Monotonicity of total anticoherence\\under $\mathrm{SU}(2)$-covariant channels\\[3mm]\large Fidelity $\mathcal A_t^{T,F}$ and von Neumann $\mathcal A_t^{T,\mathrm{vN}}$ anticoherence measures at orders $t\le4$\\Uniform proofs with embedded exact data}
 \author{}
-\date{22 November 2026}
+\date{23 November 2026}
 \hypersetup{pdftitle={Monotonicity of fidelity and von Neumann total anticoherence under SU(2)-covariant channels at orders t <= 4}}
 \begin{document}
 \embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
@@ -89,12 +89,14 @@ shifted-determinant comparison, valid for every $s>0$:
 \]
 The common spectral argument in Section~\ref{sec:spectral} yields
 the fidelity and von Neumann inequalities separately from this comparison.
+Section~\ref{sec:fidelity-implies-entropy} also derives the von Neumann
+inequality from the fidelity inequality for all inputs of the same channel.
 The determinant proof at each order supplies this common input through
 the isotropic-shift argument in Section~\ref{sec:shift}.
 Orders three and four use exact finite
 certificates embedded in this PDF. Lean certification covers all four
-orders (Section~\ref{sec:lean}). No claim is made for $t\ge5$
-or for trace-distance monotonicity.
+orders (Section~\ref{sec:lean}). For $t=5$ and $N>5$, see the
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-order-five-monotonicity}{order-five supplement}.
 
 \paragraph{Uniform proof structure.}
 For each of the four orders, use exactly the chain
@@ -3342,6 +3344,47 @@ the fidelity inequality~\eqref{eq:F}. Dividing the entropy difference
 by $\log(t+1)>0$ proves~\eqref{eq:VN}. This completes the
 written proof of Theorem~\ref{thm:main}.
 
+\subsection{Von Neumann monotonicity from fidelity monotonicity on all inputs}\label{sec:fidelity-implies-entropy}
+Fix $1\le t\le N$ and a completely positive, trace-preserving
+$\mathrm{SU}(2)$-covariant channel $\Phi$ on spin $N/2$.
+Suppose $\A_t^{T,F}(\Phi(\eta))\ge\A_t^{T,F}(\eta)$ for every density
+matrix $\eta$ on this spin space. Then
+$\A_t^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_t^{T,\mathrm{vN}}(\rho)$ for every
+density matrix $\rho$. At $t=1,2,3,4$ the fidelity inequality of
+Theorem~\ref{thm:main} supplies this hypothesis.
+
+\begin{proof}
+Write $d=t+1$, $\sigma=\rho_t$ and $\tau=\rho'_t$. For every $s\ge0$,
+apply the fidelity hypothesis to the full state
+$\rho_s=(\rho+ds\rho_0)/(1+ds)$ from Lemma~\ref{lem:shift}.
+Its input and output marginals are $(\sigma+s\id_d)/(1+ds)$ and
+$(\tau+s\id_d)/(1+ds)$. By~\eqref{eq:F}, their nonnegative square-root
+traces have the same ordering as their squares. Cancelling the common
+factor $(1+ds)^{-1/2}$ gives
+\[
+ \Delta(s)=\Tr\sqrt{\tau+s\id_d}-\Tr\sqrt{\sigma+s\id_d}\ge0 .
+\]
+We claim that
+\begin{equation}\label{eq:entropy-from-fidelity}
+ S(\tau)-S(\sigma)=4\lim_{b\to\infty}\int_0^b\Delta(u^2)\,du .
+\end{equation}
+For an eigenvalue $x\ge0$ and $b>0$, direct integration gives
+\[
+ \int_0^b\sqrt{u^2+x}\,du
+ =\tfrac12\!\left[b\sqrt{b^2+x}+x\log\!\left(b+\sqrt{b^2+x}\right)\right]
+   -\tfrac14 x\log x .
+\]
+For $x=0$ the formula gives $b^2/2$ with $0\log0=0$. As $b\to\infty$,
+the bracketed term times $1/2$ equals
+$b^2/2+(x/2)\log(2b)+x/4+o(1)$. Indeed,
+$b\sqrt{b^2+x}-b^2=x/(1+\sqrt{1+x/b^2})\to x/2$, and
+$(b+\sqrt{b^2+x})/(2b)\to1$.
+Sum over the eigenvalues of $\tau$ and subtract the sum for $\sigma$.
+Equal dimensions cancel the $b^2/2$ terms, and equal traces cancel the
+terms linear in $x$, proving~\eqref{eq:entropy-from-fidelity}.
+Every integral on its right is nonnegative. Dividing the entropy
+inequality by $\log d>0$ gives the asserted monotonicity.
+\end{proof}
 
 \section{Embedded exact data: definitions and checking rules}\label{sec:data}
 \subsection{What is contained in this PDF}
@@ -3543,6 +3586,9 @@ matrix spectral theorem in \path{lean/MatrixSpectralConsequences.lean}.
 Thus the public certificates follow the determinant,
 shifted-determinant, and spectral structure of this document. The shared
 bridge also proves the von Neumann inequalities at all four orders.
+
+The \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean}{Lean certificate for the all-input implication}
+proves Section~\ref{sec:fidelity-implies-entropy} for every $1\le t\le N$.
 
 \paragraph{Order-three certificates.}
 The public theorems

@@ -1,0 +1,2 @@
+'OrderFive.fidelity_monotonicity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OrderFive.vonNeumann_monotonicity' depends on axioms: [propext, Classical.choice, Quot.sound]

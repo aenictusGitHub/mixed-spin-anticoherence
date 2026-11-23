@@ -12,11 +12,11 @@ For every density matrix on the spin-`N/2` sector, every completely positive, tr
 
 ## Written proofs (1 ≤ t ≤ 4)
 
-The written proofs cover **both measures at t = 1, 2, 3, 4**, for all density matrices, including pure states. Both inequalities follow from the same shifted-determinant argument. The proofs at `t = 3,4` are computer-assisted and include exact rational data and verification scripts.
+The written proofs cover **both measures at t = 1, 2, 3, 4**, for all density matrices, including pure states. Both inequalities follow from the same shifted-determinant argument. Section 8.1 also derives the entropy inequality from fidelity monotonicity for every input of the fixed channel. The proofs at `t = 3,4` are computer-assisted and include exact rational data and verification scripts.
 
 - [Read the complete proof (PDF)](proof.pdf)
 - [LaTeX source](proof.tex)
-- [Exact data and verification scripts](exact-data.zip), also embedded in the PDF; see Section 9 for instructions.
+- [Exact data and verification scripts](exact-data.zip), also embedded in the PDF (Section 9).
 
 ## Lean certificates (t = 1, 2, 3, 4)
 
@@ -30,7 +30,9 @@ The order-four source verification covers all 9,490 local modules. Its final pub
 
 ## Implication at arbitrary order
 
-For every $1\le t<N$, fidelity monotonicity on all density matrices for a fixed channel implies von Neumann monotonicity on all density matrices for that channel. [Written proof and Lean certificate](../fidelity-implies-entropy/README.md).
+Fix $1\le t\le N$ and a channel. Mixing the input with the maximally mixed spin state turns its fidelity inequalities into a comparison of shifted square-root traces. Integration gives the entropy inequality, including for singular inputs. [General proof and Lean certificate](../fidelity-implies-entropy/README.md)
+
+The order-five supplement uses this implication after proving the fidelity inequality for $N>5$. [Order-five proof and certificates](../su2-order-five-monotonicity/README.md)
 
 ## Citation
 
