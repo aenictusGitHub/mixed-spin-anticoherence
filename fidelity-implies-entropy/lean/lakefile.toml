@@ -1,0 +1,15 @@
+name = "fidelity_entropy_implication"
+version = "1.0.0"
+defaultTargets = ["FidelityImpliesEntropy"]
+weakLeanArgs = ["-j1", "-s131072"]
+
+[leanOptions]
+Elab.async = false
+
+[[require]]
+name = "su2_t2_fidelity"
+path = "../../su2-low-order-monotonicity/lean"
+
+[[lean_lib]]
+name = "FidelityImpliesEntropy"
+globs = ["FidelityEntropyPrimitive", "FidelityEntropySpectral", "FidelityImpliesEntropy", "FidelityEntropyAudit"]

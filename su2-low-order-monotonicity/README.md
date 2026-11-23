@@ -28,6 +28,10 @@ The Lean certificates prove **both measures at t = 1, 2, 3, 4**, under the paper
 
 The order-four source verification covers all 9,490 local modules. Its final public-theorem audit passed with only Lean's standard `propext`, `Classical.choice` and `Quot.sound` axioms.
 
+## Implication at arbitrary order
+
+For every $1\le t<N$, fidelity monotonicity on all density matrices for a fixed channel implies von Neumann monotonicity on all density matrices for that channel. [Written proof and Lean certificate](../fidelity-implies-entropy/README.md).
+
 ## Citation
 
 Cite the [paper](https://arxiv.org/abs/2605.29436) and the repository commit used. [BibTeX](citation.bib) is provided.

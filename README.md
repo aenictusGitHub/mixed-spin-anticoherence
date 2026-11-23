@@ -18,6 +18,8 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 - [Lean certificates for t = 3](su2-low-order-monotonicity/lean-t3/README.md)
 - [Lean certificates for t = 4](su2-low-order-monotonicity/lean-t4/README.md)
 
+For any fixed order $1\le t<N$ and any fixed channel as above, fidelity monotonicity on every density matrix implies von Neumann monotonicity on every density matrix. [Written proof](fidelity-implies-entropy/proof.pdf) and [Lean certificate](fidelity-implies-entropy/README.md).
+
 ## Spin-5/2 purity and convex roofs
 
 Exact global purity optima at orders 2, 3, and 4, and exact convex roofs for the rank-four state, with coefficient data and verification programs.

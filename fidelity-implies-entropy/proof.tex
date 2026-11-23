@@ -1,0 +1,88 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb}
+\usepackage[margin=25mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+\usepackage{xcolor}
+\hypersetup{pdftitle={From fidelity monotonicity to von Neumann monotonicity at every order}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\id}{I}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 1pt minus 1pt}
+\raggedbottom
+\begin{document}
+\begin{center}
+{\Large\bfseries From fidelity monotonicity to von Neumann\\[3pt] monotonicity at every order}\par
+\smallskip
+{\normalsize Total anticoherence under $\mathrm{SU}(2)$-covariant channels}
+\end{center}
+
+\textbf{Theorem.} Fix $1\le t<N$ and a completely positive, trace-preserving
+$\mathrm{SU}(2)$-covariant channel $\Phi$ on the spin-$N/2$ space.
+If $\A_t^{T,F}(\Phi(\eta))\ge\A_t^{T,F}(\eta)$ for every density matrix $\eta$ on that space, then
+\[
+           \boxed{\quad \A_t^{T,\mathrm{vN}}(\Phi(\rho))
+                     \ge\A_t^{T,\mathrm{vN}}(\rho)
+                     \quad\text{for every density matrix }\rho.\quad}
+\]
+Both quantifiers include pure and rank-deficient states.
+
+\textbf{Proof.} Put $n=N+1$, $d=t+1$, and write $R=R_{N,t}$ for the symmetric $t$-qubit marginal. Let $\sigma=R\rho$ and $\tau=R\Phi(\rho)$. In the manuscript's squared-fidelity convention,
+\[
+ \A_t^{T,F}(\rho)=\frac{(\Tr\sqrt\sigma)^2-1}{t},\qquad
+ \A_t^{T,\mathrm{vN}}(\rho)=\frac{S(\sigma)}{\log d},\qquad
+ S(X)=-\sum_i\lambda_i(X)\log\lambda_i(X),
+\]
+with natural logarithms and $0\log 0=0$.
+
+Let $\omega=\id_n/n$. Covariance makes $\Phi(\omega)$ invariant under spin rotations. Irreducibility and trace one give $\Phi(\omega)=\omega$. The symmetric partial trace preserves rotation covariance and trace, and the spin-$t/2$ representation is irreducible. Hence $R\omega=\id_d/d$. For every $s\ge0$ the density matrix
+\[
+ \rho_s=\frac{\rho+ds\,\omega}{1+ds}
+ \quad\text{has marginals}\quad
+ R\rho_s=\frac{\sigma+s\id_d}{1+ds},\qquad
+ R\Phi(\rho_s)=\frac{\tau+s\id_d}{1+ds}.
+\]
+Apply the fidelity hypothesis to $\rho_s$. Both square-root traces are nonnegative. Comparing their squares therefore compares the traces themselves, and the common normalization cancels. This gives
+\[
+      \Delta(s):=\Tr\sqrt{\tau+s\id_d}-\Tr\sqrt{\sigma+s\id_d}\ge0
+      \qquad(s\ge0).
+\]
+The spectral identity proved on the next page is
+\begin{equation}
+ S(\tau)-S(\sigma)=4\lim_{b\to\infty}\int_0^b\Delta(u^2)\,du
+                 =2\int_0^\infty\Delta(s)\,\frac{ds}{\sqrt{s}} . \label{eq:identity}
+\end{equation}
+Every finite integral is nonnegative. Taking the limit and dividing by $\log d>0$ proves the theorem. In particular, comparing fidelity along the segment from $\rho$ to $\omega$ suffices for the entropy comparison at $\rho$.\hfill$\square$
+
+\newpage
+\section*{The shifted square-root identity}
+Let $x_1,\ldots,x_d$ and $y_1,\ldots,y_d$ be the eigenvalues of $\sigma$ and $\tau$.
+They are nonnegative and have equal sum. For $x\ge0$ and $u\ge0$, put
+\[
+ P_x(u)=\tfrac12\bigl[u\sqrt{u^2+x}
+                   + x\log(u+\sqrt{u^2+x})\bigr].
+\]
+For $x=0$ take $P_0(u)=u^2/2$, including at the origin. For every $x\ge0$ this function is continuous on $[0,\infty)$, has derivative $\sqrt{u^2+x}$ for $u>0$, and satisfies $P_x(0)=x\log(x)/4$. Thus, for $b\ge0$,
+\[
+ \int_0^b\sqrt{u^2+x}\,du=P_x(b)-\tfrac14 x\log x.
+\]
+
+To evaluate the limit, take $b>0$ and write $v=\sqrt{1+x/b^2}$. Rationalizing the first term and factoring $2b$ inside the logarithm gives the exact identity
+\[
+ P_x(b)-\tfrac12 b^2-\tfrac x2\log(2b)
+       =\frac{x}{2(1+v)}+\frac x2\log\!\left(\frac{1+v}{2}\right)
+       \ \longrightarrow\ \tfrac x4 .
+\]
+Apply the finite integral formula to each eigenvalue and subtract the sum on $x$ from the sum on $y$. Equal dimension cancels the $b^2/2$ terms. Equal trace cancels the $\log(2b)$ terms and the limiting linear terms. What remains is
+\[
+ 4\lim_{b\to\infty}\int_0^b
+     \left(\sum_i\sqrt{u^2+y_i}-\sum_i\sqrt{u^2+x_i}\right)du
+ =-\sum_i y_i\log y_i+\sum_i x_i\log x_i .
+\]
+The integrand is continuous at $u=0$, even for zero eigenvalues. Substituting $s=u^2$ on finite intervals and then taking the limit proves the second equality in~\eqref{eq:identity}.
+
+\section*{Lean certificate}
+The public theorem \texttt{LowOrder.physical\_vonNeumann\_of\_fidelity} uses
+the normalized Dicke marginal, the positive matrix square root and the manuscript's two totals. It holds for $N=k+t$ with $t\ge1$ and $k\ge0$, including the case $N=t$. Its single monotonicity hypothesis is fidelity on all density matrices for the fixed channel. The analytical part checks the finite-cutoff form of~\eqref{eq:identity} for arbitrary nonnegative spectra of equal mass, including zero eigenvalues.
+\end{document}
