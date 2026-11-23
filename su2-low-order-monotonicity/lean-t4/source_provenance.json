@@ -37948,11 +37948,23 @@
     "sha256": "4c29d74fab5255be8e9161d810d4a4e65ef888f15eba688df3f6a4a6d0a74f1e"
   },
   "PhysicalUniformBridge": {
-    "source": "su2-low-order-monotonicity/lean/PhysicalUniformBridge.lean",
-    "sha256": "7401e9c8212cc4cf725edd79906286f647943971e0ff03df44e369516d5f0d77"
+    "source": "su2-low-order-monotonicity/lean-t4/PhysicalUniformBridge.lean",
+    "sha256": "bd6dff80ff40880d8d8a49a1c4a64d4743bf04259a281f3dc85b939980ab0569"
   },
   "UniformT4": {
-    "source": "su2-low-order-monotonicity/lean/UniformT4.lean",
-    "sha256": "91eba39bc6ccecf7a87006f8441e5d8b69f5e0599bc1ac9e2d10769e44af4c77"
+    "source": "su2-low-order-monotonicity/lean-t4/UniformT4.lean",
+    "sha256": "516718759b025d2fc6d8e00afa1febbc33742c9caaac2fe50bfc3154e5255302"
+  },
+  "FidelityEntropyPrimitive": {
+    "source": "fidelity-implies-entropy/lean/FidelityEntropyPrimitive.lean",
+    "sha256": "a92264aa0f2afe2f79892a3406550c7728533c1f1cd914b212b1336ae73b582d"
+  },
+  "FidelityEntropySpectral": {
+    "source": "fidelity-implies-entropy/lean/FidelityEntropySpectral.lean",
+    "sha256": "0e4b9c0e8054ecaf93780992b34903793b88917467643df686fedcbcf591cb2b"
+  },
+  "FidelityImpliesEntropy": {
+    "source": "fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean",
+    "sha256": "355d80553e500441d28dbde02b8f06151cc53da5cfe30c8cc5cd87d9ac6001c3"
   }
 }

@@ -12,7 +12,9 @@ REQUIRED={'LowOrder.physical_fidelity_t1','LowOrder.physical_fidelity_t2',
  'LowOrder.physical_determinant_t1_uniform','LowOrder.physical_determinant_t2_uniform',
  'LowOrder.physical_totals_of_determinant',
  'LowOrder.shifted_determinant_of_density_determinant',
- 'LowOrder.matrix_totals_mono_of_shifted_det'}
+ 'LowOrder.matrix_sqrt_trace_mono_of_shifted_det','LowOrder.physical_fidelity_of_determinant',
+ 'LowOrder.physical_vonNeumann_of_fidelity','LowOrder.physical_vonNeumann_t1',
+ 'LowOrder.physical_vonNeumann_t2'}
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -42,6 +44,7 @@ def main():
     def compile_one(n):
         begin=time.time()
         cmd=['lake','env','lean','-j1','-s131072','-DElab.async=false',
+             *(['--trust=0'] if n=='UniformAudit' else []),
              '-o',str(output/(n+'.olean')),str(sources[n])]
         with (logs/(n+'.log')).open('w') as stream:
             proc=subprocess.run(cmd,cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT)
@@ -78,9 +81,9 @@ def main():
     manifest=''.join(f'{sha(p)}  {p.name}\n' for p in files)
     (ROOT/'source-sha256-uniform.txt').write_text(manifest)
     (ROOT/'axiom-audit-uniform.log').write_text(audit)
-    report={'status':'PASS','scope':'Fidelity monotonicity t=1 and t=2 through the uniform determinant proof',
+    report={'status':'PASS','scope':'Fidelity monotonicity at t=1,2 and its von Neumann corollary',
       'lean_version':versions,'mathlib_commit':'f897ebcf72cd16f89ab4577d0c826cd14afaafc7',
-      'fresh_project_sources':len(sources),'external_dependencies':'Pinned Mathlib compiled cache; not rebuilt by this script',
+      'public_audit_trust_level':0,'fresh_project_sources':len(sources),'external_dependencies':'Pinned Mathlib compiled cache; not rebuilt by this script',
       'seconds':round(time.time()-started,3),'axioms':findings,'modules':records,
       'manifest_sha256':sha(ROOT/'source-sha256-uniform.txt')}
     result.write_text(json.dumps(report,indent=2)+'\n')

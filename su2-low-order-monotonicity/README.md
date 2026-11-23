@@ -12,7 +12,7 @@ For every density matrix on the spin-`N/2` sector, every completely positive, tr
 
 ## Written proofs (1 ≤ t ≤ 4)
 
-The written proofs cover **both measures at t = 1, 2, 3, 4**, for all density matrices, including pure states. Both inequalities follow from the same shifted-determinant argument. Section 8.1 also derives the entropy inequality from fidelity monotonicity for every input of the fixed channel. The proofs at `t = 3,4` are computer-assisted and include exact rational data and verification scripts.
+At each order, a determinant bound for every input gives a shifted-determinant bound. Integrating the logarithmic determinant comparison proves fidelity monotonicity. Section 8.1 then applies the general fidelity-to-entropy implication to the same channel. Page 3 shows the argument in one diagram. The proofs at `t = 3, 4` use exact rational data.
 
 - [Read the complete proof (PDF)](proof.pdf)
 - [LaTeX source](proof.tex)
@@ -20,13 +20,11 @@ The written proofs cover **both measures at t = 1, 2, 3, 4**, for all density ma
 
 ## Lean certificates (t = 1, 2, 3, 4)
 
-The Lean certificates prove **both measures at t = 1, 2, 3, 4**, under the paper's physical channel hypotheses and for all density matrices, including mixed and singular inputs. Each order follows the uniform determinant, shifted-determinant and spectral argument in the PDF.
+Lean proves the two inequalities under the same hypotheses as the PDF. The [shared proof](lean/PhysicalUniformBridge.lean) obtains fidelity for every input from the order-specific determinant bound. The [general theorem](../fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean) takes this fidelity result as its hypothesis and gives the entropy inequality.
 
 - [Orders one and two](lean/README.md) and their [verification report](lean/verification-uniform/result.json)
 - [Order three](lean-t3/README.md), [public theorems](lean-t3/UniformT3Certificate.lean), [verification report](lean-t3/verification/result.json) and [axiom audit](lean-t3/verification/axioms.log)
 - [Order four](lean-t4/README.md), [public theorems](lean-t4/UniformT4Certificate.lean), [verification report](lean-t4/verification/result.json) and [axiom audit](lean-t4/verification/axioms.log)
-
-The order-four source verification covers all 9,490 local modules. Its final public-theorem audit passed with only Lean's standard `propext`, `Classical.choice` and `Quot.sound` axioms.
 
 ## Implication at arbitrary order
 

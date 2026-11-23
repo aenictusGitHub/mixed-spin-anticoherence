@@ -4,7 +4,7 @@ The public file `UniformT3Certificate.lean` states both manuscript inequalities 
 
 The two public statements are `LowOrder.physical_fidelity_t3` and `LowOrder.physical_vonNeumann_t3`. The definitions in `LowOrderMeasures.lean` use the manuscript's squared-fidelity convention and normalized von Neumann entropy on the actual Dicke marginal.
 
-Verification completed on 22 November 2026. All 129 local modules rebuilt from source with Lean 4.24.0. The final trust-zero audit passed for the physical determinant theorem, the combined theorem and both public inequalities. Each reports exactly `propext`, `Classical.choice` and `Quot.sound`. See `verification/result.json`, `verification/axioms.log` and `verification/rebuild.log` for the checked source hashes and results.
+The [verification record](verification/result.json) identifies the checked source files. The [axiom audit](verification/axioms.log) covers the physical determinant theorem, the combined theorem and both public inequalities.
 
 The proof follows the uniform structure of the written proof.
 
@@ -16,7 +16,8 @@ The proof follows the uniform structure of the written proof.
 | Available-extension hull for arbitrary spin | `ChannelSimplexHullT3Available.lean`, `T3Hull*.lean`, `T3AllNaturalFacets.lean` |
 | Physical determinant inequality for the actual channel | `T3PhysicalDeterminant.lean` |
 | Isotropic density mixture and shifted determinants | `MarginalIsotropy.lean`, `ShiftedDeterminant.lean`, `PhysicalUniformBridge.lean` |
-| Fidelity and von Neumann consequences | `MatrixSpectralConsequences.lean`, `UniformT3.lean` |
+| Square-root trace comparison and all-input fidelity | `MatrixSpectralConsequences.lean`, `PhysicalUniformBridge.lean` |
+| Von Neumann monotonicity from all-input fidelity | [FidelityImpliesEntropy.lean](FidelityImpliesEntropy.lean), `UniformT3.lean` |
 
 The final theorem assumes only the physical channel and state hypotheses. The finite-case bounds, multiplier decomposition and determinant comparison are supplied by proved lemmas.
 

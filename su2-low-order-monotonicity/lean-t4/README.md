@@ -4,11 +4,11 @@ This package provides end-to-end Lean proofs of fidelity and von Neumann total-a
 
 The public theorems are `LowOrder.physical_fidelity_t4` and `LowOrder.physical_vonNeumann_t4` in [UniformT4Certificate.lean](UniformT4Certificate.lean).
 
-Both follow the uniform structure of the written proofs: [T4PhysicalDeterminant.lean](T4PhysicalDeterminant.lean) proves the physical determinant inequality, and [PhysicalUniformBridge.lean](PhysicalUniformBridge.lean) supplies the common density-mixture, shifted-determinant and spectral argument. [T4ExceptionalFinal.lean](T4ExceptionalFinal.lean) handles the exceptional `(N,K) = (5,2)` case with exact sum-of-squares and invariant-polynomial certificates.
+[T4PhysicalDeterminant.lean](T4PhysicalDeterminant.lean) proves the determinant inequality for every global input. [PhysicalUniformBridge.lean](PhysicalUniformBridge.lean) uses isotropic mixtures and shifted determinants to deduce fidelity monotonicity for all inputs. The [general fidelity-to-entropy theorem](FidelityImpliesEntropy.lean) then gives von Neumann monotonicity for the same channel. [T4ExceptionalFinal.lean](T4ExceptionalFinal.lean) handles the exceptional `(N,K) = (5,2)` case with exact sum-of-squares and invariant-polynomial certificates.
 
 ## Verification
 
-Source verification covers all **9,490 local modules**. The 98 shared modules match the completed order-three source verification. Additional reused checkpoints were validated against both source and object fingerprints. All remaining modules were compiled from source in dependency order.
+The verification record identifies the local proof sources and distinguishes freshly compiled modules from reused verification checkpoints.
 
 The [final verification report](verification/result.json) records `PASS`. The four [final axiom reports](verification/axioms.log) contain only Lean's standard `propext`, `Classical.choice` and `Quot.sound`. The [source-integrity check](verification/source-integrity.json) confirms that every supplied Lean source matches the verified report.
 

@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,microtype,dsfont,braket,xurl,longtable}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
-\usepackage{eso-pic,embedfile}
+\usepackage{eso-pic,embedfile,tikz-cd}
 \newcommand{\A}{\mathcal A}
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\id}{\mathds{1}}
@@ -23,15 +23,10 @@
 \begin{document}
 \embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
 \maketitle
-\begin{center}\small
-Both measures follow from one common shifted-determinant argument.\\
-Written proofs and Lean certification cover both measures at $t=1,2,3,4$.\\
-The certification scope is stated in Section~\ref{sec:lean}.
-\end{center}
-\vspace{12mm}
-\noindent This supplement gives detailed proofs of the paper's monotonicity
-results for $t=1,2,3,4$, using the same notation and squared-fidelity
-convention. The results hold for all density matrices, including pure states.
+\noindent We prove fidelity monotonicity for every input density matrix at
+orders $t=1,2,3,4$ by comparing shifted determinants. Von Neumann
+monotonicity then follows from a single implication valid at every order.
+Section~\ref{sec:lean} identifies the Lean theorems for both measures.
 
 \medskip
 \noindent The exact data and verification scripts used in the
@@ -64,7 +59,7 @@ The two anticoherence measures are
  \A_t^{T,\mathrm{vN}}(\rho)&=
  -\frac{\Tr(\rho_t\log\rho_t)}{\log(t+1)}.\label{eq:VN}
 \end{align}
-Here $0\log0=0$ and logarithms are natural.
+Write $S(X)=-\Tr(X\log X)$, with $0\log0=0$ and natural logarithms.
 
 \begin{theorem}\label{thm:main}
 Let $t\in\{1,2,3,4\}$ and $N\ge t$. For every completely positive,
@@ -82,36 +77,23 @@ one has
 The statement includes all density matrices, including pure states.
 \end{theorem}
 
-Both inequalities in Theorem~\ref{thm:main} follow from the same
-shifted-determinant comparison, valid for every $s>0$:
-\[
- \det(s\id_{t+1}+\rho'_t)\ge\det(s\id_{t+1}+\rho_t).
-\]
-The common spectral argument in Section~\ref{sec:spectral} yields
-the fidelity and von Neumann inequalities separately from this comparison.
-Section~\ref{sec:fidelity-implies-entropy} also derives the von Neumann
-inequality from the fidelity inequality for all inputs of the same channel.
-The determinant proof at each order supplies this common input through
-the isotropic-shift argument in Section~\ref{sec:shift}.
-Orders three and four use exact finite
-certificates embedded in this PDF. Lean certification covers all four
-orders (Section~\ref{sec:lean}). For $t=5$ and $N>5$, see the
-\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-order-five-monotonicity}{order-five supplement}.
-
 \paragraph{Uniform proof structure.}
-For each of the four orders, use exactly the chain
+Fix $N$, $t$ and $\Phi$ as in Theorem~\ref{thm:main}. Every comparison in
+the diagram is for \emph{all} input density matrices of this same channel.
+In the shifted determinant comparison, $s$ ranges over all positive reals.
 \[
- \det\rho'_t\ge\det\rho_t
- \ \Longrightarrow\
- \det(s\id_{t+1}+\rho'_t)\ge\det(s\id_{t+1}+\rho_t)
- \ \Longrightarrow\
- \begin{cases}
- \Tr\sqrt{\rho'_t}\ge\Tr\sqrt{\rho_t},\\
- S(\rho'_t)\ge S(\rho_t).
- \end{cases}
+\begin{tikzcd}[column sep=2em,row sep=2.1em]
+ \det\rho'_t\ge\det\rho_t \arrow[r,Rightarrow,"{\S\ref{sec:shift}}"] &
+ \det(s\id_d+\rho'_t)\ge\det(s\id_d+\rho_t)
+    \arrow[d,Rightarrow,"{\S\ref{sec:spectral}}"] & \\
+ & \Tr\sqrt{\rho'_t}\ge\Tr\sqrt{\rho_t}
+    \arrow[r,Rightarrow,"{\S\ref{sec:fidelity-implies-entropy}}"] &
+ S(\rho'_t)\ge S(\rho_t)
+\end{tikzcd}
 \]
-The shift, spectral comparison, treatment of singular states, and
-normalization are identical. Only the determinant input depends on the order:
+The last arrow uses fidelity monotonicity on the entire segment from
+each $\rho$ to the maximally mixed spin state $\rho_0$. Only the first
+inequality requires a proof specific to the order.
 \begin{center}
 \begin{tabular}{@{}cccl@{}}
 \toprule
@@ -126,15 +108,14 @@ $t$&$d=t+1$&Proper-order domain&Determinant certificate\\
 \end{center}
 
 
-The determinant conclusion required at each order is
+Sections~\ref{sec:t1}--\ref{sec:t4} establish
 \begin{equation}\label{eq:det}
- \det\rho'_t\ge\det\rho_t\qquad(N\ge t).
+ \det\rho'_t\ge\det\rho_t
 \end{equation}
-The equal-order case $N=t$ is proved in Section~\ref{sec:prelim}.
-For $N>t$, each of the next four determinant chapters concludes with
-exactly the same implication to both total measures. The common shifted
-and spectral arguments are given in Sections~\ref{sec:shift} and
-\ref{sec:spectral}, including zero eigenvalues.
+for $N>t$. At $N=t$ it follows from unitality and trace preservation
+(Section~\ref{sec:prelim}). The exact data for $t=3,4$ are embedded in
+this PDF (Section~\ref{sec:data}). For $t=5$ and $N>5$, see the
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-order-five-monotonicity}{order-five supplement}.
 
 \section{Common algebraic and spectral preliminaries}\label{sec:prelim}
 This section supplies the channel and matrix arguments used at all four
@@ -445,11 +426,8 @@ available-extension hulls.
 
 \clearpage
 \section{Determinant comparison at order one}\label{sec:t1}
-Let $N\ge2$, $\sigma=\rho_1$ and $\tau=\rho'_1$. We prove
-$\det\tau\ge\det\sigma$ for every physical input, then apply the same
-shifted-determinant and spectral arguments as at orders two, three and
-four. The equal-order case $N=1$ is already covered in
-Section~\ref{sec:prelim}; the calculation below also applies to it.
+Let $N\ge1$, $\sigma=\rho_1$ and $\tau=\rho'_1$. We prove
+$\det\tau\ge\det\sigma$ for every physical input.
 
 \subsection{The rank-one multiplier and the physical reduction}
 Permutation symmetry and
@@ -482,26 +460,6 @@ gives the eigenvalues $(1\pm r)/2$ of $\sigma$. Therefore
 No invertibility assumption was used: this includes pure reductions
 ($r=1$), the maximally mixed reduction ($r=0$), and arbitrary mixed
 full inputs.
-
-\paragraph{The two total measures.}
-This proves the determinant input for $t=1$. Applying it to the isotropic
-mixtures in Section~\ref{sec:shift} gives all positive shifts.
-Explicitly, $\rho_s=(\rho+2s\rho_0)/(1+2s)$ has reduced input and output
-$(\sigma+sI_2)/(1+2s)$ and $(\tau+sI_2)/(1+2s)$. Their determinant
-comparison, multiplied by $(1+2s)^2$, yields
-\[
- \det(sI_2+\tau)\ge\det(sI_2+\sigma)\qquad(s\ge0).
-\]
-In dimension two this is also checked directly from
-$\det(sI_2+X)=s^2+s+\det X$ for $\operatorname{Tr}X=1$.
-The two integral/primitive arguments in Section~\ref{sec:spectral}
-then give $\operatorname{Tr}\sqrt\tau\ge\operatorname{Tr}\sqrt\sigma$
-and $S(\tau)\ge S(\sigma)$, including zero eigenvalues. With the
-normalizations~\eqref{eq:F} and~\eqref{eq:VN}, this proves
-\[
- \boxed{\A_1^{T,F}(\Phi(\rho))\ge\A_1^{T,F}(\rho),\qquad
- \A_1^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_1^{T,\mathrm{vN}}(\rho).}
-\]
 
 \clearpage
 \section{Determinant comparison at order two}\label{sec:t2}
@@ -785,17 +743,6 @@ If $A$ is singular, then
 \eqref{t2:eq:cartesian}, $A\succeq0$ and $\det\rho_2\ge0$ force
 $\det\rho_2=0$. The inequality is then immediate from
 $\rho'_2\succeq0$. This also covers all boundary states.
-
-
-\paragraph{The two total measures.}
-This proves the determinant input for $t=2$. Applying it to the isotropic
-mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
-integral/primitive arguments in Section~\ref{sec:spectral} then give,
-with no additional order-two assumption,
-\[
- \A_2^{T,F}(\Phi(\rho))\ge\A_2^{T,F}(\rho),\qquad
- \A_2^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_2^{T,\mathrm{vN}}(\rho).
-\]
 
 \clearpage
 \section{Determinant comparison at order three}\label{sec:t3}
@@ -1560,19 +1507,6 @@ For $N=4,5$, use the small-spin reductions above, which avoid any
 unavailable higher-spin extension. This proves sufficiency.
 Necessity is immediate since the four cases are instances of the
 all-spin statement.
-
-
-
-
-\paragraph{The two total measures.}
-This proves the determinant input for $t=3$. Applying it to the isotropic
-mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
-integral/primitive arguments in Section~\ref{sec:spectral} then give,
-with no additional order-three assumption,
-\[
- \A_3^{T,F}(\Phi(\rho))\ge\A_3^{T,F}(\rho),\qquad
- \A_3^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_3^{T,\mathrm{vN}}(\rho).
-\]
 
 \clearpage
 \section{Determinant comparison at order four}\label{sec:t4}
@@ -3246,125 +3180,65 @@ this completes the fourteenth base case. The hull argument at the
 start of this chapter now proves the determinant comparison for every
 $N\ge5$, every covariant channel, and every density matrix.
 
-\paragraph{The two total measures.}
-This proves the determinant input for $t=4$. Applying it to the isotropic
-mixtures in Section~\ref{sec:shift} gives all positive shifts. The two
-integral/primitive arguments in Section~\ref{sec:spectral} then give,
-with no additional order-four assumption,
-\[
- \A_4^{T,F}(\Phi(\rho))\ge\A_4^{T,F}(\rho),\qquad
- \A_4^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_4^{T,\mathrm{vN}}(\rho).
-\]
-
 \clearpage\section{The common shifted determinant inequality}\label{sec:shift}
 \begin{lemma}\label{lem:shift}
-Equation~\eqref{eq:det}, applied to all full input states, implies
+Equation~\eqref{eq:det}, applied to every global input density matrix, implies
 \[
  \det(s\id_d+\rho'_t)\ge\det(s\id_d+\rho_t)
  \qquad\text{for all }s\ge0.
 \]
 \end{lemma}
 \begin{proof}
-Covariance and irreducibility imply $\Phi(\rho_0)=\rho_0$.
-Rotational invariance and trace normalization similarly imply
-$R_{N,t}\rho_0=\id_d/d$.
-The full state
+Covariance and irreducibility give $\Phi(\rho_0)=\rho_0$, and
+Section~\ref{sec:prelim} gives $R_{N,t}\rho_0=\id_d/d$.
+For the full input $\rho_s=(\rho+ds\rho_0)/(1+ds)$, linearity
+therefore gives
 \[
- \rho_s=\frac{\rho+ds\rho_0}{1+ds}
+ R_{N,t}(\rho_s)=\frac{\rho_t+s\id_d}{1+ds},\qquad
+ R_{N,t}\bigl(\Phi(\rho_s)\bigr)=\frac{\rho'_t+s\id_d}{1+ds}.
 \]
-therefore has reduced input and output
-$(\rho_t+s\id_d)/(1+ds)$ and $(\rho'_t+s\id_d)/(1+ds)$.
 Apply~\eqref{eq:det} to $\rho_s$ and cancel the positive common
 factor $(1+ds)^{-d}$.
 \end{proof}
 
-\section{The two common spectral consequences}\label{sec:spectral}
-Put $\sigma=\rho_t$, $\tau=\rho'_t$ and
+\section{From shifted determinants to fidelity and entropy}\label{sec:spectral}
+Let $p_i$ and $q_i$ be the eigenvalues of $\sigma=\rho_t$ and $\tau=\rho'_t$.
+For $r>0$, Lemma~\ref{lem:shift} gives
 \[
- h(s)=\log\frac{\det(s\id_d+\tau)}{\det(s\id_d+\sigma)},\quad s>0.
+ 0\le\log\frac{\det(r^2\id_d+\tau)}{\det(r^2\id_d+\sigma)}
+ =\sum_{i=1}^d\bigl[\log(1+q_i/r^2)-\log(1+p_i/r^2)\bigr].
 \]
-Lemma~\ref{lem:shift} gives $h(s)\ge0$. If $p_i$ and $q_i$ are the
-eigenvalues of $\sigma$ and $\tau$, respectively, the exact identities are
-\begin{align}
- S(\tau)-S(\sigma)&=\int_0^\infty h(s)\,ds,\label{eq:entropyint}\\
- \Tr\sqrt\tau-\Tr\sqrt\sigma
- &=\frac1{2\pi}\int_0^\infty s^{-1/2}h(s)\,ds.\label{eq:sqrtint}
-\end{align}
-Here $S(\omega)=-\Tr(\omega\log\omega)$.
-We give the elementary endpoint argument as well as the integral forms,
-so no differentiation of a determinant inequality is needed.
-
-For entropy define
+To integrate this comparison, fix $x>0$. Integration by parts gives
 \[
- G(s)=\sum_i(s+q_i)\log(s+q_i)-\sum_i(s+p_i)\log(s+p_i).
+ \int_0^\infty\log(1+x/r^2)\,dr
+  =2x\int_0^\infty\frac{dr}{r^2+x}=\pi\sqrt{x}.
 \]
-For $s>0$, $G'(s)=h(s)\ge0$. The convention $0\log0=0$ makes
-$G$ continuous at zero. Equal dimensions and equal traces cancel the
-two leading terms at infinity, so $G(s)\to0$. Indeed, for fixed $p\ge0$,
-\[
- (s+p)\log(s+p)-s\log s-p\log s
-   =(s+p)\log(1+p/s)\longrightarrow p.
-\]
-Thus $G(0)\le0$, which is precisely $S(\tau)\ge S(\sigma)$.
-Integrating $G'$ proves~\eqref{eq:entropyint}.
-
-For fidelity use the scalar primitive, defined continuously at $r=0$,
-\[
- P_p(r)=r\log(1+p/r^2)
-       +2\sqrt p\arctan(r/\sqrt p),\quad p\ge0.
-\]
-For $p=0$ the function is identically zero. For $p>0$,
-\[
- P'_p(r)=\log(1+p/r^2),\quad
- P_p(0)=0,\quad
- \lim_{r\to\infty}P_p(r)=\pi\sqrt p.
-\]
-The first term tends to zero at infinity because
-$0\le r\log(1+p/r^2)\le p/r$.
-Its continuity at zero follows from
-\[
- r\log(1+p/r^2)=r\log(r^2+p)-2r\log r.
-\]
-Consequently $H(r)=\sum_iP_{q_i}(r)-\sum_iP_{p_i}(r)$ has
-$H'(r)=h(r^2)\ge0$ and $H(0)=0$. Taking its limit at infinity gives
-\[
- \pi\left(\sum_i\sqrt{q_i}-\sum_i\sqrt{p_i}\right)\ge0.
-\]
-The substitution $s=r^2$ gives~\eqref{eq:sqrtint}.
-Zero eigenvalues cause at worst $O(|\log s|)$ in $h(s)$ at zero;
-both integrals converge there. At infinity the estimate
-$|\log(1+x)-x|\le x^2/2$ for $x\ge0$ follows by integrating
-$0\le1-(1+x)^{-1}\le x$. Substituting $x=p_i/s,q_i/s$ and
-using equal traces gives $h(s)=O(s^{-2})$. Thus both upper endpoints
-also converge, including when either state has zero eigenvalues.
-
-Since both square-root traces are nonnegative, squaring preserves
-their order. Dividing their squared difference by $t>0$ proves
-the fidelity inequality~\eqref{eq:F}. Dividing the entropy difference
-by $\log(t+1)>0$ proves~\eqref{eq:VN}. This completes the
-written proof of Theorem~\ref{thm:main}.
+The boundary term $r\log(1+x/r^2)$ tends to zero at infinity by
+$\log(1+x/r^2)\le x/r^2$. At zero, write it as
+$r\log(r^2+x)-2r\log r$. For $x=0$ the integrand vanishes identically.
+Thus each term is integrable, including for singular marginals. Integrating
+the finite sum yields $\pi(\Tr\sqrt\tau-\Tr\sqrt\sigma)\ge0$.
+Squaring the nonnegative traces and applying~\eqref{eq:F} proves fidelity
+monotonicity for every input at each of the four orders.
 
 \subsection{Von Neumann monotonicity from fidelity monotonicity on all inputs}\label{sec:fidelity-implies-entropy}
+\begin{lemma}\label{lem:fidelity-implies-entropy}
 Fix $1\le t\le N$ and a completely positive, trace-preserving
 $\mathrm{SU}(2)$-covariant channel $\Phi$ on spin $N/2$.
-Suppose $\A_t^{T,F}(\Phi(\eta))\ge\A_t^{T,F}(\eta)$ for every density
-matrix $\eta$ on this spin space. Then
+If $\A_t^{T,F}(\Phi(\eta))\ge\A_t^{T,F}(\eta)$ for every density matrix
+$\eta$ on this spin space, then
 $\A_t^{T,\mathrm{vN}}(\Phi(\rho))\ge\A_t^{T,\mathrm{vN}}(\rho)$ for every
-density matrix $\rho$. At $t=1,2,3,4$ the fidelity inequality of
-Theorem~\ref{thm:main} supplies this hypothesis.
-
+density matrix $\rho$ on the same space.
+\end{lemma}
 \begin{proof}
-Write $d=t+1$, $\sigma=\rho_t$ and $\tau=\rho'_t$. For every $s\ge0$,
-apply the fidelity hypothesis to the full state
-$\rho_s=(\rho+ds\rho_0)/(1+ds)$ from Lemma~\ref{lem:shift}.
-Its input and output marginals are $(\sigma+s\id_d)/(1+ds)$ and
-$(\tau+s\id_d)/(1+ds)$. By~\eqref{eq:F}, their nonnegative square-root
-traces have the same ordering as their squares. Cancelling the common
-factor $(1+ds)^{-1/2}$ gives
+Fix $\rho$ and put $\sigma=\rho_t$, $\tau=\rho'_t$. For each $s\ge0$
+apply the fidelity hypothesis to the full mixture $\rho_s$ in
+Lemma~\ref{lem:shift}. Comparing the nonnegative square-root traces in~\eqref{eq:F}
+and cancelling the common factor $(1+ds)^{-1/2}$ gives
 \[
  \Delta(s)=\Tr\sqrt{\tau+s\id_d}-\Tr\sqrt{\sigma+s\id_d}\ge0 .
 \]
-We claim that
+The entropy difference is
 \begin{equation}\label{eq:entropy-from-fidelity}
  S(\tau)-S(\sigma)=4\lim_{b\to\infty}\int_0^b\Delta(u^2)\,du .
 \end{equation}
@@ -3382,9 +3256,13 @@ $(b+\sqrt{b^2+x})/(2b)\to1$.
 Sum over the eigenvalues of $\tau$ and subtract the sum for $\sigma$.
 Equal dimensions cancel the $b^2/2$ terms, and equal traces cancel the
 terms linear in $x$, proving~\eqref{eq:entropy-from-fidelity}.
-Every integral on its right is nonnegative. Dividing the entropy
-inequality by $\log d>0$ gives the asserted monotonicity.
+Every integral on its right is nonnegative. Dividing by $\log d>0$
+gives the von Neumann inequality in the normalization~\eqref{eq:VN}.
 \end{proof}
+
+At $t=1,2,3,4$ the fidelity comparison proved above supplies the hypothesis
+of Lemma~\ref{lem:fidelity-implies-entropy}. This proves the second
+inequality of Theorem~\ref{thm:main} for the same channel and every input.
 
 \section{Embedded exact data: definitions and checking rules}\label{sec:data}
 \subsection{What is contained in this PDF}
@@ -3548,110 +3426,64 @@ and the kernel-constraint check. Additional exact checks confirmed the
 36 independent moment coordinates, invariant-space dimension $432$, and
 all 24 symbolic band identities for arbitrary $N$.
 
-The written covariance argument now retains three independent ordered
+The covariance argument retains three independent ordered
 source slots and explicitly proves weighted-trace invariance. This is
 essential for the exterior and mixed-symmetry blocks. The certificate
 already retained these slots, so its exact data are unchanged.
-The first-order proof is also included. These exact-arithmetic checks are independent of the Lean certificates
-described next.
+These exact-arithmetic checks are independent of the Lean certificates below.
 
-\clearpage\section{Lean certification scope}\label{sec:lean}
-The accompanying Lean packages certify both fidelity and von Neumann
-monotonicity at \textbf{orders $t=1,2,3,4$}, matching the scope of the
-\textbf{written proofs for both measures}. The order-one and order-two public fidelity theorems are
-\texttt{LowOrder.physical\_fidelity\_t1} and
-\texttt{LowOrder.physical\_fidelity\_t2}, in \path{lean/UniformFidelity.lean}.
-They use $N=k+t$ with $k\in\mathbb N$, and hence include the equal-order
-case as well as every proper reduction. Their only physical hypotheses
-are complete positivity, trace preservation, covariance under the actual
-$\mathrm{SU}(2)$ spin representation on density matrices, and a positive
-trace-one full input. The reduced state is the actual normalized Dicke
-partial trace, and fidelity uses~\eqref{eq:F}.
+\clearpage\section{Lean certificates}\label{sec:lean}
+The public theorems use $N=k+t$ with $k\ge0$. As in
+Theorem~\ref{thm:main}, the channel is completely positive,
+trace preserving and covariant under the spin representation of
+$\mathrm{SU}(2)$, and the full input is positive semidefinite of trace one. The reduced state is the
+normalized Dicke marginal. The two totals are those of~\eqref{eq:F}
+and~\eqref{eq:VN}.
 
-\paragraph{Correspondence with the uniform proof.}
-The order-one module \path{lean/UniformT1.lean} proves the inherited
-contracting dipole and determinant increase. Its scalar identity is
-\[
- \det\tau-\det\sigma=(1-f_1^2)(1/4-\det\sigma)
- =\frac{(1-f_1^2)r^2}{4}.
-\]
-The bound $|f_1|\le1$ is checked from positivity and unitality on
-$jI\pm J_z$, an equivalent bound on the same rank-one multiplier.
-The order-two module \path{lean/ChannelSimplexT2Uniform.lean} supplies
-the determinant comparison in the same marginal coordinates.
-All four orders feed \texttt{physical\_totals\_of\_determinant} in
-\path{lean/PhysicalUniformBridge.lean}. That bridge constructs isotropic
-mixtures via \path{lean/ShiftedDeterminant.lean} and applies the common
-matrix spectral theorem in \path{lean/MatrixSpectralConsequences.lean}.
-Thus the public certificates follow the determinant,
-shifted-determinant, and spectral structure of this document. The shared
-bridge also proves the von Neumann inequalities at all four orders.
+\paragraph{Common argument.}
+For a fixed channel, \path{LowOrder.physical_fidelity_of_determinant}
+turns the determinant inequality on every full input into fidelity
+monotonicity on every full input. It first applies
+\path{shifted_determinant_of_density_determinant} to isotropic mixtures
+(Section~\ref{sec:shift}), then takes the square-root trace comparison
+\path{matrix_sqrt_trace_mono_of_shifted_det}
+(Section~\ref{sec:spectral}). The theorem
+\path{LowOrder.physical_vonNeumann_of_fidelity} takes this all-input
+fidelity result as its hypothesis and yields entropy monotonicity.
+The combined theorem \path{LowOrder.physical_totals_of_determinant}
+in \path{PhysicalUniformBridge.lean} composes the two steps.
+The \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/fidelity-implies-entropy}{general proof and Lean certificate}
+give the second step for arbitrary $1\le t\le N$.
 
-The \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean}{Lean certificate for the all-input implication}
-proves Section~\ref{sec:fidelity-implies-entropy} for every $1\le t\le N$.
+\paragraph{Order-specific arguments.}
+\begin{itemize}
+\item At $t=1$, \path{lean/UniformT1.lean} uses positivity and unitality
+on $jI\pm J_z$ to bound the dipole multiplier by $|f_1|\le1$.
+The determinant difference is $(1-f_1^2)(1/4-\det\rho_1)$.
+At $t=2$, \path{lean/ChannelSimplexT2Uniform.lean} proves the determinant
+comparison in the physical marginal coordinates. In
+\path{lean/UniformFidelity.lean}, \path{physical_fidelity_t1} and
+\path{physical_fidelity_t2} supply the hypotheses of
+\path{physical_vonNeumann_t1} and \path{physical_vonNeumann_t2}, respectively.
+\item At $t=3$, \path{lean-t3/T3PhysicalDeterminant.lean}
+proves \path{physical_determinant_t3} using the four finite cases,
+their physical constraints and the available-extension hull.
+The two conclusions are \path{physical_fidelity_t3} and
+\path{physical_vonNeumann_t3} in \path{lean-t3/UniformT3Certificate.lean}.
+\item At $t=4$, \path{lean-t4/T4PhysicalDeterminant.lean}
+proves \path{physical_determinant_t4} from the fourteen base cases
+and the all-spin hull. For the exceptional $(N,K)=(5,2)$ case,
+\path{lean-t4/T4ExceptionalFinal.lean} uses 35 exact Gram certificates
+and an invariant-polynomial argument with 687 seed coefficients.
+The two conclusions are \path{physical_fidelity_t4} and
+\path{physical_vonNeumann_t4} in \path{lean-t4/UniformT4Certificate.lean}.
+\end{itemize}
 
-\paragraph{Order-three certificates.}
-The public theorems
-\texttt{LowOrder.physical\_fidelity\_t3} and
-\texttt{LowOrder.physical\_vonNeumann\_t3} are in
-\path{lean-t3/UniformT3Certificate.lean}.
-The theorem \texttt{LowOrder.physical\_determinant\_t3} in
-\path{lean-t3/T3PhysicalDeterminant.lean} proves the full physical
-determinant comparison. Its proof supplies all four finite cases,
-their scalar bounds, physical moment constraints and positive output
-floors, followed by the available-extension hull and the actual
-covariant-channel simplex. These steps are proved within Lean.
-The final theorem assumes only the physical channel and state hypotheses.
-The package includes its own copies of the common shifted-determinant
-and spectral modules, and includes mixed and singular inputs.
-
-\paragraph{Order-four certificates.}
-The public theorems
-\texttt{LowOrder.physical\_fidelity\_t4} and
-\texttt{LowOrder.physical\_vonNeumann\_t4} are in
-\path{lean-t4/UniformT4Certificate.lean}.
-The theorem \texttt{LowOrder.physical\_determinant\_t4} in
-\path{lean-t4/T4PhysicalDeterminant.lean} supplies the physical determinant
-comparison for every $N\ge4$. The fourteen finite cases and the all-spin
-available-extension hull are proved within Lean. The exceptional
-$(N,K)=(5,2)$ case in \path{lean-t4/T4ExceptionalFinal.lean} uses the
-35 exact Gram certificates and the invariant-polynomial argument based on
-687 seed coefficients. Their identities, positivity arguments and finite
-irreducible-coordinate checks are also proved within Lean.
-The same shifted-determinant and spectral bridge then proves both measures
-for every $N=k+4$, $k\in\mathbb N$, including mixed and singular inputs.
-
-\clearpage
-\paragraph{Reproduction and precise scope.}
-Lean 4.24.0 and the exact Mathlib revision are pinned in the package.
-For orders one and two, from \path{lean/}, run \texttt{lake update},
-\texttt{lake exe cache get}, and
-\texttt{python3 verify\_uniform.py -{}-jobs 2}.
-The verifier freshly compiles every project Lean source and audits the
-public physical theorems and their common bridges.
-For order three, from \path{lean-t3/}, run
-\texttt{lake exe cache get} and
-\texttt{lake env python3 verify\_sources.py}.
-This rebuilds all 129 local modules from source and checks the public
-certificate with \texttt{-{}-trust=0}. The rebuild and final audit passed
-on 22 November 2026. Source hashes, per-module logs and the axiom report
-are in \path{lean-t3/verification/}.
-For order four, from \path{lean-t4/}, run
-\texttt{lake exe cache get} and
-\texttt{lake env python3 verify\_sources.py -{}-jobs 1}.
-Source verification covers all 9,490 local modules, combining successful
-source compilations with validated checkpoints. The final public-theorem
-audit passed on 22 November 2026. The checked source hashes and axiom
-reports are in \path{lean-t4/verification/}.
-The generated exact data are substantial; the verifier supports bounded
-parallelism when additional CPU and memory are available.
-Mathlib is supplied
-by its pinned compiled dependency cache. The checked source hashes,
-verification reports, final theorem statements and axiom reports accompany
-the packages. The theorem audits use only \texttt{propext},
-\texttt{Classical.choice}, and \texttt{Quot.sound}.
-
-\textbf{Both the written proofs and end-to-end Lean certification cover
-$t=1,2,3,4$ for the fidelity and von Neumann total anticoherence measures.}
+\paragraph{Verification.}
+Each package pins Lean 4.24.0 and its Mathlib revision. The
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-low-order-monotonicity/lean}{order-one and order-two},
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-low-order-monotonicity/lean-t3}{order-three}, and
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-low-order-monotonicity/lean-t4}{order-four}
+packages give the reproduction commands, checked sources and axiom reports.
 
 \end{document}

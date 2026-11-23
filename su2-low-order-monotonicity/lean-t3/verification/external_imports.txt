@@ -15,6 +15,7 @@ Mathlib.Analysis.SpecialFunctions.Log.Basic
 Mathlib.Analysis.SpecialFunctions.Log.Deriv
 Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
 Mathlib.Analysis.SpecialFunctions.Pow.Real
+Mathlib.Analysis.SpecialFunctions.Sqrt
 Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv
 Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv
 Mathlib.Data.Fin.Tuple.Sort
@@ -29,4 +30,5 @@ Mathlib.LinearAlgebra.Matrix.Spectrum
 Mathlib.LinearAlgebra.Matrix.ToLin
 Mathlib.LinearAlgebra.Matrix.Trace
 Mathlib.LinearAlgebra.UnitaryGroup
+Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
 Mathlib.Tactic

@@ -1,6 +1,6 @@
 {
-  "local_modules": 128,
-  "bytes": 2518900,
+  "local_modules": 132,
+  "bytes": 2537811,
   "provenance_hashes_match": true,
   "placeholder_or_extra_axiom_tokens": [],
   "external_imports": [
@@ -21,6 +21,7 @@
     "Mathlib.Analysis.SpecialFunctions.Log.Deriv",
     "Mathlib.Analysis.SpecialFunctions.Log.NegMulLog",
     "Mathlib.Analysis.SpecialFunctions.Pow.Real",
+    "Mathlib.Analysis.SpecialFunctions.Sqrt",
     "Mathlib.Analysis.SpecialFunctions.Trigonometric.ArctanDeriv",
     "Mathlib.Analysis.SpecialFunctions.Trigonometric.Deriv",
     "Mathlib.Data.Fin.Tuple.Sort",
@@ -35,6 +36,7 @@
     "Mathlib.LinearAlgebra.Matrix.ToLin",
     "Mathlib.LinearAlgebra.Matrix.Trace",
     "Mathlib.LinearAlgebra.UnitaryGroup",
+    "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus",
     "Mathlib.Tactic"
   ],
   "includes_t4": false

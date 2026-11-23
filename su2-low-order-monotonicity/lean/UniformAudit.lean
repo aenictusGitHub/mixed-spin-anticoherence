@@ -15,6 +15,10 @@ import UniformFidelity
 #print axioms LowOrder.physical_determinant_t2_uniform
 #print axioms LowOrder.physical_totals_of_determinant
 #print axioms LowOrder.shifted_determinant_of_density_determinant
-#print axioms LowOrder.matrix_totals_mono_of_shifted_det
+#print axioms LowOrder.matrix_sqrt_trace_mono_of_shifted_det
+#print axioms LowOrder.physical_fidelity_of_determinant
+#print axioms LowOrder.physical_vonNeumann_of_fidelity
+#print axioms LowOrder.physical_vonNeumann_t1
+#print axioms LowOrder.physical_vonNeumann_t2
 #print axioms LowOrder.physical_totals_t1_uniform
 #print axioms LowOrder.physical_totals_t2_uniform

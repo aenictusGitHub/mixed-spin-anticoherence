@@ -1,15 +1,13 @@
-# Uniform Lean certificates: fidelity monotonicity at t = 1 and t = 2
+# Lean certificates for fidelity and von Neumann monotonicity at t = 1 and t = 2
 
-The public theorems are `LowOrder.physical_fidelity_t1` and `LowOrder.physical_fidelity_t2` in [UniformFidelity.lean](UniformFidelity.lean). The [order-three package](../lean-t3/README.md) also certifies both measures. The [order-four package](../lean-t4/README.md) completes the certification. Both the written proofs and end-to-end Lean certification cover `t = 1, 2, 3, 4` for both measures.
+[UniformFidelity.lean](UniformFidelity.lean) states four public results.
 
-Both statements quantify over every natural `k`, with `N = k+t`, and assume only:
+| Order | Fidelity | Von Neumann |
+|---|---|---|
+| 1 | `LowOrder.physical_fidelity_t1` | `LowOrder.physical_vonNeumann_t1` |
+| 2 | `LowOrder.physical_fidelity_t2` | `LowOrder.physical_vonNeumann_t2` |
 
-- complete positivity of the full complex-linear map;
-- trace preservation;
-- covariance on density matrices under the genuine spin representation of SU(2);
-- positivity and trace one of the full input matrix.
-
-They conclude monotonicity of `SU2T2.totalFidelity t k`, defined as `((Re Tr (CFC.sqrt ρ_t))² - 1)/t`. The square-root trace is real on positive matrices. `ρ_t` is the normalized Dicke embedding followed by the actual qubit partial trace and symmetric compression. The proper-order cases have `k ≥ 1`; the theorems also cover `k = 0`.
+At fixed `N = k+t`, each theorem applies to every completely positive, trace-preserving map on the spin sector that is SU(2)-covariant on density matrices, and to every positive semidefinite input of trace one. The conclusions use the symmetric Dicke marginal and the paper’s normalized fidelity and entropy measures. They include `k = 0`.
 
 ## The uniform proof structure
 
@@ -19,18 +17,16 @@ They conclude monotonicity of `SU2T2.totalFidelity t k`, defined as `((Re Tr (CF
 | t = 1 inherited contracting dipole | `LowOrder.physical_qubit_affine` in `UniformT1.lean` |
 | t = 1 determinant comparison | `LowOrder.physical_determinant_t1_uniform` |
 | t = 2 determinant comparison in the same coordinates | `LowOrder.physical_determinant_t2_uniform` in `ChannelSimplexT2Uniform.lean` |
-| Physical reference state and isotropic mixing | `LowOrder.physical_totals_of_determinant` in `PhysicalUniformBridge.lean` |
 | All nonnegative determinant shifts | `LowOrder.shifted_determinant_of_density_determinant` in `ShiftedDeterminant.lean` |
-| Common square-root trace and entropy consequences | `LowOrder.matrix_totals_mono_of_shifted_det` in `MatrixSpectralConsequences.lean` |
-| The two public fidelity conclusions | `UniformFidelity.lean` |
+| From shifted determinants to fidelity for all inputs | `LowOrder.physical_fidelity_of_determinant` in [PhysicalUniformBridge.lean](PhysicalUniformBridge.lean) |
+| From all-input fidelity to von Neumann monotonicity | `LowOrder.physical_vonNeumann_of_fidelity` in [FidelityImpliesEntropy.lean](../../fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean) |
+| Public conclusions for both measures | [UniformFidelity.lean](UniformFidelity.lean) |
 
-For t = 1, positivity and unitality on `jI ± J_z` establish `|f₁| ≤ 1`. The actual qubit marginal map is proved to be `A ↦ f₁A + (1-f₁)Tr(A)I/2`. The determinant identity is `(1-f₁²)(1/4-det A) = (1-f₁²)|r|²/4`. This is the same determinant input as in the PDF. For t = 2, the retained physical determinant theorem is transported from Cartesian triplet coordinates to the normalized Dicke coordinates. Both then use the identical isotropic-shift and spectral bridge. The earlier qutrit square-root comparison is retained as a legacy result; the new public theorems use the shared integral route.
-
-The shared bridge also yields the von Neumann inequalities, in `LowOrder.physical_totals_t1_uniform` and `LowOrder.physical_totals_t2_uniform`.
+For t = 1, positivity and unitality on `jI ± J_z` establish `|f₁| ≤ 1`. The actual qubit marginal map is proved to be `A ↦ f₁A + (1-f₁)Tr(A)I/2`. The determinant identity is `(1-f₁²)(1/4-det A) = (1-f₁²)|r|²/4`. This is the same determinant input as in the PDF. For t = 2, the retained physical determinant theorem is transported from Cartesian triplet coordinates to the normalized Dicke coordinates. Isotropic mixing gives the shifted determinants at both orders. Integrating their logarithmic comparison proves the fidelity inequality for every input.
 
 ## Fresh verification
 
-Lean 4.24.0 and Mathlib commit `f897ebcf72cd16f89ab4577d0c826cd14afaafc7` are pinned.
+From this directory in a repository checkout, run the following with Lean 4.24.0. The package pins Mathlib at `f897ebcf72cd16f89ab4577d0c826cd14afaafc7` and shares the proof files in [fidelity-implies-entropy](../../fidelity-implies-entropy/lean).
 
 ```sh
 lake update
@@ -51,4 +47,4 @@ All audited results depend only on `propext`, `Classical.choice`, and `Quot.soun
 
 For incremental verification, use `lake build` followed by `lake env lean UniformAudit.lean`. To confirm the supplied source hashes on macOS, run `shasum -a 256 -c source-sha256-uniform.txt`.
 
-The original v2.1.0 modules and historical audit files remain for compatibility. Their older logs and manifest are not the verification record for this uniform release. No path dependency on the unpublished higher-order development is needed.
+The [order-three](../lean-t3/README.md) and [order-four](../lean-t4/README.md) packages give the corresponding higher-order certificates.

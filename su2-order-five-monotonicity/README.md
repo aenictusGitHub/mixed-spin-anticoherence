@@ -1,6 +1,6 @@
 # Order-five total anticoherence under SU(2)-covariant channels
 
-For every integer $N>5$, every density matrix on the symmetric spin-$N/2$ space, and every completely positive, trace-preserving SU(2)-covariant channel, Theorem 1 proves fidelity monotonicity. Corollary 1 obtains von Neumann monotonicity by applying the fidelity theorem to mixtures of the input with the maximally mixed spin state. Both results include pure and rank-deficient mixed states.
+For every integer $N>5$, every density matrix on the symmetric spin-$N/2$ space, and every completely positive, trace-preserving SU(2)-covariant channel, Theorem 1 proves fidelity monotonicity. Corollary 1 on the same page applies the general fidelity-to-entropy theorem, since Theorem 1 covers every input of the fixed channel. Both results include pure and rank-deficient mixed states.
 
 ```math
 \mathcal A_5^{T,F}(\Phi(\rho))\ge\mathcal A_5^{T,F}(\rho),

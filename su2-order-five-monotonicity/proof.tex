@@ -31,7 +31,18 @@
 \[
                     \boxed{\ \A_5^{T,F}(\Phi(\rho))\ge\A_5^{T,F}(\rho).\ }
 \]
-Write $R_{N,m}$ for the symmetric $m$-qubit partial trace, $\sigma=R_{N,5}\rho$ and $\tau=R_{N,5}\Phi(\rho)$. In the manuscript's squared-fidelity convention, $\A_5^{T,F}(\rho)=[(\Tr\sqrt\sigma)^2-1]/5$. It suffices to show $\F(\tau)\ge\F(\sigma)$ for $\F(X)=\Tr\sqrt X$, since both traces are nonnegative. The proof reduces all $N$ to 34 physical channel vertices and treats the resulting six-dimensional spectra, including zero eigenvalues. Corollary~1 derives the von Neumann inequality from Theorem~1.
+Write $R_{N,m}$ for the symmetric $m$-qubit partial trace, $\sigma=R_{N,5}\rho$ and $\tau=R_{N,5}\Phi(\rho)$. In the manuscript's squared-fidelity convention, $\A_5^{T,F}(\rho)=[(\Tr\sqrt\sigma)^2-1]/5$. It suffices to show $\F(\tau)\ge\F(\sigma)$ for $\F(X)=\Tr\sqrt X$, since both traces are nonnegative. The proof reduces all $N$ to 34 physical channel vertices and treats the resulting six-dimensional spectra, including zero eigenvalues.
+
+\textbf{Corollary 1 (von Neumann).}
+Under the hypotheses of Theorem~1, every density matrix $\rho$ satisfies
+\[
+                \boxed{\ \A_5^{T,\mathrm{vN}}(\Phi(\rho))
+                         \ge\A_5^{T,\mathrm{vN}}(\rho).\ }
+\]
+\textit{Proof.} Fix $N>5$ and $\Phi$. Theorem~1 proves fidelity monotonicity for
+every density matrix on $\cH_{N/2}$. Applying the
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy/proof.pdf}{general fidelity-to-entropy theorem}
+at $t=5$ gives the stated inequality for every input of this channel.\hfill$\square$
 
 \section*{1. Which channel vertices suffice?}
 Set $j=N/2$. The Choi operator commutes with $U_j\otimes\overline U_j$. Each spin $K=0,\ldots,N$ occurs once. A positive invariant Choi operator is a nonnegative combination of the corresponding projectors. The partial trace of each projector is scalar by irreducibility. Normalizing each projector to a channel gives the vertices $\Phi_K^{(N)}$, with convex weights for every channel. The same argument applies to channels between different irreducible spins. See \href{https://arxiv.org/abs/1306.5321}{Al Nuwairan, \emph{SU(2)-irreducibly covariant and EPOSIC channels}}.
@@ -187,28 +198,9 @@ The archive contains the complete rows for all 23 vertices. The checker reconstr
 
 Sections 3--5 therefore give $\F(\tau)\ge\F(\sigma)$ for all 34 physical generators in Section~2. The local generators also increase $\F$, and spin reversal preserves it. The hull reduction and concavity of $\F$ therefore give the comparison for every $N>5$, every covariant channel and every density matrix. Squaring gives Theorem~1.\hfill$\square$
 
-\newpage
-\section*{Corollary 1. Von Neumann monotonicity at order five}
-Under the hypotheses of Theorem~1, every density matrix satisfies
-\[
-                \boxed{\ \A_5^{T,\mathrm{vN}}(\Phi(\rho))
-                         \ge\A_5^{T,\mathrm{vN}}(\rho).\ }
-\]
-\textit{Proof.} Set $\omega=I_{N+1}/(N+1)$. Since $\Phi$ is covariant and trace preserving on an irreducible spin space, $\Phi(\omega)=\omega$. The same covariance and trace argument for the marginal gives $R_{N,5}\omega=I_6/6$. For each $s\ge0$ apply Theorem~1 to the density matrix $\rho_s=(\rho+6s\omega)/(1+6s)$. Both marginal square-root traces acquire the same factor $(1+6s)^{-1/2}$. Thus
-\[
- \Delta(s)=\Tr\sqrt{\tau+sI_6}-\Tr\sqrt{\sigma+sI_6}\ge0
- \qquad(s\ge0).
-\]
-For equal-trace matrices of the same dimension, with $0\log0=0$,
-\[
- S(\tau)-S(\sigma)=4\lim_{b\to\infty}\int_0^b\Delta(u^2)\,du .
-\]
-Indeed $\int_0^b\sqrt{u^2+x}\,du=P_x(b)-x\log x/4$, where $P_x(b)=[b\sqrt{b^2+x}+x\log(b+\sqrt{b^2+x})]/2$, and $P_0(b)=b^2/2$. As $b\to\infty$,
-$P_x(b)=b^2/2+(x/2)\log(2b)+x/4+o(1)$. Summing on the two spectra cancels the dimension and trace terms. Each finite integral is nonnegative. Dividing by $\log 6$ yields the stated inequality for $\A_5^{T,\mathrm{vN}}(\rho)=S(\sigma)/\log6$.\hfill$\square$
-
-The all-orders implication used here, including its scalar integral identity, has a
-\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy}{published Lean certificate}.
-
 \medskip
-\textbf{Proof files.} The attachment \texttt{order-five-lean.zip} contains the Lean sources for Theorem~1 and Corollary~1, including the exact convex, spectral and positive-map data. The entry point is \texttt{T5CertifiedTheorem.lean}. The separate \texttt{sextic-checks.zip} replays the scalar part with \texttt{python3 verify\_sextic.py}.
+\textbf{Proof files.} The attachment \texttt{order-five-lean.zip} contains the
+Lean proofs of Theorem~1 and Corollary~1 in \texttt{T5CertifiedTheorem.lean}.
+The independent checker in \texttt{sextic-checks.zip} verifies the spectral
+bounds of Section~3.
 \end{document}

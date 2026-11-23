@@ -2,7 +2,7 @@ import T4PhysicalDeterminant
 import PhysicalUniformBridge
 
 /-! Complete order-four fidelity and von Neumann total monotonicity, through
-the same density-mixture and shifted-determinant argument as every other order.
+shifted determinants for fidelity and the all-input fidelity-to-entropy implication.
 All representation, positivity, determinant and spectral steps are proved. -/
 namespace LowOrder
 open Matrix SU2T2.Dicke SU2T2.Spin

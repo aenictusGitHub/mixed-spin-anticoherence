@@ -228,8 +228,8 @@
     "sha256": "8f54dc3f99202ee881609b00357f8c08ca86a1767fc15f4bbd88259418dba137"
   },
   "PhysicalUniformBridge": {
-    "source": "tmp/monotonicity-update/repo/su2-low-order-monotonicity/lean/PhysicalUniformBridge.lean",
-    "sha256": "7401e9c8212cc4cf725edd79906286f647943971e0ff03df44e369516d5f0d77"
+    "source": "su2-low-order-monotonicity/lean-t3/PhysicalUniformBridge.lean",
+    "sha256": "bd6dff80ff40880d8d8a49a1c4a64d4743bf04259a281f3dc85b939980ab0569"
   },
   "Qutrit": {
     "source": "tmp/monotonicity-update/repo/su2-t2-fidelity-monotonicity/lean/Qutrit.lean",
@@ -508,7 +508,19 @@
     "sha256": "c5386d1f69805f7c7d42fa5c01fd482e12abc4f84def825ed9cf5b89870f3c71"
   },
   "UniformT3": {
-    "source": "tmp/monotonicity-update/repo/su2-low-order-monotonicity/lean/UniformT3.lean",
-    "sha256": "05a3a5b9bdba66c9b71fe41eaa81ba635141c0c6eb6ebc1fa708acfc5a2f56d8"
+    "source": "su2-low-order-monotonicity/lean-t3/UniformT3.lean",
+    "sha256": "389e5fd020128f0a171e296f31afef951d1aa2f6e0b8aeaa67a59a45445c457c"
+  },
+  "FidelityEntropyPrimitive": {
+    "source": "fidelity-implies-entropy/lean/FidelityEntropyPrimitive.lean",
+    "sha256": "a92264aa0f2afe2f79892a3406550c7728533c1f1cd914b212b1336ae73b582d"
+  },
+  "FidelityEntropySpectral": {
+    "source": "fidelity-implies-entropy/lean/FidelityEntropySpectral.lean",
+    "sha256": "0e4b9c0e8054ecaf93780992b34903793b88917467643df686fedcbcf591cb2b"
+  },
+  "FidelityImpliesEntropy": {
+    "source": "fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean",
+    "sha256": "355d80553e500441d28dbde02b8f06151cc53da5cfe30c8cc5cd87d9ac6001c3"
   }
 }

@@ -4,14 +4,22 @@ theorem LowOrder.physical_fidelity_t1 : ∀ (k : ℕ) (Φ : SU2T2.Spin.Mat (k + 
       SU2T2.Dicke.CovariantStates (k + 1) Φ →
         ∀ (ρ : SU2T2.Spin.Mat (k + 1)),
           Matrix.PosSemidef ρ → Matrix.trace ρ = 1 → SU2T2.totalFidelity 1 k ρ ≤ SU2T2.totalFidelity 1 k (Φ ρ) :=
-fun k Φ hCP hTP hSU2 ρ hρ htr => (LowOrder.physical_totals_t1_uniform k Φ hCP hTP hSU2 ρ hρ htr).left
+fun k Φ hCP hTP hSU2 ρ hρ htr =>
+  LowOrder.physical_fidelity_of_determinant 1 k
+    (Mathlib.Meta.NormNum.isNat_le_true (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 1))
+      (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 1)) (Eq.refl true))
+    Φ hCP hTP hSU2 (LowOrder.physical_determinant_t1_uniform k Φ hCP hTP hSU2) ρ hρ htr
 theorem LowOrder.physical_fidelity_t2 : ∀ (k : ℕ) (Φ : SU2T2.Spin.Mat (k + 2) →ₗ[ℂ] SU2T2.Spin.Mat (k + 2)),
   SU2T2.Choi.CompletelyPositive Φ →
     (∀ (A : SU2T2.Spin.Mat (k + 2)), Matrix.trace (Φ A) = Matrix.trace A) →
       SU2T2.Dicke.CovariantStates (k + 2) Φ →
         ∀ (ρ : SU2T2.Spin.Mat (k + 2)),
           Matrix.PosSemidef ρ → Matrix.trace ρ = 1 → SU2T2.totalFidelity 2 k ρ ≤ SU2T2.totalFidelity 2 k (Φ ρ) :=
-fun k Φ hCP hTP hSU2 ρ hρ htr => (LowOrder.physical_totals_t2_uniform k Φ hCP hTP hSU2 ρ hρ htr).left
+fun k Φ hCP hTP hSU2 ρ hρ htr =>
+  LowOrder.physical_fidelity_of_determinant 2 k
+    (Mathlib.Meta.NormNum.isNat_le_true (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 1))
+      (Mathlib.Meta.NormNum.isNat_ofNat ℕ (Eq.refl 2)) (Eq.refl true))
+    Φ hCP hTP hSU2 (LowOrder.physical_determinant_t2_uniform k Φ hCP hTP hSU2) ρ hρ htr
 def SU2T2.totalFidelity : (t k : ℕ) → SU2T2.Spin.Mat (k + t) → ℝ :=
 fun t k ρ => SU2T2.fidelityTotalOfMarginal t (SU2T2.Dicke.marginal t k ρ)
 def SU2T2.fidelityTotalOfMarginal : (t : ℕ) → Matrix (Fin (t + 1)) (Fin (t + 1)) ℂ → ℝ :=
@@ -36,6 +44,10 @@ fun {n} φ =>
 'LowOrder.physical_determinant_t2_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LowOrder.physical_totals_of_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LowOrder.shifted_determinant_of_density_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
-'LowOrder.matrix_totals_mono_of_shifted_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.matrix_sqrt_trace_mono_of_shifted_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_fidelity_of_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_vonNeumann_of_fidelity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_vonNeumann_t1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LowOrder.physical_vonNeumann_t2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LowOrder.physical_totals_t1_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LowOrder.physical_totals_t2_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]

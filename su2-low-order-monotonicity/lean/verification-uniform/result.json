@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "scope": "Fidelity monotonicity t=1 and t=2 through the uniform determinant proof",
+  "scope": "Fidelity monotonicity at t=1,2 and its von Neumann corollary",
   "lean_version": "Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
   "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
-  "fresh_project_sources": 57,
+  "fresh_project_sources": 60,
   "external_dependencies": "Pinned Mathlib compiled cache; not rebuilt by this script",
-  "seconds": 214.191,
+  "seconds": 178.935,
   "axioms": {
     "LowOrder.physical_fidelity_t1": [
       "Classical.choice",
@@ -42,7 +42,27 @@
       "Quot.sound",
       "propext"
     ],
-    "LowOrder.matrix_totals_mono_of_shifted_det": [
+    "LowOrder.matrix_sqrt_trace_mono_of_shifted_det": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "LowOrder.physical_fidelity_of_determinant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "LowOrder.physical_vonNeumann_of_fidelity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "LowOrder.physical_vonNeumann_t1": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "LowOrder.physical_vonNeumann_t2": [
       "Classical.choice",
       "Quot.sound",
       "propext"
@@ -60,290 +80,306 @@
   },
   "modules": [
     {
-      "module": "Determinant",
-      "returncode": 0,
-      "seconds": 16.732
-    },
-    {
-      "module": "BroadDeterminant",
-      "returncode": 0,
-      "seconds": 16.734
-    },
-    {
-      "module": "ChoiScalarBounds",
-      "returncode": 0,
-      "seconds": 2.983
-    },
-    {
       "module": "DickeEmbedding",
       "returncode": 0,
-      "seconds": 3.168
+      "seconds": 4.235
     },
     {
       "module": "EntropyFromDeterminant",
       "returncode": 0,
-      "seconds": 3.709
+      "seconds": 5.308
+    },
+    {
+      "module": "FidelityEntropyPrimitive",
+      "returncode": 0,
+      "seconds": 2.544
+    },
+    {
+      "module": "FidelityEntropySpectral",
+      "returncode": 0,
+      "seconds": 2.767
     },
     {
       "module": "LogDetSqrt",
       "returncode": 0,
-      "seconds": 4.462
+      "seconds": 4.288
     },
     {
       "module": "Multipliers",
       "returncode": 0,
-      "seconds": 5.756
+      "seconds": 5.89
+    },
+    {
+      "module": "BroadDeterminant",
+      "returncode": 0,
+      "seconds": 19.978
+    },
+    {
+      "module": "Determinant",
+      "returncode": 0,
+      "seconds": 20.016
+    },
+    {
+      "module": "ChoiScalarBounds",
+      "returncode": 0,
+      "seconds": 2.553
     },
     {
       "module": "PhysicalMarginal",
       "returncode": 0,
-      "seconds": 12.019
+      "seconds": 13.215
     },
     {
       "module": "Qutrit",
       "returncode": 0,
-      "seconds": 8.879
-    },
-    {
-      "module": "Certificate",
-      "returncode": 0,
-      "seconds": 10.925
-    },
-    {
-      "module": "PhysicalEmbedding",
-      "returncode": 0,
-      "seconds": 23.102
-    },
-    {
-      "module": "SU2Choi",
-      "returncode": 0,
-      "seconds": 11.179
-    },
-    {
-      "module": "PhysicalNBody",
-      "returncode": 0,
-      "seconds": 2.57
+      "seconds": 9.077
     },
     {
       "module": "SU2Differential",
       "returncode": 0,
-      "seconds": 2.956
-    },
-    {
-      "module": "GeneralMarginal",
-      "returncode": 0,
-      "seconds": 3.753
-    },
-    {
-      "module": "PhysicalCovariance",
-      "returncode": 0,
-      "seconds": 3.371
-    },
-    {
-      "module": "MarginalIsotropy",
-      "returncode": 0,
-      "seconds": 4.149
+      "seconds": 2.607
     },
     {
       "module": "Spectral",
       "returncode": 0,
-      "seconds": 6.174
+      "seconds": 6.19
+    },
+    {
+      "module": "SU2Choi",
+      "returncode": 0,
+      "seconds": 11.822
     },
     {
       "module": "SpinHighestWeight",
       "returncode": 0,
-      "seconds": 3.058
-    },
-    {
-      "module": "SpinGenerators",
-      "returncode": 0,
-      "seconds": 4.877
-    },
-    {
-      "module": "BasisOrder",
-      "returncode": 0,
-      "seconds": 2.266
-    },
-    {
-      "module": "CartesianSpectral",
-      "returncode": 0,
-      "seconds": 8.54
-    },
-    {
-      "module": "DickeGenerators",
-      "returncode": 0,
-      "seconds": 6.284
-    },
-    {
-      "module": "CoherentBounds",
-      "returncode": 0,
-      "seconds": 7.779
+      "seconds": 2.699
     },
     {
       "module": "TraceDual",
       "returncode": 0,
-      "seconds": 2.794
+      "seconds": 2.376
     },
     {
-      "module": "DickeSU2",
+      "module": "Certificate",
       "returncode": 0,
-      "seconds": 7.016
+      "seconds": 11.145
     },
     {
-      "module": "DensitySpan",
+      "module": "SpinGenerators",
       "returncode": 0,
-      "seconds": 2.983
+      "seconds": 4.669
+    },
+    {
+      "module": "BasisOrder",
+      "returncode": 0,
+      "seconds": 1.96
+    },
+    {
+      "module": "CartesianSpectral",
+      "returncode": 0,
+      "seconds": 8.543
+    },
+    {
+      "module": "DickeGenerators",
+      "returncode": 0,
+      "seconds": 6.314
+    },
+    {
+      "module": "PhysicalEmbedding",
+      "returncode": 0,
+      "seconds": 25.116
     },
     {
       "module": "SpinCovariance",
       "returncode": 0,
-      "seconds": 8.302
+      "seconds": 8.346
     },
     {
-      "module": "SpinAction",
+      "module": "PhysicalNBody",
       "returncode": 0,
-      "seconds": 3.863
+      "seconds": 2.106
     },
     {
-      "module": "PhysicalCertificate",
+      "module": "DickeSU2",
       "returncode": 0,
-      "seconds": 3.377
-    },
-    {
-      "module": "ChannelSimplexRanks",
-      "returncode": 0,
-      "seconds": 3.925
-    },
-    {
-      "module": "ManuscriptNotation",
-      "returncode": 0,
-      "seconds": 2.387
-    },
-    {
-      "module": "ChannelSimplexCasimir",
-      "returncode": 0,
-      "seconds": 4.104
+      "seconds": 7.058
     },
     {
       "module": "PhysicalTransfer",
       "returncode": 0,
-      "seconds": 3.687
+      "seconds": 3.692
+    },
+    {
+      "module": "DensitySpan",
+      "returncode": 0,
+      "seconds": 2.722
+    },
+    {
+      "module": "GeneralMarginal",
+      "returncode": 0,
+      "seconds": 3.526
+    },
+    {
+      "module": "CoherentBounds",
+      "returncode": 0,
+      "seconds": 8.272
+    },
+    {
+      "module": "ChannelSimplexRanks",
+      "returncode": 0,
+      "seconds": 3.604
+    },
+    {
+      "module": "MarginalIsotropy",
+      "returncode": 0,
+      "seconds": 3.846
+    },
+    {
+      "module": "PhysicalCertificate",
+      "returncode": 0,
+      "seconds": 3.096
+    },
+    {
+      "module": "ChannelSimplexCasimir",
+      "returncode": 0,
+      "seconds": 3.796
+    },
+    {
+      "module": "PhysicalCovariance",
+      "returncode": 0,
+      "seconds": 2.995
+    },
+    {
+      "module": "ManuscriptNotation",
+      "returncode": 0,
+      "seconds": 1.918
+    },
+    {
+      "module": "SpinAction",
+      "returncode": 0,
+      "seconds": 3.542
     },
     {
       "module": "ChannelSimplexBasis",
       "returncode": 0,
-      "seconds": 5.627
+      "seconds": 5.372
     },
     {
       "module": "PhysicalTwoCovariance",
       "returncode": 0,
-      "seconds": 7.428
-    },
-    {
-      "module": "ChannelSimplexChoiSpectrum",
-      "returncode": 0,
-      "seconds": 4.288
+      "seconds": 7.31
     },
     {
       "module": "ChannelSimplexRealMultipliers",
       "returncode": 0,
-      "seconds": 3.374
+      "seconds": 3.095
     },
     {
-      "module": "PhysicalTwoTrace",
+      "module": "ChannelSimplexChoiSpectrum",
       "returncode": 0,
-      "seconds": 4.998
+      "seconds": 4.142
     },
     {
       "module": "ChannelSimplexPairing",
       "returncode": 0,
-      "seconds": 3.419
+      "seconds": 2.958
+    },
+    {
+      "module": "PhysicalTwoTrace",
+      "returncode": 0,
+      "seconds": 4.673
     },
     {
       "module": "ChannelSimplexMarginal",
       "returncode": 0,
-      "seconds": 3.113
+      "seconds": 2.678
     },
     {
       "module": "ChannelSimplexTransfer",
       "returncode": 0,
-      "seconds": 3.156
+      "seconds": 2.691
     },
     {
       "module": "SpinOneAction",
       "returncode": 0,
-      "seconds": 31.211
+      "seconds": 36.391
     },
     {
       "module": "PhysicalAffine",
       "returncode": 0,
-      "seconds": 2.389
+      "seconds": 2.049
     },
     {
       "module": "ChannelSimplexT2Marginal",
       "returncode": 0,
-      "seconds": 3.314
+      "seconds": 2.896
     },
     {
       "module": "FullTheorem",
       "returncode": 0,
-      "seconds": 3.379
-    },
-    {
-      "module": "GeneralMonotonicity",
-      "returncode": 0,
-      "seconds": 7.91
+      "seconds": 2.963
     },
     {
       "module": "Audit",
       "returncode": 0,
-      "seconds": 8.12
+      "seconds": 7.875
+    },
+    {
+      "module": "GeneralMonotonicity",
+      "returncode": 0,
+      "seconds": 7.932
     },
     {
       "module": "LowOrderMeasures",
       "returncode": 0,
-      "seconds": 5.97
+      "seconds": 6.055
     },
     {
       "module": "MatrixSpectralConsequences",
       "returncode": 0,
-      "seconds": 6.377
+      "seconds": 6.612
     },
     {
       "module": "ShiftedDeterminant",
       "returncode": 0,
-      "seconds": 4.13
+      "seconds": 3.947
     },
     {
       "module": "SpectralJensen",
       "returncode": 0,
-      "seconds": 5.415
+      "seconds": 5.25
+    },
+    {
+      "module": "FidelityImpliesEntropy",
+      "returncode": 0,
+      "seconds": 31.709
     },
     {
       "module": "PhysicalUniformBridge",
       "returncode": 0,
-      "seconds": 3.522
+      "seconds": 4.35
     },
     {
       "module": "ChannelSimplexT2Uniform",
       "returncode": 0,
-      "seconds": 3.772
+      "seconds": 3.451
     },
     {
       "module": "UniformT1",
       "returncode": 0,
-      "seconds": 12.13
+      "seconds": 13.449
     },
     {
       "module": "UniformFidelity",
       "returncode": 0,
-      "seconds": 2.198
+      "seconds": 1.958
     },
     {
       "module": "UniformAudit",
       "returncode": 0,
-      "seconds": 11.353
+      "seconds": 16.411
     }
   ],
-  "manifest_sha256": "6625b8375504b1cbb2db8c7f8053fc601bada330e428e4cad6ee1284f14a7501"
+  "manifest_sha256": "d3de7024ccb4590e42a5de96cabc36ad58050922c86f743444e441d96b3bed88",
+  "public_audit_trust_level": 0
 }

@@ -1,14 +1,134 @@
 {
   "result": "PASS",
-  "local_modules_rebuilt": 129,
+  "baseline_commit": "04d0c9d597d58a5961ef95e9532b4a22f6df2d00",
+  "baseline_report": "su2-low-order-monotonicity/lean-t3/verification/result.json",
+  "verified_local_modules": 132,
+  "unchanged_previously_verified_modules": 126,
+  "modules_reelaborated": [
+    "FidelityEntropyPrimitive",
+    "FidelityEntropySpectral",
+    "FidelityImpliesEntropy",
+    "PhysicalUniformBridge",
+    "UniformT3",
+    "UniformT3Certificate"
+  ],
+  "verification_method": "Re-elaborated all new and changed modules and their local reverse dependencies. The remaining sources match the previous verification by SHA-256.",
   "kernel_trust_level": 0,
   "axioms": [
     "Classical.choice",
     "Quot.sound",
     "propext"
   ],
-  "elapsed_seconds": 989.8,
   "lean_version": "Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "replay": [
+    {
+      "module": "FidelityEntropyPrimitive",
+      "source_sha256": "a92264aa0f2afe2f79892a3406550c7728533c1f1cd914b212b1336ae73b582d",
+      "mode": "source elaboration",
+      "axioms": {}
+    },
+    {
+      "module": "FidelityEntropySpectral",
+      "source_sha256": "0e4b9c0e8054ecaf93780992b34903793b88917467643df686fedcbcf591cb2b",
+      "mode": "source elaboration",
+      "axioms": {}
+    },
+    {
+      "module": "FidelityImpliesEntropy",
+      "source_sha256": "355d80553e500441d28dbde02b8f06151cc53da5cfe30c8cc5cd87d9ac6001c3",
+      "mode": "source elaboration",
+      "axioms": {
+        "LowOrder.physical_vonNeumann_of_fidelity": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "PhysicalUniformBridge",
+      "source_sha256": "bd6dff80ff40880d8d8a49a1c4a64d4743bf04259a281f3dc85b939980ab0569",
+      "mode": "source elaboration",
+      "axioms": {
+        "LowOrder.physical_fidelity_of_determinant": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_totals_of_determinant": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "UniformT3",
+      "source_sha256": "389e5fd020128f0a171e296f31afef951d1aa2f6e0b8aeaa67a59a45445c457c",
+      "mode": "source elaboration",
+      "axioms": {
+        "LowOrder.physical_totals_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "UniformT3Certificate",
+      "source_sha256": "fde392229d8f9ebd54870c358220bf7cb8219231c12e85e543024a372d5f8b60",
+      "mode": "source elaboration",
+      "axioms": {
+        "LowOrder.physical_determinant_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_totals_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_fidelity_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_vonNeumann_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "module": "UniformT3Certificate",
+      "source_sha256": "fde392229d8f9ebd54870c358220bf7cb8219231c12e85e543024a372d5f8b60",
+      "mode": "trust-zero audit",
+      "axioms": {
+        "LowOrder.physical_determinant_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_totals_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_fidelity_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "LowOrder.physical_vonNeumann_t3": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
   "source_sha256": {
     "BroadDeterminant": "0908a9a6cf5d132cd517d5477a00ed443322993d5d36497a1196fcd439eca433",
     "CartesianSpectral": "46f5e92207332780d98b3394436062978b192359c2e03fa87c184c10654a999d",
@@ -46,6 +166,9 @@
     "DickeGenerators": "f9bd0f3bd27effda9efcb4929cb8ed4d4a6d9fb4c62b58f04c45df60bb6fb8b6",
     "DickeSU2": "8b33223850e39ceebd943e9ec7df95f9790eb56549c752754fd48a9cb30a02e4",
     "EntropyFromDeterminant": "8e515ca8aefae8ae00b651017224c1a5c2a4858a4c5cc3c5805f8b853f3872c7",
+    "FidelityEntropyPrimitive": "a92264aa0f2afe2f79892a3406550c7728533c1f1cd914b212b1336ae73b582d",
+    "FidelityEntropySpectral": "0e4b9c0e8054ecaf93780992b34903793b88917467643df686fedcbcf591cb2b",
+    "FidelityImpliesEntropy": "355d80553e500441d28dbde02b8f06151cc53da5cfe30c8cc5cd87d9ac6001c3",
     "FullTheorem": "b8ee740cba650ffd62cff52435555576a1d4a1157640e11da124f9acf1e05768",
     "GeneralMarginal": "2d3ac0b6e93b94a2f87132a741ae9687deb038003aa9cc56b2b094dba91a144e",
     "GeneralMonotonicity": "17cf930aa5e8514fc7c26299c733fba1202950117ac9ad79eb5af490ae34c7c7",
@@ -67,7 +190,7 @@
     "PhysicalTransfer": "bbc469d5fff7ab49f0e09f7d8fa76d22211af8fbe49ea04d50840311a87aea5f",
     "PhysicalTwoCovariance": "0513a052332f209bb9a1d768133ac75ab58eeba049ebffc87cc468f81abd9533",
     "PhysicalTwoTrace": "8f54dc3f99202ee881609b00357f8c08ca86a1767fc15f4bbd88259418dba137",
-    "PhysicalUniformBridge": "7401e9c8212cc4cf725edd79906286f647943971e0ff03df44e369516d5f0d77",
+    "PhysicalUniformBridge": "bd6dff80ff40880d8d8a49a1c4a64d4743bf04259a281f3dc85b939980ab0569",
     "Qutrit": "248bb73957ffeedfbd3f1769564c6eaa9343fad0eff7d66a60fb3777093e8807",
     "SU2Choi": "ba4d5bc42d38e50f6bad6076630386783e8dd6c970925be4b78bb5de1027d170",
     "ShiftedDeterminant": "98f78df02a5296c1a000c3bd0e97be1ca597a9105e5b1fce23602f257aef4668",
@@ -137,7 +260,7 @@
     "T3VarianceData": "7b2de1d02bb55dfdda432de33f1389fcb066562aa0206fcb9d82fdae0294f41e",
     "TimeReversal": "d556b0af91f5444a6289f286cb1a6fdd2dfd4e965b967440235678ae14e90ae4",
     "TraceDual": "c5386d1f69805f7c7d42fa5c01fd482e12abc4f84def825ed9cf5b89870f3c71",
-    "UniformT3": "05a3a5b9bdba66c9b71fe41eaa81ba635141c0c6eb6ebc1fa708acfc5a2f56d8",
-    "UniformT3Certificate": "8b467783785d7d61d9cfafc23f192c3fcdfb018524cfc84ea2d6b2ae1f0e6414"
+    "UniformT3": "389e5fd020128f0a171e296f31afef951d1aa2f6e0b8aeaa67a59a45445c457c",
+    "UniformT3Certificate": "fde392229d8f9ebd54870c358220bf7cb8219231c12e85e543024a372d5f8b60"
   }
 }

@@ -1,6 +1,6 @@
 {
   "result": "PASS",
-  "modules_matched": 9490,
+  "modules_matched": 9493,
   "public_axiom_reports": 4,
   "axioms": [
     "Classical.choice",

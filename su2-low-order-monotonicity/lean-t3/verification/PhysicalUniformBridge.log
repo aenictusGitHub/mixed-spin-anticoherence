@@ -1,1 +1,2 @@
+'LowOrder.physical_fidelity_of_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
 'LowOrder.physical_totals_of_determinant' depends on axioms: [propext, Classical.choice, Quot.sound]
