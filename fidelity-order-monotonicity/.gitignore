@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.toc
+lean/.lake/
+lean/.local_build/
+lean/*.olean
+!lean/build.log
+__pycache__/

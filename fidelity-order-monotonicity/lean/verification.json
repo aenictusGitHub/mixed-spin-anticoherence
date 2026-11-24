@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "lean": "4.24.0",
+  "mathlib_revision": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "build": "all 10 local Lean modules rebuilt from source against cached Mathlib; exit code 0",
+  "axiom_dependencies": {
+    "scalar_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "sqrt_sum_of_prefix": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "matrix_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "symmetric_partial_trace_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "quantum_convex_roof_order": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256": {
+    "Audit.lean": "a0c511c4234100989fbd3d06d7855924ea64f21f0cfb34804f251bd6b3d9793e",
+    "DickeEmbedding.lean": "7f2258d518a5f14012bc11db2ed87dca18f7d7c4235572eea4a0981746b59183",
+    "GeneralMarginal.lean": "2d3ac0b6e93b94a2f87132a741ae9687deb038003aa9cc56b2b094dba91a144e",
+    "MarginalIsotropy.lean": "4c29d74fab5255be8e9161d810d4a4e65ef888f15eba688df3f6a4a6d0a74f1e",
+    "MatrixOrder.lean": "8169fb5ca4aee1cec50406b408b92d61d213b66048bb0dbac3938d3ef6e22f96",
+    "MatrixUtilities.lean": "24074fe409c75b86033e72169067d149c213b262cf2d42d6297bed34470ce1e5",
+    "OrderMonotonicity.lean": "0bab06bbdcf5281191fe3a677f35a2bf3433c1fa193826f9639e6817274b8018",
+    "PhysicalEmbedding.lean": "e44a12d66057831024fd67548c40e549f0c01d4d8ac99a915bf7eeb81e7c020c",
+    "PhysicalMarginal.lean": "a1877b9de8030b4aa283ccc4657863ad55a73766d7968bf295e8187dc79ad7f6",
+    "PhysicalNBody.lean": "0dfde9ad45642c6ffdd6d81eb69bdea9fa7be0ac8d2a8513534d423f4eafc98c"
+  }
+}

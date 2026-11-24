@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\A}{\mathcal A}
+\newcommand{\R}{\mathcal R}
+\title{Order monotonicity of anticoherence measures}
+\author{}\date{24 November 2026}
+\begin{document}
+\maketitle
+\noindent
+The fidelity-based total and quantum anticoherence measures are nonincreasing in the order. We give a general proof and a Lean certificate. A single $W$ state provides explicit counterexamples for the purity, von Neumann and Hilbert--Schmidt constructions.\footnote{The fidelity proof is checked in Lean~4.24.0, with no admitted proofs or additional mathematical axioms. Exact versions, formal statements and reproduction instructions are in \texttt{lean/README.md}.}
+
+\begin{theorem}[Order monotonicity]
+For every symmetric $N$-qubit state $\rho$ and $2\le t<N$,
+\begin{equation}\label{eq:main}
+ \A_t^{T,F}(\rho)\le \A_{t-1}^{T,F}(\rho),\qquad
+ \A_t^{Q,F}(\rho)\le \A_{t-1}^{Q,F}(\rho).
+\end{equation}
+Here
+\[
+ \A_t^{T,F}(\rho)=\frac{(\Tr\sqrt{\rho_t})^2-1}{t},\qquad
+ \A_t^{Q,F}(\rho)=\inf_{\rho=\sum_a p_a|\psi_a\rangle\langle\psi_a|}
+ \sum_a p_a\A_t^{T,F}(\psi_a).
+\]
+The total inequality also holds at $t=N$ if the same total formula is used there.
+\end{theorem}
+
+\noindent The main ingredient is a statement for dimension-changing positive maps. For a density matrix $X$ of dimension $d\ge2$, define
+\[
+ \R_d(X)=\frac{(\Tr\sqrt X)^2-1}{d-1}.
+\]
+
+\begin{lemma}[Dimension reduction]\label{lem:map}
+Let $\Phi:M_{n+1}\to M_n$, $n\ge2$, be positive and trace preserving, and suppose
+\begin{equation}\label{eq:scalar}
+ \Phi(I_{n+1})=\frac{n+1}{n}I_n.
+\end{equation}
+Then, for every density matrix $X$,
+\begin{equation}\label{eq:general}
+ \R_n(\Phi(X))\ge \R_{n+1}(X).
+\end{equation}
+Complete positivity is not needed.
+\end{lemma}
+
+\begin{proof}
+Write the eigenvalues of $X$ as
+$\lambda_1\ge\cdots\ge\lambda_{n+1}\ge0$, and set
+\begin{equation}\label{eq:mu}
+ \mu_i=\frac{n-i+1}{n}\lambda_i+\frac{i}{n}\lambda_{i+1},\qquad 1\le i\le n.
+\end{equation}
+We first show that $\lambda(\Phi(X))\prec\mu$. The entries of $\mu$ sum to one and are decreasing, since
+\[
+ n(\mu_i-\mu_{i+1})=(n-i+1)(\lambda_i-\lambda_{i+1})
+ +(i+1)(\lambda_{i+1}-\lambda_{i+2})\ge0.
+\]
+For every rank-$k$ projection $P$, $1\le k<n$, the adjoint satisfies
+\[
+ 0\le\Phi^*(P)\le I_{n+1},\qquad
+ \Tr\Phi^*(P)=\frac{k(n+1)}n=k+\frac kn.
+\]
+Consequently,
+\begin{equation}\label{eq:kyfan}
+ \Tr[P\Phi(X)]\le\sum_{i=1}^k\lambda_i+\frac kn\lambda_{k+1}
+ =\sum_{i=1}^k\mu_i.
+\end{equation}
+For completeness, the inequality follows by diagonalizing $X$: the diagonal entries of $\Phi^*(P)$ lie in $[0,1]$ and sum to $k+k/n$. Their scalar product with decreasing $\lambda_i$ is maximized by placing weights $1$ on the first $k$ entries and $k/n$ on the next one. Maximizing the left side of \eqref{eq:kyfan} over $P$ proves the asserted majorization. Concavity of the square root therefore gives
+\begin{equation}\label{eq:spectral}
+ (\Tr\sqrt{\Phi(X)})^2\ge\left(\sum_{i=1}^n\sqrt{\mu_i}\right)^2.
+\end{equation}
+
+We next prove the scalar estimate
+\begin{equation}\label{eq:scalarineq}
+ \left(\sum_{i=1}^n\sqrt{\mu_i}\right)^2-1
+ \ge\frac{n-1}{n}
+ \left[\left(\sum_{i=1}^{n+1}\sqrt{\lambda_i}\right)^2-1\right].
+\end{equation}
+Put $x_i=\sqrt{\lambda_i}$, $a_i=(n-i+1)/n$ and $b_i=i/n$. For $i<j$, the weighted Cauchy--Schwarz inequality yields
+\begin{equation}\label{eq:pair}
+ \sqrt{\mu_i\mu_j}\ge
+ a_jx_ix_j+(b_j-b_i)x_ix_{j+1}+b_ix_{i+1}x_{j+1}.
+\end{equation}
+Indeed, apply it to the vectors
+\[
+ (\sqrt{a_j}x_i,\sqrt{b_j-b_i}x_i,\sqrt{b_i}x_{i+1}),\quad
+ (\sqrt{a_j}x_j,\sqrt{b_j-b_i}x_{j+1},\sqrt{b_i}x_{j+1}),
+\]
+whose squared norms are $\mu_i$ and $\mu_j$.
+Summing \eqref{eq:pair} over $1\le i<j\le n$ gives
+\begin{equation}\label{eq:sum}
+ \sum_{i<j\le n}\sqrt{\mu_i\mu_j}
+ \ge\frac{n-1}{n}\sum_{k<\ell\le n+1}x_kx_\ell.
+\end{equation}
+To check the coefficient of $x_kx_\ell$, the three terms in \eqref{eq:pair} contribute respectively
+$(n-\ell+1)/n$, $(\ell-k-1)/n$, and $(k-1)/n$.
+An absent term has zero coefficient, including adjacent indices and boundary indices. Their sum is $(n-1)/n$.
+Since $\sum_i\mu_i=\sum_i x_i^2=1$, \eqref{eq:sum} is exactly \eqref{eq:scalarineq}. Combining it with \eqref{eq:spectral} proves \eqref{eq:general}.
+\end{proof}
+
+\begin{proof}[Proof of the theorem]
+The partial trace of one qubit, restricted to the symmetric sector, is a completely positive trace-preserving map
+\[
+ T_t:\mathcal B(\operatorname{Sym}^t\mathbb C^2)
+ \longrightarrow\mathcal B(\operatorname{Sym}^{t-1}\mathbb C^2).
+\]
+Rotational covariance and irreducibility imply
+\[
+ T_t(I_{t+1})=\frac{t+1}{t}I_t.
+\]
+The scalar factor also follows by taking the trace. Applying Lemma~\ref{lem:map} with $n=t$, $X=\rho_t$, and $T_t(\rho_t)=\rho_{t-1}$ proves the total inequality.
+
+For every pure-state decomposition of $\rho$,
+\[
+ \sum_a p_a\A_t^{T,F}(\psi_a)
+ \le\sum_a p_a\A_{t-1}^{T,F}(\psi_a).
+\]
+Taking the infimum over the same set of decompositions on both sides proves the quantum inequality. Equivalently, use a minimizing sequence for the order-$(t-1)$ roof.
+\end{proof}
+
+\paragraph{Equivalent fidelity contraction.}
+With squared Uhlmann fidelity $F$ and $\tau=T_t(\sigma)$, the general lemma gives the sharp bound
+\[
+ 1-F\left(\tau,\frac{I_t}{t}\right)
+ \le\left(1-\frac1{t^2}\right)
+ \left[1-F\left(\sigma,\frac{I_{t+1}}{t+1}\right)\right].
+\]
+Pure coherent states saturate it, so its coefficient cannot be decreased.
+
+
+\clearpage
+\section*{Simple counterexamples for the other three measures}
+A single Dicke state suffices. Let
+\[
+ |W_N\rangle=\frac1{\sqrt N}\sum_{i=1}^N
+ |0\cdots 0\,1_i\,0\cdots0\rangle.
+\]
+Its $t$-qubit marginal is
+\[
+ \rho_t=\left(1-\frac tN\right)|0\rangle^{\otimes t}\langle0|^{\otimes t}
+       +\frac tN|W_t\rangle\langle W_t|,
+\]
+with nonzero eigenvalues $1-t/N$ and $t/N$. On the pure full state, each quantum convex roof equals its total pure-state functional. Hence
+\begin{align*}
+ \A_t^{Q,\mathcal P}(W_N)&=\frac{2(t+1)(N-t)}{N^2},\\
+ \A_t^{Q,\mathrm{HS}}(W_N)&=1-\sqrt{1-\frac{2(t+1)(N-t)}{N^2}},\\
+ \A_t^{Q,\mathrm{vN}}(W_N)&=\frac{h(t/N)}{\log(t+1)},
+ \qquad h(x)=-x\log x-(1-x)\log(1-x).
+\end{align*}
+Thus the same pure state $|W_{14}\rangle$ violates order monotonicity for all three:
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lcc}
+Construction & $\A_1^Q$ & $\A_2^Q$\\\hline
+Purity & $13/49$ & $18/49$\\
+Hilbert--Schmidt & $1/7$ & $1-\sqrt{31}/7$\\
+von Neumann & $h(1/14)/\log2$ & $h(1/7)/\log3$\\
+ & $0.371232\ldots$ & $0.373304\ldots$
+\end{tabular}
+\end{center}
+The second-order value is strictly larger in every row. For the von Neumann comparison, exact rational interval bounds give
+\[
+ 0.37123232<\A_1^{Q,\mathrm{vN}}(W_{14})<0.37123234,
+ \qquad
+ 0.37330395<\A_2^{Q,\mathrm{vN}}(W_{14})<0.37330398.
+\]
+These are certified using rational arithmetic and the expansion, for $z=(x-1)/(x+1)\in(0,1)$,
+\[
+ \log x=2\sum_{k=0}^{M-1}\frac{z^{2k+1}}{2k+1}+R_M,
+ \qquad 0<R_M\le\frac{2z^{2M+1}}{(2M+1)(1-z^2)}.
+\]
+The included script \texttt{verify\_counterexamples.py} uses $M=64$; its comparisons do not use floating-point arithmetic.
+
+For purity and HS, an even smaller example is $|W_5\rangle$:
+\[
+ \A_1^{Q,\mathcal P}=\frac{16}{25}<\frac{18}{25}=\A_2^{Q,\mathcal P},
+ \qquad
+ \A_1^{Q,\mathrm{HS}}=\frac25<1-\frac{\sqrt7}{5}=\A_2^{Q,\mathrm{HS}}.
+\]
+In contrast, fidelity satisfies
+$\A_t^{Q,F}(W_N)=2\sqrt{(N-t)/t}/N$, which decreases with $t$, consistently with the general theorem.
+
+\end{document}

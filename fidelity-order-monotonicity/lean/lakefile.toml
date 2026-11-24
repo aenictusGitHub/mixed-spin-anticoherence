@@ -1,0 +1,16 @@
+name = "fidelity_order_certificate"
+version = "1.0.0"
+defaultTargets = ["FidelityOrderCertificate"]
+weakLeanArgs = ["-j1", "-s131072"]
+
+[leanOptions]
+Elab.async = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "f897ebcf72cd16f89ab4577d0c826cd14afaafc7"
+
+[[lean_lib]]
+name = "FidelityOrderCertificate"
+roots = ["OrderMonotonicity", "MatrixUtilities", "DickeEmbedding", "GeneralMarginal", "MarginalIsotropy", "PhysicalEmbedding", "PhysicalMarginal", "PhysicalNBody", "MatrixOrder", "Audit"]

@@ -1,0 +1,246 @@
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/OrderMonotonicity.lean:111:20: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/OrderMonotonicity.lean:157:23: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/OrderMonotonicity.lean:269:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FidelityOrder.scalar_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.sqrt_sum_of_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.transport_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.spectral_transport_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.convex_roof_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:31:30: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.single_apply]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:32:30: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:49:49: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, Matrix.smul_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵Pi.single_apply, Function.comp_def]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:50:49: warning: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  simp [Matrix.sum_apply, Matrix.smul_apply, M̵a̵t̵r̵i̵x̵.̵d̵i̵a̵g̵o̵n̵a̵l̵_̵a̵p̵p̵l̵y̵,̵ ̵hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:87:70: warning: This simp argument is unused:
+  map_sum
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, Matrix.mul_sum, Matrix.sum_mul, Matrix.sum_apply,̵ ̵m̵a̵p̵_̵s̵u̵m̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:91:20: warning: This simp argument is unused:
+  Matrix.mul_smul
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, M̵a̵t̵r̵i̵x̵.̵m̵u̵l̵_̵s̵m̵u̵l̵,̵ ̵Matrix.smul_mul, Complex.mul_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixUtilities.lean:91:37: warning: This simp argument is unused:
+  Matrix.smul_mul
+
+Hint: Omit it from the simp argument list.
+  simp [diagonalIn, Matrix.mul_smul, M̵a̵t̵r̵i̵x̵.̵s̵m̵u̵l̵_̵m̵u̵l̵,̵ ̵Complex.mul_re]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:44:25: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [dicke3, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type,
+        Fin.sum_univ_succ, Complex.e̵x̵t̵_̵i̵f̵f̵,̵ ̵C̵o̵mp̵l̵e̵x̵.̵m̵ul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:45:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:45:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:53:48: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [cartesianTriplet, Matrix.mul_apply, Matrix.conjTranspose_apply, Fintype.sum_prod_type,
+  ̲  ̲ ̲ ̲ ̲ ̲Fin.sum_univ_succ, C̵o̵m̵p̵l̵e̵x̵.̵e̵x̵t̵_̵i̵f̵f̵,̵Complex.mul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:55:35: warning: This simp argument is unused:
+  hs
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵h̵s̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:55:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:68:67: warning: This simp argument is unused:
+  Complex.ext_iff
+
+Hint: Omit it from the simp argument list.
+  simp [cartesianTriplet, dicke3, marginalKraus0, marginalKraus1,
+  ̵  ̵ ̵ ̵ ̵ ̵Matrix.mul_apply,
+  ̲  ̲ ̲ ̲ ̲ ̲Matrix.conjTranspose_apply, Matrix.submatrix_apply,
+  ̵  ̵ ̵ ̵ ̵ ̵Matrix.smul_apply, Fintype.sum_prod_type,
+  ̲  ̲ ̲ ̲ ̲ ̲Fin.sum_univ_succ, Complex.e̵x̵t̵_̵i̵f̵f̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵o̵mp̵l̵e̵x̵.̵m̵ul_re, Complex.mul_im]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:70:40: warning: This simp argument is unused:
+  hs2
+
+Hint: Omit it from the simp argument list.
+  simp [hs3,̵ ̵h̵s̵2̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:70:61: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:70:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:70:61: warning: 'norm_num [hs3, hs2]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:81:24: warning: This simp argument is unused:
+  hs2
+
+Hint: Omit it from the simp argument list.
+  simp [hs2̵,̵ ̵h̵s̵3]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:81:29: warning: This simp argument is unused:
+  hs3
+
+Hint: Omit it from the simp argument list.
+  simp [hs2,̵ ̵h̵s̵3̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:81:34: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:81:47: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:81:59: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:94:2: warning: 'norm_num only [Fin.reduceEq, if_false]' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:175:58: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:175:4: warning: 'norm_num' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/PhysicalEmbedding.lean:175:58: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/DickeEmbedding.lean:23:4: warning: unused variable `n`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/DickeEmbedding.lean:120:24: warning: This simp argument is unused:
+  Finset.sum_add_distrib
+
+Hint: Omit it from the simp argument list.
+  simp [totalRaising, qubitRaising, Matrix.mulVec, dotProduct, M̵a̵t̵r̵i̵x̵.̵o̵n̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵u̵m̵_̵a̵d̵d̵_̵d̵i̵s̵t̵r̵i̵b̵]̵M̲a̲t̲r̲i̲x̲.̲o̲n̲e̲_̲a̲p̲p̲l̲y̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/DickeEmbedding.lean:139:39: warning: This simp argument is unused:
+  Fin.val_one
+
+Hint: Omit it from the simp argument list.
+  simp only [unweighted, weight, F̵i̵n̵.̵v̵a̵l̵_̵o̵n̵e̵,̵ ̵Fin.val_zero, zero_add, Pi.smul_apply, smul_eq_mul] at h ⊢
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/DickeEmbedding.lean:141:19: warning: This simp argument is unused:
+  ite_true
+
+Hint: Omit it from the simp argument list.
+  simp only [i̵t̵e̵_̵t̵r̵u̵e̵,̵ ̵Nat.add_comm 1, Nat.add_right_cancel_iff]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/GeneralMarginal.lean:50:24: warning: This simp argument is unused:
+  ← mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [embedding, k, ←̵ ̵m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵hk]
+
+Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Dicke.marginal_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Dicke.marginal_reconstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SU2T2.Dicke.marginalLinear' depends on axioms: [propext, Classical.choice, Quot.sound]
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MarginalIsotropy.lean:84:8: warning: This simp argument is unused:
+  star_inv
+
+Hint: Omit it from the simp argument list.
+  simp only [Matrix.conjTranspose_apply, embedding, k, hbc, ↓reduceIte,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵s̵t̵a̵r̵_̵i̵n̵v̵,̵ ̵Complex.star_def,
+  ̲  ̲ ̲ ̲ ̲ ̲map_inv₀, Complex.conj_ofReal]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MarginalIsotropy.lean:106:6: warning: This simp argument is unused:
+  Matrix.submatrix_mul_equiv
+
+Hint: Omit it from the simp argument list.
+  simp only [groupedEmbedding, Matrix.conjTranspose_submatrix,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵M̵a̵t̵r̵i̵x̵.̵s̵u̵b̵m̵a̵t̵r̵i̵x̵_̵m̵u̵l̵_̵e̵q̵u̵i̵v̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'SU2T2.Dicke.marginal_maximally_mixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+/Users/jmartin/Documents/Charge_de_cours/Assistants/Jerome_Denis/_Paper_ACmeasures/PRA/calculation_audit/fidelity_order/lean/MatrixOrder.lean:180:12: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FidelityOrder.rectangular_spectral_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.matrix_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.symmetric_partial_trace_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.quantum_convex_roof_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+FidelityOrder.scalar_order {n : ℕ} (hn : 2 ≤ n) (x : ℕ → ℝ) (hx : ∀ (i : ℕ), 0 ≤ x i) :
+  ((∑ i ∈ Finset.range (n + 1), x i) ^ 2 - ∑ i ∈ Finset.range (n + 1), x i ^ 2) / ↑n ≤
+    ((∑ i ∈ Finset.range n, √(FidelityOrder.mix n x i)) ^ 2 - ∑ i ∈ Finset.range (n + 1), x i ^ 2) / (↑n - 1)
+FidelityOrder.matrix_order {n : ℕ} (hn : 2 ≤ n)
+  (Phi : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ →ₗ[ℂ] Matrix (Fin n) (Fin n) ℂ)
+  (hpos : ∀ (A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ), A.PosSemidef → (Phi A).PosSemidef)
+  (hTP : ∀ (A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ), (Phi A).trace = A.trace) (hI : Phi 1 = ↑((↑n + 1) / ↑n) • 1)
+  {A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℂ} (hA : A.PosSemidef) (htr : A.trace = 1) :
+  ((CFC.sqrt A).trace.re ^ 2 - 1) / ↑n ≤ ((CFC.sqrt (Phi A)).trace.re ^ 2 - 1) / (↑n - 1)
+FidelityOrder.symmetric_partial_trace_order (m : ℕ) (hm : 1 ≤ m) (A : Matrix (Fin (1 + m + 1)) (Fin (1 + m + 1)) ℂ)
+  (hA : A.PosSemidef) (htr : A.trace = 1) :
+  ((CFC.sqrt A).trace.re ^ 2 - 1) / (↑m + 1) ≤ ((CFC.sqrt (SU2T2.Dicke.marginal m 1 A)).trace.re ^ 2 - 1) / ↑m
+FidelityOrder.quantum_convex_roof_order.{u_1} (m : ℕ) (hm : 1 ≤ m) {E : Type u_1} [Nonempty E] (r : E → ℕ)
+  (p : (e : E) → Fin (r e) → ℝ) (B : (e : E) → Fin (r e) → Matrix (Fin (1 + m + 1)) (Fin (1 + m + 1)) ℂ)
+  (hp : ∀ (e : E) (i : Fin (r e)), 0 ≤ p e i) (hB : ∀ (e : E) (i : Fin (r e)), (B e i).PosSemidef)
+  (htr : ∀ (e : E) (i : Fin (r e)), (B e i).trace = 1) :
+  sInf (Set.range fun e => ∑ i, p e i * (((CFC.sqrt (B e i)).trace.re ^ 2 - 1) / (↑m + 1))) ≤
+    sInf (Set.range fun e => ∑ i, p e i * (((CFC.sqrt (SU2T2.Dicke.marginal m 1 (B e i))).trace.re ^ 2 - 1) / ↑m))
+'FidelityOrder.scalar_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.sqrt_sum_of_prefix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.matrix_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.symmetric_partial_trace_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FidelityOrder.quantum_convex_roof_order' depends on axioms: [propext, Classical.choice, Quot.sound]

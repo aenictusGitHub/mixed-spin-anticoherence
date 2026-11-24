@@ -16,6 +16,12 @@ For every density matrix on the symmetric spin-$N/2$ space, both the fidelity-ba
 
 **Fidelity implies von Neumann monotonicity at any order.** Fix $1\le t\le N$ and a channel as above. If fidelity monotonicity holds for **every** input density matrix of that channel, von Neumann monotonicity follows for every input. Both supplements apply this implication after proving fidelity in their respective order ranges. [General proof (PDF)](fidelity-implies-entropy/proof.pdf) · [General Lean theorem](fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean)
 
+## Monotonicity in the anticoherence order
+
+For every symmetric state and every `2 <= t < N`, both total and quantum fidelity anticoherence are nonincreasing in the order. The general proof is Lean-certified, including singular density matrices and the physical symmetric partial trace. Purity, Hilbert–Schmidt and von Neumann measures fail this ordering; a single W14 state gives explicit counterexamples for all three.
+
+[Proof and counterexamples (PDF)](fidelity-order-monotonicity/proof.pdf) · [Lean certificate](fidelity-order-monotonicity/lean/README.md) · [Download](fidelity-order-monotonicity/fidelity-order-lean.zip) · [Reproduction guide](fidelity-order-monotonicity/README.md)
+
 ## Spin-5/2 purity and convex roofs
 
 Exact global purity optima at orders 2, 3, and 4, and exact convex roofs for the rank-four state, with coefficient data and verification programs.
