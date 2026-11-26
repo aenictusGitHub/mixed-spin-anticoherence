@@ -1,6 +1,6 @@
 name = "order_five_fidelity"
 version = "1.0.0"
-defaultTargets = ["T5CertifiedTheorem"]
+defaultTargets = ["T5CertifiedTheorem", "T5Equivalence"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -604,3 +604,7 @@ globs = [
   "TimeReversal",
   "TraceDual",
 ]
+
+[[lean_lib]]
+name = "T5Equivalence"
+roots = ["T5Equivalence"]

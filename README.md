@@ -12,9 +12,11 @@ For every density matrix on the symmetric spin-$N/2$ space, both the fidelity-ba
 | Order | Spin range | Written proof | Lean certificates |
 |---|---|---|---|
 | $t=1,2,3,4$ | $N\ge t$ | [Shifted determinants give fidelity](su2-low-order-monotonicity/proof.pdf) | [Certificates by order](su2-low-order-monotonicity/README.md) |
-| $t=5$ | $N>5$ | [Fidelity theorem and entropy corollary](su2-order-five-monotonicity/proof.pdf) | [Both public theorems](su2-order-five-monotonicity/lean/T5CertifiedTheorem.lean) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
+| $t=5$ | $N\ge5$ | [Fidelity, entropy and comparison of gains](su2-order-five-monotonicity/proof.pdf) | [Equivalence including the full marginal](su2-order-five-monotonicity/lean/T5Equivalence.lean) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
 
-**Fidelity implies von Neumann monotonicity at any order.** Fix $1\le t\le N$ and a channel as above. If fidelity monotonicity holds for **every** input density matrix of that channel, von Neumann monotonicity follows for every input. Both supplements apply this implication after proving fidelity in their respective order ranges. [General proof (PDF)](fidelity-implies-entropy/proof.pdf) · [General Lean theorem](fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean)
+For a fixed channel, require each inequality on **every input**. At $t=1,2,3,4$, determinant, fidelity and von Neumann monotonicity are equivalent. At $t=5$, fidelity and von Neumann monotonicity are equivalent.
+
+**At arbitrary order.** Fix $1\le t\le N$. Fidelity monotonicity on every input implies von Neumann monotonicity for the same channel. The converse holds for every channel at this $N,t$ if and only if fidelity monotonicity holds for every channel at this $N,t$. Universal fidelity monotonicity at higher orders remains open. [Written proof](fidelity-implies-entropy/proof.pdf) · [Forward implication](fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean) · [Converse reduction](fidelity-implies-entropy/lean/PhysicalConverse.lean)
 
 ## Monotonicity in the anticoherence order
 

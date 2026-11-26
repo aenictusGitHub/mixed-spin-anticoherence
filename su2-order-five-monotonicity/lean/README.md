@@ -24,3 +24,7 @@ The toolchain and Mathlib revision are pinned. Downloading Mathlib's cache subst
 T5PhysicalSimplex.lean identifies the order-five marginal of every physical channel with a convex combination of Racah vertices. T5HullAll.lean reduces every spin and label to available seeds. T5GramPhysical.lean provides the exact local and rectangular maps and channel differences. T5SpectralSeeds.lean proves the five scalar comparisons. T5PhysicalFinalAssembly.lean combines the finite seed inequalities, the residual decompositions and concavity for mixed inputs. FidelityImpliesEntropy.lean provides the integral argument for the entropy corollary.
 
 The verification directory records the Linux workstation build. Both theorems use only propext, Classical.choice and Quot.sound. The source and import digests identify the precise modules used.
+
+## Equivalence including the full marginal
+
+[T5Equivalence.lean](T5Equivalence.lean) proves `OrderFive.fidelity_iff_vonNeumann` for every $k=N-5\ge0$. The $k=0$ case uses the local positive unital trace comparison. Run `lake build T5Equivalence` and `lake env lean --trust=0 T5Equivalence.lean` to replay the public statement and its axiom report. [Equivalence verification record](verification/equivalences.json)

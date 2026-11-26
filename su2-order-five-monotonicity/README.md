@@ -13,4 +13,12 @@ For every integer $N>5$, every density matrix on the symmetric spin-$N/2$ space,
 - [Axiom report](lean/verification/T5CertifiedTheorem.log) · [588-module verification record](lean/verification/result-T5CertifiedTheorem.json)
 - [Independent integer checker for the 220 spectral cones](sextic-checks.zip)
 
-The PDF embeds both archives. The implication used in Corollary 1 holds for every order $1\le t\le N$. [General proof](../fidelity-implies-entropy/proof.pdf) · [General Lean certificate](../fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean)
+The PDF embeds the proof archives. The implication used in Corollary 1 holds for every order $1\le t\le N$. [General proof](../fidelity-implies-entropy/proof.pdf) · [General Lean certificate](../fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean)
+
+## Converse and equality
+
+For every $N\ge5$, fidelity monotonicity on all inputs of a fixed physical channel is equivalent to von Neumann monotonicity on all its inputs. At $N=5$ the symmetric marginal is the full state, so unitality gives the endpoint.
+
+With $\mathcal F(X)=\operatorname{Tr}\sqrt X$ and entropy in nats, the single-input gain satisfies $\Delta\mathcal F\ge\Delta S/400$. Hence $\Delta\mathcal A^{T,F}_5\ge\Delta S/1000$ whenever $\Delta S\ge0$. The two gains vanish together precisely when the marginals are isospectral. The strengthened sextic inequalities use 962 terminal cones.
+
+[Lean equivalence](lean/T5Equivalence.lean) · [Equivalence axiom report](lean/verification/equivalences.json) · [Independent integer gain checker](gain-checks.zip)
