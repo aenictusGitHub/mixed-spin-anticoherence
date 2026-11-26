@@ -24,3 +24,7 @@ lake env python3 verify_sources.py --jobs 1
 The verifier writes `PASS` only after all local sources and the final public-theorem audit succeed. The generated exact arithmetic data are substantial; additional workers can shorten the build when sufficient CPU and memory are available. `--resume` reuses completed checks whose source and object fingerprints still match.
 
 All local proof sources and exact data are included. `source_provenance.json` records their origins and hashes.
+
+## Fixed-channel equivalence
+
+The target [EquivalencesT4](EquivalencesT4.lean) proves the equivalences for the determinant, fidelity and entropy inequalities on all density matrices. Run `lake build EquivalencesT4` after fetching the pinned dependencies. [Equivalence verification record](verification/equivalences.json)

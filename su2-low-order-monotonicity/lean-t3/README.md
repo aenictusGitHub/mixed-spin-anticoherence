@@ -38,3 +38,7 @@ The last Lean command prints the transitive axiom dependencies of the determinan
 The package includes its complete local source dependency closure. Checked source hashes are recorded in `verification/result.json`. The [companion package](../lean/README.md) provides the order-one and order-two certificates. The [order-four package](../lean-t4/README.md) provides both order-four certificates. Both the written proofs and Lean certification cover all four orders. The written proofs appear in the [proof supplement](../proof.pdf).
 
 The completed verification run is recorded in `verification/`.
+
+## Fixed-channel equivalence
+
+The target [EquivalencesT3](EquivalencesT3.lean) proves the equivalences for the determinant, fidelity and entropy inequalities on all density matrices. Run `lake build EquivalencesT3` after fetching the pinned dependencies. [Equivalence verification record](verification/equivalences.json)

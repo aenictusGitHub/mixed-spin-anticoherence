@@ -1,6 +1,6 @@
 name = "su2_t2_fidelity"
 version = "3.0.0"
-defaultTargets = ["UniformFidelityCertificate"]
+defaultTargets = ["UniformFidelityCertificate", "EquivalencesT12"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -76,3 +76,7 @@ globs = [
   "UniformFidelity",
   "UniformT1",
 ]
+
+[[lean_lib]]
+name = "EquivalencesT12"
+roots = ["EquivalencesT12", "QubitEquivalence"]

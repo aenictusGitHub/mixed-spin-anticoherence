@@ -1,6 +1,6 @@
 name = "su2_t4_uniform"
 version = "1.0.0"
-defaultTargets = ["UniformT4Certificate"]
+defaultTargets = ["UniformT4Certificate", "EquivalencesT4"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -9508,3 +9508,7 @@ globs = [
   "TraceDual",
   "UniformT4",
 ]
+
+[[lean_lib]]
+name = "EquivalencesT4"
+roots = ["EquivalencesT4"]

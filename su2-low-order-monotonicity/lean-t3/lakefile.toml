@@ -1,6 +1,6 @@
 name = "su2_t3_uniform"
 version = "1.0.0"
-defaultTargets = ["UniformT3Certificate"]
+defaultTargets = ["UniformT3Certificate", "EquivalencesT3"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -147,3 +147,7 @@ globs = [
   "TraceDual",
   "UniformT3",
 ]
+
+[[lean_lib]]
+name = "EquivalencesT3"
+roots = ["EquivalencesT3"]

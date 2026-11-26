@@ -48,3 +48,7 @@ All audited results depend only on `propext`, `Classical.choice`, and `Quot.soun
 For incremental verification, use `lake build` followed by `lake env lean UniformAudit.lean`. To confirm the supplied source hashes on macOS, run `shasum -a 256 -c source-sha256-uniform.txt`.
 
 The [order-three](../lean-t3/README.md) and [order-four](../lean-t4/README.md) packages give the corresponding higher-order certificates.
+
+## Fixed-channel equivalence
+
+The target [EquivalencesT12](EquivalencesT12.lean) proves the equivalences for the determinant, fidelity and entropy inequalities on all density matrices. Run `lake build EquivalencesT12` after fetching the pinned dependencies. The same target also builds the [pointwise qubit theorem](QubitEquivalence.lean). [Equivalence verification record](verification-uniform/equivalences.json)
