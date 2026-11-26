@@ -6,9 +6,15 @@ Mixing the global input with the maximally mixed spin state gives a fidelity com
 
 [Written proof (PDF)](proof.pdf) · [LaTeX source](proof.tex) · [Public Lean theorem](lean/FidelityImpliesEntropy.lean) · [Spectral identity](lean/FidelityEntropySpectral.lean)
 
+## Converse at fixed order
+
+Let $F(\Phi)$ and $E(\Phi)$ denote fidelity and von Neumann monotonicity on every input of a fixed channel. For each $1\le t\le N$, the statement $\forall\Phi\,[E(\Phi)\Rightarrow F(\Phi)]$ is equivalent to $\forall\Phi\,F(\Phi)$. If fidelity fails for any channel, the proof constructs a depolarized channel at the same spin and order with nonnegative entropy gain on every input and negative fidelity gain on some input. Whether such a violation exists at an unresolved order remains open.
+
+The proof uses a uniform entropy margin at the last parameter on a depolarizing path where all-input fidelity holds. The same small change in parameter preserves the entropy inequality for every input, including inputs with a maximally mixed marginal. [Physical Lean theorem](lean/PhysicalConverse.lean) · [Spectral theorem](lean/ConverseSpectralClass.lean) · [Axiom and source record](lean/verification/converse.json)
+
 ## Lean verification
 
-The public theorem is `LowOrder.physical_vonNeumann_of_fidelity`. It uses the paper's normalized totals and the repository's symmetric Dicke marginal. Lean writes $N=k+t$ with $t\ge1$ and $k\ge0$. The hypothesis is fidelity monotonicity on all density matrices for the fixed channel.
+The forward implication is `LowOrder.physical_vonNeumann_of_fidelity`. It uses the paper's normalized totals and the repository's symmetric Dicke marginal. Lean writes $N=k+t$ with $t\ge1$ and $k\ge0$. The hypothesis is fidelity monotonicity on all density matrices for the fixed channel.
 
 For $t=1,2,3,4$ and $N\ge t$, Section 8.1 of the uniform proof applies this theorem after deriving fidelity monotonicity from shifted determinants. For $t=5$ and $N>5$, Corollary 1 applies the implication directly to the fidelity theorem. [Orders one through four](../su2-low-order-monotonicity/proof.pdf) · [Order five](../su2-order-five-monotonicity/proof.pdf)
 
@@ -20,4 +26,4 @@ lake exe cache get
 lake build
 ```
 
-The project pins Lean 4.24.0 and the same Mathlib revision as the companion physical definitions. The default build checks the scalar integral, the entropy-gap limit, the physical theorem and the expected axiom dependencies. [Axiom checks](lean/FidelityEntropyAudit.lean) · [Verification record](lean/verification/result.json)
+The project pins Lean 4.24.0 and the same Mathlib revision as the companion physical definitions. The default build checks the scalar integral, the entropy-gap limit, the forward implication and the physical converse reduction. [Axiom checks](lean/FidelityEntropyAudit.lean) · [Verification record](lean/verification/result.json)

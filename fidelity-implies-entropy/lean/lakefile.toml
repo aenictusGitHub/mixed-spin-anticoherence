@@ -1,6 +1,6 @@
 name = "fidelity_entropy_implication"
 version = "1.0.0"
-defaultTargets = ["FidelityEntropyAudit"]
+defaultTargets = ["FidelityEntropyAudit", "PhysicalConverse"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -13,3 +13,8 @@ path = "../../su2-low-order-monotonicity/lean"
 [[lean_lib]]
 name = "FidelityEntropyAudit"
 roots = ["FidelityEntropyAudit"]
+
+[[lean_lib]]
+name = "PhysicalConverse"
+roots = ["PhysicalConverse"]
+globs = ["ConverseReduction", "ConverseSpectral", "ConverseRay", "ConverseSpectralClass", "ConverseVariance", "ConverseMatrices", "ConverseChannels"]

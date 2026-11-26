@@ -82,7 +82,83 @@ Apply the finite integral formula to each eigenvalue and subtract the sum on $x$
 \]
 The integrand is continuous at $u=0$, even for zero eigenvalues. Substituting $s=u^2$ on finite intervals and then taking the limit proves the second equality in~\eqref{eq:identity}.
 
+\section*{What the converse would imply at arbitrary order}
+Fix $N,t$ as above. Write $F(\Phi)$ and $E(\Phi)$ for the respective
+fidelity and entropy inequalities on \emph{all} density matrices at this fixed
+order. For the full class of same-spin covariant channels,
+\begin{equation}\label{eq:converse}
+ \boxed{\quad [\forall\Phi,\ E(\Phi)\Rightarrow F(\Phi)]
+       \quad\Longleftrightarrow\quad [\forall\Phi,\ F(\Phi)].\quad}
+\end{equation}
+In particular, if any channel fails $F$, another channel at the same $N,t$
+satisfies $E$ and fails $F$. The existence of a fidelity violation at higher
+orders is left open.
+
+\textbf{Proof.} Let $J=I_d/d$, $V(X)=\Tr(X-J)^2$, and suppose $F(\Psi)$ fails.
+Interpolate between the completely depolarizing channel $\mathcal D$ and
+$\Psi$ by $\Phi_a=(1-a)\mathcal D+a\Psi$, $0\le a\le1$. Each $\Phi_a$ is
+covariant and CPTP. For a fixed input, put $\omega=R\Psi(\rho)$ and
+$\tau_a=J+a(\omega-J)$. On the irreducible tensor operators of rank $L$,
+$\Psi$ acts by a real scalar $f_L$ with $|f_L|\le1$. Indeed it is positive
+and unital and hence contracts the operator norm of Hermitian operators.
+The symmetric marginal intertwines rotations, so its mutually orthogonal
+traceless tensor ranks inherit the same multipliers. Thus
+\[
+ V(\omega)\le V(\sigma),\qquad V(\tau_a)=a^2 V(\omega).
+\]
+For each input $T(\tau_a)=\Tr\sqrt{\tau_a}$ is continuous in $a$.
+The parameters satisfying $F(\Phi_a)$ form a closed subset of $[0,1]$
+containing $0$ (the maximum of $T$ is at $J$) and excluding $1$.
+Let $a_*$ be its largest element and put $h=1-a_*^2>0$.
+
+For $s>0$, Taylor's theorem about $1/d$ on $[0,1]$, applied to
+$x\mapsto\sqrt{s+x}$, bounds its negative quadratic remainder between
+$(x-1/d)^2/[8(s+1)^{3/2}]$ and $(x-1/d)^2/(8s^{3/2})$.
+Equal trace cancels the linear terms. At $a_*$ the resulting shifted gap satisfies
+\[
+ D(s)=T(\tau_{a_*}+sI)-T(\sigma+sI)
+ \ \ge\ \frac{V(\sigma)}8
+       \bigl[(s+1)^{-3/2}-a_*^2 s^{-3/2}\bigr].
+\]
+The all-input property $F(\Phi_{a_*})$ also gives $D(s)\ge0$ at every shift.
+For $s\ge3/h$, convexity gives $(1+1/s)^{-3/2}\ge1-3/(2s)\ge1-h/2$.
+Inserting just this tail into~\eqref{eq:identity} gives a uniform entropy margin
+\[
+ S(\tau_{a_*})-S(\sigma)
+ \ge 2\int_{3/h}^{\infty}\frac{hV(\sigma)}{16s^2}\,ds
+ =\frac{h^2}{24}V(\sigma).
+\]
+
+Let $y_i$ be the eigenvalues of $\omega-J$ and $c=1/d$.
+Since $\sum_i y_i=0$ and $c+a y_i\ge(1-a)c$, the mean value theorem for
+$\log$ gives, for $0\le a<1$,
+\[
+ -\frac{d}{da}S(\tau_a)
+   =\sum_i y_i\,[\log(c+a y_i)-\log c]
+   \le \frac{da}{1-a}\sum_i y_i^2
+   \le \frac{da}{1-a}V(\sigma).
+\]
+Set $b=a_*+(1-a_*)h^2/(96d)$. On $[a_*,b]$ one has
+$1-a\ge(1-a_*)/2$. The loss of entropy up to $b$ is therefore at most
+$h^2 V(\sigma)/48$. The same $b$ works for every input, including those
+with $V(\sigma)=0$. Consequently $E(\Phi_b)$ holds, whereas
+$b>a_*$ gives failure of $F(\Phi_b)$. The reverse implication
+in~\eqref{eq:converse} is immediate.\hfill$\square$
+
+The placement of the channel quantifier matters.
+Equation~\eqref{eq:converse} addresses $\forall\Phi\,[E(\Phi)\Rightarrow
+F(\Phi)]$. Its proof gives no unconditional assertion of universal fidelity
+monotonicity from the sole premise $\forall\Phi\,E(\Phi)$ at an unresolved order.
+
 \section*{Lean certificate}
 The public theorem \texttt{LowOrder.physical\_vonNeumann\_of\_fidelity} uses
 the normalized Dicke marginal, the positive matrix square root and the manuscript's two totals. It holds for $N=k+t$ with $t\ge1$ and $k\ge0$, including the case $N=t$. Its single monotonicity hypothesis is fidelity on all density matrices for the fixed channel. The analytical part checks the finite-cutoff form of~\eqref{eq:identity} for arbitrary nonnegative spectra of equal mass, including zero eigenvalues.
+The public theorem for~\eqref{eq:converse} is
+\path{LowOrder.Converse.physical_converse_iff_universal_fidelity} in
+\path{PhysicalConverse.lean}. Its channel type packages complete positivity,
+trace preservation and covariance on density matrices. Its only order
+hypothesis is $1\le t$ for $N=k+t$. The Lean proof bounds the entropy
+integral on a finite interval of positive shifts and uses a finite
+difference estimate for the loss along the depolarizing path. Both give
+the strict margin required in the compact-interval argument.
 \end{document}

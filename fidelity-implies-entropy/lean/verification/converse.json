@@ -1,0 +1,75 @@
+{
+  "result": "PASS",
+  "lean": "Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "kernel_trust_level": 0,
+  "modules": {
+    "ConverseReduction": {
+      "sha256": "6d714ccd66b38a02a2219fc25066c886900db4e52c63a2baf04d25f9d0a8a626",
+      "axioms": {
+        "LowOrder.Converse.universal_converse_iff_fidelity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "ConverseSpectral": {
+      "sha256": "03c981348a647c65917cd02a24997fb8ebfd6e908864ccaeefdebada682f942e",
+      "axioms": {
+        "LowOrder.Converse.entropy_margin": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "ConverseRay": {
+      "sha256": "df1b48830a96deb0df2c9c8870d6c2180ec06e337d143e1f2899f54ea845e381",
+      "axioms": {
+        "LowOrder.Converse.entropy_ray_loss": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "ConverseSpectralClass": {
+      "sha256": "d038c3cd2c2fe1afb6ae9408257bf69a4624e886890a725d9752b3826676a3a6",
+      "axioms": {
+        "LowOrder.Converse.spectral_converse_iff_fidelity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "ConverseVariance": {
+      "sha256": "1330e0487212c6bf0bbe17c27aac903bc73f669f99b99580f189cadd9c3497d9",
+      "axioms": {
+        "LowOrder.Converse.marginal_energy_le": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "ConverseChannels": {
+      "sha256": "481b66da71bc875e97b3f817e7948946fdf25164f096a52b96f3135ab00a43ec",
+      "axioms": {}
+    },
+    "ConverseMatrices": {
+      "sha256": "5eea5eddf905d2649dc841e8a68ddee08bd2774ce40277e8e29bfe44ac6a95ff",
+      "axioms": {}
+    },
+    "PhysicalConverse": {
+      "sha256": "47332d5b5ae474855de3e971a4bdca52925212d68ff681838daa0d5fb3d5b10c",
+      "axioms": {
+        "LowOrder.Converse.physical_converse_iff_universal_fidelity": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    }
+  }
+}
