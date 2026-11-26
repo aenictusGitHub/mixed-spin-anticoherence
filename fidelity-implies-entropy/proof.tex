@@ -4,7 +4,7 @@
 \usepackage[margin=25mm]{geometry}
 \usepackage[colorlinks=true,urlcolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
 \usepackage{xcolor}
-\hypersetup{pdftitle={From fidelity monotonicity to von Neumann monotonicity at every order}}
+\hypersetup{pdftitle={Universal entropy monotonicity implies universal fidelity monotonicity through order five}}
 \newcommand{\Tr}{\operatorname{Tr}}
 \newcommand{\A}{\mathcal A}
 \newcommand{\id}{I}
@@ -12,6 +12,60 @@
 \setlength{\parskip}{6pt plus 1pt minus 1pt}
 \raggedbottom
 \begin{document}
+\begin{center}
+{\Large\bfseries Universal entropy monotonicity implies universal\\[3pt]
+fidelity monotonicity through order five}\par
+\smallskip
+{\normalsize Total anticoherence under $\mathrm{SU}(2)$-covariant channels}
+\end{center}
+
+\textbf{Theorem.} Fix $t\in\{1,2,3,4,5\}$ and $N\ge t$. Then
+\[
+ \boxed{\;
+ \bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+ \ \Longrightarrow\
+ \bigl[\forall\Phi\,\forall\rho,\
+        \A_t^{T,F}(\Phi\rho)\ge\A_t^{T,F}(\rho)\bigr].
+ \;}
+\]
+In each bracket $\Phi$ ranges over all completely positive, trace-preserving
+$\mathrm{SU}(2)$-covariant channels on spin $N/2$, and $\rho$ ranges over all density
+matrices on that space. The symmetric $t$-qubit marginal is $\rho_t$.
+
+\textbf{Proof.} Write $\sigma=\rho_t$ and $\tau=(\Phi\rho)_t$.
+In the manuscript's squared-fidelity convention,
+\[
+ \A_t^{T,F}(\rho)=\frac{(\Tr\sqrt\sigma)^2-1}{t}.
+\]
+It therefore suffices to prove $\Tr\sqrt\tau\ge\Tr\sqrt\sigma$
+for arbitrary $\Phi$ and $\rho$.
+
+\emph{Orders one through four.} For each order, Sections~3--6 of the
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-low-order-monotonicity/proof.pdf}{low-order supplement}
+establish $\det\tau\ge\det\sigma$ on every physical input.
+Mixing the input with the maximally mixed spin state gives
+$\det(\tau+sI)\ge\det(\sigma+sI)$ at every $s>0$.
+Integrating the logarithmic comparison gives the required square-root
+trace inequality (Sections~7--8 of that supplement).
+
+\emph{Order five.} For $N>5$ the square-root trace inequality is the
+conclusion of Sections~1--5 of the
+\href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-order-five-monotonicity/proof.pdf}{order-five supplement}.
+For $N=5$ the marginal is the entire state. Covariance and trace
+preservation make $\Phi$ unital, so $\Phi(\rho)$ is majorized by $\rho$.
+Summing the concave square root on their spectra gives the same inequality.
+
+Consequently the fidelity inequality holds for all $\Phi,\rho$ at each of
+these five orders. This proves the displayed implication independently
+of the entropy premise.\hfill$\square$
+
+\textbf{Lean certificates.} The proofs for \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-low-order-monotonicity/lean/UniversalConverseT12.lean}{orders one and two}, \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-low-order-monotonicity/lean-t3/UniversalConverseT3.lean}{order three}, \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-low-order-monotonicity/lean-t4/UniversalConverseT4.lean}{order four} and \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/main/su2-order-five-monotonicity/lean/UniversalConverseT5.lean}{order five}
+use the entropy of the physical Dicke marginal in the premise and the normalized
+fidelity total in the conclusion.
+
+The following pages give the complementary forward implication. Its integral
+argument applies at every order $1\le t\le N$.
+\newpage
 \begin{center}
 {\Large\bfseries From fidelity monotonicity to von Neumann\\[3pt] monotonicity at every order}\par
 \smallskip
@@ -82,83 +136,7 @@ Apply the finite integral formula to each eigenvalue and subtract the sum on $x$
 \]
 The integrand is continuous at $u=0$, even for zero eigenvalues. Substituting $s=u^2$ on finite intervals and then taking the limit proves the second equality in~\eqref{eq:identity}.
 
-\section*{What the converse would imply at arbitrary order}
-Fix $N,t$ as above. Write $F(\Phi)$ and $E(\Phi)$ for the respective
-fidelity and entropy inequalities on \emph{all} density matrices at this fixed
-order. For the full class of same-spin covariant channels,
-\begin{equation}\label{eq:converse}
- \boxed{\quad [\forall\Phi,\ E(\Phi)\Rightarrow F(\Phi)]
-       \quad\Longleftrightarrow\quad [\forall\Phi,\ F(\Phi)].\quad}
-\end{equation}
-In particular, if any channel fails $F$, another channel at the same $N,t$
-satisfies $E$ and fails $F$. The existence of a fidelity violation at higher
-orders is left open.
-
-\textbf{Proof.} Let $J=I_d/d$, $V(X)=\Tr(X-J)^2$, and suppose $F(\Psi)$ fails.
-Interpolate between the completely depolarizing channel $\mathcal D$ and
-$\Psi$ by $\Phi_a=(1-a)\mathcal D+a\Psi$, $0\le a\le1$. Each $\Phi_a$ is
-covariant and CPTP. For a fixed input, put $\omega=R\Psi(\rho)$ and
-$\tau_a=J+a(\omega-J)$. On the irreducible tensor operators of rank $L$,
-$\Psi$ acts by a real scalar $f_L$ with $|f_L|\le1$. Indeed it is positive
-and unital and hence contracts the operator norm of Hermitian operators.
-The symmetric marginal intertwines rotations, so its mutually orthogonal
-traceless tensor ranks inherit the same multipliers. Thus
-\[
- V(\omega)\le V(\sigma),\qquad V(\tau_a)=a^2 V(\omega).
-\]
-For each input $T(\tau_a)=\Tr\sqrt{\tau_a}$ is continuous in $a$.
-The parameters satisfying $F(\Phi_a)$ form a closed subset of $[0,1]$
-containing $0$ (the maximum of $T$ is at $J$) and excluding $1$.
-Let $a_*$ be its largest element and put $h=1-a_*^2>0$.
-
-For $s>0$, Taylor's theorem about $1/d$ on $[0,1]$, applied to
-$x\mapsto\sqrt{s+x}$, bounds its negative quadratic remainder between
-$(x-1/d)^2/[8(s+1)^{3/2}]$ and $(x-1/d)^2/(8s^{3/2})$.
-Equal trace cancels the linear terms. At $a_*$ the resulting shifted gap satisfies
-\[
- D(s)=T(\tau_{a_*}+sI)-T(\sigma+sI)
- \ \ge\ \frac{V(\sigma)}8
-       \bigl[(s+1)^{-3/2}-a_*^2 s^{-3/2}\bigr].
-\]
-The all-input property $F(\Phi_{a_*})$ also gives $D(s)\ge0$ at every shift.
-For $s\ge3/h$, convexity gives $(1+1/s)^{-3/2}\ge1-3/(2s)\ge1-h/2$.
-Inserting just this tail into~\eqref{eq:identity} gives a uniform entropy margin
-\[
- S(\tau_{a_*})-S(\sigma)
- \ge 2\int_{3/h}^{\infty}\frac{hV(\sigma)}{16s^2}\,ds
- =\frac{h^2}{24}V(\sigma).
-\]
-
-Let $y_i$ be the eigenvalues of $\omega-J$ and $c=1/d$.
-Since $\sum_i y_i=0$ and $c+a y_i\ge(1-a)c$, the mean value theorem for
-$\log$ gives, for $0\le a<1$,
-\[
- -\frac{d}{da}S(\tau_a)
-   =\sum_i y_i\,[\log(c+a y_i)-\log c]
-   \le \frac{da}{1-a}\sum_i y_i^2
-   \le \frac{da}{1-a}V(\sigma).
-\]
-Set $b=a_*+(1-a_*)h^2/(96d)$. On $[a_*,b]$ one has
-$1-a\ge(1-a_*)/2$. The loss of entropy up to $b$ is therefore at most
-$h^2 V(\sigma)/48$. The same $b$ works for every input, including those
-with $V(\sigma)=0$. Consequently $E(\Phi_b)$ holds, whereas
-$b>a_*$ gives failure of $F(\Phi_b)$. The reverse implication
-in~\eqref{eq:converse} is immediate.\hfill$\square$
-
-The placement of the channel quantifier matters.
-Equation~\eqref{eq:converse} addresses $\forall\Phi\,[E(\Phi)\Rightarrow
-F(\Phi)]$. Its proof gives no unconditional assertion of universal fidelity
-monotonicity from the sole premise $\forall\Phi\,E(\Phi)$ at an unresolved order.
-
 \section*{Lean certificate}
 The public theorem \texttt{LowOrder.physical\_vonNeumann\_of\_fidelity} uses
 the normalized Dicke marginal, the positive matrix square root and the manuscript's two totals. It holds for $N=k+t$ with $t\ge1$ and $k\ge0$, including the case $N=t$. Its single monotonicity hypothesis is fidelity on all density matrices for the fixed channel. The analytical part checks the finite-cutoff form of~\eqref{eq:identity} for arbitrary nonnegative spectra of equal mass, including zero eigenvalues.
-The public theorem for~\eqref{eq:converse} is
-\path{LowOrder.Converse.physical_converse_iff_universal_fidelity} in
-\path{PhysicalConverse.lean}. Its channel type packages complete positivity,
-trace preservation and covariance on density matrices. Its only order
-hypothesis is $1\le t$ for $N=k+t$. The Lean proof bounds the entropy
-integral on a finite interval of positive shifts and uses a finite
-difference estimate for the loss along the depolarizing path. Both give
-the strict margin required in the compact-interval argument.
 \end{document}

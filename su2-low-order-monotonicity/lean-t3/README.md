@@ -1,5 +1,13 @@
 # Uniform Lean certificate for order three
 
+## Universal entropy-to-fidelity implication
+
+At order 3, [the universal implication](UniversalConverseT3.lean) fixes $N=k+t$ with $k\ge0$. Its premise compares the von Neumann entropies of the Dicke marginals for **all channels and all states**. Its conclusion quantifies both variables again and compares the manuscript's normalized fidelity totals. The proof invokes the physical fidelity theorem for each channel and state.
+
+Run `lake build UniversalConverseT3` and `lake env lean --trust=0 UniversalConverseT3.lean` after fetching the Mathlib cache. [Axiom and source record](verification/universal-converse.json)
+
+## Supporting monotonicity certificates
+
 The public file `UniformT3Certificate.lean` states both manuscript inequalities for every spin with `N = k + 3`, where `k` is any natural number. The channel hypotheses are complete positivity, trace preservation and covariance under the actual symmetric-power SU(2) action. The input is an arbitrary positive semidefinite matrix of trace one, including singular and mixed states.
 
 The two public statements are `LowOrder.physical_fidelity_t3` and `LowOrder.physical_vonNeumann_t3`. The definitions in `LowOrderMeasures.lean` use the manuscript's squared-fidelity convention and normalized von Neumann entropy on the actual Dicke marginal.
@@ -38,7 +46,3 @@ The last Lean command prints the transitive axiom dependencies of the determinan
 The package includes its complete local source dependency closure. Checked source hashes are recorded in `verification/result.json`. The [companion package](../lean/README.md) provides the order-one and order-two certificates. The [order-four package](../lean-t4/README.md) provides both order-four certificates. Both the written proofs and Lean certification cover all four orders. The written proofs appear in the [proof supplement](../proof.pdf).
 
 The completed verification run is recorded in `verification/`.
-
-## Fixed-channel equivalence
-
-The target [EquivalencesT3](EquivalencesT3.lean) proves the equivalences for the determinant, fidelity and entropy inequalities on all density matrices. Run `lake build EquivalencesT3` after fetching the pinned dependencies. [Equivalence verification record](verification/equivalences.json)

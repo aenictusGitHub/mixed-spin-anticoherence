@@ -7,16 +7,24 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 
 ## Monotonicity under SU(2)-covariant channels
 
-For every density matrix on the symmetric spin-$N/2$ space, both the fidelity-based and von Neumann total anticoherence measures are nondecreasing under every completely positive, trace-preserving SU(2)-covariant channel in the following cases.
+Fix $t\in\{1,2,3,4,5\}$ and $N\ge t$. Universal von Neumann entropy monotonicity implies universal fidelity monotonicity at that same spin and order.
 
-| Order | Spin range | Written proof | Lean certificates |
-|---|---|---|---|
-| $t=1,2,3,4$ | $N\ge t$ | [Shifted determinants give fidelity](su2-low-order-monotonicity/proof.pdf) | [Certificates by order](su2-low-order-monotonicity/README.md) |
-| $t=5$ | $N\ge5$ | [Fidelity, entropy and comparison of gains](su2-order-five-monotonicity/proof.pdf) | [Equivalence including the full marginal](su2-order-five-monotonicity/lean/T5Equivalence.lean) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
+$$
+\bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+\quad\Longrightarrow\quad
+\bigl[\forall\Phi\,\forall\rho,\
+\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\bigr].
+$$
 
-For a fixed channel, require each inequality on **every input**. At $t=1,2,3,4$, determinant, fidelity and von Neumann monotonicity are equivalent. At $t=5$, fidelity and von Neumann monotonicity are equivalent.
+Each quantifier over $\Phi$ ranges over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$. Each quantifier over $\rho$ ranges over all density matrices on that spin space. The finite-order fidelity theorems already prove the conclusion for every channel and input. The universal implication follows directly, so the proof needs no additional estimate from the entropy premise.
 
-**At arbitrary order.** Fix $1\le t\le N$. Fidelity monotonicity on every input implies von Neumann monotonicity for the same channel. The converse holds for every channel at this $N,t$ if and only if fidelity monotonicity holds for every channel at this $N,t$. Universal fidelity monotonicity at higher orders remains open. [Written proof](fidelity-implies-entropy/proof.pdf) · [Forward implication](fidelity-implies-entropy/lean/FidelityImpliesEntropy.lean) · [Converse reduction](fidelity-implies-entropy/lean/PhysicalConverse.lean)
+| Order | Written proof | Lean certificate |
+|---|---|---|
+| $t=1,2$ | [Orders one through four, p. 1](su2-low-order-monotonicity/proof.pdf) | [Orders one and two](su2-low-order-monotonicity/lean/UniversalConverseT12.lean) |
+| $t=3,4$ | [Orders one through four, p. 1](su2-low-order-monotonicity/proof.pdf) | [Order three](su2-low-order-monotonicity/lean-t3/UniversalConverseT3.lean) · [Order four](su2-low-order-monotonicity/lean-t4/UniversalConverseT4.lean) |
+| $t=5$ | [Order five, p. 1](su2-order-five-monotonicity/proof.pdf) | [Order five](su2-order-five-monotonicity/lean/UniversalConverseT5.lean) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
+
+The companion note gives the five-order statement and proof on page 1. Pages 2–3 give the earlier implication from fidelity to von Neumann entropy at every order. [Companion note](fidelity-implies-entropy/proof.pdf)
 
 ## Monotonicity in the anticoherence order
 

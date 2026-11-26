@@ -14,13 +14,12 @@
 \setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
 \setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
 \raggedbottom
-\hypersetup{pdftitle={Fidelity monotonicity at order five},pdfsubject={Fidelity and von Neumann total anticoherence for every spin N/2 with at least five symmetric qubits}}
+\hypersetup{pdftitle={Fidelity monotonicity at order five},pdfsubject={Fidelity and von Neumann total anticoherence for every spin N/2 with N at least five}}
 \newcommand{\attachproof}[2]{%
   \IfFileExists{#1}{\embedfile[filespec=#1,desc={#2}]{#1}}{%
     \IfFileExists{../../output/#1}{\embedfile[filespec=#1,desc={#2}]{../../output/#1}}{%
       \embedfile[filespec=#1,desc={#2}]{output/#1}}}}
 \begin{document}
-\attachproof{gain-checks.zip}{Exact verification of the entropy and fidelity gain comparison}
 \attachproof{order-five-lean.zip}{Complete order-five Lean source and version pins}
 \attachproof{sextic-checks.zip}{Independent integer verification of the 220 spectral cones}
 \begin{center}
@@ -28,6 +27,38 @@
 {\large Total anticoherence under $\SU$-covariant channels\par}\vspace{8pt}
 26 November 2026
 \end{center}
+\textbf{Universal entropy monotonicity implies universal fidelity monotonicity.}
+Fix $t=5$ and $N\ge5$. Then
+\[
+ \boxed{\;
+ \bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_5)\ge S(\rho_5)\bigr]
+ \ \Longrightarrow\
+ \bigl[\forall\Phi\,\forall\rho,\
+        \A_5^{T,F}(\Phi\rho)\ge\A_5^{T,F}(\rho)\bigr].
+ \;}
+\]
+In each bracket $\Phi$ ranges over all completely positive, trace-preserving
+$\mathrm{SU}(2)$-covariant channels on spin $N/2$, and $\rho$ ranges over all density
+matrices on that space. The symmetric five-qubit marginal is $\rho_5$.
+
+\textit{Proof.} Let $\Phi$ and $\rho$ be arbitrary. For $N>5$, Theorem~1
+proves the fidelity inequality for this pair. For $N=5$ the marginal is the
+entire state. Covariance and Schur's lemma imply that $\Phi(I)$ is scalar,
+and trace preservation gives $\Phi(I)=I$. Thus $\Phi(\rho)$ is majorized
+by $\rho$. Concavity of the square root gives
+\[
+ \Tr\sqrt{\Phi(\rho)}\ge\Tr\sqrt\rho .
+\]
+Squaring and using $\A^{T,F}_5(\rho)=[(\Tr\sqrt\rho)^2-1]/5$ proves
+the endpoint. The fidelity inequality thus holds for every channel and input,
+including under the stated entropy hypothesis.\hfill$\square$
+
+\textbf{Lean certificate.} The attached project checks
+\path{OrderFive.universal_fidelity_of_universal_entropy_t5} in
+\path{UniversalConverseT5.lean}. Its parameter $k=N-5$ includes $k=0$.
+The following pages give the physical fidelity theorem for $k\ge1$
+and its von Neumann corollary.
+\newpage
 \textbf{Theorem 1 (fidelity).} Let $N>5$ be an integer and let $\Phi$ be a completely positive, trace-preserving $\SU$-covariant channel on the symmetric spin-$N/2$ space $\cH_{N/2}$. For every density matrix $\rho$ on this space,
 \[
                     \boxed{\ \A_5^{T,F}(\Phi(\rho))\ge\A_5^{T,F}(\rho).\ }
@@ -204,64 +235,4 @@ Sections 3--5 therefore give $\F(\tau)\ge\F(\sigma)$ for all 34 physical generat
 Lean proofs of Theorem~1 and Corollary~1 in \texttt{T5CertifiedTheorem.lean}.
 The independent checker in \texttt{sextic-checks.zip} verifies the spectral
 bounds of Section~3.
-\newpage
-\section*{6. Equivalence and comparison of gains}
-Write $F(\Phi)$ and $E(\Phi)$ for the fidelity and von Neumann inequalities
-of Theorem~1 and Corollary~1, each quantified over every input of the
-fixed channel. Then $F(\Phi)\Longleftrightarrow E(\Phi)$ for every $N\ge5$.
-For $N>5$ this follows from those two results. For $N=5$ the marginal is
-the full state, and the positive, unital, trace-preserving channel makes
-its spectrum more mixed in the majorization order. The two totals are
-therefore monotone also at this endpoint.
-
-There is a stronger statement for a single input. Put $S(X)=-\Tr X\log X$,
-use natural logarithms, and write $\Delta G=G(\tau)-G(\sigma)$, with
-$\F(X)=\Tr\sqrt X$ as in Section~1. Then
-\[
- \boxed{\qquad \Delta\F\ge \Delta S/400,\qquad
-      \Delta\A^{T,F}_5\ge \Delta S/1000\quad\text{if }\Delta S\ge0.\qquad}
-\]
-To prove it, strengthen the five spectral rows of Section~3. In the
-homogeneous notation $s=\sum z_i^2$, $w=\sum z_i$, $p=\sum z_i^4$ and
-$z_i=\sqrt{\lambda_i(\sigma)}$ in increasing order, the same floors $k$
-and purity bounds $Q$ satisfy
-\[
- L=(s-kw)^2(s-6k^2)-(Q-k^2s)(w-6k)^2
-     \ \ge\ \tfrac3{100}s(p-s^2/6).
-\]
-The integer checker in \texttt{gain-checks.zip} verifies all coefficients
-on complete subdivisions with $(15,297,639,6,5)$ terminal cones, respectively.
-For $s=1$, it also verifies $w-5k\ge1$ from the coefficients in the
-step-vector expansion of the ordered $z_i$. The floor coefficients in
-decreasing order give $k<w/6$; also $kw<1$ since $w\le\sqrt6$. Thus
-$l=(1-kw)/(w-6k)$ satisfies $0<l\le1$. Summing
-$(x-k)(x-l)^2(x+k+2l)\ge0$ over the output eigenvalue square roots $x$,
-and using $(k+l)(w-6k)=1-6k^2$, gives
-\[
- \Delta\F\ge \frac{L}{2l(1-6k^2)^2}
-          \ge\frac{3}{200}\bigl(\Tr\sigma^2-1/6\bigr).
-\]
-This estimate applies to the eleven direct vertices and every normalized
-residual of positive mass. Since $\Delta S\le\log 6-S(\sigma)
-\le6(\Tr\sigma^2-1/6)$, each increases $\F-S/400$. The scalar function
-$\sqrt x+x\log(x)/400$ is concave on $[0,1]$, so its trace sum is
-concave and increases under local positive unital trace-preserving maps.
-Spin reversal preserves it. The same available-extension decompositions
-and the induction over the 23 remaining vertices extend the inequality to
-all channels. At $N=5$ majorization applies directly. Multiplying the
-root-trace gain by $(\F(\tau)+\F(\sigma))/5\ge2/5$ gives the bound for
-the normalized fidelity total when $\Delta S\ge0$.
-
-\paragraph{Equality.} The two gains vanish together precisely when
-$\sigma$ and $\tau$ are isospectral. Indeed $\Delta\F=0$ forces
-$\Delta S=0$ by the comparison and Corollary~1. If $\Delta S=0$, the
-shifted root-trace gap is continuous, nonnegative at every shift by
-the all-input fidelity theorem, and has zero integral against the strictly
-positive entropy kernel. It vanishes at every shift. Expansion at a large
-shift gives equality of all power sums and hence of the two spectra.
-Equal spectra give zero gains directly.
-
-\texttt{T5Equivalence.lean} in the attached Lean project gives the fixed-channel
-equivalence, including $N=5$. The separate integer checker for the gain
-bound is the attachment \texttt{gain-checks.zip}.
 \end{document}

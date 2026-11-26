@@ -1,5 +1,13 @@
 # Lean certificates for fidelity and von Neumann monotonicity at t = 1 and t = 2
 
+## Universal entropy-to-fidelity implication
+
+At orders 1 and 2, [the universal implication](UniversalConverseT12.lean) fixes $N=k+t$ with $k\ge0$. Its premise compares the von Neumann entropies of the Dicke marginals for **all channels and all states**. Its conclusion quantifies both variables again and compares the manuscript's normalized fidelity totals. The proof invokes the physical fidelity theorem for each channel and state.
+
+Run `lake build UniversalConverseT12` and `lake env lean --trust=0 UniversalConverseT12.lean` after fetching the Mathlib cache. [Axiom and source record](verification-uniform/universal-converse.json)
+
+## Supporting monotonicity certificates
+
 [UniformFidelity.lean](UniformFidelity.lean) states four public results.
 
 | Order | Fidelity | Von Neumann |
@@ -48,7 +56,3 @@ All audited results depend only on `propext`, `Classical.choice`, and `Quot.soun
 For incremental verification, use `lake build` followed by `lake env lean UniformAudit.lean`. To confirm the supplied source hashes on macOS, run `shasum -a 256 -c source-sha256-uniform.txt`.
 
 The [order-three](../lean-t3/README.md) and [order-four](../lean-t4/README.md) packages give the corresponding higher-order certificates.
-
-## Fixed-channel equivalence
-
-The target [EquivalencesT12](EquivalencesT12.lean) proves the equivalences for the determinant, fidelity and entropy inequalities on all density matrices. Run `lake build EquivalencesT12` after fetching the pinned dependencies. The same target also builds the [pointwise qubit theorem](QubitEquivalence.lean). [Equivalence verification record](verification-uniform/equivalences.json)

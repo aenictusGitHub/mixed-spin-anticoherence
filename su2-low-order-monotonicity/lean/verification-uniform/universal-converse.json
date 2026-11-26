@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "lean": "Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "kernel_trust_level": 0,
+  "modules": {
+    "UniversalConverseT12": {
+      "sha256": "9b65306c3bdbe27f8ffdd9fa167caae581ebc05bcad7550e863adfd27b7021e6",
+      "axioms": {
+        "LowOrder.universal_fidelity_of_universal_entropy_t1": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "LowOrder.universal_fidelity_of_universal_entropy_t2": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    }
+  }
+}

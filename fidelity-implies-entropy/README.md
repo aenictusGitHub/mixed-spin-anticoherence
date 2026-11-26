@@ -1,20 +1,25 @@
-# From fidelity monotonicity to von Neumann monotonicity
+# Universal entropy monotonicity implies universal fidelity monotonicity through order five
 
-Fix an order $1\le t\le N$ and a completely positive, trace-preserving SU(2)-covariant channel $\Phi$ on the spin-$N/2$ space. If $\mathcal A_t^{T,F}$ is monotone under $\Phi$ for every density matrix, then $\mathcal A_t^{T,\mathrm{vN}}$ is monotone under the same channel for every density matrix. Both statements include pure and rank-deficient inputs.
+Fix $1\le t\le5$ and $N\ge t$. The statement concerns two properties of the entire channel class at this fixed $N,t$.
 
-Mixing the global input with the maximally mixed spin state gives a fidelity comparison at every scalar shift of the two marginals. Integrating their shifted square-root trace difference gives the von Neumann entropy difference.
+$$
+\bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+\quad\Longrightarrow\quad
+\bigl[\forall\Phi\,\forall\rho,\
+\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\bigr].
+$$
 
-[Written proof (PDF)](proof.pdf) · [LaTeX source](proof.tex) · [Public Lean theorem](lean/FidelityImpliesEntropy.lean) · [Spectral identity](lean/FidelityEntropySpectral.lean)
+Each quantifier over $\Phi$ ranges over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$. Each quantifier over $\rho$ ranges over all density matrices on that spin space.
 
-## Converse at fixed order
+The finite-order fidelity theorems already prove the conclusion for every channel and input. The universal implication follows directly, so the proof needs no additional estimate from the entropy premise. The written proof is on page 1. Pages 2–3 prove the earlier forward implication from fidelity to entropy at arbitrary order.
 
-Let $F(\Phi)$ and $E(\Phi)$ denote fidelity and von Neumann monotonicity on every input of a fixed channel. For each $1\le t\le N$, the statement $\forall\Phi\,[E(\Phi)\Rightarrow F(\Phi)]$ is equivalent to $\forall\Phi\,F(\Phi)$. If fidelity fails for any channel, the proof constructs a depolarized channel at the same spin and order with nonnegative entropy gain on every input and negative fidelity gain on some input. Whether such a violation exists at an unresolved order remains open.
+[Written proof (PDF)](proof.pdf) · [LaTeX source](proof.tex)
 
-The proof uses a uniform entropy margin at the last parameter on a depolarizing path where all-input fidelity holds. The same small change in parameter preserves the entropy inequality for every input, including inputs with a maximally mixed marginal. [Physical Lean theorem](lean/PhysicalConverse.lean) · [Spectral theorem](lean/ConverseSpectralClass.lean) · [Axiom and source record](lean/verification/converse.json)
+[Orders one and two](../su2-low-order-monotonicity/lean/UniversalConverseT12.lean) · [Order three](../su2-low-order-monotonicity/lean-t3/UniversalConverseT3.lean) · [Order four](../su2-low-order-monotonicity/lean-t4/UniversalConverseT4.lean) · [Order five](../su2-order-five-monotonicity/lean/UniversalConverseT5.lean)
 
-## Lean verification
+## Lean verification of the forward implication
 
-The forward implication is `LowOrder.physical_vonNeumann_of_fidelity`. It uses the paper's normalized totals and the repository's symmetric Dicke marginal. Lean writes $N=k+t$ with $t\ge1$ and $k\ge0$. The hypothesis is fidelity monotonicity on all density matrices for the fixed channel.
+The forward theorem is `LowOrder.physical_vonNeumann_of_fidelity`. It uses the paper's normalized totals and the repository's symmetric Dicke marginal. Lean writes $N=k+t$ with $t\ge1$ and $k\ge0$. The hypothesis is fidelity monotonicity on all density matrices for the fixed channel.
 
 For $t=1,2,3,4$ and $N\ge t$, Section 8.1 of the uniform proof applies this theorem after deriving fidelity monotonicity from shifted determinants. For $t=5$ and $N>5$, Corollary 1 applies the implication directly to the fidelity theorem. [Orders one through four](../su2-low-order-monotonicity/proof.pdf) · [Order five](../su2-order-five-monotonicity/proof.pdf)
 
@@ -26,4 +31,4 @@ lake exe cache get
 lake build
 ```
 
-The project pins Lean 4.24.0 and the same Mathlib revision as the companion physical definitions. The default build checks the scalar integral, the entropy-gap limit, the forward implication and the physical converse reduction. [Axiom checks](lean/FidelityEntropyAudit.lean) · [Verification record](lean/verification/result.json)
+This forward-implication project pins Lean 4.24.0 and the same Mathlib revision as the companion physical definitions. The default build checks the scalar integral, the entropy-gap limit, the physical theorem and the expected axiom dependencies. [Axiom checks](lean/FidelityEntropyAudit.lean) · [Verification record](lean/verification/result.json)

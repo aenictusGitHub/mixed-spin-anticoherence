@@ -2,13 +2,20 @@
 
 Companion proofs to [*Total, quantum, and classical measures of anticoherence for mixed spin states*](https://arxiv.org/abs/2605.29436), using the paper's notation and squared-fidelity convention.
 
-For every density matrix on the spin-`N/2` sector, every completely positive, trace-preserving SU(2)-covariant channel on that sector, and `1 ≤ t ≤ min(4,N)`,
+For each $t\in\{1,2,3,4\}$ and $N\ge t$,
 
-```math
-\mathcal A_t^{T,F}(\Phi(\rho))\ge\mathcal A_t^{T,F}(\rho),
-\qquad
-\mathcal A_t^{T,\mathrm{vN}}(\Phi(\rho))\ge\mathcal A_t^{T,\mathrm{vN}}(\rho).
-```
+$$
+\bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+\quad\Longrightarrow\quad
+\bigl[\forall\Phi\,\forall\rho,\
+\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\bigr].
+$$
+
+Each quantifier over $\Phi$ ranges over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$. Each quantifier over $\rho$ ranges over all density matrices on that spin space.
+
+**Proof (p. 1).** Sections 3–6 prove determinant monotonicity at the four orders. Sections 7–8 apply it to depolarized inputs and integrate the shifted determinant inequality to obtain fidelity monotonicity for every channel and every state. This proves the conclusion of the implication independently of the entropy premise.
+
+[Lean, orders one and two](lean/UniversalConverseT12.lean) · [Order three](lean-t3/UniversalConverseT3.lean) · [Order four](lean-t4/UniversalConverseT4.lean)
 
 ## Written proofs (1 ≤ t ≤ 4)
 
@@ -26,18 +33,11 @@ Lean proves the two inequalities under the same hypotheses as the PDF. The [shar
 - [Order three](lean-t3/README.md), [public theorems](lean-t3/UniformT3Certificate.lean), [verification report](lean-t3/verification/result.json) and [axiom audit](lean-t3/verification/axioms.log)
 - [Order four](lean-t4/README.md), [public theorems](lean-t4/UniformT4Certificate.lean), [verification report](lean-t4/verification/result.json) and [axiom audit](lean-t4/verification/axioms.log)
 
-## Equivalence for a fixed channel
-
-At each of the four orders, determinant, fidelity and von Neumann monotonicity are equivalent when each is required on **every input of the same physical channel**. The reverse arrows use the physical determinant theorem. For one pair of arbitrary qubit states the three orderings also agree. In dimensions three through five the proof gives explicit spectra for which the determinant increases while both totals decrease.
-
-The same-input comparisons $\Delta T\ge\Delta S/112$ at order three and $\Delta T\ge\Delta S/500$ at order four use $T(X)=\operatorname{Tr}\sqrt X$ and entropy in nats. The order-four checker covers the fourteen physical base cases with 30,636 terminal boxes. The final section of the PDF gives the proof and the separate order-two contraction criterion.
-
-[Qubit spectra](lean/QubitEquivalence.lean) · [Orders one and two](lean/EquivalencesT12.lean) · [Order three](lean-t3/EquivalencesT3.lean) · [Order four](lean-t4/EquivalencesT4.lean) · [Exact order-four gain checker](gain-checks.zip)
-## Implication at arbitrary order
+## The forward implication
 
 Fix $1\le t\le N$ and a channel. Mixing the input with the maximally mixed spin state turns its fidelity inequalities into a comparison of shifted square-root traces. Integration gives the entropy inequality, including for singular inputs. [General proof and Lean certificate](../fidelity-implies-entropy/README.md)
 
-The order-five supplement uses this implication after proving the fidelity inequality for $N>5$. [Order-five proof and certificates](../su2-order-five-monotonicity/README.md)
+The order-five supplement gives the universal entropy-to-fidelity implication for $N\ge5$ on page 1. [Order-five proof and certificates](../su2-order-five-monotonicity/README.md)
 
 ## Citation
 

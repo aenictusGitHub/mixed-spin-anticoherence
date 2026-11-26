@@ -3,10 +3,10 @@
   "lean": "Lean (version 4.24.0, arm64-apple-darwin23.6.0, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
   "kernel_trust_level": 0,
   "modules": {
-    "EquivalencesT3": {
-      "sha256": "74e210f2759d26876f2b71e98fa9c176fed9d8493c390a68b9e93f8261a4a28c",
+    "UniversalConverseT5": {
+      "sha256": "d3e5dccb87fddc2b0a05b3508efc3d88ec302627bb92b59c78113cf10878ebd8",
       "axioms": {
-        "LowOrder.physical_equivalences_t3": [
+        "OrderFive.universal_fidelity_of_universal_entropy_t5": [
           "Classical.choice",
           "Quot.sound",
           "propext"

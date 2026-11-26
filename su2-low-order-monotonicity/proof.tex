@@ -21,13 +21,29 @@
 \date{26 November 2026}
 \hypersetup{pdftitle={Monotonicity of fidelity and von Neumann total anticoherence under SU(2)-covariant channels at orders t <= 4}}
 \begin{document}
-\embedfile[filespec=gain-checks.zip,desc={Exact verification of the entropy and fidelity gain comparison}]{gain-checks.zip}
 \embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
 \maketitle
-\noindent We prove fidelity monotonicity for every input density matrix at
-orders $t=1,2,3,4$ by comparing shifted determinants. Von Neumann
-monotonicity then follows from a single implication valid at every order.
-Section~\ref{sec:lean} identifies the Lean theorems for both measures.
+\noindent\textbf{Universal entropy monotonicity implies universal fidelity monotonicity.}
+Fix $t\in\{1,2,3,4\}$ and $N\ge t$.
+\[
+ \boxed{\;
+ \bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+ \ \Longrightarrow\
+ \bigl[\forall\Phi\,\forall\rho,\
+        \A_t^{T,F}(\Phi\rho)\ge\A_t^{T,F}(\rho)\bigr].
+ \;}
+\]
+In each bracket $\Phi$ ranges over all completely positive, trace-preserving
+$\mathrm{SU}(2)$-covariant channels on spin $N/2$, and $\rho$ ranges over all density
+matrices on that space. The symmetric $t$-qubit marginal is $\rho_t$.
+
+\noindent\textit{Proof.} For any such channel, Sections~3--6 prove
+$\det((\Phi\rho)_t)\ge\det(\rho_t)$ at the respective order for every state.
+Section~\ref{sec:shift} applies this result to mixtures with the maximally mixed spin state.
+Section~\ref{sec:spectral} integrates the resulting shifted determinant inequalities to give
+$\Tr\sqrt{(\Phi\rho)_t}\ge\Tr\sqrt{\rho_t}$. Squaring and using~\eqref{eq:F}
+gives the conclusion for all channels and all states. Thus it holds, in particular,
+under the universal entropy hypothesis.\hfill$\square$
 
 \medskip
 \noindent The exact data and verification scripts used in the
@@ -3487,146 +3503,10 @@ Each package pins Lean 4.24.0 and its Mathlib revision. The
 \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-low-order-monotonicity/lean-t4}{order-four}
 packages give the reproduction commands, checked sources and axiom reports.
 
-\section{Determinant, fidelity and entropy at fixed order}\label{sec:equivalence}
-Let $D(\Phi),F(\Phi),E(\Phi)$ denote, respectively, the determinant,
-fidelity and von Neumann inequalities for every density matrix of the fixed
-channel. Sections~\ref{sec:lean} and the preceding proofs give
-\[
- \boxed{\qquad D(\Phi)\ \Longleftrightarrow\ F(\Phi)\ \Longleftrightarrow\ E(\Phi)
-       \qquad(1\le t\le\min(4,N)).\qquad}
-\]
-The forward arrows follow from the shifted determinant and shifted square-root
-comparisons. For the reverse arrows, the physical determinant theorem already
-gives $D(\Phi)$ for each such channel. Thus all three channel statements have
-the same truth value. A separate question is how much can be inferred from
-the two spectra at a single input.
 
-\paragraph{One input.}
-At $t=1$, put $p=\lambda_{\min}(\sigma)\in[0,1/2]$. Then
-$\det\sigma=p(1-p)$, $\A^{T,F}_1=2\sqrt{p(1-p)}$, and
-$S(\sigma)=-p\log p-(1-p)\log(1-p)$. All three are strictly increasing in
-$p$. This proves the equivalence for any two qubit states, including equality.
-At $t=2$, consider instead the two spectra
-\[
- x=(1,5,6)/12,\qquad y=(2,2,8)/12.
-\]
-The determinant increases from $30/12^3$ to $32/12^3$.
-The root sums decrease, since $1+\sqrt5+\sqrt6>4\sqrt2$; indeed
-$\sqrt5+\sqrt6>4\sqrt2-1$ follows by squaring twice, or from
-$\sqrt5>2.23$, $\sqrt6>2.44$ and $\sqrt2<1.415$.
-The entropy decreases since
-$12[S(x)-S(y)]=\log(2^{28}/(5^5 6^6))>0$.
-Reversing the pair reverses all the inequalities. Appending common positive
-eigenvalues and rescaling both triples by the same factor gives the same
-strict comparisons at $t=3,4$. These spectra illustrate a failure of a
-pointwise spectral inference; they do not give a covariant-channel violation.
-
-Even for a physical channel the determinant can stay constant while the two
-totals increase strictly. For $j=N/2$ apply the covariant channel
-$\Phi(X)=\sum_a J_a XJ_a/[j(j+1)]$ to $|j,j\rangle$. The global output is a
-mixture of $|j,j\rangle$ and the one-excitation Dicke state, with respective
-weights $j/(j+1)$ and $1/(j+1)$. The nonzero marginal probabilities are
-$1-r,r$ with $r=t/[N(j+1)]$. Both determinants vanish for $2\le t\le4$,
-while the initially pure marginal gains both fidelity and entropy.
-
-\paragraph{A direct order-two comparison.}
-For qutrit density matrices, with $V(X)=\Tr(X-I/3)^2$ and $T(X)=\Tr\sqrt X$,
-\[
- V(Y)\le(9/25)V(X)\quad\Longrightarrow\quad T(Y)\ge T(X).
-\]
-To see this, fix $w=T(X)$ and let $z=\sqrt{(3-w^2)/(2w^2)}$. On a
-nonuniform level the ratio of the minimum to the maximum of $V$ is
-\[
- \begin{cases}[(2-z)/(2+z)]^2,&0<z\le1/2,\\
- (z^4+10z^2-2)/[z^2(z+2)^2],&1/2\le z\le1.
- \end{cases}
-\]
-Indeed, the three eigenvalue square roots have fixed sum $w$ and fixed
-sum of squares $1$. Their fourth-power sum is affine increasing in their
-product by Newton's identities. At an interior extremum two roots coincide
-(the Lagrange equations for the product give this directly). The two
-candidates have roots $w(1+2z,1-z,1-z)/3$ and
-$w(1-2z,1+z,1+z)/3$; beyond $z=1/2$ the latter is replaced by the
-boundary triple with one zero. Substitution gives the displayed ratios.
-The first decreases to $9/25$. For the second the difference from $9/25$
-has numerator $(2z-1)(8z^3-14z^2+100z+50)$ over $25z^2(z+2)^2$.
-If $T(Y)<T(X)$, the segment from $Y$ to $I/3$ meets the level $w$ at
-strictly smaller variance than $V(Y)$, contradicting the ratio bound.
-The constant is sharp at the level through $(8/9,1/18,1/18)$ and $(1/2,1/2,0)$.
-
-For the physical multipliers $(f,g)$, the region $-1/2\le g\le1$,
-$3|f|\le2+g$ is the convex hull of $(\pm1,1)$ and $(\pm1/2,-1/2)$.
-The first two give identity and spin reversal. The last two give the
-spin-one channel $\sum_aJ_a XJ_a/2$ and its composition with spin
-reversal. Each is positive, unital and trace-preserving and increases
-$T$ by majorization. Outside this hull, Lemma~\ref{t2:lem:multipliers}
-gives $g<-1/2$ and $|f|<1/3$ for $N\ge3$. For $N=3$ the four extremal
-values of $g$ are $1,1/5,-3/5,1/5$. For $N\ge4$, $S_0=N(N+2)\ge24$
-and completing the square in~\eqref{t2:eq:curved} gives
-$g\ge-(S_0^2+3)/[2S_0(S_0-3)]\ge-3/5$. Orthogonality of ranks one and
-two now gives $V(\tau)\le(9/25)V(\sigma)$, so the spectral argument applies.
-The full marginal $N=2$ follows directly by unitality.
-
-\paragraph{Quantitative converse at orders three and four.}
-Use natural logarithms and write $\Delta G=G(\tau)-G(\sigma)$.
-The following bounds hold at each input:
-\[
- \boxed{\quad \Delta T\ge \Delta S/112\quad(t=3),\qquad
-                 \Delta T\ge \Delta S/500\quad(t=4).\quad}
-\]
-For $d=t+1$, $V(X)=\Tr(X-I/d)^2$ and $\Delta S\le\log d-S(\sigma)\le dV(\sigma)$
-by $\log x\le x-1$. Thus it suffices to prove $\Delta T\ge V(\sigma)/28$
-and $\Delta T\ge V(\sigma)/100$, respectively, on the physical base cases
-in the available-extension hull. For each displayed constant $C=112,500$,
-$x\mapsto\sqrt{x}+x\log(x)/C$ is concave on $[0,1]$ by its second derivative.
-Hence $T-S/C$ increases under each positive unital trace-preserving local
-map, is invariant under spin reversal, and is concave under channel
-mixtures. This extends the base inequalities to the full channel class,
-including $N=t$.
-
-For $t=3$ put $H(X)=2-T(X)$. Then
-\[
- \tfrac34 V(X)\le H(X)\le V(X)/(1/2+\sqrt{m})^2
- \quad\text{if }\lambda_{\min}(X)\ge m.
-\]
-Rationalizing the square roots proves the upper estimate. To minimize
-$H-3V/4$, moving a small mass to a zero eigenvalue lowers the objective by
-order $\sqrt\epsilon$. At an interior minimum the scalar summand has
-second derivative $1/(4x^{3/2})-3/2$, strictly decreasing in $x$. Hence
-there are at most two distinct eigenvalues, and a repeated larger one
-would admit a variation of negative second derivative. On $(a,b,b,b)$,
-put $y=\sqrt{a/b}\ge1$. Along this family
-$dH/dV=(y^2+3)^{3/2}/[4y(y+1)]\ge3/4$, using
-$y^2+3\ge2\sqrt3\,y$ and $\sqrt{y^2+3}\ge\sqrt3(y+1)/2$.
-At the uniform state both quantities vanish.
-
-The three ordinary base cases have $V(\tau)/V(\sigma)\le16/49$ and
-$m\ge1/28$ by the table of output floors. For $(N,K)=(4,2)$ use the
-coordinates $s=r+h$ of the proof, with $h=3z$ and $m\ge(3-s)/28$.
-The same bounds hold for $s\le2$. For $2\le s\le11/4$, $m\ge1/112$ and
-the stated ratio $Q(r,h)$ is at most $1/4$, because
-$12r^2+40h^2\ge(120/13)(r+h)^2\ge480/13>135/4$.
-For $s\ge11/4$,~\eqref{t3:eq:input-variance-lower} gives
-$V(\sigma)\ge9/16$, and $\Tr\tau^2\le153/392<25/64$ gives
-$T(\tau)\ge1/\sqrt{\Tr\tau^2}>8/5$ by H\"older's inequality.
-In these three regimes the bounds on $H(\tau)/V(\sigma)$ are, respectively,
-$4096/5929$, $256/361$, and $32/45$, all at most $5/7$.
-Subtracting gives $\Delta T\ge(3/4-5/7)V(\sigma)=V(\sigma)/28$.
-Uniform inputs follow directly from the multiplier law.
-
-At $t=4$ the attached \texttt{gain-checks.zip} contains the detailed
-spectral proof and exact interval checker for the fourteen base cases.
-It verifies $\Delta T\ge V(\sigma)/100$ on 30\,636 terminal boxes.
-For $(5,2)$ the two-copy adjoint estimate also gives
-$\lambda_{\min}(\tau)\ge\lambda_{\min}(\sigma)/80$.
-The certificate reconstructs the multipliers and rational floor bounds
-before testing the complete domains. Finally $T(\sigma)+T(\tau)\ge2$;
-hence for $\Delta S\ge0$ the manuscript totals satisfy
-$\Delta\A^{T,F}_3\ge\Delta S/168$ and $\Delta\A^{T,F}_4\ge\Delta S/1000$.
-
-The fixed-channel equivalences are certified by \path{EquivalencesT12.lean},
-\path{EquivalencesT3.lean} and \path{EquivalencesT4.lean} in their respective
-Lean packages. \path{QubitEquivalence.lean} certifies the single-pair spectral
-theorem at $t=1$. The gain constants above use the displayed estimates
-and the independent order-four checker.
+The universal implication on page~1 is formalized in
+\path{UniversalConverseT12.lean}, \path{UniversalConverseT3.lean} and
+\path{UniversalConverseT4.lean} in the respective order-specific packages.
+Each theorem fixes $N=k+t$ and quantifies over both the channel and the input
+separately on each side of the implication.
 \end{document}
