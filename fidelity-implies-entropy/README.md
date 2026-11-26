@@ -1,21 +1,8 @@
-# Universal entropy monotonicity implies universal fidelity monotonicity through order five
+# From fidelity monotonicity to von Neumann monotonicity at every order
 
-Fix $1\le t\le5$ and $N\ge t$. The statement concerns two properties of the entire channel class at this fixed $N,t$.
-
-$$
-\bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
-\quad\Longrightarrow\quad
-\bigl[\forall\Phi\,\forall\rho,\
-\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\bigr].
-$$
-
-Each quantifier over $\Phi$ ranges over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$. Each quantifier over $\rho$ ranges over all density matrices on that spin space.
-
-The finite-order fidelity theorems already prove the conclusion for every channel and input. The universal implication follows directly, so the proof needs no additional estimate from the entropy premise. The written proof is on page 1. Pages 2–3 prove the earlier forward implication from fidelity to entropy at arbitrary order.
+Fix $1\le t\le N$ and a completely positive, trace-preserving SU(2)-covariant channel on spin $N/2$. If the fidelity-based total anticoherence is nondecreasing on every input, then the von Neumann total anticoherence is nondecreasing on every input for that channel. The proof on pages 1–2 applies the fidelity hypothesis to mixtures of the input with the maximally mixed state.
 
 [Written proof (PDF)](proof.pdf) · [LaTeX source](proof.tex)
-
-[Orders one and two](../su2-low-order-monotonicity/lean/UniversalConverseT12.lean) · [Order three](../su2-low-order-monotonicity/lean-t3/UniversalConverseT3.lean) · [Order four](../su2-low-order-monotonicity/lean-t4/UniversalConverseT4.lean) · [Order five](../su2-order-five-monotonicity/lean/UniversalConverseT5.lean)
 
 ## Lean verification of the forward implication
 
@@ -32,3 +19,20 @@ lake build
 ```
 
 This forward-implication project pins Lean 4.24.0 and the same Mathlib revision as the companion physical definitions. The default build checks the scalar integral, the entropy-gap limit, the physical theorem and the expected axiom dependencies. [Axiom checks](lean/FidelityEntropyAudit.lean) · [Verification record](lean/verification/result.json)
+
+## Converse for orders one through five
+
+Fix $1\le t\le5$ and $N\ge t$. The statement concerns two properties of the entire channel class at this fixed $N,t$.
+
+$$
+\bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
+\quad\Longrightarrow\quad
+\bigl[\forall\Phi\,\forall\rho,\
+\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\bigr].
+$$
+
+Each quantifier over $\Phi$ ranges over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$. Each quantifier over $\rho$ ranges over all density matrices on that spin space.
+
+The finite-order fidelity theorems already prove the conclusion for every channel and input. The universal implication follows directly, so the proof needs no additional estimate from the entropy premise. [Proof, p. 3](proof.pdf#page=3)
+
+[Orders one and two](../su2-low-order-monotonicity/lean/UniversalConverseT12.lean) · [Order three](../su2-low-order-monotonicity/lean-t3/UniversalConverseT3.lean) · [Order four](../su2-low-order-monotonicity/lean-t4/UniversalConverseT4.lean) · [Order five](../su2-order-five-monotonicity/lean/UniversalConverseT5.lean)

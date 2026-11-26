@@ -7,23 +7,14 @@ Jérôme Denis, Tara Lacaille, John Martin, and Eduardo Serrano-Ensástiga,
 
 ## Monotonicity under SU(2)-covariant channels
 
-For every density matrix on the symmetric spin-$N/2$ space, both the fidelity-based and von Neumann total anticoherence measures are nondecreasing under every completely positive, trace-preserving SU(2)-covariant channel in the following cases.
+For every density matrix on the symmetric space of spin $N/2$, both the fidelity-based and von Neumann total anticoherence measures are nondecreasing under every completely positive, trace-preserving SU(2)-covariant channel in the following cases.
 
 | Order | Spin range | Written proof | Lean certificates |
 |---|---|---|---|
 | $t=1,2,3,4$ | $N\ge t$ | [Shifted determinants give fidelity](su2-low-order-monotonicity/proof.pdf) | [Certificates by order](su2-low-order-monotonicity/README.md) |
 | $t=5$ | $N\ge5$ | [Fidelity and von Neumann monotonicity](su2-order-five-monotonicity/proof.pdf) | [Order five, including the full marginal](su2-order-five-monotonicity/README.md) · [Download](su2-order-five-monotonicity/order-five-lean.zip) |
 
-**At arbitrary order.** Fix $1\le t\le N$. Fidelity monotonicity on every input implies von Neumann monotonicity for the same channel. [Proof, pp. 2–3](fidelity-implies-entropy/proof.pdf)
-
-**For orders one through five.** Fix $1\le t\le5$ and $N\ge t$. For each such $N,t$, universal von Neumann monotonicity implies universal fidelity monotonicity. [Proof, p. 1](fidelity-implies-entropy/proof.pdf)
-
-$$
-\Bigl[\forall\Phi\,\forall\rho,\quad S((\Phi\rho)_t)\ge S(\rho_t)\Bigr]
-\quad\Longrightarrow\quad
-\Bigl[\forall\Phi\,\forall\rho,\quad
-\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\Bigr].
-$$
+**At arbitrary order.** Fix $1\le t\le N$. Fidelity monotonicity on every input implies von Neumann monotonicity for the same channel. [Proof, pp. 1–2](fidelity-implies-entropy/proof.pdf)
 
 ## Monotonicity in the anticoherence order
 
@@ -38,6 +29,19 @@ Exact global purity optima at orders 2, 3, and 4, and exact convex roofs for the
 - [Purity proofs (PDF)](spin52-purity-certificates/docs/purity-certificates.pdf)
 - [Convex-roof proofs (PDF)](spin52-purity-certificates/docs/convex-roof-certificates.pdf)
 - [Data and verification guide](spin52-purity-certificates/README.md)
+
+## Finite-order converse for SU(2)-covariant channels
+
+Fix $1\le t\le5$ and $N\ge t$. Let $\Phi$ range over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$, and $\rho$ over all density matrices on that space. Universal von Neumann monotonicity then implies universal fidelity monotonicity.
+
+$$
+\Bigl[\forall\Phi\,\forall\rho,\quad S((\Phi\rho)_t)\ge S(\rho_t)\Bigr]
+\quad\Longrightarrow\quad
+\Bigl[\forall\Phi\,\forall\rho,\quad
+\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\Bigr].
+$$
+
+[Proof, p. 3](fidelity-implies-entropy/proof.pdf#page=3)
 
 ## Citation
 
