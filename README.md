@@ -30,19 +30,6 @@ Exact global purity optima at orders 2, 3, and 4, and exact convex roofs for the
 - [Convex-roof proofs (PDF)](spin52-purity-certificates/docs/convex-roof-certificates.pdf)
 - [Data and verification guide](spin52-purity-certificates/README.md)
 
-## Finite-order converse for SU(2)-covariant channels
-
-Fix $1\le t\le5$ and $N\ge t$. Let $\Phi$ range over all completely positive, trace-preserving SU(2)-covariant channels on spin $N/2$, and $\rho$ over all density matrices on that space. Universal von Neumann monotonicity then implies universal fidelity monotonicity.
-
-$$
-\Bigl[\forall\Phi\,\forall\rho,\quad S((\Phi\rho)_t)\ge S(\rho_t)\Bigr]
-\quad\Longrightarrow\quad
-\Bigl[\forall\Phi\,\forall\rho,\quad
-\mathcal A_t^{T,F}(\Phi\rho)\ge\mathcal A_t^{T,F}(\rho)\Bigr].
-$$
-
-[Proof, p. 3](fidelity-implies-entropy/proof.pdf#page=3)
-
 ## Citation
 
 Cite the [paper](https://arxiv.org/abs/2605.29436) and the repository commit used. See [BibTeX](citation.bib) and [CITATION.cff](CITATION.cff).

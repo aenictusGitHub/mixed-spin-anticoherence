@@ -14,7 +14,7 @@
 \setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
 \setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
 \raggedbottom
-\hypersetup{pdftitle={Fidelity monotonicity at order five},pdfsubject={Fidelity and von Neumann total anticoherence for every spin N/2 with N at least five}}
+\hypersetup{pdftitle={Fidelity monotonicity at order five},pdfsubject={Fidelity and von Neumann total anticoherence for every spin N/2 with N at least 5}}
 \newcommand{\attachproof}[2]{%
   \IfFileExists{#1}{\embedfile[filespec=#1,desc={#2}]{#1}}{%
     \IfFileExists{../../output/#1}{\embedfile[filespec=#1,desc={#2}]{../../output/#1}}{%
@@ -27,43 +27,11 @@
 {\large Total anticoherence under $\SU$-covariant channels\par}\vspace{8pt}
 26 November 2026
 \end{center}
-\textbf{Universal entropy monotonicity implies universal fidelity monotonicity.}
-Fix $t=5$ and $N\ge5$. Then
-\[
- \boxed{\;
- \bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_5)\ge S(\rho_5)\bigr]
- \ \Longrightarrow\
- \bigl[\forall\Phi\,\forall\rho,\
-        \A_5^{T,F}(\Phi\rho)\ge\A_5^{T,F}(\rho)\bigr].
- \;}
-\]
-In each bracket $\Phi$ ranges over all completely positive, trace-preserving
-$\mathrm{SU}(2)$-covariant channels on spin $N/2$, and $\rho$ ranges over all density
-matrices on that space. The symmetric five-qubit marginal is $\rho_5$.
-
-\textit{Proof.} Let $\Phi$ and $\rho$ be arbitrary. For $N>5$, Theorem~1
-proves the fidelity inequality for this pair. For $N=5$ the marginal is the
-entire state. Covariance and Schur's lemma imply that $\Phi(I)$ is scalar,
-and trace preservation gives $\Phi(I)=I$. Thus $\Phi(\rho)$ is majorized
-by $\rho$. Concavity of the square root gives
-\[
- \Tr\sqrt{\Phi(\rho)}\ge\Tr\sqrt\rho .
-\]
-Squaring and using $\A^{T,F}_5(\rho)=[(\Tr\sqrt\rho)^2-1]/5$ proves
-the endpoint. The fidelity inequality thus holds for every channel and input,
-including under the stated entropy hypothesis.\hfill$\square$
-
-\textbf{Lean certificate.} The attached project checks
-\path{OrderFive.universal_fidelity_of_universal_entropy_t5} in
-\path{UniversalConverseT5.lean}. Its parameter $k=N-5$ includes $k=0$.
-The following pages give the physical fidelity theorem for $k\ge1$
-and its von Neumann corollary.
-\newpage
-\textbf{Theorem 1 (fidelity).} Let $N>5$ be an integer and let $\Phi$ be a completely positive, trace-preserving $\SU$-covariant channel on the symmetric spin-$N/2$ space $\cH_{N/2}$. For every density matrix $\rho$ on this space,
+\textbf{Theorem 1 (fidelity).} Let $N\ge5$ be an integer and let $\Phi$ be a completely positive, trace-preserving $\SU$-covariant channel on the symmetric spin-$N/2$ space $\cH_{N/2}$. For every density matrix $\rho$ on this space,
 \[
                     \boxed{\ \A_5^{T,F}(\Phi(\rho))\ge\A_5^{T,F}(\rho).\ }
 \]
-Write $R_{N,m}$ for the symmetric $m$-qubit partial trace, $\sigma=R_{N,5}\rho$ and $\tau=R_{N,5}\Phi(\rho)$. In the manuscript's squared-fidelity convention, $\A_5^{T,F}(\rho)=[(\Tr\sqrt\sigma)^2-1]/5$. It suffices to show $\F(\tau)\ge\F(\sigma)$ for $\F(X)=\Tr\sqrt X$, since both traces are nonnegative. The proof reduces all $N$ to 34 physical channel vertices and treats the resulting six-dimensional spectra, including zero eigenvalues.
+Write $R_{N,m}$ for the symmetric $m$-qubit partial trace, $\sigma=R_{N,5}\rho$ and $\tau=R_{N,5}\Phi(\rho)$. In the manuscript's squared-fidelity convention, $\A_5^{T,F}(\rho)=[(\Tr\sqrt\sigma)^2-1]/5$. It suffices to show $\F(\tau)\ge\F(\sigma)$ for $\F(X)=\Tr\sqrt X$, since both traces are nonnegative. For $N=5$ the marginal is the full state. Covariance and trace preservation give $\Phi(I)=I$ by irreducibility. Thus $\Phi(\rho)$ is majorized by $\rho$, and concavity of the square root gives $\F(\Phi(\rho))\ge\F(\rho)$. For $N>5$ the proof below reduces the comparison to 34 physical channel vertices and local maps.
 
 \textbf{Corollary 1 (von Neumann).}
 Under the hypotheses of Theorem~1, every density matrix $\rho$ satisfies
@@ -71,7 +39,7 @@ Under the hypotheses of Theorem~1, every density matrix $\rho$ satisfies
                 \boxed{\ \A_5^{T,\mathrm{vN}}(\Phi(\rho))
                          \ge\A_5^{T,\mathrm{vN}}(\rho).\ }
 \]
-\textit{Proof.} Fix $N>5$ and $\Phi$. Theorem~1 proves fidelity monotonicity for
+\textit{Proof.} Fix $N\ge5$ and $\Phi$. Theorem~1 proves fidelity monotonicity for
 every density matrix on $\cH_{N/2}$. Applying the
 \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/blob/a3575c44acf8314509fe969f99f5643c4e4cc871/fidelity-implies-entropy/proof.pdf}{general fidelity-to-entropy theorem}
 at $t=5$ gives the stated inequality for every input of this channel.\hfill$\square$
@@ -232,7 +200,8 @@ Sections 3--5 therefore give $\F(\tau)\ge\F(\sigma)$ for all 34 physical generat
 
 \medskip
 \textbf{Proof files.} The attachment \texttt{order-five-lean.zip} contains the
-Lean proofs of Theorem~1 and Corollary~1 in \texttt{T5CertifiedTheorem.lean}.
+Lean proofs of Theorem~1 and Corollary~1 for $N>5$ in \texttt{T5CertifiedTheorem.lean}
+and for $N=5$ in \texttt{T5FullMarginal.lean}.
 The independent checker in \texttt{sextic-checks.zip} verifies the spectral
 bounds of Section~3.
 \end{document}

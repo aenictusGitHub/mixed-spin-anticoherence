@@ -1,6 +1,6 @@
 name = "su2_t2_fidelity"
 version = "3.0.0"
-defaultTargets = ["UniformFidelityCertificate", "UniversalConverseT12"]
+defaultTargets = ["UniformFidelityCertificate"]
 weakLeanArgs = ["-j1", "-s131072"]
 
 [leanOptions]
@@ -76,7 +76,3 @@ globs = [
   "UniformFidelity",
   "UniformT1",
 ]
-
-[[lean_lib]]
-name = "UniversalConverseT12"
-roots = ["UniversalConverseT12"]

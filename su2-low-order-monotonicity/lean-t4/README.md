@@ -1,13 +1,5 @@
 # Order-four Lean certificates
 
-## Universal entropy-to-fidelity implication
-
-At order 4, [the universal implication](UniversalConverseT4.lean) fixes $N=k+t$ with $k\ge0$. Its premise compares the von Neumann entropies of the Dicke marginals for **all channels and all states**. Its conclusion quantifies both variables again and compares the manuscript's normalized fidelity totals. The proof invokes the physical fidelity theorem for each channel and state.
-
-Run `lake build UniversalConverseT4` and `lake env lean --trust=0 UniversalConverseT4.lean` after fetching the Mathlib cache. [Axiom and source record](verification/universal-converse.json)
-
-## Supporting monotonicity certificates
-
 This package provides end-to-end Lean proofs of fidelity and von Neumann total-anticoherence monotonicity at order `t = 4`. The statements cover every `N ≥ 4`, every completely positive, trace-preserving SU(2)-covariant channel, and every density matrix, including mixed and rank-deficient inputs.
 
 The public theorems are `LowOrder.physical_fidelity_t4` and `LowOrder.physical_vonNeumann_t4` in [UniformT4Certificate.lean](UniformT4Certificate.lean).
@@ -18,7 +10,7 @@ The public theorems are `LowOrder.physical_fidelity_t4` and `LowOrder.physical_v
 
 The verification record identifies the local proof sources and distinguishes freshly compiled modules from reused verification checkpoints.
 
-The [final verification report](verification/result.json) records `PASS`. The four [final axiom reports](verification/axioms.log) contain only Lean's standard `propext`, `Classical.choice` and `Quot.sound`. The [source-integrity check](verification/source-integrity.json) covers the supporting physical theorem and its imports. The universal implication has its own axiom and source record above.
+The [final verification report](verification/result.json) records `PASS`. The four [final axiom reports](verification/axioms.log) contain only Lean's standard `propext`, `Classical.choice` and `Quot.sound`. The [source-integrity check](verification/source-integrity.json) confirms that every supplied Lean source matches the verified report.
 
 ## Reproduction
 

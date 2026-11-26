@@ -18,32 +18,15 @@
 \setcounter{tocdepth}{2}
 \title{Monotonicity of total anticoherence\\under $\mathrm{SU}(2)$-covariant channels\\[3mm]\large Fidelity $\mathcal A_t^{T,F}$ and von Neumann $\mathcal A_t^{T,\mathrm{vN}}$ anticoherence measures at orders $t\le4$\\Uniform proofs with embedded exact data}
 \author{}
-\date{26 November 2026}
+\date{23 November 2026}
 \hypersetup{pdftitle={Monotonicity of fidelity and von Neumann total anticoherence under SU(2)-covariant channels at orders t <= 4}}
 \begin{document}
 \embedfile[filespec=exact-data.zip,desc={Exact rational data and checking programs for orders two, three and four},mimetype=application/zip]{exact-data.zip}
 \maketitle
-\noindent\textbf{Universal entropy monotonicity implies universal fidelity monotonicity.}
-Fix $t\in\{1,2,3,4\}$ and $N\ge t$.
-\[
- \boxed{\;
- \bigl[\forall\Phi\,\forall\rho,\ S((\Phi\rho)_t)\ge S(\rho_t)\bigr]
- \ \Longrightarrow\
- \bigl[\forall\Phi\,\forall\rho,\
-        \A_t^{T,F}(\Phi\rho)\ge\A_t^{T,F}(\rho)\bigr].
- \;}
-\]
-In each bracket $\Phi$ ranges over all completely positive, trace-preserving
-$\mathrm{SU}(2)$-covariant channels on spin $N/2$, and $\rho$ ranges over all density
-matrices on that space. The symmetric $t$-qubit marginal is $\rho_t$.
-
-\noindent\textit{Proof.} For any such channel, Sections~3--6 prove
-$\det((\Phi\rho)_t)\ge\det(\rho_t)$ at the respective order for every state.
-Section~\ref{sec:shift} applies this result to mixtures with the maximally mixed spin state.
-Section~\ref{sec:spectral} integrates the resulting shifted determinant inequalities to give
-$\Tr\sqrt{(\Phi\rho)_t}\ge\Tr\sqrt{\rho_t}$. Squaring and using~\eqref{eq:F}
-gives the conclusion for all channels and all states. Thus it holds, in particular,
-under the universal entropy hypothesis.\hfill$\square$
+\noindent We prove fidelity monotonicity for every input density matrix at
+orders $t=1,2,3,4$ by comparing shifted determinants. Von Neumann
+monotonicity then follows from a single implication valid at every order.
+Section~\ref{sec:lean} identifies the Lean theorems for both measures.
 
 \medskip
 \noindent The exact data and verification scripts used in the
@@ -3503,10 +3486,4 @@ Each package pins Lean 4.24.0 and its Mathlib revision. The
 \href{https://github.com/aenictusGitHub/mixed-spin-anticoherence/tree/main/su2-low-order-monotonicity/lean-t4}{order-four}
 packages give the reproduction commands, checked sources and axiom reports.
 
-
-The universal implication on page~1 is formalized in
-\path{UniversalConverseT12.lean}, \path{UniversalConverseT3.lean} and
-\path{UniversalConverseT4.lean} in the respective order-specific packages.
-Each theorem fixes $N=k+t$ and quantifies over both the channel and the input
-separately on each side of the implication.
 \end{document}
